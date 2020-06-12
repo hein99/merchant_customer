@@ -103,29 +103,29 @@ function displayLoginFrom($error_messages, $admin_account)
     $missing_fields = array();
     $error_messages = array();
 
-    $admin_account = new UsersAccount(array(
+    $customer_account = new UsersAccount(array(
       'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
       'password' => isset($_POST['password']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['password']) : ''
     ));
     foreach ($required_fields as $required_field) {
-      if(!$admin_account->getValue($required_field))
+      if(!$customer_account->getValue($required_field))
         $missing_fields[] = $required_field;
     }
     if($missing_fields)
     {
       $error_messages[] = '<p class="error">Please complete all the fields below!</p>';
     }
-    elseif(!$loggedin_account = $admin_account->authenticateAdminAccount())
+    elseif(!$loggedin_account = $customer_account->authenticateCustomerAccount())
     {
       $error_messages[] = '<p class="error">Please check your username and password, and try again!</p>';
     }
     if($error_messages)
     {
-      displayLoginFrom($error_messages, $admin_account);
+      displayLoginFrom($error_messages, $customer_account);
     }
     else {
-      $_SESSION['merchant_admin_account'] = $loggedin_account;
-      header('location: ' .URL. '/dashboard/');
+      $_SESSION['merchant_customer_account'] = $loggedin_account;
+      header('location: ' .URL. '/home/');
     }
   }
   ?>

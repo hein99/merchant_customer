@@ -11,9 +11,9 @@ $id = isset($_GET['id']) ? $_GET['id'] : '';
 
 function checkAuthentication()
 {
-  if(!isset($_SESSION['merchant_admin_account']) or !$_SESSION['merchant_admin_account'] or !$_SESSION['merchant_admin_account']->getValueEncoded('id') or !$_SESSION['merchant_admin_account'] = UsersAccount::getAdminAccountById($_SESSION['merchant_admin_account']->getValue('id')))
+  if(!isset($_SESSION['merchant_customer_account']) or !$_SESSION['merchant_customer_account'] or !$_SESSION['merchant_customer_account']->getValueEncoded('id') or !$_SESSION['merchant_customer_account'] = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValue('id')))
   {
-    $_SESSION['merchant_admin_account'] = '';
+    $_SESSION['merchant_customer_account'] = '';
     header('location: '.URL. '/views/login.php');
     exit();
   }
@@ -31,7 +31,7 @@ switch ($controller)
 
     break;
 
-  case 'statement'
+  case 'statement':
 
     break;
 
@@ -40,7 +40,7 @@ switch ($controller)
     break;
 
   case 'settings':
-  
+
     break;
 
   default:

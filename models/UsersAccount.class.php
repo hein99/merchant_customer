@@ -17,5 +17,39 @@ class UsersAccount extends DataObject
     'modified_date' => ''
   );
 
+  public function getCustomerAccountById($id)
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE id = :id AND user_status = 0';
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $id, PDO::PARAM_STR);
+      $st->execute();
+      $row = $st->fetch();
+      parent::disconnect($conn);
+      if($row) return new UsersAccount($row);
+    } catch (PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
+
+  public function authenticateCustomerAccount()
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE username = :username AND password = PASSWORD(:password) AND user_status = 0';
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':username', $this->data['username'], PDO::PARAM_STR);
+      $st->bindValue(':password', $this->data['password'], PDO::PARAM_STR);
+      $st->execute();
+      $row = $st->fetch();
+      parent::disconnect($conn);
+      if($row) return new UsersAccount($row);
+    }catch(PDOException $e){
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
 }
 ?>

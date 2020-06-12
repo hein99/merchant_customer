@@ -3,7 +3,7 @@ switch($action)
 {
   case '':
   case 'display':
-  require('./views/dashboard/display.php');
+  require('./views/home/display.php');
   break;
 
   default:
