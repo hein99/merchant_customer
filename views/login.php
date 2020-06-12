@@ -52,6 +52,14 @@ function displayLoginFrom($error_messages, $admin_account)
     </div>
     <input type="submit" id="login" name="" value="Login">
   </form>
+  <button class="forgot_password_button" type="button" name="password_request">Forgot Password?</button>
+  <div class="forget_password_form">
+    <form class="" action="<?php echo URL ?>/customer/password_request" method="post">
+      <h2>Forgot Your Password?</h2>
+      <input type="number" name="phone" value="" placeholder="Enter Your PhoneNumber" class="phone_number">
+      <input type="submit" name="" value="Send" id="send_number_request">
+    </form>
+  </div>
 </div>
   <script type="text/javascript">
     $(function(){
@@ -93,6 +101,7 @@ function displayLoginFrom($error_messages, $admin_account)
       });
     });
   </script>
+  <script src="<?php echo FILE_URL ?>/scripts/login.js" charset="utf-8"></script>
   <?php
   displayPageFooter();
   }
