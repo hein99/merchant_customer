@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /merchant_customer/
+
+RewriteRule ^(\w+)/(\w+)/(\w+)/?$ common.inc.php?controller=$1&action=$2&id=$3 [L,QSA]
+RewriteRule ^(\w+)/(\w+)/?$ common.inc.php?controller=$1&action=$2 [L,QSA]
+RewriteRule ^(\w+)/?$ common.inc.php?controller=$1 [L,QSA]
+RewriteRule ^/?$ common.inc.php?controller=home [L,QSA]
