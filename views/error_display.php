@@ -46,7 +46,7 @@ switch($ERR_STATUS)
       </div>
       <div class="error-page-buttons">
         <a href="javascript:history.go(-1)"><span id="error-back-button"><i class="fas fa-arrow-left"></i>Back</span></a>
-        <a href="<?php echo URL ?>/dashboard/"><span id="error-dashboard-button"><i class="fas fa-th-large"></i>Dashboard</span></a>
+        <a href="<?php echo URL ?>/home/"><span id="error-home-button"><i class="fas fa-th-large"></i>Home</span></a>
       </div>
     </div>
   </div>
