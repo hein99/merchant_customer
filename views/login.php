@@ -54,10 +54,11 @@ function displayLoginFrom($error_messages, $admin_account)
   </form>
   <button class="forgot_password_button" type="button" name="password_request">Forgot Password?</button>
   <div class="forget_password_form">
-    <form class="" action="<?php echo URL ?>/customer/password_request" method="post">
+    <form class="" action="" method="">
       <h2>Forgot Your Password?</h2>
+      <div class="error_message"></div>
       <input type="number" name="phone" value="" placeholder="Enter Your PhoneNumber" class="phone_number">
-      <input type="submit" name="" value="Send" id="send_number_request">
+      <input type="button" name="" value="Send" id="send_number_request">
     </form>
   </div>
 </div>

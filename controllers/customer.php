@@ -39,11 +39,11 @@ function passwordRequest()
   if($error_messages)
   {
     $ERR_STATUS = ERR_FORM;
-    require('./views/error_display.php');
+    echo 'no';
   }
   else {
     $password_request->addPasswordRequest();
-    header('location: '.URL. '/views/login.php');
+    echo 'yes';
   }
 }
  ?>
