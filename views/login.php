@@ -3,17 +3,23 @@ require('../config.php');
 require('../htmlstructureconfig.php');
 require('../models/DataObject.class.php');
 require('../models/UsersAccount.class.php');
+require('../models/PasswordRequest.class.php');
 session_start();
 
 if( isset($_POST['action']) and $_POST['action'] == 'login')
 {
   processLoginForm();
 }
+if( isset($_POST['action']) and $_POST['action'] == 'forgot_password')
+{
+  processPasswordRequest();
+}
 else {
   displayLoginFrom(array(), new UsersAccount(array()));
+  displayForgotPasswordForm('');
 }
 
-function displayLoginFrom($error_messages, $admin_account)
+function displayLoginFrom($error_messages, $customer_account)
 {
   displayPageHeader('Login | ' . WEB_NAME, true);
 ?>
@@ -35,7 +41,7 @@ function displayLoginFrom($error_messages, $admin_account)
   </div>
   <form class="login-body" action="<?php echo URL ?>/views/login.php" method="post">
     <input type="hidden" name="action" value="login">
-    <input type="text" name="username" placeholder="Username" id="username" value="<?php echo isset($admin_account) ? $admin_account->getValueEncoded('username') : ''?>">
+    <input type="text" name="username" placeholder="Username" id="username" value="<?php echo isset($customer_account) ? $customer_account->getValueEncoded('username') : ''?>">
     <div class="login-pass">
       <input type="password" name="password" placeholder="Password" id="password">
       <span class="login-eye">
@@ -53,14 +59,6 @@ function displayLoginFrom($error_messages, $admin_account)
     <input type="submit" id="login" name="" value="Login">
   </form>
   <button class="forgot_password_button" type="button" name="password_request">Forgot Password?</button>
-  <div class="forget_password_form">
-    <form class="" action="" method="">
-      <h2>Forgot Your Password?</h2>
-      <div class="error_message"></div>
-      <input type="number" name="phone" value="" placeholder="Enter Your PhoneNumber" class="phone_number">
-      <input type="button" name="" value="Send" id="send_number_request">
-    </form>
-  </div>
 </div>
   <script type="text/javascript">
     $(function(){
@@ -107,6 +105,30 @@ function displayLoginFrom($error_messages, $admin_account)
   displayPageFooter();
   }
 
+  function displayForgotPasswordForm($msg)
+  {
+  ?>
+  <div class="<?php echo (!$msg) ? 'forget_password_form': '' ?>">
+  <span class="">
+  <?php
+    if($msg)
+    {
+      echo $msg;
+    }else{
+      echo "Forgot Your Password?";
+    }
+  ?>
+  <span>
+    <form class="" action="<?php echo URL ?>/views/login.php" method="post">
+      <input type="hidden" name="action" value="forgot_password">
+      <div class="error_message"></div>
+      <input type="number" name="phone" value="" placeholder="Enter Your PhoneNumber" class="phone_number">
+      <input type="submit" name="" value="Send" id="send_number_request">
+    </form>
+  </div>
+  <?php
+  }
+
   function processLoginForm()
   {
     $required_fields = array('username', 'password');
@@ -136,6 +158,44 @@ function displayLoginFrom($error_messages, $admin_account)
     else {
       $_SESSION['merchant_customer_account'] = $loggedin_account;
       header('location: ' .URL. '/home/');
+    }
+  }
+  function processPasswordRequest()
+  {
+    $required_fields = array('phone');
+    $missing_fields = array();
+    $error_messages = '';
+
+    $customer_account = new UsersAccount(array(
+      'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
+      'password' => isset($_POST['password']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['password']) : ''
+    ));
+
+    $password_request = new PasswordRequest(array(
+      'phone' => isset($_POST['phone']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['phone']) : '',
+    ));
+    foreach($required_fields as $required_field)
+    {
+      if(!$password_request->getValue($required_field))
+        $missing_fields = $required_field;
+    }
+    if($missing_fields)
+    {
+      $error_messages = '<p>There were some missing fields!</p>';
+    }
+    else if(!UsersAccount::getCustomerAccountByPhoneNumber($password_request->getValue('phone')))
+    {
+      $error_messages = '<p>Sorry!!!You do not have any Account with this Phone Number.</p>';
+    }
+    if($error_messages)
+    {
+      displayLoginFrom(array(), new UsersAccount(array()));
+      displayForgotPasswordForm($error_messages);
+    }
+    else {
+      $password_request->addPasswordRequest();
+      displayLoginFrom(array(), new UsersAccount(array()));
+      displayForgotPasswordForm("Sent Successfully!Admin will send you a new password in one week.");
     }
   }
   ?>

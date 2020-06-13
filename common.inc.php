@@ -28,7 +28,7 @@ switch ($controller)
     break;
 
   case 'customer':
-    require('./models/PasswordRequest.class.php');
+  
     break;
 
   case 'order':
