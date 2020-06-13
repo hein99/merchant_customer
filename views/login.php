@@ -10,7 +10,7 @@ if( isset($_POST['action']) and $_POST['action'] == 'login')
 {
   processLoginForm();
 }
-if( isset($_POST['action']) and $_POST['action'] == 'forgot_password')
+else if( isset($_POST['action']) and $_POST['action'] == 'forgot_password')
 {
   processPasswordRequest();
 }
@@ -154,6 +154,7 @@ function displayLoginFrom($error_messages, $customer_account)
     if($error_messages)
     {
       displayLoginFrom($error_messages, $customer_account);
+      displayForgotPasswordForm('');
     }
     else {
       $_SESSION['merchant_customer_account'] = $loggedin_account;
