@@ -20,7 +20,7 @@ class UsersAccount extends DataObject
   public static function getCustomerAccountById($id)
   {
     $conn = parent::connect();
-    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE id = :id AND user_status = 0';
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE id = :id AND user_status = 0 AND activate_status=1';
     try {
       $st = $conn->prepare($sql);
       $st->bindValue(':id', $id, PDO::PARAM_STR);
@@ -54,7 +54,7 @@ class UsersAccount extends DataObject
   public function authenticateCustomerAccount()
   {
     $conn = parent::connect();
-    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE username = :username AND password = PASSWORD(:password) AND user_status = 0';
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE username = :username AND password = PASSWORD(:password) AND user_status = 0 AND activate_status=1';
     try {
       $st = $conn->prepare($sql);
       $st->bindValue(':username', $this->data['username'], PDO::PARAM_STR);
