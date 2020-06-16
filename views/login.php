@@ -41,7 +41,7 @@ function displayLoginFrom($error_messages, $customer_account)
   </div>
   <form class="login-body" action="<?php echo URL ?>/views/login.php" method="post">
     <input type="hidden" name="action" value="login">
-    <input type="text" name="username" placeholder="Username" id="username" value="<?php echo isset($customer_account) ? $customer_account->getValueEncoded('username') : ''?>">
+    <input type="number" name="phone" placeholder="Phone" id="phone" value="<?php echo isset($customer_account) ? $customer_account->getValueEncoded('phone') : ''?>">
     <div class="login-pass">
       <input type="password" name="password" placeholder="Password" id="password">
       <span class="login-eye">
@@ -60,46 +60,7 @@ function displayLoginFrom($error_messages, $customer_account)
   </form>
   <button class="forgot_password_button" type="button" name="password_request">Forgot Password?</button>
 </div>
-  <script type="text/javascript">
-    $(function(){
-
-      $('#username').focus();
-
-      $close = $('.close-eye');
-      $password = $('#password');
-
-      $('.login-eye').click(function(){
-        $close.toggle();
-        $('.open-eye svg, .inner').toggleClass('show');
-
-        if($password.attr('type') == 'password'){
-          $password.attr('type', 'text');
-          $password.focus();
-        }else{
-          $password.attr('type', 'password');
-          $password.focus();
-        }
-      });
-
-      $('#password').keydown(function(e){
-        if(e.which == 115){
-          $password.attr('type', 'text');
-          $password.focus();
-          $close.hide();
-          $('.open-eye svg, .inner').addClass('show');
-        }
-      });
-
-      $('#password').keyup(function(e){
-        if(e.which == 115){
-          $password.attr('type', 'password');
-          $password.focus();
-          $close.show();
-          $('.open-eye svg, .inner').removeClass('show');
-        }
-      });
-    });
-  </script>
+  <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
   <script src="<?php echo FILE_URL ?>/scripts/login.js" charset="utf-8"></script>
   <?php
   displayPageFooter();
@@ -122,7 +83,7 @@ function displayLoginFrom($error_messages, $customer_account)
     <form class="" action="<?php echo URL ?>/views/login.php" method="post">
       <input type="hidden" name="action" value="forgot_password">
       <div class="error_message"></div>
-      <input type="number" name="phone" value="" placeholder="Enter Your PhoneNumber" class="phone_number">
+      <input type="number" name="phone" placeholder="Enter Your PhoneNumber" class="phone_number" required>
       <input type="submit" name="" value="Send" id="send_number_request">
     </form>
   </div>
@@ -131,13 +92,13 @@ function displayLoginFrom($error_messages, $customer_account)
 
   function processLoginForm()
   {
-    $required_fields = array('username', 'password');
+    $required_fields = array('phone', 'password');
     $missing_fields = array();
     $error_messages = array();
 
     $customer_account = new UsersAccount(array(
-      'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
-      'password' => isset($_POST['password']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['password']) : ''
+      'phone' => isset($_POST['phone']) ? preg_replace('/[^0-9]/', '', $_POST['phone']) : '',
+      'password' => isset($_POST['password']) ? $_POST['password'] : ''
     ));
     foreach ($required_fields as $required_field) {
       if(!$customer_account->getValue($required_field))
@@ -149,7 +110,7 @@ function displayLoginFrom($error_messages, $customer_account)
     }
     elseif(!$loggedin_account = $customer_account->authenticateCustomerAccount())
     {
-      $error_messages[] = '<p class="error">Please check your username and password, and try again!</p>';
+      $error_messages[] = '<p class="error">Please check your phone and password, and try again!</p>';
     }
     if($error_messages)
     {
@@ -166,11 +127,6 @@ function displayLoginFrom($error_messages, $customer_account)
     $required_fields = array('phone');
     $missing_fields = array();
     $error_messages = '';
-
-    $customer_account = new UsersAccount(array(
-      'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
-      'password' => isset($_POST['password']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['password']) : ''
-    ));
 
     $password_request = new PasswordRequest(array(
       'phone' => isset($_POST['phone']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['phone']) : '',

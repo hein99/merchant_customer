@@ -1,7 +1,8 @@
 <?php
 displayPageHeader('Home | ' . WEB_NAME);
-displayMainNavigation('home');
+displayHomeNavigation();
  ?>
+ <h1>Home</h1>
 <?php
 displayPageFooter();
 ?>

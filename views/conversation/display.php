@@ -1,8 +1,8 @@
 <?php
 displayPageHeader('Customer List | ' . WEB_NAME);
-displayMainNavigation('conversation');
+displayOtherNavigation('conversation');
  ?>
- 
+ <h1>Conversation</h1>
 <?php
 displayPageFooter();
 ?>

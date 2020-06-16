@@ -27,10 +27,6 @@ switch ($controller)
 
     break;
 
-  case 'customer':
-  
-    break;
-
   case 'order':
 
     break;
