@@ -24,7 +24,7 @@ checkAuthentication();
 switch ($controller)
 {
   case 'home':
-
+    require('./models/ExchangeRate.class.php');
     break;
 
   case 'customer':
@@ -32,7 +32,7 @@ switch ($controller)
     break;
 
   case 'order':
-
+    require('./models/CustomerOrder.class.php');
     break;
 
   case 'statement':
