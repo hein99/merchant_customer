@@ -6,6 +6,24 @@ displayHomeNavigation();
    <?php
   $customer_account = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValueEncoded('id'));
   $latest_exchange_rate = ExchangeRate::getLatestExchangeRate();
+  $membership_id = $customer_account->getValueEncoded('membership_id');
+  switch ($membership_id) {
+    case '1':
+      $membership_icon = 'silver';
+      break;
+    case '2':
+      $membership_icon = 'gold';
+      break;
+    case '3':
+      $membership_icon = 'platinum';
+      break;
+    case '4':
+      $membership_icon = 'diamond';
+      break;
+    default:
+      // code...
+      break;
+  }
    ?>
    <div class="">
      <div class="">
@@ -19,7 +37,7 @@ displayHomeNavigation();
      </div>
      <div class="">
        <h2 class="">Points I Have</h2>
-       <i class="fas fa-medal"></i>
+       <span class="<?php echo $membership_icon ?>"><?php echo ($membership_icon == 'diamond') ? '<i class="fas fa-gem"></i>': '<i class="fas fa-medal"></i>' ?></span>
        <?php echo $customer_account->getValueEncoded('point') ?> Points
      </div>
    </div>
