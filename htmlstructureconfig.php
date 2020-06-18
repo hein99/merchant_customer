@@ -20,12 +20,16 @@ function displayPageHeader($page_title, $dir_level=false)
   <?php
 }
 
-function displayMainNavigation($active_page='')
+function displayHomeNavigation()
 {?>
-  
+
   <?php
 }
+function displayOtherNavigation($active_page='')
+{ ?>
 
+  <?php
+}
 function displayPageFooter()
 {?>
     </body>

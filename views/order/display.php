@@ -1,8 +1,8 @@
 <?php
 displayPageHeader('Order List | ' . WEB_NAME);
-displayMainNavigation('order');
+displayOtherNavigation('order');
  ?>
-
+ <h1>Order</h1>
 <?php
 displayPageFooter();
 ?>

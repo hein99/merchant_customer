@@ -1,6 +1,6 @@
 <?php
 #page Titles
-define('WEB_NAME', 'Admin');
+define('WEB_NAME', 'The Best Shop');
 
 #page Url
 define('URL', 'http://localhost/merchant_customer');

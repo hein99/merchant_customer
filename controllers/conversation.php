@@ -1,6 +1,5 @@
 <?php
 date_default_timezone_set('Asia/Yangon');
-require('./views/conversation/general.php');
 switch($action)
 {
   case '':

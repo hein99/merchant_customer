@@ -1,3 +1,17 @@
-.forget_password_form{
-  display: none;
+/* Mobile View */
+
+/* End Mobile View */
+
+
+/* Desktop View */
+@media (min-width: 30em){
+
 }
+/* End Desktop View */
+
+
+/* Tablet View */
+@media (min-width: 30em) and (max-width: 60em){
+
+}
+/* End Tablet View */
