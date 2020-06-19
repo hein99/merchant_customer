@@ -17,6 +17,21 @@ class UsersAccount extends DataObject
     'modified_date' => ''
   );
 
+  public static function getAdmin()
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE user_status = 1';
+    try {
+      $st = $conn->query($sql);
+      $row = $st->fetch();
+      parent::disconnect($conn);
+      if($row) return new UsersAccount($row);
+    }catch (PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: '.$e->getMessage());
+    }
+  }
+
   public static function getCustomerAccountById($id)
   {
     $conn = parent::connect();

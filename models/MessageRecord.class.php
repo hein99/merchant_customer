@@ -78,7 +78,7 @@ class MessageRecord extends DataObject
   public static function updateMessageStatus($from_user_id, $to_user_id)
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '.TBL_MESSAGE_RECORD.' SET admin_has_viewed = 1 WHERE (from_user_id = :from_user_id AND to_user_id = :to_user_id)
+    $sql = 'UPDATE '.TBL_MESSAGE_RECORD.' SET customer_has_viewed = 1 WHERE (from_user_id = :from_user_id AND to_user_id = :to_user_id)
             OR (from_user_id = :to_user_id AND to_user_id = :from_user_id)';
     try {
       $st = $conn->prepare($sql);

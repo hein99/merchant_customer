@@ -57,6 +57,7 @@ displayHomeNavigation();
    <div class="">
      <a href="<?php echo URL ?>/conversation/">
        <h2>Contact Admin</h2>
+       <span id="messages_count"></span>
        <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="" style="width:30px;">
      </a>
    </div>

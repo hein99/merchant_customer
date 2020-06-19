@@ -15,10 +15,10 @@ switch($action)
   // case 'get_admin_typing':
   //   getAdminTyping();
   //   break;
-  case 'get_all_messages_by_customer_id':
+  case 'get_all_messages':
     getAllMessages($id);
     break;
-  case 'get_new_messages_by_customer_id':
+  case 'get_new_messages':
     getNewMessages($id);
     break;
   case 'change_typing_by_id':
