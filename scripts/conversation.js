@@ -18,15 +18,6 @@ $(document).ready(function(){
     $('#uploadForm').css('display', 'none');
   });
 
-  $(document).on('focus', '.chat_message', function(){
-    var is_type = 'yes';
-    $.ajax({
-      url: PAGE_URL+'/conversation/change_typing_by_id',
-      method: "POST",
-      data: {is_type:is_type}
-    })
-  });
-
   $(document).on('change', '#uploadFile', function(e){
     var reader = new FileReader();
     reader.onload = function(e) {
@@ -37,7 +28,6 @@ $(document).ready(function(){
 
   $(document).on('focus', '.chat_message', function(){
     var is_type = 'yes';
-    console.log(ADMIN_ID);
     $.ajax({
       url: PAGE_URL+'/conversation/change_typing_by_id',
       method: "POST",
