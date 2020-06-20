@@ -1,3 +1,12 @@
+window.onbeforeunload = function(event) {
+  var is_type = 'no';
+  $.ajax({
+    url: PAGE_URL+'/conversation/change_typing_by_id',
+    method: "POST",
+    data: {is_type:is_type, to_whom_id:ADMIN_ID}
+  })
+};
+
 $(document).ready(function(){
   var to_user_id = ADMIN_ID;
   var to_user_name = "The Best Shop";
