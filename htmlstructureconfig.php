@@ -81,32 +81,41 @@ function displayOtherNavigation($active_page='')
 
   <nav class="wp-other-page-nav">
     <div class="wp-other-page-header">
-      <a href="<?php echo URL ?>/">
-        <img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/><span>The Best Shop</span>
-      </a>
-      <span><i class="far fa-times-circle"></i></span>
+      <img src="<?php echo FILE_URL ?>/logos/globe-solid-white.png"/>
+      <span id="wp-other-page-header-logo">The Best Shop</span>
+      <span id="wp-close-nav"><i class="fas fa-times"></i></span>
     </div>
     <div class="wp-other-page-sidebar">
-      <a href="#">
-        <i class="fas fa-home"></i>
-        <h3>Home</h3>
-      </a>
-      <a href="#">
-        <i class="fas fa-shapes"></i>
-        <h3>My Order</h3>
-      </a>
-      <a href="#">
-        <i class="fas fa-money-check-alt"></i>
-        <h3>Bill History</h3>
-      </a>
-      <a href="#">
-        <i class="fas fa-comment-dots"></i>
-        <h3>Contact Admin</h3>
-      </a>
-      <a href="#">
-        <i class="fas fa-user-cog"></i>
-        <h3>Account Setting</h3>
-      </a>
+      <span>
+        <a href="#">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </a>
+      </span>
+      <span>
+        <a href="#">
+          <i class="fas fa-shapes"></i>
+          <span>My Order</span>
+        </a>
+      </span>
+      <span>
+        <a href="#">
+          <i class="fas fa-money-check-alt"></i>
+          <span>Bill History</span>
+        </a>
+      </span>
+      <span>
+        <a href="#">
+          <i class="fas fa-comment-dots"></i>
+          <span>Contact Admin</span>
+        </a>
+      </span>
+      <span>
+        <a href="#">
+          <i class="fas fa-user-cog"></i>
+          <span>Account Setting</span>
+        </a>
+      </span>
     </div>
   </nav>
   <?php
