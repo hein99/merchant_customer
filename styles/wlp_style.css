@@ -168,7 +168,8 @@
 .wp-other-page-sidebar a{
 	display: inline-block;
 	text-decoration: none;
-	padding: 16px 8px;
+	padding: 12px 8px;
+	margin: 4px 0;
 	color: #333;
 	transition: 0.1s ease;
 }
