@@ -1,10 +1,240 @@
 /* Mobile View */
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
+form input{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.error{
+  color: #ff0000;
+}
+
+.login-container{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  box-shadow: 0 0 0 transparent;
+  max-height: 100vh;
+  top: 0%;
+  left: 0%;
+  transform: translate(0%, 0%);
+  border-radius: 0px;
+}
+
+.login-header{
+  width: 100vw;
+  height: 28vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: 'Lato', sans-serif;
+}
+
+.login-body{
+  width: 100vw;
+}
+
+#user-icon{
+  margin-bottom: 30px;
+}
+
+#user-icon i{
+  font-size: 8em;
+  color: #2EC5FF;
+}
+
+#website-name{
+  font-size: 3.3em;
+  color: #000000;
+  font-weight: 800;
+}
+
+#display-login, #display-forget-password{
+  text-align: center;
+}
+
+.forget_password_form{
+  display: none;
+}
+
+.info-message{
+  display: inline-block;
+  font-size: 1.4em;
+  color: #222222;
+  opacity: 0.5;
+  margin-top: 20px;
+}
+
+.login-body form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 130px;
+  margin: 0 auto;
+}
+
+.input{
+  position: relative;
+  display: inline-block;
+  width: 520px;
+  height: 80px;
+  font-size: 2em;
+  border-radius: 12px;
+  margin-bottom: 45px;
+  border: 3px solid #ddd;
+  background: none;
+}
+
+.input.focus{
+  border: 3px solid #2EC5FF;
+}
+
+.input input[type=number],
+.input input[type=password]{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  padding: 8px 20px 8px 100px;
+  transition: 0.2s ease;
+}
+
+.input span:first-child i{
+  color: #ddd;
+  font-size: 1em;
+}
+
+.input span:first-child{
+  display: inline-flex;
+  font-size: 1.2em;
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translate(-18px, -50%);
+}
+
+.fa-phone{
+  transform: rotatey(180deg);
+}
+
+.input input[type=submit]{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  border: none;
+  font-size: 1.2em;
+  font-weight: 600;
+  background: #2EC5FF;
+  color: #ffffff;
+}
+
+.input:last-child{
+  margin-bottom: 0;
+  border: 3px solid #2EC5FF;
+  background-color: #2EC5FF;
+}
+
+.forgot_password_button{
+  background: none;
+  border: none;
+  color: #2EC5FF;
+  font-size: 1.6em;
+  margin-top: 30px;
+}
+
+.input input[type=number]:focus,
+.input input[type=password]:focus{
+  padding: 8px 20px 8px 20px;
+  outline: none;
+}
 
 /* End Mobile View */
 
 
 /* Desktop View */
-@media (min-width: 30em){
+@media (min-width: 60em){
+
+.login-container{
+  position: absolute;
+  width: 46vw;
+  height: 68vh;
+  box-shadow: 0 0 10px #aeacac;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.login-header{
+  width: 46vw;
+  height: 20vh;
+}
+
+.login-body{
+  width: 46vw;
+}
+
+#user-icon{
+  margin-bottom: 10px;
+}
+
+#user-icon i{
+  font-size: 5em;
+}
+
+#website-name{
+  font-size: 2.5em;
+}
+
+.info-message{
+  font-size: 0.8em;
+  margin-top: 22px;
+}
+
+.login-body form{
+  padding-top: 50px;
+}
+
+.input{
+  width: 265px;
+  height: 42px;
+  font-size: 1em;
+  border-radius: 8px;
+  margin-bottom: 22px;
+}
+
+.input input[type=number],
+.input input[type=password]{
+  padding: 8px 20px 8px 56px;
+}
+
+.input span:first-child i{
+  font-size: 1.4em;
+}
+
+.input span:first-child{
+  font-size: 1em;
+  left: 37px;
+}
+
+.input input[type=submit]{
+  font-size: 1.3em;
+}
+
+.forgot_password_button{
+  font-size: 0.9em;
+  margin-top: 16px;
+}
 
 }
 /* End Desktop View */
@@ -12,6 +242,27 @@
 
 /* Tablet View */
 @media (min-width: 30em) and (max-width: 60em){
+
+  /* .login-container{
+    position: absolute;
+    width: 70vw;
+    height: 68vh;
+    box-shadow: 0 0 0 transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+  }
+
+  .login-header{
+    width: 70vw;
+    height: 20vh;
+  }
+
+  .login-body{
+    width: 70vw;
+  } */
+
 
 }
 /* End Tablet View */
