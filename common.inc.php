@@ -24,19 +24,24 @@ checkAuthentication();
 switch ($controller)
 {
   case 'home':
+    require('./models/ExchangeRate.class.php');
+    break;
+
+  case 'customer':
 
     break;
 
   case 'order':
-
+    require('./models/CustomerOrder.class.php');
     break;
 
   case 'statement':
-
+    require('./models/CustomerStatement.class.php');
     break;
 
   case 'conversation':
-
+    require('./models/MessageRecord.class.php');
+    require('./models/LoginRecord.class.php');
     break;
 
   case 'settings':
