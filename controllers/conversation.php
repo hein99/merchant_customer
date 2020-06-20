@@ -12,9 +12,9 @@ switch($action)
   case 'get_admin_active':
     getAdminActive();
     break;
-  // case 'get_admin_typing':
-  //   getAdminTyping();
-  //   break;
+  case 'get_admin_typing':
+    getAdminTyping();
+    break;
   case 'get_all_messages':
     getAllMessages($id);
     break;
@@ -45,10 +45,14 @@ function getNewMessagesCount()
   $total = MessageRecord::getNewMessagesCount($_SESSION['merchant_customer_account']->getValue('id'));
   echo $total;
 }
-// function getAdminTyping()
-// {
-//   $login_record = LoginRecord::getIsType($_SESSION['merchant_customer_account']->getValue('id'));
-// }
+function getAdminTyping()
+{
+  $login_record = LoginRecord::getIsType($_SESSION['merchant_customer_account']->getValue('id'));
+  if($login_record)
+    echo "true";
+  else
+    echo "false";
+}
 function getAdminActive()
 {
   $login_record = LoginRecord::getUsersActiveActivity($_SESSION['merchant_customer_account']->getValue('id'));
@@ -108,13 +112,14 @@ function getNewMessages($id)
 }
 function changeTypingById()
 {
-  $required_fields = array('user_id', 'is_type');
+  $required_fields = array('user_id', 'is_type', 'to_whom_id');
   $missing_fields = array();
   $error_messages = array();
 
   $login_record = new LoginRecord(array(
     'user_id' => $_SESSION['merchant_customer_account']->getValue('id'),
-    'is_type' => isset($_POST['is_type']) ? preg_replace('/[^.\ \-\_a-zA-Z0-9]/', '', $_POST['is_type']) : ''
+    'is_type' => isset($_POST['is_type']) ? preg_replace('/[^.\ \-\_a-zA-Z0-9]/', '', $_POST['is_type']) : '',
+    'to_whom_id' => isset($_POST['to_whom_id']) ? preg_replace('/[^.\ \-\_a-zA-Z0-9]/', '', $_POST['to_whom_id']) : ''
   ));
 
   foreach($required_fields as $required_field)

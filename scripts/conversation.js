@@ -3,10 +3,11 @@ $(document).ready(function(){
   var to_user_name = "The Best Shop";
   get_chat_history(to_user_id, to_user_name);
   getAdminActive();
+  getAdminTyping();
 
   setInterval(function(){
     getAdminActive();
-    // getAdminTyping();
+    getAdminTyping();
   }, 3000);
 
   $(document).on('click', '.upload_image_logo', function(){
@@ -17,15 +18,6 @@ $(document).ready(function(){
     $('#uploadForm').css('display', 'none');
   });
 
-  $(document).on('focus', '.chat_message', function(){
-    var is_type = 'yes';
-    $.ajax({
-      url: PAGE_URL+'/conversation/change_typing_by_id',
-      method: "POST",
-      data: {is_type:is_type}
-    })
-  });
-
   $(document).on('change', '#uploadFile', function(e){
     var reader = new FileReader();
     reader.onload = function(e) {
@@ -34,12 +26,21 @@ $(document).ready(function(){
     reader.readAsDataURL(this.files[0]);
   });
 
+  $(document).on('focus', '.chat_message', function(){
+    var is_type = 'yes';
+    $.ajax({
+      url: PAGE_URL+'/conversation/change_typing_by_id',
+      method: "POST",
+      data: {is_type:is_type, to_whom_id:ADMIN_ID}
+    })
+  });
+
   $(document).on('blur', '.chat_message', function(){
     var is_type = 'no';
     $.ajax({
       url: PAGE_URL+'/conversation/change_typing_by_id',
       method: "POST",
-      data: {is_type:is_type}
+      data: {is_type:is_type, to_whom_id:ADMIN_ID}
     })
   });
 
@@ -125,7 +126,7 @@ $(document).ready(function(){
   {
     var content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
     content += '<h4>You have chat with <span id="chatting-name">'+to_user_name;
-    content += '</span><span id="admin_active"></span></h4><div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'"><ul>';
+    content += '</span><span id="admin_active"></span><span id="admin_typing"></span></h4><div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'"><ul>';
     content += '</ul></div>';
     content += '<div class="wp-conversation-message-container">';
     content += '<label id="wp-send-photo" for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
@@ -185,6 +186,20 @@ $(document).ready(function(){
         else {
           $('#admin_active').removeClass('active_now');
         }
+      }
+    });
+  }
+  function getAdminTyping()
+  {
+    $.ajax({
+      method:"GET",
+      url: PAGE_URL+'/conversation/get_admin_typing',
+      success: function(returnTyping)
+      {
+        if(returnTyping == 'true')
+          $('#admin_typing').html("Typing...");
+        else
+          $('#admin_typing').html("");
       }
     });
   }
