@@ -8,7 +8,7 @@ $customer_acc = UsersAccount::getCustomerAccountById($_SESSION['merchant_custome
  <section>
    <div class="">
      <h1>Totol Balance</h1>
-     <span><?php echo $customer_acc->getValueEncoded('balance'); ?></span>
+     <span><?php echo number_format($customer_acc->getValueEncoded('balance'), 2) ?></span>&nbsp;Ks
    </div>
    <div class="">
      <h1>Transaction Histories</h1>
@@ -25,7 +25,7 @@ $customer_acc = UsersAccount::getCustomerAccountById($_SESSION['merchant_custome
            <tr>
              <td><?php echo $customer_statement->getValueEncoded('created_date'); ?></td>
              <td><?php echo $customer_statement->getValueEncoded('about'); ?></td>
-             <td class="<?php echo $customer_statement->getValue('amount_status') ? 'plus' : 'minus'?>"><span><?php echo $customer_statement->getValue('amount_status') ? '+' : '-'?></span><?php echo $customer_statement->getValueEncoded('amount'); ?></td>
+             <td class="<?php echo $customer_statement->getValue('amount_status') ? 'plus' : 'minus'?>"><span><?php echo $customer_statement->getValue('amount_status') ? '+' : '-'?></span><?php echo $customer_statement->getValueEncoded('amount'); ?>&nbsp;Ks</td>
            </tr>
          <?php endforeach; ?>
        </tbody>
