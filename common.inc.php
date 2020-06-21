@@ -41,7 +41,7 @@ switch ($controller)
 
   case 'conversation':
   require('./models/MessageRecord.class.php');
-  require('./models/LoginRecord.class.php');  
+  require('./models/LoginRecord.class.php');
     break;
 
   case 'settings':

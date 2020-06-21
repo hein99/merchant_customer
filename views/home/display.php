@@ -66,9 +66,11 @@ displayHomeNavigation();
      <h2>Add New Order</h2>
      <form class="" action="<?php echo URL ?>/order/add_new_order/" method="post">
        <input type="hidden" name="customer_id" value="<?php echo $customer_account->getValueEncoded('id') ?>">
+       <input type="hidden" name="exchange_rate" value="<?php echo $latest_exchange_rate->getValueEncoded('mmk') ?>">
        <input type="text" name="product_link" placeholder="Product Link">
-       <input type="text" name="remark" placeholder="Remark">
        <input type="number" name="quantity" placeholder="Quantity">
+       <input type="text" name="cupon_code" placeholder="Cupon_code">
+       <input type="text" name="remark" placeholder="Remark">
        <input type="number" name="price" placeholder="Unit Price ($)">
        <input type="submit" value="Add">
      </form>
