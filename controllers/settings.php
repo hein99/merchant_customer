@@ -11,7 +11,9 @@ switch($action)
   case 'change_password':
     changeCustomerPassword();
     break;
-
+  case 'logout':
+    logout();
+    break;
   default:
     $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');

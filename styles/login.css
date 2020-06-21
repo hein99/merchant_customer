@@ -266,3 +266,6 @@ form input{
 
 }
 /* End Tablet View */
+.hide{
+  display: none;
+}
