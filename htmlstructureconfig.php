@@ -9,6 +9,7 @@ function displayPageHeader($page_title, $dir_level=false)
       <title><?php echo $page_title ?></title>
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/reset.css">
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.13.0/css/all.css'>
+      <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
       <link href="https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+KR&family=Open+Sans&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/<?php echo $dir_level ? 'login.css' : 'config.css'?>">
       <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -44,15 +45,15 @@ function displayHomeNavigation()
       <i class="fas fa-cart-plus"></i>
       <h3><span>Add&nbsp;</span><span>New Order</span></h3>
     </a>
-    <a href="#">
+    <a href="<?php echo URL ?>/order/">
       <i class="fas fa-shapes"></i>
       <h3><span>My&nbsp;</span><span>Order</span></h3>
     </a>
-    <a href="#">
+    <a href="<?php echo URL ?>/statement/">
       <i class="fas fa-money-check-alt"></i>
       <h3><span>Bill&nbsp;</span><span>History</span></h3>
     </a>
-    <a href="#">
+    <a href="<?php echo URL ?>/settings/">
       <i class="fas fa-user-cog"></i>
       <h3><span>Account&nbsp;</span><span>Setting</span></h3>
     </a>
@@ -88,31 +89,31 @@ function displayOtherNavigation($active_page='')
     </div>
     <div class="wp-other-page-sidebar">
       <span>
-        <a href="#">
+        <a href="<?php echo URL ?>/home/">
           <i class="fas fa-home"></i>
           <span>Home</span>
         </a>
       </span>
       <span>
-        <a href="#">
+        <a <?php echo ($active_page == 'order') ? '' : 'href="' . URL . '/order/"' ?> class="<?php echo ($active_page == 'order') ? "active" : "" ?>">
           <i class="fas fa-shapes"></i>
           <span>My Order</span>
         </a>
       </span>
       <span>
-        <a href="#">
+        <a <?php echo ($active_page == 'statement') ? '' : 'href="' . URL . '/statement/"' ?> class="<?php echo ($active_page == 'statement') ? "active" : "" ?>">
           <i class="fas fa-money-check-alt"></i>
           <span>Bill History</span>
         </a>
       </span>
       <span>
-        <a href="#">
+        <a <?php echo ($active_page == 'conversation') ? '' : 'href="' . URL . '/conversation/"' ?> class="<?php echo ($active_page == 'conversation') ? "active" : "" ?>">
           <i class="fas fa-comment-dots"></i>
           <span>Contact Admin</span>
         </a>
       </span>
       <span>
-        <a href="#">
+        <a <?php echo ($active_page == 'settings') ? '' : 'href="' . URL . '/settings/"' ?> class="<?php echo ($active_page == 'settings') ? "active" : "" ?>">
           <i class="fas fa-user-cog"></i>
           <span>Account Setting</span>
         </a>
