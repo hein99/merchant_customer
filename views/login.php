@@ -117,7 +117,7 @@ function displayForgotPasswordForm($msg)
         <input type="submit" name="" value="Send" id="send_number_request">
       </div>
       <div class="input">
-        <input type="button" name="" value="Back to Login" class="back_to_login">
+        <a href="<?php echo URL ?>/views/login.php">Back to Login</a>
       </div>
     </form>
   </div>

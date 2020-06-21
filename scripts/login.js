@@ -4,11 +4,6 @@ $(document).ready(function(){
     $('#display-forget-password').animate({height: "toggle", opacity: "toggle"}, "slow");
   });
 
-  $('.back_to_login').on('click', function(){
-    $('#display-login').animate({height: "toggle", opacity: "toggle"}, "slow");
-    $('#display-forget-password').animate({height: "toggle", opacity: "toggle"}, "slow");
-  });
-
   $( ".input" ).focusin(function() {
     $(this).addClass("focus");
     $(this).find( "span" ).animate({"opacity":"0"}, 200);
