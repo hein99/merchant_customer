@@ -1,30 +1,27 @@
+var tempOrder = null;
 $(document).ready(function(){
-
   requestOrdersList();
-
-  var fake_orders = [{"id": "1", "product_link": "https://item.taobao.com/item.htm?spm=a21bo.7929913.198967.13.488a41740VWaBl&id=605150240460", "status": "7", "amount": "165,000", "date": "2020-07-04 08:08:08"},
-  {"id": "2", "product_link": "https://item.taobao.com/item.htm?spm=a21bo.7929913.198967.13.488a41740VWaBl&id=605150240460", "status": "3", "date": "2020-07-04 08:08:08"}];
-  for(order of fake_orders)
-    $(buildOrdersList(order)).appendTo('.orders-list-js');
-
-  var fake_order = {"id": "1", "status": "2", "amount": "30,000", "order_number": "00000001", "remark" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ut labore et dolore magna aliqua.",
-  "date": "2020-07-04 08:08:08", "product_link": "https://item.taobao.com/item.htm?spm=a21bo.7929913.198967.13.488a41740VWaBl&id=605150240460", "qty": "3", "product_total_price": "600",
-  "us_tax": "200", "shippig_cost": "200", "first_payment_dollar": "1,000", "first_payment_mmk": "1,500,000", "commission_rate": "10", "commission_amount": "100",
-  "weight": "2", "total_weight_cost": "10", "mm_tax": "0", "mm_tax_amount": "0", "second_payment_dollar": "110", "second_payment_mmk": "165,000", "delivery_fee": "3000"};
-  $('.order-detail-js').html(buildOrderVoucher(fake_order));
 });
-$
-function requestOrderVoucher(id)
-{
-  $.ajax({
-    url: PAGE_URL+'/order/get_order_voucher/'+id,
-    method: "GET",
-    success: function(order){
-      if(Array.isArray(order))
-        $('.order-detail-js').html(buildOrderVoucher(order));
-    }
-  });
-}
+$(document).on('click', '.order-view-btn-js', function(){
+  parent = $(this).parent();
+  var id = $(this).data('id');
+  requestOrderVoucher(id);
+
+  if($('.noti-js', parent).is(':visible'))
+    $('.noti-js', parent).hide();
+})
+
+$(document).on('click', '.edit-order-js', function(){
+  $(buildOrderForm(true)).appendTo('.order-wrap-js');
+})
+
+$(document).on('click', '.order-from-btn-js', function(){
+  $(buildOrderForm(false)).appendTo('.order-wrap-js');
+})
+
+$(document).on('click', '.order-form-cancel-js', function(){
+  $('.order-form-wrap-js').remove();
+})
 
 function requestOrdersList()
 {
@@ -33,9 +30,52 @@ function requestOrdersList()
     method: "GET",
     success: function(orders){
       if(Array.isArray(orders))
+      {
         for(order of orders)
           $(buildOrdersList(order)).appendTo('.orders-list-js');
-    }
+        requestUpdateOrdersList();
+
+        setInterval(function(){
+          requestUpdateOrdersList();
+        }, 60000)
+      }
+    },
+    dataType: 'json'
+  });
+}
+
+function requestOrderVoucher(id)
+{
+  $.ajax({
+    url: PAGE_URL+'/order/get_order_voucher/'+id,
+    method: "GET",
+    success: function(order){
+      if(typeof(order) === 'object')
+      {
+        $('.order-detail-js').html(buildOrderVoucher(order));
+        tempOrder = order;
+      }
+    },
+    dataType: 'json'
+  });
+}
+
+function requestUpdateOrdersList()
+{
+  $.ajax({
+    url: PAGE_URL+'/order/get_update_orders_list/',
+    method: "GET",
+    success: function(orders){
+      if(Array.isArray(orders))
+        for(id of orders)
+        {
+          var list = '#order-' + id + '-js';
+          $(list).prependTo('.orders-list-js');
+          if(!$('.noti-js', list).is(':visible'))
+            $('.noti-js', list).show();
+        }
+    },
+    dataType: 'json'
   });
 }
 
@@ -43,12 +83,90 @@ function buildOrdersList(order)
 {
   var list = '';
   list += '<li id="order-' + order.id + '-js">';
+  list += '<span class="noti-js" style="display: none;">*</span>';
   list += '<div class=""><a href="' + order.product_link + '" target="_blank">Product link</a></div>';
   list += checkOrderStatus(order);
   list += '<div class="">' + order.date + '</div>';
-  list += '<button type="button" data-id="' + order.id + '">View</button>';
+  list += '<button type="button" class="order-view-btn-js" data-id="' + order.id + '">View</button>';
   list += '</li>';
   return list;
+}
+
+function buildOrderVoucher(order)
+{
+  var voucher = '';
+  voucher += '<div class="order-info">';
+  voucher += (Number(order.status) < 2) ? '<button class="edit-order-js">Edit</button>' : '';
+  voucher += checkOrderStatus(order);
+  voucher += '<div class=""><span>Order no:</span> <span>' + order.order_number + '</span></div>';
+  voucher += '<div class=""><span>Remark:</span> <span>' + order.remark + '</span></div>';
+  voucher += '<div class=""><span>Product Cupon Code:</span> <span>' + order.cupon_code + '</span></div>';
+  voucher += '<div class="">' + order.date + '</div>';
+  voucher += '</div>';
+  voucher += '<div class="order-voucher">';
+  voucher += '<div class=""><span><a href="' + order.product_link + '" target="_blank">Product Link</a></span> <span>[' + order.qty + ']</span> <span>$' + order.product_total_price + '</span></div>';
+  voucher += '<div class=""><span>US Tax</span> <span>$' + order.us_tax + '</span></div>';
+  voucher += '<div class=""><span>Shipping Cost</span> <span>$' + order.shippig_cost + '</span></div>';
+  voucher += '<div class=""><span>First Payment</span> <span>$' + order.first_payment_dollar + '</span></div>';
+  voucher += '<div class="">';
+  voucher += (Number(order.status) > 1) ? '<span>Paid</span>' : '';
+  voucher += ' <span>MMK' + order.first_payment_mmk + '</span>';
+  voucher += '</div>';
+  voucher += '<div class=""><span>Commission</span> <span>[' + order.commission_rate + '%]</span> <span>$' + order.commission_amount + '</span></div>';
+  voucher += '<div class=""><span>Weight</span> <span>[' + order.weight + 'lb]</span> <span>$' + order.total_weight_cost + '</span></div>';
+  voucher += '<div class=""><span>MM Tax</span><span>';
+  voucher += ((Number(order.mm_tax)) == 0) ? 'Free' : '$' + order.mm_tax;
+  voucher += '</span> <span>$' + order.mm_tax_amount + '</span></div>';
+  voucher += '<div class=""><span>Second Payment</span> <span>$' + order.second_payment_dollar + '</span></div>';
+  voucher += '<div class="">';
+  voucher += (Number(order.status) > 3) ? '<span>Paid</span>' : '';
+  voucher += ' <span>MMK' + order.second_payment_mmk + '</span>';
+  voucher += '</div>';
+  voucher += '<div class="">';
+  voucher += ' <span>Delivery Fee</span>';
+  voucher += (Number(order.status) == 7) ? '<span>Paid</span>' : '';
+  voucher += ' <span>MMK' + order.delivery_fee + '</span></div>';
+  voucher += '<div class="">';
+  voucher += (Number(order.status) == 1) ? '<button type="button">Confirm</button>' : '';
+  voucher += (Number(order.status) < 2) ? '<button type="button">Cancel</button>' : '';
+  voucher += '</div>';
+
+  return voucher;
+}
+
+function buildOrderForm(is_edit)
+{
+  var form = '';
+  if(is_edit){
+    form += '<div class="order-form-wrap-js">';
+    form += '<button class="order-form-cancel-js">X</button>';
+    form += '<h2>Update Order</h2>';
+    form += '<form class="" action="' + PAGE_URL + '/order/update_order/" method="post">';
+    form += '<input type="hidden" name="id" value="' + tempOrder.id + '">';
+    form += '<input type="text" name="product_link" placeholder="Product Link" value="' + tempOrder.product_link + '">';
+    form += '<input type="number" name="quantity" placeholder="Quantity" value="' + tempOrder.qty + '">';
+    form += '<input type="text" name="cupon_code" placeholder="Cupon_code" value="' + tempOrder.cupon_code + '">';
+    form += '<textarea name="remark" placeholder="Remark">' + tempOrder.remark + '</textarea>';
+    form += '<input type="number" name="price" placeholder="Unit Price ($)" value="' + tempOrder.product_price + '">';
+    form += '<input type="submit" value="Add">';
+    form += '</form>';
+    form += '</div>';
+  }
+  else {
+    form += '<div class="order-form-wrap-js">';
+    form += '<button class="order-form-cancel-js">X</button>';
+    form += '<h2>Add New Order</h2>';
+    form += '<form class="" action="' + PAGE_URL + '/order/add_new_order/" method="post">';
+    form += '<input type="text" name="product_link" placeholder="Product Link">';
+    form += '<input type="number" name="quantity" placeholder="Quantity">';
+    form += '<input type="text" name="cupon_code" placeholder="Cupon_code">';
+    form += '<textarea name="remark" placeholder="Remark"></textarea>';
+    form += '<input type="number" name="price" placeholder="Unit Price ($)">';
+    form += '<input type="submit" value="Add">';
+    form += '</form>';
+    form += '</div>';
+  }
+  return form;
 }
 
 function checkOrderStatus(order)
@@ -87,45 +205,6 @@ function checkOrderStatus(order)
   }
   return list;
 }
-function buildOrderVoucher(order)
-{
-  var voucher = '';
-  voucher += '<div class="order-info">';
-  voucher += checkOrderStatus(order);
-  voucher += '<div class=""><span>Order no:</span> <span>' + order.order_number + '</span></div>';
-  voucher += '<div class=""><span>Remark:</span> <span>' + order.remark + '</span></div>';
-  voucher += '<div class="">' + order.date + '</div>';
-  voucher += '</div>';
-  voucher += '<div class="order-voucher">';
-  voucher += '<div class=""><span><a href="' + order.product_link + '" target="_blank">Product Link</a></span> <span>[' + order.qty + ']</span> <span>$' + order.product_total_price + '</span></div>';
-  voucher += '<div class=""><span>US Tax</span> <span>$' + order.us_tax + '</span></div>';
-  voucher += '<div class=""><span>Shipping Cost</span> <span>$' + order.shippig_cost + '</span></div>';
-  voucher += '<div class=""><span>First Payment</span> <span>$' + order.first_payment_dollar + '</span></div>';
-  voucher += '<div class="">';
-  voucher += (Number(order.status) > 1) ? '<span>Paid</span>' : '';
-  voucher += ' <span>MMK' + order.first_payment_mmk + '</span>';
-  voucher += '</div>';
-  voucher += '<div class=""><span>Commission</span> <span>[' + order.commission_rate + '%]</span> <span>$' + order.commission_amount + '</span></div>';
-  voucher += '<div class=""><span>Weight</span> <span>[' + order.weight + 'lb]</span> <span>$' + order.total_weight_cost + '</span></div>';
-  voucher += '<div class=""><span>MM Tax</span><span>';
-  voucher += ((Number(order.mm_tax)) == 0) ? 'Free' : '$' + order.mm_tax;
-  voucher += '</span> <span>$' + order.mm_tax_amount + '</span></div>';
-  voucher += '<div class=""><span>Second Payment</span> <span>$' + order.second_payment_dollar + '</span></div>';
-  voucher += '<div class="">';
-  voucher += (Number(order.status) > 3) ? '<span>Paid</span>' : '';
-  voucher += ' <span>MMK' + order.second_payment_mmk + '</span>';
-  voucher += '</div>';
-  voucher += '<div class="">';
-  voucher += ' <span>Delivery Fee</span>';
-  voucher += (Number(order.status) == 7) ? '<span>Paid</span>' : '';
-  voucher += ' <span>MMK' + order.delivery_fee + '</span></div>';
-  voucher += '<div class="">';
-  voucher += (Number(order.status) == 1) ? '<button type="button">Confirm</button>' : '';
-  voucher += (Number(order.status) < 2) ? '<button type="button">Cancel</button>' : '';
-  voucher += '</div>';
 
-  return voucher;
-}
-
-
-//update order list by ajax
+//todo
+//confirm cancel btn action

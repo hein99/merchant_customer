@@ -14,8 +14,12 @@ switch($action)
     getOrdersList();
     break;
 
-  case 'get_order_voucher':
+  case 'get_update_orders_list':
+    getUpdateOrdersList();
+    break;
 
+  case 'get_order_voucher':
+    getOrderVoucher($id);
     break;
   default:
     $ERR_STATUS = ERR_ACTION;
@@ -25,18 +29,19 @@ switch($action)
 
 function addNewOrder()
 {
+  $latest_exchange_rate = ExchangeRate::getLatestExchangeRate();
   $required_fields = array('customer_id', 'product_link', 'remark', 'quantity', 'price', 'first_exchange_rate');
   $missing_fields = array();
   $error_messages = array();
 
   $add_new_order = new CustomerOrder(array(
-    'customer_id' => isset($_POST['customer_id']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['customer_id']) : '',
-    'product_link' => isset($_POST['product_link']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['product_link']) : '',
+    'customer_id' => $_SESSION['merchant_customer_account']->getValue('id'),
+    'product_link' => isset($_POST['product_link']) ? $_POST['product_link'] : '',
     'remark' => isset($_POST['remark']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['remark']) : '',
     'cupon_code' => isset($_POST['cupon_code']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['cupon_code']) : '',
     'quantity' => isset($_POST['quantity']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['quantity']) : '',
     'price' => isset($_POST['price']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['price']) : '',
-    'first_exchange_rate' => isset($_POST['exchange_rate']) ? preg_replace('/[^.\0-9]/', '', $_POST['exchange_rate']) : ''
+    'first_exchange_rate' => $latest_exchange_rate->getValueEncoded('mmk')
   ));
 
   foreach ($required_fields as $required_field) {
@@ -65,15 +70,337 @@ function getOrdersList()
   foreach($orders as $order)
   {
     $responseData[] = (object)array(
-      'id' => ;
-      'product_link' => ;
-      'id' => ;
-      'id' => ;
-      'id' => ;
-      'id' => ;
-      'id' => ;
-      'id' => ;
+      'id' => $order->getValue('id'),
+      'product_link' => $order->getValue('product_link'),
+      'status' => $order->getValue('order_status'),
+      'amount' => ($order->getValue('order_status') == "7") ? number_format(calculateTotalAmountMMK($order)) : '',
+      'date' => $order->getValue('created_date')
     );
   }
+  echo json_encode($responseData);
+}
+
+function getUpdateOrdersList()
+{
+  $orders = CustomerOrder::getNewCustomerOrderByCustomerId($_SESSION['merchant_customer_account']->getValue('id'));
+  CustomerOrder::updateHasViewedCustomerByCustomerId($_SESSION['merchant_customer_account']->getValue('id'));
+  $responseData = array();
+  foreach($orders as $order)
+  {
+    $responseData[] = $order->getValue('id');
+  }
+  echo json_encode($responseData);
+}
+
+function getOrderVoucher($id)
+{
+  $order = CustomerOrder::getCustomerOrderById($id);
+  $responseData = null;
+  switch($order->getValue('order_status'))
+  {
+    case 0:
+      $responseData = (object)array(
+        'id' => $order->getValue('id'),
+        'status' => $order->getValue('order_status'),
+        'amount' => 'N/A',
+        'order_number' => str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ),
+        'remark'  => $order->getValue('remark'),
+        'date'  => $order->getValue('created_date'),
+        'cupon_code'  => $order->getValue('cupon_code'),
+        'product_link' => $order->getValue('product_link'),
+        'qty' => $order->getValue('quantity'),
+        'product_total_price' => number_format(calculateProductPrice($order), 2),
+        'product_price' => $order->getValue('price'),
+        'us_tax' => 'N/A',
+        'shippig_cost' => 'N/A',
+        'first_payment_dollar' => 'N/A',
+        'first_payment_mmk' => 'N/A',
+        'commission_rate' => 'N/A',
+        'commission_amount' => 'N/A',
+        'weight' => 'N/A',
+        'total_weight_cost' => 'N/A',
+        'mm_tax' => 'N/A',
+        'mm_tax_amount' => 'N/A',
+        'second_payment_dollar' => 'N/A',
+        'second_payment_mmk' => 'N/A',
+        'delivery_fee' => 'N/A'
+      );
+      break;
+
+    case 1:
+      $responseData = (object)array(
+        'id' => $order->getValue('id'),
+        'status' => $order->getValue('order_status'),
+        'amount' => 'N/A',
+        'order_number' => str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ),
+        'remark'  => $order->getValue('remark'),
+        'date'  => $order->getValue('created_date'),
+        'cupon_code'  => $order->getValue('cupon_code'),
+        'product_link' => $order->getValue('product_link'),
+        'qty' => $order->getValue('quantity'),
+        'product_total_price' => number_format(calculateProductPrice($order), 2),
+        'product_price' => $order->getValue('price'),
+        'us_tax' => number_format($order->getValue('us_tax'), 2),
+        'shippig_cost' => number_format($order->getValue('shipping_cost'), 2),
+        'first_payment_dollar' => number_format(calculateFirstPaymentDollar($order), 2),
+        'first_payment_mmk' => number_format(calculateMMK(calculateFirstPaymentDollar($order), $order->getValue('first_exchange_rate')), 2),
+        'commission_rate' => 'N/A',
+        'commission_amount' => 'N/A',
+        'weight' => 'N/A',
+        'total_weight_cost' => 'N/A',
+        'mm_tax' => 'N/A',
+        'mm_tax_amount' => 'N/A',
+        'second_payment_dollar' => 'N/A',
+        'second_payment_mmk' => 'N/A',
+        'delivery_fee' => 'N/A'
+      );
+      break;
+
+    case 2:
+      $responseData = (object)array(
+        'id' => $order->getValue('id'),
+        'status' => $order->getValue('order_status'),
+        'amount' => 'N/A',
+        'order_number' => str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ),
+        'remark'  => $order->getValue('remark'),
+        'date'  => $order->getValue('created_date'),
+        'cupon_code'  => $order->getValue('cupon_code'),
+        'product_link' => $order->getValue('product_link'),
+        'qty' => $order->getValue('quantity'),
+        'product_total_price' => number_format(calculateProductPrice($order), 2),
+        'us_tax' => number_format($order->getValue('us_tax'), 2),
+        'shippig_cost' => number_format($order->getValue('shipping_cost'), 2),
+        'first_payment_dollar' => number_format(calculateFirstPaymentDollar($order), 2),
+        'first_payment_mmk' => number_format(calculateMMK(calculateFirstPaymentDollar($order), $order->getValue('first_exchange_rate')), 2),
+        'commission_rate' => 'N/A',
+        'commission_amount' => 'N/A',
+        'weight' => 'N/A',
+        'total_weight_cost' => 'N/A',
+        'mm_tax' => 'N/A',
+        'mm_tax_amount' => 'N/A',
+        'second_payment_dollar' => 'N/A',
+        'second_payment_mmk' => 'N/A',
+        'delivery_fee' => 'N/A'
+      );
+      break;
+
+    case 3:
+      $responseData = (object)array(
+        'id' => $order->getValue('id'),
+        'status' => $order->getValue('order_status'),
+        'amount' => 'N/A',
+        'order_number' => str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ),
+        'remark'  => $order->getValue('remark'),
+        'date'  => $order->getValue('created_date'),
+        'cupon_code'  => $order->getValue('cupon_code'),
+        'product_link' => $order->getValue('product_link'),
+        'qty' => $order->getValue('quantity'),
+        'product_total_price' => number_format(calculateProductPrice($order), 2),
+        'us_tax' => number_format($order->getValue('us_tax'), 2),
+        'shippig_cost' => number_format($order->getValue('shipping_cost'), 2),
+        'first_payment_dollar' => number_format(calculateFirstPaymentDollar($order), 2),
+        'first_payment_mmk' => number_format(calculateMMK(calculateFirstPaymentDollar($order), $order->getValue('first_exchange_rate')), 2),
+        'commission_rate' => 'N/A',
+        'commission_amount' => 'N/A',
+        'weight' => 'N/A',
+        'total_weight_cost' => 'N/A',
+        'mm_tax' => 'N/A',
+        'mm_tax_amount' => 'N/A',
+        'second_payment_dollar' => 'N/A',
+        'second_payment_mmk' => 'N/A',
+        'delivery_fee' => 'N/A'
+      );
+      break;
+
+    case 4:
+      $responseData = (object)array(
+        'id' => $order->getValue('id'),
+        'status' => $order->getValue('order_status'),
+        'amount' => 'N/A',
+        'order_number' => str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ),
+        'remark'  => $order->getValue('remark'),
+        'date'  => $order->getValue('created_date'),
+        'cupon_code'  => $order->getValue('cupon_code'),
+        'product_link' => $order->getValue('product_link'),
+        'qty' => $order->getValue('quantity'),
+        'product_total_price' => number_format(calculateProductPrice($order), 2),
+        'us_tax' => number_format($order->getValue('us_tax'), 2),
+        'shippig_cost' => number_format($order->getValue('shipping_cost'), 2),
+        'first_payment_dollar' => number_format(calculateFirstPaymentDollar($order), 2),
+        'first_payment_mmk' => number_format(calculateMMK(calculateFirstPaymentDollar($order), $order->getValue('first_exchange_rate')), 2),
+        'commission_rate' => $order->getValue('commission'),
+        'commission_amount' => number_format(calculateCommission($order), 2),
+        'weight' => $order->getValue('product_weight'),
+        'total_weight_cost' => number_format(calculateWeightCost($order), 2),
+        'mm_tax' => $order->getValue('mm_tax'),
+        'mm_tax_amount' => number_format(calculateMMTax($order), 2),
+        'second_payment_dollar' => number_format(calculateSecondPaymentDollar($order), 2),
+        'second_payment_mmk' => number_format(calculateMMK(calculateSecondPaymentDollar($order), $order->getValue('second_exchange_rate')), 2),
+        'delivery_fee' => 'N/A'
+      );
+      break;
+
+    case 5:
+      $responseData = (object)array(
+        'id' => $order->getValue('id'),
+        'status' => $order->getValue('order_status'),
+        'amount' => 'N/A',
+        'order_number' => str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ),
+        'remark'  => $order->getValue('remark'),
+        'date'  => $order->getValue('created_date'),
+        'cupon_code'  => $order->getValue('cupon_code'),
+        'product_link' => $order->getValue('product_link'),
+        'qty' => $order->getValue('quantity'),
+        'product_total_price' => number_format(calculateProductPrice($order), 2),
+        'us_tax' => number_format($order->getValue('us_tax'), 2),
+        'shippig_cost' => number_format($order->getValue('shipping_cost'), 2),
+        'first_payment_dollar' => number_format(calculateFirstPaymentDollar($order), 2),
+        'first_payment_mmk' => number_format(calculateMMK(calculateFirstPaymentDollar($order), $order->getValue('first_exchange_rate')), 2),
+        'commission_rate' => $order->getValue('commission'),
+        'commission_amount' => number_format(calculateCommission($order), 2),
+        'weight' => $order->getValue('product_weight'),
+        'total_weight_cost' => number_format(calculateWeightCost($order), 2),
+        'mm_tax' => $order->getValue('mm_tax'),
+        'mm_tax_amount' => number_format(calculateMMTax($order), 2),
+        'second_payment_dollar' => number_format(calculateSecondPaymentDollar($order), 2),
+        'second_payment_mmk' => number_format(calculateMMK(calculateSecondPaymentDollar($order), $order->getValue('second_exchange_rate')), 2),
+        'delivery_fee' => 'N/A'
+      );
+      break;
+
+    case 6:
+      $responseData = (object)array(
+        'id' => $order->getValue('id'),
+        'status' => $order->getValue('order_status'),
+        'amount' => 'N/A',
+        'order_number' => str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ),
+        'remark'  => $order->getValue('remark'),
+        'date'  => $order->getValue('created_date'),
+        'cupon_code'  => $order->getValue('cupon_code'),
+        'product_link' => $order->getValue('product_link'),
+        'qty' => $order->getValue('quantity'),
+        'product_total_price' => number_format(calculateProductPrice($order), 2),
+        'us_tax' => number_format($order->getValue('us_tax'), 2),
+        'shippig_cost' => number_format($order->getValue('shipping_cost'), 2),
+        'first_payment_dollar' => number_format(calculateFirstPaymentDollar($order), 2),
+        'first_payment_mmk' => number_format(calculateMMK(calculateFirstPaymentDollar($order), $order->getValue('first_exchange_rate')), 2),
+        'commission_rate' => $order->getValue('commission'),
+        'commission_amount' => number_format(calculateCommission($order), 2),
+        'weight' => $order->getValue('product_weight'),
+        'total_weight_cost' => number_format(calculateWeightCost($order), 2),
+        'mm_tax' => $order->getValue('mm_tax'),
+        'mm_tax_amount' => number_format(calculateMMTax($order), 2),
+        'second_payment_dollar' => number_format(calculateSecondPaymentDollar($order), 2),
+        'second_payment_mmk' => number_format(calculateMMK(calculateSecondPaymentDollar($order), $order->getValue('second_exchange_rate')), 2),
+        'delivery_fee' => 'N/A'
+      );
+      break;
+
+    case 7:
+      $responseData = (object)array(
+        'id' => $order->getValue('id'),
+        'status' => $order->getValue('order_status'),
+        'amount' => number_format(calculateTotalAmountMMK($order), 2),
+        'order_number' => str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ),
+        'remark'  => $order->getValue('remark'),
+        'date'  => $order->getValue('created_date'),
+        'cupon_code'  => $order->getValue('cupon_code'),
+        'product_link' => $order->getValue('product_link'),
+        'qty' => $order->getValue('quantity'),
+        'product_total_price' => number_format(calculateProductPrice($order), 2),
+        'us_tax' => number_format($order->getValue('us_tax'), 2),
+        'shippig_cost' => number_format($order->getValue('shipping_cost'), 2),
+        'first_payment_dollar' => number_format(calculateFirstPaymentDollar($order), 2),
+        'first_payment_mmk' => number_format(calculateMMK(calculateFirstPaymentDollar($order), $order->getValue('first_exchange_rate')), 2),
+        'commission_rate' => $order->getValue('commission'),
+        'commission_amount' => number_format(calculateCommission($order), 2),
+        'weight' => $order->getValue('product_weight'),
+        'total_weight_cost' => number_format(calculateWeightCost($order), 2),
+        'mm_tax' => $order->getValue('mm_tax'),
+        'mm_tax_amount' => number_format(calculateMMTax($order), 2),
+        'second_payment_dollar' => number_format(calculateSecondPaymentDollar($order), 2),
+        'second_payment_mmk' => number_format(calculateMMK(calculateSecondPaymentDollar($order), $order->getValue('second_exchange_rate')), 2),
+        'delivery_fee' => number_format($order->getValue('delivery_fee'), 2)
+      );
+      break;
+
+    case 8:
+      $responseData = (object)array(
+        'id' => $order->getValue('id'),
+        'status' => $order->getValue('order_status'),
+        'amount' => number_format(calculateTotalAmountMMK($order), 2),
+        'order_number' => str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ),
+        'remark'  => $order->getValue('remark'),
+        'date'  => $order->getValue('created_date'),
+        'cupon_code'  => $order->getValue('cupon_code'),
+        'product_link' => $order->getValue('product_link'),
+        'qty' => $order->getValue('quantity'),
+        'product_total_price' => number_format(calculateProductPrice($order), 2),
+        'us_tax' => 'N/A',
+        'shippig_cost' => 'N/A',
+        'first_payment_dollar' => 'N/A',
+        'first_payment_mmk' => 'N/A',
+        'commission_rate' => 'N/A',
+        'commission_amount' => 'N/A',
+        'weight' => 'N/A',
+        'total_weight_cost' => 'N/A',
+        'mm_tax' => 'N/A',
+        'mm_tax_amount' => 'N/A',
+        'second_payment_dollar' => 'N/A',
+        'second_payment_mmk' => 'N/A',
+        'delivery_fee' => 'N/A'
+      );
+      break;
+  }
+  echo json_encode($responseData);
+}
+
+function calculateFirstPaymentDollar($order)
+{
+  return calculateProductPrice($order) + $order->getValue('us_tax') + $order->getValue('shipping_cost');
+}
+
+function calculateProductPrice($order)
+{
+  return ($order->getValue('quantity')*$order->getValue('price'));
+}
+
+function calculateSecondPaymentDollar($order)
+{
+  $first_payment_dollar = calculateFirstPaymentDollar($order);
+  return calculateCommission($order) + calculateWeightCost($order) + calculateMMTax($order);
+}
+
+function calculateMMK($amount, $rate)
+{
+  return $amount * $rate;
+}
+
+function calculateCommission($order)
+{
+  $first_payment_dollar = calculateFirstPaymentDollar($order);
+  return ($first_payment_dollar*$order->getValue('commission')/100);
+}
+
+function calculateMMTax($order)
+{
+  $first_payment_dollar = calculateFirstPaymentDollar($order);
+  return ($first_payment_dollar*$order->getValue('mm_tax')/100);
+}
+
+function calculateWeightCost($order)
+{
+  return ($order->getValue('product_weight')*$order->getValue('weight_cost'));
+}
+
+function calculateTotalAmountMMK($order)
+{
+  $first_payment_dollar = calculateFirstPaymentDollar($order);
+  $first_payment_mmk = calculateMMK($first_payment_dollar, $order->getValue('first_exchange_rate'));
+
+  $second_payment_dollar = calculateSecondPaymentDollar($order);
+  $second_payment_mmk = calculateMMK($second_payment_dollar, $order->getValue('second_exchange_rate'));
+
+  return $first_payment_mmk + $second_payment_mmk + $order->getValue('delivery_fee');
 }
  ?>

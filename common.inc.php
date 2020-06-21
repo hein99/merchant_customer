@@ -32,6 +32,7 @@ switch ($controller)
     break;
 
   case 'order':
+    require('./models/ExchangeRate.class.php');
     require('./models/CustomerOrder.class.php');
     break;
 
