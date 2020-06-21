@@ -93,7 +93,10 @@ function displayForgotPasswordForm($msg)
   <div class="<?php echo (!$msg) ? 'forget_password_form': '' ?>" id="display-forget-password">
     <span class="info-message">
     <?php
-    if($msg)
+    if($msg == 'sent'){
+      echo "Sent Successfully!Admin will send you a new password in one week.";
+    }
+    else if($msg)
     {
       echo $msg;
     }
@@ -106,12 +109,15 @@ function displayForgotPasswordForm($msg)
     <form class="" action="<?php echo URL ?>/views/login.php" method="post">
       <input type="hidden" name="action" value="forgot_password">
       <div class="error_message"></div>
-      <div class="input">
+      <div class="<?php echo ($msg == 'sent') ? 'hide' : 'input' ?>">
         <span><i class="fas fa-phone"></i></span>
         <input type="number" name="phone" placeholder="Enter Your PhoneNumber" class="phone_number" required>
       </div>
-      <div class="input">
+      <div class="<?php echo ($msg == 'sent') ? 'hide' : 'input' ?>">
         <input type="submit" name="" value="Send" id="send_number_request">
+      </div>
+      <div class="input">
+        <input type="button" name="" value="Back to Login" class="back_to_login">
       </div>
     </form>
   </div>
@@ -178,7 +184,7 @@ function processPasswordRequest()
   }
   else {
     $password_request->addPasswordRequest();
-    displayLogin(array(), new UsersAccount(array()), "Sent Successfully!Admin will send you a new password in one week.", false);
+    displayLogin(array(), new UsersAccount(array()), "sent", false);
   }
 }
 ?>
