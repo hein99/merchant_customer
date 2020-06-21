@@ -36,7 +36,7 @@ switch ($controller)
     break;
 
   case 'statement':
-
+    require('./models/CustomerStatement.class.php');
     break;
 
   case 'conversation':

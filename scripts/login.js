@@ -1,55 +1,17 @@
 $(document).ready(function(){
-
-  $(function(){
-
-    $('#phone').focus();
-
-    $close = $('.close-eye');
-    $password = $('#password');
-
-    $('.login-eye').click(function(){
-      $close.toggle();
-      $('.open-eye svg, .inner').toggleClass('show');
-
-      if($password.attr('type') == 'password'){
-        $password.attr('type', 'text');
-        $password.focus();
-      }else{
-        $password.attr('type', 'password');
-        $password.focus();
-      }
-    });
-
-    $('#password').keydown(function(e){
-      if(e.which == 115){
-        $password.attr('type', 'text');
-        $password.focus();
-        $close.hide();
-        $('.open-eye svg, .inner').addClass('show');
-      }
-    });
-
-    $('#password').keyup(function(e){
-      if(e.which == 115){
-        $password.attr('type', 'password');
-        $password.focus();
-        $close.show();
-        $('.open-eye svg, .inner').removeClass('show');
-      }
-    });
+  $('.forgot_password_button').on('click', function(){
+    $('#display-login').animate({height: "toggle", opacity: "toggle"}, "slow");
+    $('#display-forget-password').animate({height: "toggle", opacity: "toggle"}, "slow");
   });
 
-  $('.login-body').validate({
-    rules: {
-      phone: {
-        required: true,
-        number: true
-      },
-      password: "required"
-    }
+  $( ".input" ).focusin(function() {
+    $(this).addClass("focus");
+    $(this).find( "span" ).animate({"opacity":"0"}, 200);
   });
-});
 
-$(document).on('click', '.forgot_password_button', function(){
-  $('.forget_password_form').show();
+  $( ".input" ).focusout(function() {
+    $(this).removeClass("focus");
+    $(this).find( "span" ).animate({"opacity":"1"}, 200);
+  });
+
 });
