@@ -21,6 +21,11 @@ switch($action)
   case 'get_order_voucher':
     getOrderVoucher($id);
     break;
+
+  case 'update_order_status':
+    updateOrderStatus();
+    break;
+
   default:
     $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
@@ -353,6 +358,11 @@ function getOrderVoucher($id)
       break;
   }
   echo json_encode($responseData);
+}
+
+function updateOrderStatus()
+{
+
 }
 
 function calculateFirstPaymentDollar($order)

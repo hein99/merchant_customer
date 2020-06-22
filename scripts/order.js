@@ -127,8 +127,8 @@ function buildOrderVoucher(order)
   voucher += (Number(order.status) == 7) ? '<span>Paid</span>' : '';
   voucher += ' <span>MMK' + order.delivery_fee + '</span></div>';
   voucher += '<div class="">';
-  voucher += (Number(order.status) == 1) ? '<button type="button">Confirm</button>' : '';
-  voucher += (Number(order.status) < 2) ? '<button type="button">Cancel</button>' : '';
+  voucher += (Number(order.status) == 1) ? '<button type="button" data-id="'+ order.id + '">Confirm</button>' : '';
+  voucher += (Number(order.status) < 2) ? '<button type="button" data-id="'+ order.id + '">Cancel</button>' : '';
   voucher += '</div>';
 
   return voucher;
@@ -206,5 +206,4 @@ function checkOrderStatus(order)
   return list;
 }
 
-//todo
 //confirm cancel btn action
