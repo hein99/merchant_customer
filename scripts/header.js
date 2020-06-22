@@ -27,4 +27,12 @@ $(document).ready(function(){
     })
   }
 
+  $(document).on('click', '.wp-header-menu', function(){
+    $('.wp-other-page-nav, .wp-other-page-header, .wp-other-page-nav, .wp-other-page-sidebar, .wp-close-nav').addClass('down');
+  });
+
+  $(document).on('click', '.wp-close-nav', function(){
+    $('.wp-other-page-nav, .wp-other-page-header, .wp-other-page-nav, .wp-other-page-sidebar, .wp-close-nav').removeClass('down');
+  });
+
 });
