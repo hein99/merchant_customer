@@ -78,7 +78,7 @@ function displayLoginForm($error_messages, $customer_account)
         <span><i class="fas fa-lock"></i></span>
         <input type="password" name="password" placeholder="Password" id="password">
       </div>
-      <div class="input">
+      <div class="input btn">
         <input type="submit" id="login" name="" value="Login">
       </div>
     </form>
@@ -113,11 +113,11 @@ function displayForgotPasswordForm($msg)
         <span><i class="fas fa-phone"></i></span>
         <input type="number" name="phone" placeholder="Enter Your PhoneNumber" class="phone_number" required>
       </div>
-      <div class="<?php echo ($msg == 'sent') ? 'hide' : 'input' ?>">
+      <div class="<?php echo ($msg == 'sent') ? 'hide' : 'input btn' ?>">
         <input type="submit" name="" value="Send" id="send_number_request">
       </div>
-      <div class="input">
-        <a href="<?php echo URL ?>/views/login.php">Back to Login</a>
+      <div class="input back-login">
+        <a href="<?php echo URL ?>/views/login.php"><i class="fas fa-angle-left"></i> Back to Login</a>
       </div>
     </form>
   </div>
