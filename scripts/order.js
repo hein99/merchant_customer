@@ -12,15 +12,27 @@ $(document).on('click', '.order-view-btn-js', function(){
 })
 
 $(document).on('click', '.edit-order-js', function(){
-  $(buildOrderForm(true)).appendTo('.order-wrap-js');
+  if(!($('.order-form-wrap-js').length))
+    $(buildOrderForm(true)).appendTo('.order-wrap-js');
 })
 
 $(document).on('click', '.order-from-btn-js', function(){
-  $(buildOrderForm(false)).appendTo('.order-wrap-js');
+  if(!($('.order-form-wrap-js').length))
+    $(buildOrderForm(false)).appendTo('.order-wrap-js');
 })
 
 $(document).on('click', '.order-form-cancel-js', function(){
   $('.order-form-wrap-js').remove();
+})
+
+$(document).on('click', '.order-confirm-btn-js', function(){
+  var id = $(this).data('id');
+  updateOrderStatus(id, 2);
+})
+
+$(document).on('click', '.order-cancel-btn-js', function(){
+  var id = $(this).data('id');
+  updateOrderStatus(id, 8);
 })
 
 function requestOrdersList()
@@ -67,12 +79,17 @@ function requestUpdateOrdersList()
     method: "GET",
     success: function(orders){
       if(Array.isArray(orders))
-        for(id of orders)
+        for(order of orders)
         {
-          var list = '#order-' + id + '-js';
+          console.log(order);
+          var list = '#order-' + order.id + '-js';
           $(list).prependTo('.orders-list-js');
           if(!$('.noti-js', list).is(':visible'))
             $('.noti-js', list).show();
+          $('.order-status-js', list).remove();
+          if(($('.order-complete-amount-js').length))
+            $('.order-complete-amount-js', list).remove();
+          $('.product-link-js', list).append(checkOrderStatus(order));
         }
     },
     dataType: 'json'
@@ -84,7 +101,7 @@ function buildOrdersList(order)
   var list = '';
   list += '<li id="order-' + order.id + '-js">';
   list += '<span class="noti-js" style="display: none;">*</span>';
-  list += '<div class=""><a href="' + order.product_link + '" target="_blank">Product link</a></div>';
+  list += '<div class="product-link-js"><a href="' + order.product_link + '" target="_blank">Product link</a></div>';
   list += checkOrderStatus(order);
   list += '<div class="">' + order.date + '</div>';
   list += '<button type="button" class="order-view-btn-js" data-id="' + order.id + '">View</button>';
@@ -127,8 +144,8 @@ function buildOrderVoucher(order)
   voucher += (Number(order.status) == 7) ? '<span>Paid</span>' : '';
   voucher += ' <span>MMK' + order.delivery_fee + '</span></div>';
   voucher += '<div class="">';
-  voucher += (Number(order.status) == 1) ? '<button type="button" data-id="'+ order.id + '">Confirm</button>' : '';
-  voucher += (Number(order.status) < 2) ? '<button type="button" data-id="'+ order.id + '">Cancel</button>' : '';
+  voucher += (Number(order.status) == 1) ? '<button type="button" class="order-confirm-btn-js" data-id="'+ order.id + '">Confirm</button>' : '';
+  voucher += (Number(order.status) < 2) ? '<button type="button" class="order-cancel-btn-js" data-id="'+ order.id + '">Cancel</button>' : '';
   voucher += '</div>';
 
   return voucher;
@@ -148,7 +165,7 @@ function buildOrderForm(is_edit)
     form += '<input type="text" name="cupon_code" placeholder="Cupon_code" value="' + tempOrder.cupon_code + '">';
     form += '<textarea name="remark" placeholder="Remark">' + tempOrder.remark + '</textarea>';
     form += '<input type="number" name="price" placeholder="Unit Price ($)" value="' + tempOrder.product_price + '">';
-    form += '<input type="submit" value="Add">';
+    form += '<input type="submit" value="UPDATE">';
     form += '</form>';
     form += '</div>';
   }
@@ -175,35 +192,49 @@ function checkOrderStatus(order)
   switch(order.status)
   {
     case '0':
-      list += '<div class="order-status request-order">Request</div>';
+      list += '<div class="order-status-js request-order">Request</div>';
       break;
     case '1':
-      list += '<div class="order-status pending-order">Pending</div>';
+      list += '<div class="order-status-js pending-order">Pending</div>';
       break;
     case '2':
-      list += '<div class="order-status confirm-order">Confirm</div>';
+      list += '<div class="order-status-js confirm-order">Confirm</div>';
       break;
     case '3':
-      list += '<div class="order-status stusw-order">Shipping To US warehouse</div>';
+      list += '<div class="order-status-js stusw-order">Shipping To US warehouse</div>';
       break;
     case '4':
-      list += '<div class="order-status atusw-order">Arrived at US warehouse</div>';
+      list += '<div class="order-status-js atusw-order">Arrived at US warehouse</div>';
       break;
     case '5':
-      list += '<div class="order-status stmm-order">Shipping To Myanmar</div>';
+      list += '<div class="order-status-js stmm-order">Shipping To Myanmar</div>';
       break;
     case '6':
-      list += '<div class="order-status atmm-order">Arrived at Myanmar</div>';
+      list += '<div class="order-status-js atmm-order">Arrived at Myanmar</div>';
       break;
     case '7':
-      list += '<div class="order-status complete-order">Complete</div>';
-      list += '<div class="">' + order.amount + 'MMK</div>';
+      list += '<div class="order-status-js complete-order">Complete</div>';
+      list += '<div class="order-complete-amount-js">' + order.amount + 'MMK</div>';
       break;
     case '8':
-      list += '<div class="order-status cancel-order">Cancel</div>';
+      list += '<div class="order-status-js cancel-order">Cancel</div>';
       break;
   }
   return list;
 }
 
-//confirm cancel btn action
+function updateOrderStatus(id, status)
+{
+  $.ajax({
+    url: PAGE_URL+'/order/update_order_status/',
+    method: "POST",
+    data: {id: id, order_status: status},
+    success: function(msg){
+      if(msg = 'success')
+      {
+        requestUpdateOrdersList();
+        requestOrderVoucher(id);
+      }
+    }
+  });
+}

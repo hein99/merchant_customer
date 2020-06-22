@@ -26,6 +26,10 @@ switch($action)
     updateOrderStatus();
     break;
 
+  case 'update_order':
+    updateOrder();
+    break;
+
   default:
     $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
@@ -44,8 +48,8 @@ function addNewOrder()
     'product_link' => isset($_POST['product_link']) ? $_POST['product_link'] : '',
     'remark' => isset($_POST['remark']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['remark']) : '',
     'cupon_code' => isset($_POST['cupon_code']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['cupon_code']) : '',
-    'quantity' => isset($_POST['quantity']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['quantity']) : '',
-    'price' => isset($_POST['price']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['price']) : '',
+    'quantity' => isset($_POST['quantity']) ? preg_replace('/[^0-9]/', '', $_POST['quantity']) : '',
+    'price' => isset($_POST['price']) ? preg_replace('/[^.\0-9]/', '', $_POST['price']) : '',
     'first_exchange_rate' => $latest_exchange_rate->getValueEncoded('mmk')
   ));
 
@@ -65,6 +69,42 @@ function addNewOrder()
   else {
     $add_new_order->createNewOrder();
     header('location: ' . URL . '/home/');
+  }
+}
+
+function updateOrder()
+{
+  $required_fields = array('id', 'product_link', 'remark', 'quantity', 'price');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $add_new_order = new CustomerOrder(array(
+    'id' => isset($_POST['id']) ? preg_replace('/[^0-9]/', '', $_POST['id']) : '',
+    'product_link' => isset($_POST['product_link']) ? $_POST['product_link'] : '',
+    'remark' => isset($_POST['remark']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['remark']) : '',
+    'cupon_code' => isset($_POST['cupon_code']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['cupon_code']) : '',
+    'quantity' => isset($_POST['quantity']) ? preg_replace('/[^0-9]/', '', $_POST['quantity']) : '',
+    'price' => isset($_POST['price']) ? preg_replace('/[^.\0-9]/', '', $_POST['price']) : ''
+  ));
+
+  foreach ($required_fields as $required_field) {
+    if(!$add_new_order->getValue($required_field))
+      $missing_fields[] = $required_field;
+  }
+  if($missing_fields)
+  {
+    $error_messages[] = 'There were some missing fields!';
+  }
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else {
+    $checkOrder = CustomerOrder::getCustomerOrderById($add_new_order->getValue('id'));
+    if($checkOrder->getValue('order_status') < 2)
+      $add_new_order->updateOrder();
+    header('location: ' . URL . '/order/');
   }
 }
 
@@ -92,7 +132,11 @@ function getUpdateOrdersList()
   $responseData = array();
   foreach($orders as $order)
   {
-    $responseData[] = $order->getValue('id');
+    $responseData[] = (object) array(
+      'id' => $order->getValue('id'),
+      'status' => $order->getValue('order_status'),
+      'amount' => number_format(calculateTotalAmountMMK($order), 2)
+    );
   }
   echo json_encode($responseData);
 }
@@ -362,7 +406,37 @@ function getOrderVoucher($id)
 
 function updateOrderStatus()
 {
+  $required_fields = array('id', 'order_status');
+  $missing_fields = array();
+  $error_messages = array();
 
+  $order = new CustomerOrder(array(
+    'id' => isset($_POST['id']) ? preg_replace('/[^0-9]/', '', $_POST['id']) : '',
+    'order_status' => isset($_POST['order_status']) ? preg_replace('/[^0-9]/', '', $_POST['order_status']) : ''
+  ));
+
+  foreach ($required_fields as $required_field) {
+    if(!$order->getValue($required_field))
+      $missing_fields[] = $required_field;
+  }
+  if($missing_fields)
+  {
+    $error_messages[] = 'There were some missing fields!';
+  }
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else {
+    $checkOrder = CustomerOrder::getCustomerOrderById($order->getValue('id'));
+    if($checkOrder->getValue('order_status') < 2)
+    {
+      $order->updateOrderStatus();
+      echo 'success';
+    }
+
+  }
 }
 
 function calculateFirstPaymentDollar($order)

@@ -124,5 +124,40 @@ class CustomerOrder extends DataObject
     }
   }
 
+  public function updateOrder()
+  {
+    $conn = parent::connect();
+    $sql = 'UPDATE ' .TBL_CUSTOMER_ORDER . ' SET product_link = :product_link, remark = :remark, cupon_code = :cupon_code, quantity = :quantity, price = :price, order_status = 0, has_viewed_customer = 0, has_viewed_admin = 0 WHERE id = :id';
+    try{
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
+      $st->bindValue(':product_link', $this->data['product_link'], PDO::PARAM_STR);
+      $st->bindValue(':remark', $this->data['remark'], PDO::PARAM_STR);
+      $st->bindValue(':cupon_code', $this->data['cupon_code'], PDO::PARAM_STR);
+      $st->bindValue(':quantity', $this->data['quantity'], PDO::PARAM_INT);
+      $st->bindValue(':price', $this->data['price']);
+      $st->execute();
+      parent::disconnect($conn);
+    }catch (PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
+
+  public function updateOrderStatus()
+  {
+    $conn = parent::connect();
+    $sql = 'UPDATE ' .TBL_CUSTOMER_ORDER . ' SET order_status = :order_status, has_viewed_customer = 0, has_viewed_admin = 0 WHERE id = :id';
+    try{
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
+      $st->bindValue(':order_status', $this->data['order_status'], PDO::PARAM_INT);
+      $st->execute();
+      parent::disconnect($conn);
+    }catch (PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
 }
  ?>
