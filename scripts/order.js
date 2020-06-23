@@ -236,5 +236,7 @@ function updateOrderStatus(id, status)
         requestOrderVoucher(id);
       }
     }
+  }).done(function(e){
+    console.log(e)
   });
 }
