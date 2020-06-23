@@ -32,11 +32,11 @@ $(document).ready(function(){
   }
 
   $(document).on('click', '.wp-header-menu', function(){
-    $('.wp-other-page-nav, .wp-other-page-header, .wp-other-page-nav, .wp-other-page-sidebar, .wp-close-nav').addClass('down');
+    $('.wp-other-page-nav-container, #wp-other-page-sidebar-back, .wp-other-page-nav').addClass('slide');
   });
 
-  $(document).on('click', '.wp-close-nav', function(){
-    $('.wp-other-page-nav, .wp-other-page-header, .wp-other-page-nav, .wp-other-page-sidebar, .wp-close-nav').removeClass('down');
+  $(document).on('click', '#wp-close-nav, #wp-other-page-sidebar-back', function(){
+    $('.wp-other-page-nav-container, #wp-other-page-sidebar-back, .wp-other-page-nav').removeClass('slide');
   });
 
 });
