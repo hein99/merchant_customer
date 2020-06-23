@@ -25,6 +25,9 @@ displayHomeNavigation();
       break;
   }
    ?>
+   <div class="ssn_loader">
+     <div class="triple-spinner"></div>
+   </div>
    <div class="">
      <div class="">
        <i class="fas fa-user-circle"></i>
