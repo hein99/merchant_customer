@@ -1,5 +1,5 @@
 /* Mobile View */
-*{
+div{
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -9,6 +9,7 @@ form input{
 
 .error{
   color: #ff0000;
+  text-align: center;
 }
 
 .login-container{
@@ -16,6 +17,10 @@ form input{
   width: 100vw;
   max-width: 100vw;
   height: 100vh;
+  max-height: 100vh;
+  min-width: 20em;
+  padding: 2.5em;
+  box-sizing: border-box;
   box-shadow: 0 0 0 transparent;
   max-height: 100vh;
   top: 0%;
@@ -26,7 +31,7 @@ form input{
 
 .login-header{
   max-width: 100vw;
-  height: 28vh;
+  height: 24vh;
   max-height: 28vh;
   display: flex;
   flex-direction: column;
@@ -40,19 +45,20 @@ form input{
   max-height: 72vh;
 }
 
-#user-icon{
-  margin-bottom: 16px;
-}
-
 #user-icon i{
   font-size: 5em;
   color: #2EC5FF;
+}
+
+#user-icon{
+  margin-bottom: 16px;
 }
 
 #website-name{
   font-size: 2.3em;
   color: #000000;
   font-weight: 800;
+  text-align: center;
 }
 
 #display-login, #display-forget-password{
@@ -67,52 +73,63 @@ form input{
 
 .info-message{
   display: inline-block;
-  font-size: 0.85em;
+  max-width: 23em;
+  height: 3em;
+  font-size: 1.1em;
   color: #222222;
   opacity: 0.5;
   margin-top: 20px;
+  line-height: 1.2em;
+  text-align: center;
 }
 
 .login-body form{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 70px;
+  padding-top: 62px;
   margin: 0 auto;
 }
 
 .input{
   position: relative;
   display: inline-block;
-  width: 520px;
-  height: 80px;
-  font-size: 2em;
+  width: 100%;
+  height: 100%;
+  max-width: 16em;
+  font-size: 1.2em;
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   border: 3px solid #ddd;
   background: none;
+  box-sizing: border-box;
 }
 
 .input.focus{
   border: 3px solid #2EC5FF;
 }
 
-.input input[type=number],
-.input input[type=password]{
+.input input{
   display: inline-block;
   width: 100%;
   height: 100%;
+  font-size: 1em;
   background: none;
   border: none;
   outline: none;
   box-sizing: border-box;
-  padding: 8px 20px 8px 100px;
+  padding: 10px 8px 10px 50px;
+  border-radius: 8px;
   transition: 0.2s ease;
+}
+
+.input input:focus{
+  padding: 10px 16px 10px 16px;
+  outline: none;
 }
 
 .input span:first-child i{
   color: #ddd;
-  font-size: 1em;
 }
 
 .input span:first-child{
@@ -120,8 +137,8 @@ form input{
   font-size: 1.2em;
   position: absolute;
   top: 50%;
-  left: 50px;
-  transform: translate(-18px, -50%);
+  left: 25px;
+  transform: translate(-10px, -50%);
 }
 
 .fa-phone{
@@ -135,15 +152,16 @@ form input{
   background: none;
   border: none;
   outline: none;
-  box-sizing: border-box;
   border: none;
   font-size: 1.2em;
   font-weight: 600;
   background: #2EC5FF;
   color: #ffffff;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
-.input:last-child{
+.input.btn{
   margin-bottom: 0;
   border: 3px solid #2EC5FF;
   background-color: #2EC5FF;
@@ -153,124 +171,88 @@ form input{
   background: none;
   border: none;
   color: #2EC5FF;
-  font-size: 1.6em;
-  margin-top: 30px;
+  font-size: 1em;
+  margin-top: 20px;
+  letter-spacing: 0.8px;
 }
 
-.input input[type=number]:focus,
-.input input[type=password]:focus{
-  padding: 8px 20px 8px 20px;
-  outline: none;
+.input.back-login{
+  font-size: 1em;
+  border: none;
+  padding: 20px;
+  box-sizing: border-box;
+  vertical-align: middle;
 }
 
+.input.back-login i{
+  color: #2EC5FF;
+}
+
+.input.back-login a{
+  text-decoration: none;
+  color: #2EC5FF;
+}
+
+.hide{
+  display: none;
+}
 /* End Mobile View */
-
-
-/* Desktop View */
-@media (min-width: 33em){
-
-/* .login-container{
-  position: absolute;
-  width: 46vw;
-  height: 68vh;
-  box-shadow: 0 0 10px #aeacac;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-}
-
-.login-header{
-  width: 46vw;
-  height: 20vh;
-}
-
-.login-body{
-  width: 46vw;
-}
-
-#user-icon{
-  margin-bottom: 10px;
-}
-
-#user-icon i{
-  font-size: 5em;
-}
-
-#website-name{
-  font-size: 2.5em;
-}
-
-.info-message{
-  font-size: 0.8em;
-  margin-top: 22px;
-}
-
-.login-body form{
-  padding-top: 50px;
-}
-
-.input{
-  width: 265px;
-  height: 42px;
-  font-size: 1em;
-  border-radius: 8px;
-  margin-bottom: 22px;
-}
-
-.input input[type=number],
-.input input[type=password]{
-  padding: 8px 20px 8px 56px;
-}
-
-.input span:first-child i{
-  font-size: 1.4em;
-}
-
-.input span:first-child{
-  font-size: 1em;
-  left: 37px;
-}
-
-.input input[type=submit]{
-  font-size: 1.3em;
-}
-
-.forgot_password_button{
-  font-size: 0.9em;
-  margin-top: 16px;
-} */
-
-}
-/* End Desktop View */
-
 
 /* Tablet View */
 @media (min-width: 30em) and (max-width: 60em){
 
-  /* .login-container{
-    position: absolute;
-    width: 70vw;
-    height: 68vh;
-    box-shadow: 0 0 0 transparent;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-  }
+.login-container{
+  min-width: 23em;
+  padding: 5em;
+}
 
-  .login-header{
-    width: 70vw;
-    height: 20vh;
-  }
+#user-icon i{
+  font-size: 6em;
+}
 
-  .login-body{
-    width: 70vw;
-  } */
+#website-name{
+  max-width: 26em;
+  font-size: 3em;
+}
 
+.info-message{
+  font-size: 1.5em;
+}
+
+.input{
+  max-width: 19em;
+  margin-bottom: 28px;
+}
+
+.input input{
+  font-size: 1.3em;
+  padding: 12px 10px 12px 60px;
+}
+
+.input span:first-child{
+  font-size: 1.5em;
+}
+
+.input input[type=submit]{
+  font-size: 1.5em;
+}
+
+.forgot_password_button{
+  font-size: 1.4em;
+  margin-top: 22px;
+  letter-spacing: 1.2px;
+}
+
+.input.back-login{
+  font-size: 1.3em;
+  padding: 24px;
+}
 
 }
 /* End Tablet View */
-.hide{
-  display: none;
+
+/* Desktop View */
+@media (min-width: 60em){
+
 }
+/* End Desktop View */

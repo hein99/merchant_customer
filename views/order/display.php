@@ -3,6 +3,9 @@ displayPageHeader('Order List | ' . WEB_NAME);
 // displayOtherNavigation('order');
  ?>
  <section class="order-wrap-js">
+   <div class="ssn_loader">
+     <div class="triple-spinner"></div>
+   </div>
    <button type="button" class="order-from-btn-js">New Order</button>
    <ul class="orders-list-js">
 

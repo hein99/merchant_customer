@@ -6,6 +6,9 @@ $customer_statements = CustomerStatement::getCustomerStatement($_SESSION['mercha
 $customer_acc = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValueEncoded('id'));
  ?>
  <section>
+   <div class="ssn_loader">
+     <div class="triple-spinner"></div>
+   </div>
    <div class="">
      <h1>Totol Balance</h1>
      <span><?php echo number_format($customer_acc->getValueEncoded('balance'), 2) ?></span>&nbsp;Ks
