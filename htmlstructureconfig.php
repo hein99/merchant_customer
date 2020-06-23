@@ -81,43 +81,36 @@ function displayOtherNavigation($active_page='')
     </div>
   </header>
 
-  <nav class="wp-other-page-nav">
-    <div class="wp-other-page-header">
-      <img src="<?php echo FILE_URL ?>/logos/globe-solid-white.png"/>
-      <span id="wp-other-page-header-logo">The Best Shop</span>
-      <span id="wp-close-nav"><i class="fas fa-times"></i></span>
-    </div>
-    <div class="wp-other-page-sidebar">
-      <span>
-        <a href="<?php echo URL ?>/home/">
-          <i class="fas fa-home"></i>
-          <span>Home</span>
-        </a>
-      </span>
-      <span>
-        <a <?php echo ($active_page == 'order') ? '' : 'href="' . URL . '/order/"' ?> class="<?php echo ($active_page == 'order') ? "active" : "" ?>">
-          <i class="fas fa-shapes"></i>
-          <span>My Order</span>
-        </a>
-      </span>
-      <span>
-        <a <?php echo ($active_page == 'statement') ? '' : 'href="' . URL . '/statement/"' ?> class="<?php echo ($active_page == 'statement') ? "active" : "" ?>">
-          <i class="fas fa-money-check-alt"></i>
-          <span>Bill History</span>
-        </a>
-      </span>
-      <span>
-        <a <?php echo ($active_page == 'conversation') ? '' : 'href="' . URL . '/conversation/"' ?> class="<?php echo ($active_page == 'conversation') ? "active" : "" ?>">
-          <i class="fas fa-comment-dots"></i>
-          <span>Contact Admin</span>
-        </a>
-      </span>
-      <span>
-        <a <?php echo ($active_page == 'settings') ? '' : 'href="' . URL . '/settings/"' ?> class="<?php echo ($active_page == 'settings') ? "active" : "" ?>">
-          <i class="fas fa-user-cog"></i>
-          <span>Account Setting</span>
-        </a>
-      </span>
+  <nav class="wp-other-page-nav-container">
+    <div id="wp-other-page-sidebar-back"></div>
+    <div class="wp-other-page-nav">
+      <div class="wp-other-page-header">
+        <img src="<?php echo FILE_URL ?>/logos/globe-solid-white.png"/>
+        <span id="wp-other-page-header-logo">The Best Shop</span>
+        <span id="wp-close-nav"><i class="fas fa-window-close"></i></span>
+      </div>
+      <div class="wp-other-page-sidebar">
+          <a href="<?php echo URL ?>/home/">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+          <a <?php echo ($active_page == 'order') ? '' : 'href="' . URL . '/order/"' ?> class="<?php echo ($active_page == 'order') ? "active" : "" ?>">
+            <i class="fas fa-shapes"></i>
+            <span>My Order</span>
+          </a>
+          <a <?php echo ($active_page == 'statement') ? '' : 'href="' . URL . '/statement/"' ?> class="<?php echo ($active_page == 'statement') ? "active" : "" ?>">
+            <i class="fas fa-money-check-alt"></i>
+            <span>Bill History</span>
+          </a>
+          <a <?php echo ($active_page == 'conversation') ? '' : 'href="' . URL . '/conversation/"' ?> class="<?php echo ($active_page == 'conversation') ? "active" : "" ?>">
+            <i class="fas fa-comment-dots"></i>
+            <span>Contact Admin</span>
+          </a>
+          <a <?php echo ($active_page == 'settings') ? '' : 'href="' . URL . '/settings/"' ?> class="<?php echo ($active_page == 'settings') ? "active" : "" ?>">
+            <i class="fas fa-user-cog"></i>
+            <span>Account Setting</span>
+          </a>
+      </div>
     </div>
   </nav>
   <?php
