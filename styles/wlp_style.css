@@ -594,6 +594,7 @@
 
 	.wp-exchange-rate-container h2{
 		font-size: 1em;
+		font-weight: bold;
 	}
 
 	.wp-exchange-rate{
@@ -612,20 +613,26 @@
 		align-items: center;
 	}
 
+	#wp-mmk-amout{
+		color: black;
+		font-size: 1em;
+	}
+
 	#exchange-icon{
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		width: 32px;
 		height: 32px;
-		color: #999;
+		color: #777;
 		border-radius: 50%;
 		box-shadow: 0 0 3px #ccc;
 	}
 
 	.wp-us-exchange-rate span:first-child, .wp-mmk-exchange-rate span:first-child{
-		margin-bottom: 0.5em;
+		margin-bottom: 0.6em;
 		font-size: 0.8em;
+		color: #555;
 	}
 
 	.wp-exchange-rate-container img{
