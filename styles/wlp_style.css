@@ -296,7 +296,6 @@
 	}
 
 	.wp-user-balance, .wp-user-point{
-		width: 50%;
 		height: 100%;
 		display: flex;
 		flex-direction: column;
@@ -304,12 +303,13 @@
 	}
 
 	.wp-user-balance{
+		width: 58%;
 		border-right: 1px solid #ddd;
 		padding-right: 4%;
 	}
 
 	.wp-user-point{
-		width: 42%;
+		width: 34%;
 		padding-left: 4%;
 	}
 
@@ -594,7 +594,6 @@
 
 	.wp-exchange-rate-container h2{
 		font-size: 1em;
-		font-weight: bold;
 	}
 
 	.wp-exchange-rate{
