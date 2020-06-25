@@ -3,13 +3,8 @@ displayPageHeader('Home | ' . WEB_NAME);
 displayHomeNavigation();
  ?>
  <div class="ssn_loader">
-<<<<<<< HEAD
-   <div class="triple-spinner"></div>
- </div>
-=======
     <div class="triple-spinner"></div>
   </div>
->>>>>>> 63894ff81645da727fd9027bdbc93315edfc250b
  <section class="wp-home-page-container">
    <?php
   $customer_account = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValueEncoded('id'));
@@ -32,11 +27,7 @@ displayHomeNavigation();
       // code...
       break;
   }
-<<<<<<< HEAD
-   ?>   
-=======
    ?>
->>>>>>> 63894ff81645da727fd9027bdbc93315edfc250b
    <div class="wp-header-user-name">
      <i class="fas fa-user-circle"></i>
      <?php echo $customer_account->getValueEncoded('username') ?>
@@ -151,7 +142,7 @@ displayHomeNavigation();
        <span>USD</span>
        <span>1&nbsp;<i class="fas fa-dollar-sign"></i></span>
       </div>
-      
+
       <div id="exchange-icon"><i class="fas fa-exchange-alt"></i></div>
 
       <div class="wp-mmk-exchange-rate">
