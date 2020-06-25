@@ -3,7 +3,7 @@ div{
   font-family: 'Open Sans', sans-serif;
 }
 
-form input{
+form input, form textarea{
   font-family: 'Noto Sans KR', sans-serif;
 }
 
