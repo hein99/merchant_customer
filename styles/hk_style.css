@@ -37,7 +37,7 @@
 
 /* Desktop View */
 @media (min-width: 30em){
-  body{
+  /* body{
     width: 70%;
     margin: 0 auto;
   }
@@ -46,7 +46,7 @@
   }
   .wp-other-page-nav-container{
     width: auto;
-  }
+  } */
 }
 /* End Desktop View */
 
