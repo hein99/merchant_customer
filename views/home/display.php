@@ -2,6 +2,9 @@
 displayPageHeader('Home | ' . WEB_NAME);
 displayHomeNavigation();
  ?>
+ <div class="ssn_loader">
+   <div class="triple-spinner"></div>
+ </div>
  <section>
    <?php
   $customer_account = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValueEncoded('id'));
@@ -25,9 +28,6 @@ displayHomeNavigation();
       break;
   }
    ?>
-   <div class="ssn_loader">
-     <div class="triple-spinner"></div>
-   </div>
    <div class="">
      <div class="">
        <i class="fas fa-user-circle"></i>

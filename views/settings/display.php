@@ -2,10 +2,10 @@
 displayPageHeader('Settings | ' . WEB_NAME);
 displayOtherNavigation('settings');
  ?>
+ <div class="ssn_loader">
+   <div class="triple-spinner"></div>
+ </div>
  <section>
-   <div class="ssn_loader">
-     <div class="triple-spinner"></div>
-   </div>
    <div class="">
      <i class="fas fa-user-circle"></i>
      <span><?php echo $_SESSION['merchant_customer_account']->getValueEncoded('username') ?></span>

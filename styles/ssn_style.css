@@ -98,5 +98,8 @@
   height: 100%;
   position: fixed;
   background: #ffffffd6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* end of loading icon */
