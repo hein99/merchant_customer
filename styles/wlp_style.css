@@ -14,7 +14,7 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 0 3%;
-		z-index: 5;
+		z-index: 10;
 		box-shadow: 0 0 0 transparent;
 		box-sizing: border-box;
 	}
@@ -72,7 +72,7 @@
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		z-index: 1;
+		z-index: 5;
 		background-color: #2EC5FF;
 		box-shadow: 0 0 0 transparent;
 	}
@@ -234,21 +234,29 @@
 
 	.wp-home-page-container{
 		position: relative;
+		left: 0;
 		width: 100vw;
 		height: calc(100vh - 128px);
-		padding: 2% 6%;
+		background-color: white;
 		box-sizing: border-box;
 	}
 
 	.wp-header-user-name{
 		position: relative;
 		top: 0;
-		width: 100%;
+		width: 90%;
 		height: 7%;
-		margin-bottom: 3%;
+		padding-top: 2%;
+		margin: 0 5% 3% 5%;
 		font-size: 1.1em;
 		display: flex;
 		align-items: center;
+		box-sizing: border-box;
+	}
+
+	.wp-header-user-name.blur{
+		filter: blur(3px);
+		transition: 0.8s ease;
 	}
 
 	.wp-header-user-name i{
@@ -258,45 +266,58 @@
 	}
 
 	.wp-home-page{
+		position: relative;
 		width: 100%;
 		height: 90%;
 	}
 
 	.wp-customer-details{
 		display: flex;
+		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		width: 100%;
-		height: 25%;
-		padding: 4%;
-		box-shadow: 0 0 5px #ccc;
+		width: 90%;
+		height: 23%;
+		padding: 3% 4%;
+		margin: 0 5% 7% 5%;
+		background-color: white;
+		box-shadow: 0 0 4px #ccc;
 		box-sizing: border-box;
+	}
+
+	.wp-customer-details.blur{
+		filter: blur(3px);
+		transition: 0.8s ease;
 	}
 
 	.wp-customer-details h2{
 		font-size: 0.7em;
-		margin-bottom: 0.6em;
+		margin-bottom: 0.8em;
+	}
+
+	.wp-user-balance, .wp-user-point{
+		width: 50%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	.wp-user-balance{
-		width: 46%;
-		height: 100%;
-		padding-right: 4%;
 		border-right: 1px solid #ddd;
+		padding-right: 4%;
 	}
 
 	.wp-user-point{
-		width: 46%;
-		height: 100%;
+		width: 42%;
 		padding-left: 4%;
 	}
 
 	.wp-wallet-icon, .wp-membership-icon{
-		display: inline-block;
 		width: 32px;
 		height: 32px;
 		border-radius: 50%;
-		margin-bottom: 1em;
+		margin-bottom: 10%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -315,8 +336,8 @@
 	#user-balance, #user-point{
 		display: flex;
 		align-items: center;
-		font-size: 0.9em;
-		color: #999;
+		font-size: 0.8em;
+		color: #555;
 	}
 
 	#user-balance > span, #user-point > span{
@@ -324,7 +345,7 @@
 	}
 
 	#user-balance > span{
-		color:
+		color: #2832C2;
 	}
 
 	#user-point > span{
@@ -333,8 +354,288 @@
 
 	.wp-new-order-container{
 		position: absolute;
+		top: -10.5%;
+		left: 0;
+		width: 100%;
+		height: 111.5%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 3;
+		pointer-events: none;
+	}
+
+	.wp-new-order-container.blur{
+		pointer-events: all;
+	}
+
+	#new-order-close{
+		display: none;
+	}
+
+	.wp-new-order-back{
+		position: absolute;
 		top: 0;
 		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,0.2);
+		opacity: 0;
+	}
+
+	.wp-new-order-back.blur{
+		opacity: 1;
+		transition: 0.8s ease;
+	}
+
+	.wp-new-order{
+		position: absolute;
+		width: 82%;
+		height: 90%;
+		padding: 0 6%;
+		background-color: white;
+		pointer-events: none;
+		transform: translateY(-200%);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		box-sizing: border-box;
+		overflow: auto;
+	}
+
+	.wp-new-order.blur{
+		pointer-events: all;
+		transform: translateY(0);
+		transition: transform 0.8s cubic-bezier(.9, 1.7,.3,.7);
+	}
+
+	.wp-new-order input[type="submit"]{
+		width: 100%;
+		font-weight: bold;
+		font-size: 0.9em;
+		padding: 4px 0;
+		margin-top: 12px;
+		border-radius: 5px;
+		background-color: #2EC5FF;
+		border: 2px solid #2EC5FF;
+		color: white;
+		transition: 0.1s ease;
+	}
+
+	.wp-new-order-header{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 6%;
+		font-size: 1.1em;
+		color: #2EC5FF;
+	}
+
+	.wp-new-order-header i{
+		font-size: 1.6em;
+	}
+
+	.new-order-input{
+		width: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	.new-order-input input, .new-order-input textarea{
+		width: 100%;
+		font-size: 0.9em;
+		margin: 4% 0;
+		padding: 6px 12px;
+		border-radius: 5px;
+		color: #555;
+		border: 2px solid #ddd;
+		box-sizing: border-box;
+	}
+
+	.new-order-input textarea{
+		resize: none;
+		height: 52px;
+		max-height: 52px;
+	}
+
+	.new-order-input input.focus, .new-order-input textarea.focus{
+		border-color: #2EC5FF;
+	}
+
+	.new-order-input span{
+		position: absolute;
+		transform: translate(8px, 0);
+		padding: 4px 6px;
+		font-size: 0.9em;
+		color: #999;
+		background-color: white;
+		pointer-events: none;
+		transition: 0.3s ease;
+	}
+	.new-order-input input.focus + span{
+		transform: translate(8px, -20px);
+		font-size: 0.8em;
+		color: #2EC5FF;
+	}
+
+	.new-order-textarea span{
+		transform: translate(8px, 0);
+	}
+
+	.new-order-textarea textarea.focus + span{
+		transform: translate(8px, -26px);
+		font-size: 0.8em;
+		color: #2EC5FF;
+	}
+
+	.wp-information-detail-container{
+		display: flex;
+		flex-direction: column;
+		width: 90%;
+		height: auto;
+		padding: 0;
+		margin: 0 5%;
+		background-color: white;
+		box-shadow: 0 0 0 transparent;
+	}
+
+	.wp-information-detail-container.blur{
+		filter: blur(3px);
+		transition: 0.8s ease;
+	}
+
+	.wp-information-detail-container h2{
+		font-size: 1em;
+	}
+
+	.wp-information-detail{
+		width: 100%;
+		height: 100%;
+		padding: 0 2% 0 6%;
+		margin-top: 4%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		box-shadow: 0 0 4px #ccc;
+		box-sizing: border-box;
+	}
+
+	.wp-customer-phone-container, .wp-customer-id-container, .wp-customer-address-container{
+		display: flex;
+		align-items: center;
+		margin: 3.5% 0;
+	}
+
+	#customer-phone-icon, #customer-id-icon, #customer-address-icon{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 32px;
+		height: 32px;
+		margin-right: 6%;
+		border-radius: 50%;
+	}
+
+	#customer-phone-icon{
+		background-color: #94F3FF;
+		color: #005FDB;
+	}
+
+	#customer-id-icon{
+		background-color: #FFC299;
+		color: #FA5C00;
+	}
+
+	#customer-address-icon{
+		background-color: #FFA8B7;
+		color: #FA0505;
+	}
+
+	.wp-customer-phone span, .wp-customer-id span, .wp-customer-address span{
+		display: block;
+		font-size: 0.9em;
+	}
+
+	.wp-customer-phone span:first-child{
+		margin-bottom: 6%;
+	}
+
+	.wp-customer-id span:first-child{
+		margin-bottom: 20%;
+	}
+
+	.wp-customer-address span:first-child{
+		margin-bottom: 3%;
+	}
+
+	.wp-customer-address span:last-child{
+		word-break: break-all;
+		color: #333;
+		font-size: 0.7em;
+	}
+
+	.wp-exchange-rate-container{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 90%;
+		height: calc(64% - 197px);
+		margin: 6% 5% 3% 5%;
+		padding: 3% 4% 4%;
+		background-color: white;
+		box-shadow: 0 0 4px #ccc;
+		box-sizing: border-box;
+	}
+
+	.wp-exchange-rate-container.blur{
+		filter: blur(3px);
+		transition: 0.8s ease;
+	}
+
+	.wp-exchange-rate-container h2{
+		font-size: 1em;
+		font-weight: bold;
+	}
+
+	.wp-exchange-rate{
+		width: 100%;
+		padding: 0 10%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		box-sizing: border-box;
+	}
+
+	.wp-us-exchange-rate, .wp-mmk-exchange-rate{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	#wp-mmk-amout{
+		color: black;
+		font-size: 1em;
+	}
+
+	#exchange-icon{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 32px;
+		height: 32px;
+		color: #777;
+		border-radius: 50%;
+		box-shadow: 0 0 3px #ccc;
+	}
+
+	.wp-us-exchange-rate span:first-child, .wp-mmk-exchange-rate span:first-child{
+		margin-bottom: 0.6em;
+		font-size: 0.8em;
+		color: #555;
+	}
+
+	.wp-exchange-rate-container img{
 		display: none;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
@@ -480,6 +781,264 @@
 	}
 /*--------------------------------------- END OF HEADER AND SIDEBAR --------------------------------*/
 /*HOME PAGE*/
+	.wp-user-name{
+		display: none;
+	}
+
+	.wp-contact-admin-container{
+		display: block;
+	}
+
+	.wp-home-page-container{
+		position: absolute;
+		top: 52px;
+		left: 167px;
+		width: calc(100vw - 167px);
+		height: 100vh;
+		padding: 1% 2%;
+		background-color: #efefef;
+	}
+
+	.wp-header-user-name{
+		position: relative;
+		top: 0;
+		width: 100%;
+		height: 7%;
+		margin-bottom: 2%;
+		font-size: 1.2em;
+		display: flex;
+		align-items: center;
+	}
+
+	.wp-header-user-name i{
+		font-size: 1.6em;
+		margin-right: 8px;
+		color: #999;
+	}
+
+	.wp-home-page{
+		position: relative;
+		width: 100%;
+		height: 91%;
+	}
+
+	.wp-customer-details{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 48%;
+		height: 40%;
+		padding: 3%;
+		margin-bottom: 8%;
+		box-shadow: 0 0 5px #ccc;
+		box-sizing: border-box;
+	}
+
+	.wp-customer-details h2{
+		font-size: 0.7em;
+		margin-bottom: 0.6em;
+	}
+
+	.wp-user-balance, .wp-user-point{
+		width: 100%;
+		height: 50%;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		box-sizing: border-box;
+	}
+
+	.wp-user-balance{
+		border-right: 0;
+		border-bottom: 1px solid #ddd;
+		padding-right: 0;
+	}
+
+	.wp-user-point{
+		padding-left: 0;
+	}
+
+	.wp-wallet-icon, .wp-membership-icon{
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		margin-bottom: 0;
+		margin-right: 6%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.wp-wallet-icon{
+		background-color: #CBFF94;
+		color: #04D736;
+	}
+
+	.wp-membership-icon{
+		background-color: #FFFF0F;
+		color: #CDCD04;
+	}
+
+	#user-balance, #user-point{
+		display: flex;
+		align-items: center;
+		font-size: 0.9em;
+		color: #555;
+	}
+
+	#user-balance > span, #user-point > span{
+		font-size: 1.4em;
+	}
+
+	#user-balance > span{
+		color: #2832C2;
+	}
+
+	#user-point > span{
+		color: #000;
+	}
+
+	.wp-new-order-container{
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: none;
+	}
+
+	.wp-information-detail-container{
+		position: absolute;
+		top: 0;
+		right: 2%;
+		padding: 2% 3%;
+		display: flex;
+		flex-direction: column;
+		width: 48%;
+		height: auto;
+		box-shadow: 0 0 5px #ccc;
+		box-sizing: border-box;
+	}
+
+	.wp-information-detail-container h2{
+		font-size: 1em;
+	}
+
+	.wp-information-detail{
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		margin-top: 4%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		box-shadow: 0 0 0 transparent;
+		box-sizing: border-box;
+	}
+
+	.wp-customer-phone-container, .wp-customer-id-container, .wp-customer-address-container{
+		display: flex;
+		align-items: center;
+		margin: 3.5% 0;
+	}
+
+	#customer-phone-icon, #customer-id-icon, #customer-address-icon{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 32px;
+		height: 32px;
+		margin-right: 6%;
+		border-radius: 50%;
+	}
+
+	#customer-phone-icon{
+		background-color: #94F3FF;
+		color: #005FDB;
+	}
+
+	#customer-id-icon{
+		background-color: #FFC299;
+		color: #FA5C00;
+	}
+
+	#customer-address-icon{
+		background-color: #FFA8B7;
+		color: #FA0505;
+	}
+
+	.wp-customer-phone span, .wp-customer-id span, .wp-customer-address span{
+		display: block;
+		font-size: 1em;
+	}
+
+	.wp-customer-phone span:first-child{
+		margin-bottom: 6%;
+	}
+
+	.wp-customer-id span:first-child{
+		margin-bottom: 20%;
+	}
+
+	.wp-customer-address span:first-child{
+		margin-bottom: 3%;
+	}
+
+	.wp-customer-address span:last-child{
+		word-break: break-all;
+		color: #333;
+		font-size: 0.8em;
+	}
+
+	.wp-exchange-rate-container{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 100%;
+		height: calc(64% - 197px);
+		margin-top: 8%;
+		padding: 3% 4% 4%;
+		box-shadow: 0 0 5px #ccc;
+		box-sizing: border-box;
+	}
+
+	.wp-exchange-rate-container h2{
+		font-size: 1em;
+	}
+
+	.wp-exchange-rate{
+		width: 100%;
+		padding: 0 10%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		box-sizing: border-box;
+	}
+
+	.wp-us-exchange-rate, .wp-mmk-exchange-rate{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	#exchange-icon{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 32px;
+		height: 32px;
+		color: #999;
+		border-radius: 50%;
+		box-shadow: 0 0 3px #ccc;
+	}
+
+	.wp-us-exchange-rate span:first-child, .wp-mmk-exchange-rate span:first-child{
+		margin-bottom: 4%;
+	}
+
+	.wp-exchange-rate-container img{
+		display: none;
+	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
 	}
 /* End Tablet View */
