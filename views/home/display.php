@@ -25,6 +25,10 @@ displayHomeNavigation();
       break;
   }
    ?>
+   <div class="ssn_loader">
+     <div class="triple-spinner"></div>
+   </div>
+   
    <div class="wp-header-user-name">
      <i class="fas fa-user-circle"></i>
      <?php echo $customer_account->getValueEncoded('username') ?>
