@@ -39,4 +39,21 @@ $(document).ready(function(){
     $('.wp-other-page-nav-container, #wp-other-page-sidebar-back, .wp-other-page-nav').removeClass('slide');
   });
 
+  $(document).on('click', '#new-order', function(){
+    $('.wp-new-order-container, .wp-new-order-back, .wp-new-order, .wp-header-user-name, .wp-customer-details, .wp-information-detail-container, .wp-exchange-rate-container').addClass('blur');
+  });
+
+  $(document).on('click', '.wp-new-order-back', function(){
+    $('.wp-new-order-container, .wp-new-order-back, .wp-new-order, .wp-header-user-name, .wp-customer-details, .wp-information-detail-container, .wp-exchange-rate-container').removeClass('blur');
+  });
+
+  $(document).on('focus', '.new-order-input input, .new-order-textarea textarea', function(){
+    $(this).addClass('focus');
+  });
+
+  $(document).on('blur', '.new-order-input input, .new-order-textarea textarea', function(){
+    if($(this).val() == "")
+    $(this).removeClass('focus');
+  });
+
 });

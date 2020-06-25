@@ -41,7 +41,7 @@ function displayHomeNavigation()
   </header>
 
   <nav class="wp-page-nav">
-    <a href="#">
+    <a href="#" id="new-order">
       <i class="fas fa-cart-plus"></i>
       <h3><span>Add&nbsp;</span><span>New Order</span></h3>
     </a>

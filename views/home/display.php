@@ -3,8 +3,13 @@ displayPageHeader('Home | ' . WEB_NAME);
 displayHomeNavigation();
  ?>
  <div class="ssn_loader">
+<<<<<<< HEAD
    <div class="triple-spinner"></div>
  </div>
+=======
+    <div class="triple-spinner"></div>
+  </div>
+>>>>>>> 63894ff81645da727fd9027bdbc93315edfc250b
  <section class="wp-home-page-container">
    <?php
   $customer_account = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValueEncoded('id'));
@@ -27,7 +32,11 @@ displayHomeNavigation();
       // code...
       break;
   }
+<<<<<<< HEAD
    ?>   
+=======
+   ?>
+>>>>>>> 63894ff81645da727fd9027bdbc93315edfc250b
    <div class="wp-header-user-name">
      <i class="fas fa-user-circle"></i>
      <?php echo $customer_account->getValueEncoded('username') ?>
@@ -67,17 +76,33 @@ displayHomeNavigation();
 
    <div class="wp-new-order-and-detail-container">
       <div class="wp-new-order-container">
+        <span id="new-order-close"><i class="fas fa-times"></i></span>
         <div class="wp-new-order-back"></div>
         <div class="wp-new-order">
-         <h2>Add New Order</h2>
+         <div class="wp-new-order-header"><h2>Add New Order</h2><i class="fas fa-shapes"></i></div>
          <form class="" action="<?php echo URL ?>/order/add_new_order/" method="post">
            <input type="hidden" name="customer_id" value="<?php echo $customer_account->getValueEncoded('id') ?>">
            <input type="hidden" name="exchange_rate" value="<?php echo $latest_exchange_rate->getValueEncoded('mmk') ?>">
-           <input type="text" name="product_link" placeholder="Product Link">
-           <input type="number" name="quantity" placeholder="Quantity">
-           <input type="text" name="cupon_code" placeholder="Cupon_code">
-           <input type="text" name="remark" placeholder="Remark">
-           <input type="number" name="price" placeholder="Unit Price ($)">
+          <div class="new-order-input new-order-textarea">
+            <textarea name="product_link" data-placeholder=""></textarea>
+            <span>Product Link</span>
+          </div>
+          <div class="new-order-input">
+            <input type="number" name="quantity" data-placeholder="">
+            <span>Quantity</span>
+          </div>
+          <div class="new-order-input">
+            <input type="text" name="cupon_code" data-placeholder="">
+            <span>Coupon code</span>
+          </div>
+          <div class="new-order-input new-order-textarea">
+            <textarea name="remark" data-placeholder=""></textarea>
+            <span>Remark</span>
+          </div>
+          <div class="new-order-input">
+            <input type="number" name="price" data-placeholder="">
+            <span>Unit Price ($)</span>
+          </div>
            <input type="submit" value="Add">
          </form>
         </div>
@@ -85,32 +110,56 @@ displayHomeNavigation();
 
       <div class="wp-information-detail-container">
        <h2>Information Details</h2>
-         <div class="">
-           <h2>Phone</h2>
-           <i class="fas fa-phone"></i>
-           <?php echo $customer_account->getValueEncoded('phone') ?>
+        <div class="wp-information-detail">
+         <div class="wp-customer-phone-container">
+          <div id="customer-phone-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="wp-customer-phone">
+           <span>Phone</span>
+           <span><?php echo $customer_account->getValueEncoded('phone') ?></span>
+          </div>
          </div>
-         <div class="">
-           <h2>Id</h2>
-           <i class="fas fa-id-badge"></i>
-           <?php echo $customer_account->getValueEncoded('id') ?>
+
+         <div class="wp-customer-id-container">
+           <div id="customer-id-icon">
+            <i class="fas fa-id-badge"></i>
+           </div>
+           <div class="wp-customer-id">
+            <span>Id</span>
+            <span><?php echo $customer_account->getValueEncoded('id') ?></span>
+           </div>
          </div>
-         <div class="">
-           <h2>Address</h2>
-           <i class="fas fa-map-marker-alt"></i>
-           <?php echo $customer_account->getValueEncoded('address') ?>
+
+         <div class="wp-customer-address-container">
+           <div id="customer-address-icon">
+            <i class="fas fa-map-marker-alt"></i>
+           </div>
+           <div class="wp-customer-address">
+            <span>Address</span>
+            <span><?php echo $customer_account->getValueEncoded('address') ?></span>
+           </div>
          </div>
+        </div>
       </div>
    </div>
 
    <div class="wp-exchange-rate-container">
      <h2>Today Exchange Rate</h2>
-     <div class="">
-       USD
+     <div class="wp-exchange-rate">
+      <div class="wp-us-exchange-rate">
+       <span>USD</span>
        <span>1&nbsp;<i class="fas fa-dollar-sign"></i></span>
-       <i class="fas fa-exchange-alt"></i>
-       MMK
-       <?php echo $latest_exchange_rate->getValueEncoded('mmk') ?><span>kyats</span>
+      </div>
+      
+      <div id="exchange-icon"><i class="fas fa-exchange-alt"></i></div>
+
+      <div class="wp-mmk-exchange-rate">
+       <span>MMK</span>
+       <span>
+        <span id="wp-mmk-amout"><?php echo $latest_exchange_rate->getValueEncoded('mmk') ?></span>&nbsp;kyats
+       </span>
+      </div>
      </div>
      <img src="<?php echo FILE_URL ?>/logos/exchangerateline.png" alt="" style="width:200px;">
    </div>
