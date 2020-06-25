@@ -1052,7 +1052,7 @@
 		padding: 0 1.5%;
 		box-shadow: 0 0 0 transparent;
 		width: 70%;
-	  margin: 0 auto;
+		margin: 0 auto;
 	}
 
 	.wp-header-menu{
@@ -1083,7 +1083,7 @@
 	}
 
 	.wp-page-nav{
-		width: 100vw;
+		width: 70%;
 		height: 42px;
 		float: unset;
 		display: flex;
@@ -1093,6 +1093,7 @@
 		z-index: 1;
 		background-color: #2EC5FF;
 		box-shadow: 0 0 0 transparent;
+		margin: 0 auto;
 	}
 
 	.wp-page-nav a{
