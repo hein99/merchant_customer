@@ -1,6 +1,6 @@
 <?php
 displayPageHeader('Order List | ' . WEB_NAME);
-// displayOtherNavigation('order');
+displayOtherNavigation('order');
  ?>
  <section class="order-wrap-js">
    <div class="ssn_loader">

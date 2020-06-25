@@ -65,7 +65,6 @@ class UsersAccount extends DataObject
       die('Query failed: ' . $e->getMessage());
     }
   }
-
   public function authenticateCustomerAccount()
   {
     $conn = parent::connect();
@@ -131,6 +130,23 @@ class UsersAccount extends DataObject
     } catch (PDOException $e) {
       parent::disconnect($conn);
       die("Query failed: ".$e->getMessage());
+    }
+  }
+
+  public static function updateCustomerBalance($id, $balance)
+  {
+    $conn = parent::connect();
+    $sql = 'UPDATE ' . TBL_USERS_ACCOUNT .' SET balance = :balance WHERE id = :id';
+
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $id, PDO::PARAM_INT);
+      $st->bindValue(':balance', $balance);
+      $st->execute();
+      parent::disconnect($conn);
+    } catch (PDOException $e) {
+      parent::disconnect($conn);
+      die("Query failed: ". $e->getMessage());
     }
   }
 }
