@@ -1,18 +1,309 @@
 /* Mobile View */
+.sn-container{
+  width: 100%;
+  padding: 2% 6%;
+}
+.sn-user-name{
+  text-align: center;
+  margin: 1em 0 1.2em 0;
+}
+.sn-user-name i{
+  font-size: 3em;
+  color: rgba(0, 0, 0, 0.35);
+  margin-bottom: 0.2em;
+}
+.sn-user-name div{
+  font-size: 1.5em;
+  color: #777;
+}
+.sn_settings_container{
+  width: 100%;
+  height: 25%;
+  box-shadow: 0 0 5px #ccc;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.sn_change_tab::before{
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 3em;
+  left: 50%;
+  border-radius: 2px 0 0 0;
+  background-color: #fff;
+}
+#sn_change_information:hover, #sn_change_password:hover{
+  cursor: pointer;
+}
+#sn_change_information{
+  border-top-left-radius: 4px;
+}
+#sn_change_password{
+  border-top-right-radius: 4px;
+}
+#sn_change_information, #sn_change_password{
+  background: #2ec5ff;
+  color: #fff;
+  display: block;
+  float: left;
+  width: 50%;
+  text-align: center;
+  padding: 1em 0;
+}
+.sn_change_password_form{
+  display: none;
+}
+.sn_change_password_form h2{
+  display: none;
+}
+.sn_change_info_form h2{
+  display: none;
+}
+.sn_change_info_form, .sn_change_password_form{
+  padding-top: 3em;
+  padding-bottom: 1.5em;
+}
+.sn_change_info_form img, .sn_change_password_form img{
+  width: 5em;
+  display: block;
+  margin: 1em auto;
+}
+.sn_change_info_form::before{
+  content: '';
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  left: 27%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-radius: 2px 0 0 0;
+  background-color: #fff;
+}
+.sn_change_password_form::before{
+  content: '';
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  right: 25%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-radius: 2px 0 0 0;
+  background-color: #fff;
+}
+.input{
+  position: relative;
+  display: block;
+  width: 85%;
+  height: 100%;
+  max-width: 16em;
+  font-size: 1.1em;
+  border-radius: 8px;
+  margin-bottom: 22px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #ddd;
+  background: none;
+  box-sizing: border-box;
+}
 
+.input.focus{
+  border: 3px solid #2EC5FF;
+}
+
+.input input{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  font-size: 1em;
+  background: none;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  padding: 10px 8px 10px 50px;
+  border-radius: 8px;
+  transition: 0.2s ease;
+  color: #777;
+}
+
+.input input:focus{
+  padding: 10px 16px 10px 16px;
+  outline: none;
+}
+
+.input span:first-child i{
+  color: #ddd;
+}
+
+.input span:first-child{
+  display: inline-flex;
+  font-size: 1.2em;
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  transform: translate(-10px, -50%);
+}
+.change{
+  display: block;
+  width: 85%;
+  max-width: 17.5em;
+  margin: 0 auto;
+}
+.change input[type=submit]{
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  font-size: 1.1em;
+  background: #2EC5FF;
+  color: #ffffff;
+  padding:11px 8px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  border-radius: 4px;
+}
 /* End Mobile View */
 
 
 /* Desktop View */
 @media (min-width: 30em){
-
+  body{
+    background: #efefef;
+  }
+  .sn-container{
+    width: 70%;
+    height: calc(100vh - 106px);
+    padding: 0.7% 0% 2% 0%;
+    margin: 0 auto;
+    background: #efefef;
+  }
+  .sn-user-name{
+    text-align: left;
+    margin: 0 0 0.5em 0;
+  }
+  .sn-user-name i{
+    font-size: 1.6em;
+    color: rgba(0, 0, 0, 0.35);
+    float: left;
+  }
+  .sn-user-name div{
+    font-size: 1.1em;
+    padding: 0.2em 1.8em;
+    color: #777;
+  }
+  .sn_settings_container{
+    box-shadow: none;
+  }
+  .sn_change_tab::before{
+    display: none;
+  }
+  #sn_change_information, #sn_change_password{
+    display: none;
+  }
+  .sn_change_info_form, .sn_change_password_form{
+    display: inline-block;
+    width: 49.6%;
+    height: calc(100vh - 174px);
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #ccc;
+    padding-top: 0em;
+  }
+  .sn_change_info_form::before, .sn_change_password_form::before{
+    display: none;
+  }
+  .sn_change_password_form h2, .sn_change_info_form h2{
+    display: block;
+    text-align: center;
+    margin-bottom: 3%;
+  }
+  .sn_change_info_form img, .sn_change_password_form img{
+    width: 4em;
+    margin: 5em auto 0.7em auto;
+  }
+  .input{
+    margin-bottom: 5%;
+    max-width: 12em;
+  }
+  .change{
+    max-width: 13em;
+  }
+  .input input{
+    font-size: 0.75em;
+    padding: 8px 8px 8px 50px;
+  }
+  .change input[type=submit]{
+    font-size: 0.75em;
+    padding: 9px 9px;
+  }
 }
 /* End Desktop View */
 
 
 /* Tablet View */
 @media (min-width: 30em) and (max-width: 60em){
-
+  body{
+    background: #efefef;
+  }
+  .sn-container{
+    width: 100%;
+    height: calc(100vh - 52px);
+    padding: 1% 0% 2% 173px;
+    background: #efefef;
+  }
+  .sn-user-name{
+    text-align: left;
+    margin: 0 0 0.5em 0;
+  }
+  .sn-user-name i{
+    font-size: 1.6em;
+    color: rgba(0, 0, 0, 0.35);
+    float: left;
+  }
+  .sn-user-name div{
+    font-size: 1.1em;
+    padding: 0.2em 1.8em;
+    color: #777;
+  }
+  .sn_settings_container{
+    box-shadow: none;
+  }
+  .sn_change_tab::before{
+    display: none;
+  }
+  #sn_change_information, #sn_change_password{
+    display: none;
+  }
+  .sn_change_info_form, .sn_change_password_form{
+    display: inline-block;
+    width: 49%;
+    height: calc(100vh - 122px);
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #ccc;
+    padding-top: 0em;
+  }
+  .sn_change_info_form::before, .sn_change_password_form::before{
+    display: none;
+  }
+  .sn_change_password_form h2, .sn_change_info_form h2{
+    display: block;
+    text-align: center;
+    margin-bottom: 3%;
+  }
+  .sn_change_info_form img, .sn_change_password_form img{
+    width: 3em;
+    margin: 0.7em auto;
+  }
+  .input{
+    margin-bottom: 3%;
+  }
+  .input input{
+    font-size: 0.75em;
+    padding: 8px 8px 8px 50px;
+  }
+  .change input[type=submit]{
+    font-size: 0.75em;
+    padding: 9px 9px;
+  }
 }
 /* End Tablet View */
 
