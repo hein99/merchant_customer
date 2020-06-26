@@ -19,6 +19,7 @@
 
 .noti-js{
   color: #f00;
+  display: none;
   position: absolute;
   top: 5px;
   right: 5px;
