@@ -142,7 +142,7 @@ displayHomeNavigation();
        <span>USD</span>
        <span>1&nbsp;<i class="fas fa-dollar-sign"></i></span>
       </div>
-      
+
       <div id="exchange-icon"><i class="fas fa-exchange-alt"></i></div>
 
       <div class="wp-mmk-exchange-rate">
@@ -152,18 +152,18 @@ displayHomeNavigation();
        </span>
       </div>
      </div>
-     <img src="<?php echo FILE_URL ?>/logos/exchangerateline.png" alt="" style="width:200px;">
+      <img src="<?php echo FILE_URL ?>/logos/exchangerateline.png" alt="">
    </div>
 
    <div class="wp-contact-admin-container">
      <a href="<?php echo URL ?>/conversation/">
+       <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="">
        <h2>Contact Admin</h2>
-       <span id="messages_count"></span>
-       <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="" style="width:30px;">
+       <span class="wp-msg-count"><span id="messages_count"></span></span>
      </a>
    </div>
 
-   
+
   </div>
  </section>
 <?php
