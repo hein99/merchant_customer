@@ -1,5 +1,5 @@
 $(window).on('load', function() {
-  $(".ssn_loader").fadeOut("slow");;
+  $(".ssn_loader").fadeOut("slow");
 });
 
 $(document).ready(function(){

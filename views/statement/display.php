@@ -5,23 +5,28 @@ displayOtherNavigation('statement');
 $customer_statements = CustomerStatement::getCustomerStatement($_SESSION['merchant_customer_account']->getValueEncoded('id'));
 $customer_acc = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValueEncoded('id'));
  ?>
+ <div class="ssn_loader" >
+   <div class="triple-spinner" ></div>
+ </div>
+ 
  <section class="ky-bill-history" >
-   <div class="ssn_loader" >
-     <div class="triple-spinner" ></div>
-   </div>
    <div class="ky-total-balance-container" >
-     <h1 class="ky-balance-header" >Total Balance</h1>
-     <span class="ky-total-balance" ><?php echo number_format($customer_acc->getValueEncoded('balance'), 2) ?>&nbsp;&nbsp;MMK</span>
-   </div>
-   <div class="ky-transaction-history-container" >
-     <h1 class="ky-transaction-history-header" >Transaction History</h1>
-     <div class="ky-transaction-table-head">
-       <span>Date</span>
-       <span>About</span>
-       <span>Amount</span>
+     <div class="">
+       <h1 class="ky-balance-header" >Total Balance</h1>
+       <span class="ky-total-balance" ><?php echo number_format($customer_acc->getValueEncoded('balance'), 2) ?>&nbsp;&nbsp;MMK</span>
      </div>
-     <div class="ky-transaction-table-body">
+   </div>
+   <h1 class="ky-transaction-history-header" >Transaction History</h1>
+   <div class="ky-transaction-history-container" >
+     <div class="">
        <table>
+         <thead>
+           <tr>
+             <th>Date</th>
+             <th>About</th>
+             <th>Amount</th>
+           </tr>
+         </thead>
          <tbody>
            <?php foreach ($customer_statements as $customer_statement): ?>
              <tr>

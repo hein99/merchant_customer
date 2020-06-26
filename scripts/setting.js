@@ -1,3 +1,16 @@
+var media = window.matchMedia("(min-width: 30em)");
+myFunction(media);
+media.addListener(myFunction);
+
+function myFunction(media) {
+  if (media.matches) {
+    $('.sn_change_info_form').css('display','inline-block');
+    $('.sn_change_password_form').css('display','inline-block');
+  }else {
+    $('.sn_change_info_form').css('display','block');
+    $('.sn_change_password_form').css('display','none');
+  }
+}
 $(document).ready(function(){
   $(document).on('click', '#sn_change_information', function(){
     $('.sn_change_info_form').show();
