@@ -407,6 +407,10 @@
   .send_chat{
     right: -8%;
   }
+  #uploadForm{
+    width: 108.5%;
+    height: 6em;
+  }
 /* End Chat Box */
 }
 /* End Desktop View */
