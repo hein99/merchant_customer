@@ -152,14 +152,14 @@ displayHomeNavigation();
        </span>
       </div>
      </div>
-     <img src="<?php echo FILE_URL ?>/logos/exchangerateline.png" alt="" style="width:200px;">
+      <img src="<?php echo FILE_URL ?>/logos/exchangerateline.png" alt="">
    </div>
 
    <div class="wp-contact-admin-container">
      <a href="<?php echo URL ?>/conversation/">
+       <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="">
        <h2>Contact Admin</h2>
-       <span id="messages_count"></span>
-       <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="" style="width:30px;">
+       <span class="wp-msg-count"><span id="messages_count"></span></span>
      </a>
    </div>
 
