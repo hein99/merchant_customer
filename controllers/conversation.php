@@ -78,6 +78,7 @@ function getAllMessages($id)
       $returnMessages[] = array(
         'from_user_id' => $message->getValue('from_user_id'),
         'to_user_id' => $message->getValue('to_user_id'),
+        'message_status' => $message->getValue('is_image'),
         'messages' => $mss,
         'arrived_time' => $message->getValue('arrived_time')
       );
@@ -103,6 +104,7 @@ function getNewMessages($id)
       $returnMessages[] = array(
         'from_user_id' => $message->getValue('from_user_id'),
         'to_user_id' => $message->getValue('to_user_id'),
+        'message_status' => $message->getValue('is_image'),
         'messages' => $mss,
         'arrived_time' => $message->getValue('arrived_time')
       );

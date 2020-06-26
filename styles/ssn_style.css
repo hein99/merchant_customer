@@ -1,7 +1,7 @@
 /* Mobile View */
 /* For Acc Settings */
 .sn-container{
-  width: 100%;
+  width: 88%;
   padding: 2% 6%;
 }
 .sn-user-name{
@@ -162,6 +162,154 @@
   border-radius: 4px;
 }
 /* end Acc Settings */
+
+/* Chat Box */
+
+.sn_chatbox_container{
+  width: 100%;
+}
+/* .sn_conversation_header{
+  color: #2D3436;
+  font-size: 1.2em;
+  margin: 0.5em 0 0.5em 0.6em;
+} */
+.user_dialog h4{
+  color: #fff;
+  background: #2ec5ff;
+  font-size: 1.2em;
+  padding: 0.8em 0 0.8em 0.7em;
+}
+#chatting-name{
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+.chat_history{
+  box-sizing: border-box;
+  height: calc(100vh - 182px);
+  background-color: #fff;
+  overflow-y: auto;
+  padding: 8px 5px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #c3c3c3;
+  margin: 1em 0.5em 1em 0.5em;
+}
+.to_user_chat_style p, .from_user_chat_style p{
+  display: inline-block;
+  max-width: 64%;
+  text-align: justify;
+  background-color: #2EC5FF;
+  color: white;
+  font-size: 15px;
+  padding: 10px 12px;
+  border-radius: 16px 16px 0 16px;
+}
+.to_user_chat_style p{
+  background-color: #f1f1f1;
+  color: #333;
+  border-radius: 16px 16px 16px 0;
+}
+.to_user{
+  color: #1034A6;
+}
+.from_user{
+  color: #333;
+}
+.to_user_time_style, .from_user_time_style{
+  width: 100%;
+  font-size: 0.7em;
+  color: #777;
+  margin-top: 4px;
+}
+.wp-conversation-message-container{
+  position: relative;
+  width: 85%;
+  box-sizing: border-box;
+  margin-left: 0.7em;
+}
+.emojionearea{
+  border: none !important;
+  border-radius: 6px;
+}
+.emojionearea .emojionearea-editor {
+  min-height: 2.5em !important;
+  max-height: 2.5em !important;
+  line-height: 18px !important;
+  word-break: break-all;
+  padding: 6px 4em 6px 12px !important;
+  background: #efefef;
+  border-radius: 6px;
+}
+.emojionearea-button>div.emojionearea-button-open {
+  background-position: 0 -22px !important;
+  color: #444;
+}
+#wp-send-photo{
+  position: absolute;
+  top: 22%;
+  right: 2em;
+  cursor: pointer;
+  z-index: 1;
+}
+.send_chat{
+  border: none;
+  padding: 0.4em 0.5em;
+  border-radius: 50%;
+  background: #2ec5ff;
+  position: absolute;
+  top: -7%;
+  right: -2.5em;
+}
+.send_chat i{
+  font-size: 1.2em;
+  color: #fff;
+  margin-top: 3px;
+  margin-right: 3px;
+}
+#uploadForm{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: none;
+  width: 114%;
+  height: 5em;
+  background-color: white;
+  z-index: 5;
+}
+#uploadForm img {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+#send_photo_button_container {
+  font-family: sans-serif;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 175px;
+  display: flex;
+  justify-content: space-between;
+}
+#btn_send, #cancel_send {
+  border: none;
+  padding: 6px 10px;
+  background-color: #2ec5ff;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border-radius: 3px;
+  opacity: 0.8;
+  transition: 0.1s ease;
+  -webkit-transition: 0.1s ease;
+  -moz-transition: 0.1s ease;
+  -ms-transition: 0.1s ease;
+  -o-transition: 0.1s ease;
+}
+#cancel_send {
+  background-color: #E74C3C;
+}
+/* End Chat Box */
 /* End Mobile View */
 
 
@@ -236,19 +384,43 @@
     font-size: 0.75em;
     padding: 9px 9px;
   }
+/* Acc Settings */
+/* Chat Box */
+  .user_dialog h4{
+    background: #fff;
+    color: #8a8a8a;
+  }
+  .chat_history{
+    height: calc(100vh - 200px);
+    margin: 0 0 1em 0;
+  }
+  .send_chat{
+    right: -15%;
+  }
+  .emojionearea .emojionearea-editor {
+    background: #fff;
+  }
+  .wp-conversation-message-container{
+    width: 92%;
+    margin-left: 0em;
+  }
+  .send_chat{
+    right: -8%;
+  }
+/* End Chat Box */
 }
 /* End Desktop View */
 
-
 /* Tablet View */
 @media (min-width: 30em) and (max-width: 60em){
+/* Acc Settings */
   body{
     background: #efefef;
   }
   .sn-container{
-    width: 100%;
-    height: calc(100vh - 52px);
-    padding: 1% 0% 2% 173px;
+    width: calc(100vw - 173px);
+    height: calc(100vh - 63px);
+    padding: 1% 0% 1% 173px;
     background: #efefef;
   }
   .sn-user-name{
@@ -277,7 +449,7 @@
   .sn_change_info_form, .sn_change_password_form{
     display: inline-block;
     width: 49%;
-    height: calc(100vh - 122px);
+    height: calc(100vh - 115px);
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 0 5px #ccc;
@@ -306,19 +478,111 @@
     font-size: 0.75em;
     padding: 9px 9px;
   }
+/* End Acc Settings */
+/* Chat Box */
+  .sn_chatbox_container{
+    width: calc(100vw - 176px);
+    height: calc(100vh - 57px);
+    padding: 0% 4px 2% 172px;
+  }
+  .wp-conversation-message-container{
+    width: 91%;
+    margin-left: 0em;
+  }
+  .chat_history{
+    height: calc(100vh - 168px);
+    margin: 0 0 1em 0;
+  }
+  .emojionearea .emojionearea-editor{
+    border: 1px solid #c3c3c3;
+    background: #fff;
+  }
+  .send_chat{
+    right: -9%;
+  }
+  #uploadForm{
+    width: 110%;
+    height: 6em;
+    bottom: -9px;
+  }
+/* End Chat Box */
 }
 /* End Tablet View */
 
+/* @media (min-width: 30em) and (max-width: 60em) and (min-height: 45em){
+  body{
+    background: #efefef;
+  }
+  .sn-container{
+    width: 70%;
+    height: calc(100vh - 106px);
+    padding: 0.7% 0% 2% 0%;
+    margin: 0 auto;
+    background: #efefef;
+  }
+  .sn-user-name{
+    text-align: left;
+    margin: 0 0 0.5em 0;
+  }
+  .sn-user-name i{
+    font-size: 1.6em;
+    color: rgba(0, 0, 0, 0.35);
+    float: left;
+  }
+  .sn-user-name div{
+    font-size: 1.1em;
+    padding: 0.2em 1.8em;
+    color: #777;
+  }
+  .sn_settings_container{
+    box-shadow: none;
+  }
+  .sn_change_tab::before{
+    display: none;
+  }
+  #sn_change_information, #sn_change_password{
+    display: none;
+  }
+  .sn_change_info_form, .sn_change_password_form{
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #ccc;
+    padding-top: 0em;
+  }
+  .sn_change_info_form::before, .sn_change_password_form::before{
+    display: none;
+  }
+  .sn_change_password_form h2, .sn_change_info_form h2{
+    display: block;
+    text-align: center;
+    margin-bottom: 3%;
+  }
+  .sn_change_info_form img, .sn_change_password_form img{
+    width: 4em;
+    margin: 3em auto 0.7em auto;
+  }
+  .input{
+    margin-bottom: 5%;
+    max-width: 12em;
+  }
+  .change{
+    max-width: 13em;
+    margin-bottom: 3em;
+  }
+  .input input{
+    font-size: 0.75em;
+    padding: 8px 8px 8px 50px;
+  }
+  .change input[type=submit]{
+    font-size: 0.75em;
+    padding: 9px 9px;
+  }
+} */
 .hide{
   display: none;
-}
-.chat_history{
-  box-sizing: border-box;
-  height: 46vh;
-  background-color: #fff;
-  overflow-y: auto;
-  padding: 8px 16px;
-  margin-bottom: 16px;
 }
 .from_user_chat_style, .from_user_time_style{
   text-align: right;
@@ -332,14 +596,11 @@
 #uploadForm{
   display: none;
 }
-#uploadForm img{
-  height: 150px;
-}
 .upload_image_logo{
   width: 18px;
 }
 .chat_history img{
-  width: 280px;
+  width: 11em;
 }
 .active_now{
   width: 7;
