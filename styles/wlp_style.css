@@ -1,14 +1,14 @@
 /* Mobile View */
 /*HEADER AND SIDEBAR*/
-	section{
-		width: 70%;
-		box-sizing: border-box;
+	.wp-page-header-container{
+		width: 100vw;
+		height: 48px;
 	}
 
 	.wp-page-header{
 		position: relative;
-		width: 100vw;
-		height: 48px;
+		width: 100%;
+		height: 100%;
 		background-color: white;
 		display: flex;
 		justify-content: space-between;
@@ -252,7 +252,7 @@
 	}
 
 	.wp-header-user-name.blur{
-		filter: blur(3px);
+		filter: blur(5px);
 		transition: 0.8s ease;
 	}
 
@@ -285,7 +285,7 @@
 	}
 
 	.wp-customer-details.blur{
-		filter: blur(3px);
+		filter: blur(5px);
 		transition: 0.8s ease;
 	}
 
@@ -381,6 +381,7 @@
 	}
 
 	.wp-new-order-back{
+		display: block;
 		width: 100%;
 		height: 100%;
 		pointer-events: none;
@@ -393,8 +394,8 @@
 
 	.wp-new-order{
 		position: absolute;
-		width: 82%;
-		height: 90%;
+		width: 78%;
+		height: 86%;
 		padding: 0 6%;
 		background-color: white;
 		pointer-events: none;
@@ -444,6 +445,10 @@
 		align-items: center;
 	}
 
+	.new-order-input i{
+		display: none;
+	}
+
 	.new-order-input input, .new-order-input textarea{
 		width: 100%;
 		font-size: 0.9em;
@@ -454,6 +459,45 @@
 		border: 2px solid #ddd;
 		box-sizing: border-box;
 	}
+
+	::-webkit-input-placeholder {
+        color: transparent;
+    }
+
+    :-moz-placeholder {
+        color: transparent;
+    }
+     ::-moz-placeholder {
+        color: transparent;
+    }
+
+    :-ms-input-placeholder {
+        color: transparent;
+    }
+
+    input::placeholder {
+        color: transparent;
+    }
+
+    textarea::-webkit-input-placeholder {
+        color: transparent;
+    }
+
+    textarea:-moz-placeholder {
+        color: transparent;
+    }
+
+    textarea::-moz-placeholder {
+        color: transparent;
+    }
+
+    textarea:-ms-input-placeholder {
+        color: transparent;
+    }
+
+    textarea::placeholder {
+        color: transparent;
+    }
 
 	.new-order-input textarea{
 		resize: none;
@@ -466,6 +510,7 @@
 	}
 
 	.new-order-input span{
+		display: block;
 		position: absolute;
 		transform: translate(8px, 0);
 		padding: 4px 6px;
@@ -503,7 +548,7 @@
 	}
 
 	.wp-information-detail-container.blur{
-		filter: blur(3px);
+		filter: blur(5px);
 		transition: 0.8s ease;
 	}
 
@@ -591,7 +636,7 @@
 	}
 
 	.wp-exchange-rate-container.blur{
-		filter: blur(3px);
+		filter: blur(5px);
 		transition: 0.8s ease;
 	}
 
@@ -649,8 +694,12 @@
 /* Tablet View */
 	@media (min-width: 30em) and (max-width: 60em){
 /*HEADER AND SIDEBAR*/
-	.wp-page-header{
+	.wp-page-header-container{
+		width: 100vw;
 		height: 52px;
+	}
+
+	.wp-page-header{
 		padding: 0 2%;
 		box-shadow: 0 2px 1px #ddd;
 	}
@@ -791,15 +840,20 @@
 	.wp-contact-admin-container{
 		display: block;
 		position: absolute;
-		bottom: 0.5%;
+		bottom: 0;
 		right: 0;
-		margin: 2% 0 0 0;
-		width: 49%;
+		margin: 1% 0 0 0;
+		width: 49.5%;
 		height: 28%;
 		background-color: white;
 		box-shadow: 0 0 4px #ccc;
 		box-sizing: border-box;
 		z-index: 1;
+	}
+
+	.wp-contact-admin-container.blur{
+		filter: blur(8px);
+		transition: 0.8s ease;
 	}
 
 	.wp-contact-admin-container a{
@@ -855,8 +909,7 @@
 	}
 
 	.wp-header-user-name.blur{
-		filter: blur(3px);
-		transition: 0.8s ease;
+		filter: blur(0);
 	}
 
 	.wp-header-user-name i{
@@ -876,7 +929,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		width: 49%;
+		width: 49.5%;
 		height: 50%;
 		padding: 0 3%;
 		box-shadow: 0 0 4px #ccc;
@@ -884,7 +937,7 @@
 	}
 
 	.wp-customer-details.blur{
-		filter: blur(3px);
+		filter: blur(8px);
 		transition: 0.8s ease;
 	}
 
@@ -967,7 +1020,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: rgba(0,0,0,0.2);
+		background-color: rgba(0,0,0,0.3);
 		z-index: 3;
 		pointer-events: none;
 		overflow: hidden;
@@ -981,26 +1034,25 @@
 	}
 
 	#new-order-close{
-		display: none;
+		display: block;
+		position: absolute;
+		top: 2%;
+		right: 2%;
+		padding: 3px;
+		color: white;
+		cursor: pointer;
 	}
 
 	.wp-new-order-back{
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-	}
-
-	.wp-new-order-back.blur{
-		pointer-events: all;
-		transition: 0.8s ease;
+		display: none;
 	}
 
 	.wp-new-order{
 		position: absolute;
-		width: 82%;
+		width: 46%;
 		height: 90%;
-		padding: 0 6%;
-		background-color: white;
+		padding: 0 2%;
+		background-color: transparent;
 		pointer-events: none;
 		transform: translateY(-200%);
 		display: flex;
@@ -1020,8 +1072,8 @@
 		width: 100%;
 		font-weight: bold;
 		font-size: 0.9em;
-		padding: 4px 0;
-		margin-top: 12px;
+		padding: 3px 0;
+		margin-top: 6px;
 		border-radius: 5px;
 		background-color: #2EC5FF;
 		border: 2px solid #2EC5FF;
@@ -1031,53 +1083,102 @@
 
 	.wp-new-order-header{
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 		margin-bottom: 6%;
 		font-size: 1.1em;
-		color: #2EC5FF;
+		font-weight: bold;
+		color: #fff;
 	}
 
 	.wp-new-order-header i{
-		font-size: 1.6em;
+		display: none;
 	}
 
 	.new-order-input{
+		position: relative;
 		width: 100%;
 		display: flex;
 		align-items: center;
 	}
 
+	.new-order-input i{
+		display: block;
+		position: absolute;
+		left: 6px;
+		font-size: 1em;
+		color: #999;
+		transition: 0.2s ease;
+	}
+
 	.new-order-input input, .new-order-input textarea{
 		width: 100%;
 		font-size: 0.9em;
-		margin: 4% 0;
-		padding: 6px 12px;
-		border-radius: 5px;
+		margin: 2% 0;
+		padding: 4px 6px 4px 32px;
+		border-radius: 3px;
 		color: #555;
 		border: 2px solid #ddd;
 		box-sizing: border-box;
+		transition: 0.3s ease;
 	}
+
+	::-webkit-input-placeholder {
+        color: #999;
+    }
+
+    :-moz-placeholder {
+        color: #999;
+    }
+     ::-moz-placeholder {
+        color: #999;
+    }
+
+    :-ms-input-placeholder {
+        color: #999;
+    }
+
+    input::placeholder {
+        color: #999;
+    }
+
+    textarea::-webkit-input-placeholder {
+        color: #999;
+    }
+
+    textarea:-moz-placeholder {
+        color: #999;
+    }
+
+    textarea::-moz-placeholder {
+        color: #999;
+    }
+
+    textarea:-ms-input-placeholder {
+        color: #999;
+    }
+
+    textarea::placeholder {
+        color: #999;
+    }
 
 	.new-order-input textarea{
 		resize: none;
-		height: 52px;
-		max-height: 52px;
+		height: 36px;
+		max-height: 36px;
 	}
 
 	.new-order-input input.focus, .new-order-input textarea.focus{
 		border-color: #2EC5FF;
+		padding: 4px 6px 4px 8px;
+	}
+
+	.new-order-input i.focus{
+		opacity: 0;
 	}
 
 	.new-order-input span{
-		position: absolute;
-		transform: translate(8px, 0);
-		padding: 4px 6px;
-		font-size: 0.9em;
-		color: #999;
-		background-color: white;
-		pointer-events: none;
-		transition: 0.3s ease;
+		display: none;
 	}
 	.new-order-input input.focus + span{
 		transform: translate(8px, -20px);
@@ -1101,8 +1202,8 @@
 		right: 0;
 		display: flex;
 		flex-direction: column;
-		width: 49%;
-		height: 69%;
+		width: 49.5%;
+		height: 70.5%;
 		padding: 3% 1% 3% 3%;
 		margin: 0;
 		background-color: white;
@@ -1111,7 +1212,7 @@
 	}
 
 	.wp-information-detail-container.blur{
-		filter: blur(3px);
+		filter: blur(8px);
 		transition: 0.8s ease;
 	}
 
@@ -1175,9 +1276,9 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		width: 49%;
-		height: 47%;
-		margin: 2% 0 0 0;
+		width: 49.5%;
+		height: 49%;
+		margin: 1% 0 0 0;
 		padding: 0;
 		background-color: white;
 		box-shadow: 0 0 4px #ccc;
@@ -1185,7 +1286,7 @@
 	}
 
 	.wp-exchange-rate-container.blur{
-		filter: blur(3px);
+		filter: blur(8px);
 		transition: 0.8s ease;
 	}
 
@@ -1246,46 +1347,77 @@
 /* Desktop View */
 	@media (min-width: 60em){
 /*HEADER AND SIDEBAR*/
-	.wp-page-header{
-		height: 64px;
-		padding: 0 1.5%;
-		box-shadow: 0 0 0 transparent;
+	.wp-page-header-container{
+		width: 100vw;
+		height: 95px;
 	}
 
-	.wp-header-menu{
-		display: none;
+	.wp-page-header{
+		position: relative;
+		width: 70%;
+		height: 100%;
+		background-color: white;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 3%;
+		z-index: 5;
+		box-shadow: 0 0 0 transparent;
+		box-sizing: border-box;
+	}
+
+	.wp-header-menu span{
+		display: block;
+		width: 22px;
+		height: 3px;
+		background-color: #2EC5FF;
+		margin: 4px 0;
+		border-radius: 3px;
+	}
+
+	.wp-header-logo a, .wp-header-logout a{
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 6px;
 	}
 
 	.wp-header-logo a img{
-		width: 42px;
-		height: 42px;
+		width: 28px;
+		height: 28px;
+		margin-right: 8px;
 	}
 
 	.wp-header-logo a span{
-		font-size: 1.5em;
-	}
-
-	#wp-logout{
-		display: block;
+		color: black;
+		font-size: 1.2em;
+		font-weight: bold;
 	}
 
 	.wp-header-logout a{
-		font-size: 1.1em;
+		font-size: 1em;
 		color: #555;
 	}
 
+	#wp-logout{
+		display: none;
+		margin-right: 8px;
+	}
+
 	.wp-header-logout a i{
-		color: #777;
-		font-size: 1em;
+		font-size: 1.1em;
+		color: #2EC5FF;
 	}
 
 	.wp-page-nav{
+		position: relative;
 		width: 100vw;
-		height: 42px;
+		height: 80px;
 		float: unset;
 		display: flex;
 		flex-direction: row;
-		justify-content: flex-start;
+		justify-content: space-between;
 		align-items: center;
 		z-index: 1;
 		background-color: #2EC5FF;
@@ -1295,24 +1427,19 @@
 	.wp-page-nav a{
 		text-decoration: none;
 		color: white;
-		width: auto;
+		width: 25%;
 		height: 100%;
-		padding: 12px 16px;
+		padding: 12px 0;
 		box-sizing: border-box;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		align-items: center;
 		justify-content: space-between;
-	}
-
-	.wp-page-nav a:first-child{
-		display: none;
 	}
 
 	.wp-page-nav a i{
 		font-size: 1.1em;
 		width: 28px;
-		margin-right: 8px;
 	}
 
 	.wp-page-nav a h3{
@@ -1323,71 +1450,118 @@
 		line-height: 1.2em;
 		text-align: center;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		align-items: center;
 	}
 
 	.wp-other-page-nav-container{
-		position: relative;
+		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100vw;
-		height: 42px;
-		z-index: 1;
-		pointer-events: all;
+		height: 100vh;
+		z-index: 9999;
+		pointer-events: none;
+		background-color: transparent;
 		overflow: hidden;
+		transition: 0.5s ease;
+	}
+
+	.wp-other-page-nav-container.slide{
+		pointer-events: all;
+	}
+
+	#wp-other-page-sidebar-back{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transition: 0.5s ease;
+	}
+
+	#wp-other-page-sidebar-back.slide{
+		pointer-events: all;
+		background-color: rgba(0,0,0,0.2);
 	}
 
 	.wp-other-page-nav{
-		width: 100%;
+		width: 84%;
 		height: 100%;
+		pointer-events: none;
+		transform: translateX(-100%);
+		transition: transform 0.5s ease;
+	}
+
+	.wp-other-page-nav.slide{
 		pointer-events: all;
 		transform: translateX(0);
 	}
 
-	#wp-other-page-sidebar-back{
-		display: none;
+	.wp-other-page-header{
+		display: block;
+		position: relative;
+		width: 100%;
+		height: 32%;
+		box-sizing: border-box;
+		background-color: #2EC5FF;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		z-index: 1;
 	}
 
-	.wp-other-page-header{
-		display: none;
+	.wp-other-page-header img{
+		width: 64px;
+		height: 64px;
+		margin-bottom: 6%;
+	}
+
+	#wp-other-page-header-logo{
+		font-size: 1.6em;
+	}
+
+	#wp-close-nav{
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+	}
+
+	#wp-close-nav i{
+		color: white;
+		font-size: 1.6em;
+		padding: 2px;
 	}
 
 	.wp-other-page-sidebar{
 		width: 100%;
-		height: 100%;
-		transform: translateY(0);
+		height: 68%;
 		box-sizing: border-box;
 		display: inline-flex;
-		flex-direction: row;
-		background-color: #2EC5FF;
-		padding: 0;
+		flex-direction: column;
+		background-color: white;
+		padding: 5% 0 0 5%;
+		transition: 0.6s 0.3s ease;
 	}
 
 	.wp-other-page-sidebar a{
+		display: flex;
+		align-items: center;
+		text-decoration: none;
 		font-size: 1em;
-		padding: 12px 16px;
-		color: white;
-		margin: 0;
+		padding: 12px 8px;
+		margin: 4px 0;
+		color: #333;
 	}
 
-	.wp-other-page-sidebar a.active{
+	.wp-other-page-sidebar a.active, .wp-other-page-sidebar a.active i{
 		color: #2EC5FF;
-		background-color: white;
-	}
-
-	.wp-other-page-sidebar a.active i{
-		color: #2EC5FF;
-	}
-
-	.wp-other-page-sidebar a i{
-		width: auto;
-		color: white;
-		margin-right: 8px;
-	}
-
-	.wp-other-page-sidebar a span{
-		font-size: 0.8em;
 	}
 /*--------------------------------------- END OF HEADER AND SIDEBAR --------------------------------*/
 /*HOME PAGE*/

@@ -75,23 +75,28 @@ displayHomeNavigation();
            <input type="hidden" name="customer_id" value="<?php echo $customer_account->getValueEncoded('id') ?>">
            <input type="hidden" name="exchange_rate" value="<?php echo $latest_exchange_rate->getValueEncoded('mmk') ?>">
           <div class="new-order-input new-order-textarea">
-            <textarea name="product_link" data-placeholder=""></textarea>
+            <i class="fas fa-link"></i>
+            <textarea name="product_link" placeholder="Product Link"></textarea>
             <span>Product Link</span>
           </div>
           <div class="new-order-input">
-            <input type="number" name="quantity" data-placeholder="">
+            <i class="fas fa-shapes"></i>
+            <input type="number" name="quantity" placeholder="Quantity">
             <span>Quantity</span>
           </div>
           <div class="new-order-input">
-            <input type="text" name="cupon_code" data-placeholder="">
+            <i class="fas fa-money-bill-alt"></i>
+            <input type="text" name="cupon_code" placeholder="Coupon code">
             <span>Coupon code</span>
           </div>
           <div class="new-order-input new-order-textarea">
-            <textarea name="remark" data-placeholder=""></textarea>
+            <i class="fas fa-pencil-alt"></i>
+            <textarea name="remark" placeholder="Remark"></textarea>
             <span>Remark</span>
           </div>
           <div class="new-order-input">
-            <input type="number" name="price" data-placeholder="">
+            <i class="fas fa-hand-holding-usd"></i>
+            <input type="number" name="price" placeholder="Unit Price">
             <span>Unit Price ($)</span>
           </div>
            <input type="submit" value="Add">
