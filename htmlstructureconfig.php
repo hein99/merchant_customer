@@ -26,17 +26,19 @@ function displayPageHeader($page_title, $dir_level=false)
 
 function displayHomeNavigation()
 {?>
-  <header class="wp-page-header">
-    <div class="wp-header-logo">
-      <a href="<?php echo URL ?>/">
-        <img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/><span>The Best Shop</span>
-      </a>
-    </div>
-    <div class="wp-header-logout">
-      <a href="<?php echo URL ?>/settings/logout">
-        <span id="wp-logout">Log out</span>
-        <i class="fas fa-sign-out-alt"></i>
-      </a>
+  <header class="wp-page-header-container">
+      <div class="wp-page-header">
+      <div class="wp-header-logo">
+        <a href="<?php echo URL ?>/">
+          <img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/><span>The Best Shop</span>
+        </a>
+      </div>
+      <div class="wp-header-logout">
+        <a href="<?php echo URL ?>/settings/logout">
+          <span id="wp-logout">Log out</span>
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </div>
     </div>
   </header>
 
