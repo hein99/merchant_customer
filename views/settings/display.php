@@ -61,6 +61,9 @@ displayOtherNavigation('settings');
      </div>
    </div>
  </section>
+ <script>
+
+ </script>
  <script src="<?php echo FILE_URL ?>/scripts/setting.js" charset="utf-8"></script>
 <?php
 displayPageFooter();
