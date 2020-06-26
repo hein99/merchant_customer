@@ -36,7 +36,7 @@
 
 
 /* Desktop View */
-@media (min-width: 30em){
+@media (min-width: 60em){
   body{
     width: 70%;
     margin: 0 auto;
