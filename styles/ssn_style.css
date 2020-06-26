@@ -397,13 +397,16 @@
     right: -15%;
   }
   .emojionearea{
-    width: 92%;
+    width: 94%;
   }
   .emojionearea .emojionearea-editor {
     background: #fff;
   }
   .wp-conversation-message-container{
     margin-left: 0em;
+  }
+  #wp-send-photo{
+    right: 7em;
   }
   .send_chat{
     right: 0%;
@@ -510,6 +513,9 @@
   }
   .send_chat{
     right: 0.3em;
+  }
+  #wp-send-photo{
+    right: 5em;
   }
   #uploadForm{
     width: 100%;
