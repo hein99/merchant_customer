@@ -239,7 +239,6 @@
 }
 /* End Desktop View */
 
-
 /* Tablet View */
 @media (min-width: 30em) and (max-width: 60em){
   body{
@@ -309,6 +308,78 @@
 }
 /* End Tablet View */
 
+/* @media (min-width: 30em) and (max-width: 60em) and (min-height: 45em){
+  body{
+    background: #efefef;
+  }
+  .sn-container{
+    width: 70%;
+    height: calc(100vh - 106px);
+    padding: 0.7% 0% 2% 0%;
+    margin: 0 auto;
+    background: #efefef;
+  }
+  .sn-user-name{
+    text-align: left;
+    margin: 0 0 0.5em 0;
+  }
+  .sn-user-name i{
+    font-size: 1.6em;
+    color: rgba(0, 0, 0, 0.35);
+    float: left;
+  }
+  .sn-user-name div{
+    font-size: 1.1em;
+    padding: 0.2em 1.8em;
+    color: #777;
+  }
+  .sn_settings_container{
+    box-shadow: none;
+  }
+  .sn_change_tab::before{
+    display: none;
+  }
+  #sn_change_information, #sn_change_password{
+    display: none;
+  }
+  .sn_change_info_form, .sn_change_password_form{
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #ccc;
+    padding-top: 0em;
+  }
+  .sn_change_info_form::before, .sn_change_password_form::before{
+    display: none;
+  }
+  .sn_change_password_form h2, .sn_change_info_form h2{
+    display: block;
+    text-align: center;
+    margin-bottom: 3%;
+  }
+  .sn_change_info_form img, .sn_change_password_form img{
+    width: 4em;
+    margin: 3em auto 0.7em auto;
+  }
+  .input{
+    margin-bottom: 5%;
+    max-width: 12em;
+  }
+  .change{
+    max-width: 13em;
+    margin-bottom: 3em;
+  }
+  .input input{
+    font-size: 0.75em;
+    padding: 8px 8px 8px 50px;
+  }
+  .change input[type=submit]{
+    font-size: 0.75em;
+    padding: 9px 9px;
+  }
+} */
 .hide{
   display: none;
 }
