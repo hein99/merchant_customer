@@ -2,11 +2,11 @@
 displayPageHeader('Customer List | ' . WEB_NAME);
 displayOtherNavigation('conversation');
  ?>
- <section>
+ <section class="sn_chatbox_container">
    <div class="ssn_loader">
      <div class="triple-spinner"></div>
    </div>
-   <h1>Conversation</h1>
+   <!-- <h1 class="sn_conversation_header">Conversation</h1> -->
    <div id="user_model_details"></div>
  </section>
 
