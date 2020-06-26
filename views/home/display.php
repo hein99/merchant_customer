@@ -67,6 +67,7 @@ displayHomeNavigation();
 
    <div class="wp-new-order-and-detail-container">
       <div class="wp-new-order-container">
+        <h3>Add New Order</h3>
         <span id="new-order-close"><i class="fas fa-times"></i></span>
         <div class="wp-new-order-back"></div>
         <div class="wp-new-order">
