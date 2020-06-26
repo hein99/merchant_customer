@@ -41,10 +41,7 @@
     width: 70%;
     margin: 0 auto;
   }
-  .wp-page-header{
-    width: auto;
-  }
-  .wp-other-page-nav-container{
+  .wp-page-header, .wp-page-nav, .wp-other-page-nav-container{
     width: auto;
   }
 }
