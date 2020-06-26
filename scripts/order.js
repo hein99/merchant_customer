@@ -16,11 +16,6 @@ $(document).on('click', '.edit-order-js', function(){
     $(buildOrderForm(true)).appendTo('.order-wrap-js');
 })
 
-$(document).on('click', '.order-from-btn-js', function(){
-  if(!($('.order-form-wrap-js').length))
-    $(buildOrderForm(false)).appendTo('.order-wrap-js');
-})
-
 $(document).on('click', '.order-form-cancel-js', function(){
   $('.order-form-wrap-js').remove();
 })
@@ -89,7 +84,7 @@ function requestUpdateOrdersList()
           $('.order-status-js', list).remove();
           if(($('.order-complete-amount-js').length))
             $('.order-complete-amount-js', list).remove();
-          $('.product-link-js', list).append(checkOrderStatus(order));
+          $('.order-status-wrap', list).append(checkOrderStatus(order));
         }
     },
     dataType: 'json'
@@ -102,7 +97,7 @@ function buildOrdersList(order)
   list += '<li id="order-' + order.id + '-js" class="hk-order-list">';
   list += '<span class="noti-js"><i class="fa fa-exclamation-circle"></i></span>';
   list += '<div class="product-link-js"><a href="' + order.product_link + '" target="_blank">Product link</a></div>';
-  list += checkOrderStatus(order);
+  list += '<div class="order-status-wrap">'+ checkOrderStatus(order) +'</div>';
   list += '<div class="hk-order-date">' + order.date + '</div>';
   list += '<button type="button" class="order-view-btn-js" data-id="' + order.id + '">View</button>';
   list += '</li>';
@@ -214,7 +209,7 @@ function checkOrderStatus(order)
       break;
     case '7':
       list += '<div class="order-status-js complete-order">Complete</div>';
-      list += '<div class="order-complete-amount-js">' + order.amount + 'MMK</div>';
+      list += '<div class="order-complete-amount-js">' + order.amount + '<span>&nbsp;MMK<span></div>';
       break;
     case '8':
       list += '<div class="order-status-js cancel-order">Cancel</div>';

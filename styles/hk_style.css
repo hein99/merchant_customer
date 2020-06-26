@@ -3,35 +3,126 @@
   width: 100%;
   padding: 1vh 4vw;
   background: #fcfcfc;
+  font-family: "Open Sans", sans-serif;
 }
 
 .hk-order-list{
-  width: 100%;
+  margin-top: 1em;
+  position: relative;
+  height: 120px;
+  padding: 1em;
+  margin-bottom: 1em;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .noti-js{
-  color: #000;
+  color: #f00;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 .product-link-js{
-  color: #000;
+  margin-bottom: 1em;
+}
+
+.product-link-js>a{
+  font-weight: 650;
+  color: #575757;
+  text-decoration: none;
+  border-bottom: 2px dashed #575757;
 }
 
 .order-status-js{
-  color: #000;
+  display: inline-block;
+  padding: 6px 5px;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.request-order{
+  background-image: linear-gradient(135deg, #2EC5FF, #7ae0ff, #2EC5FF);
+}
+
+.pending-order{
+  background: linear-gradient(135deg, #FFCE0A, #ffe785, #FFCE0A);
+}
+
+.confirm-order{
+  background-image: linear-gradient(135deg, #27AE60, #56EB94, #27AE60);
+}
+
+.stusw-order{
+  color: #27AE60;
+  border: 2px solid #27ae73;
+  font-weight: 700;
+}
+
+.atusw-order{
+  color: #27AE60;
+  border: 2px solid #27ae73;
+  font-weight: 700;
+}
+
+.stmm-order{
+  color: #27AE60;
+  border: 2px solid #27ae73;
+  font-weight: 700;
+}
+
+.atmm-order{
+  color: #27AE60;
+  border: 2px solid #27ae73;
+  font-weight: 700;
+}
+
+.complete-order{
+  color: #27AE60;
+  border: 2px solid #27ae73;
+  font-weight: 700;
+}
+
+.cancel-order{
+  background: linear-gradient(135deg, #696969, #9e9e9e, #696969);
 }
 
 .order-complete-amount-js{
-  color: #000;
+  color: #2832C2;
+  font-weight: 600;
+  font-size: 1.25em;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+.order-complete-amount-js>span{
+  color: #2222228a;
+  font-size: 0.75em;
 }
 
-.order-view-btn-js{
-  color: #000;
-}
 
 .hk-order-date{
-  color: #000;
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  color: #22222299;
 }
+
+
+.order-view-btn-js{
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  padding: 6px 30px;
+  color: #2ec5ff;
+  font-size: 0.85em;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: 1px solid #2ec5ff;
+}
+
 /* End Mobile View */
 
 
