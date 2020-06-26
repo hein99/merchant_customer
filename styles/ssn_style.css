@@ -490,7 +490,7 @@
     margin-left: 0em;
   }
   .chat_history{
-    height: calc(100vh - 168px);
+    height: calc(100vh - 163px);
     margin: 0 0 1em 0;
   }
   .emojionearea .emojionearea-editor{
