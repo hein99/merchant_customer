@@ -40,20 +40,23 @@ $(document).ready(function(){
   });
 
   $(document).on('click', '#new-order', function(){
-    $('.wp-new-order-container, .wp-new-order-back, .wp-new-order, .wp-header-user-name, .wp-customer-details, .wp-information-detail-container, .wp-exchange-rate-container').addClass('blur');
+    $('.wp-new-order-container, .wp-new-order-back, .wp-new-order, .wp-header-user-name, .wp-customer-details, .wp-information-detail-container, .wp-exchange-rate-container, .wp-contact-admin-container').addClass('blur');
   });
 
-  $(document).on('click', '.wp-new-order-back', function(){
-    $('.wp-new-order-container, .wp-new-order-back, .wp-new-order, .wp-header-user-name, .wp-customer-details, .wp-information-detail-container, .wp-exchange-rate-container').removeClass('blur');
+  $(document).on('click', '.wp-new-order-back, #new-order-close', function(){
+    $('.wp-new-order-container, .wp-new-order-back, .wp-new-order, .wp-header-user-name, .wp-customer-details, .wp-information-detail-container, .wp-exchange-rate-container, .wp-contact-admin-container').removeClass('blur');
   });
 
   $(document).on('focus', '.new-order-input input, .new-order-textarea textarea', function(){
     $(this).addClass('focus');
+    $(this).parent().find('i').addClass('focus');
   });
 
   $(document).on('blur', '.new-order-input input, .new-order-textarea textarea', function(){
     if($(this).val() == "")
     $(this).removeClass('focus');
+
+    $(this).parent().find('i').removeClass('focus');
   });
 
 });
