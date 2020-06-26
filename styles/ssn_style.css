@@ -319,7 +319,6 @@
     background: #efefef;
   }
   .sn-container{
-    width: 70%;
     height: calc(100vh - 106px);
     padding: 0.7% 0% 2% 0%;
     margin: 0 auto;
