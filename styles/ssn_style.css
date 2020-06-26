@@ -1,7 +1,7 @@
 /* Mobile View */
 /* For Acc Settings */
 .sn-container{
-  width: 100%;
+  width: 88%;
   padding: 2% 6%;
 }
 .sn-user-name{
@@ -314,8 +314,7 @@
 
 
 /* Desktop View */
-@media (min-width: 30em){
-/* Acc Settings */
+@media (min-width: 60em){
   body{
     background: #efefef;
   }
@@ -387,10 +386,6 @@
   }
 /* Acc Settings */
 /* Chat Box */
-  .sn_chatbox_container{
-    width: 70%;
-    margin: 0 auto;
-  }
   .user_dialog h4{
     background: #fff;
     color: #8a8a8a;
@@ -401,6 +396,16 @@
   }
   .send_chat{
     right: -15%;
+  }
+  .emojionearea .emojionearea-editor {
+    background: #fff;
+  }
+  .wp-conversation-message-container{
+    width: 92%;
+    margin-left: 0em;
+  }
+  .send_chat{
+    right: -8%;
   }
 /* End Chat Box */
 }
@@ -413,9 +418,9 @@
     background: #efefef;
   }
   .sn-container{
-    width: 100%;
-    height: calc(100vh - 52px);
-    padding: 1% 0% 2% 173px;
+    width: calc(100vw - 173px);
+    height: calc(100vh - 63px);
+    padding: 1% 0% 1% 173px;
     background: #efefef;
   }
   .sn-user-name{
@@ -444,7 +449,7 @@
   .sn_change_info_form, .sn_change_password_form{
     display: inline-block;
     width: 49%;
-    height: calc(100vh - 122px);
+    height: calc(100vh - 115px);
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 0 5px #ccc;
@@ -476,6 +481,8 @@
 /* End Acc Settings */
 /* Chat Box */
   .sn_chatbox_container{
+    width: calc(100vw - 176px);
+    height: calc(100vh - 57px);
     padding: 0% 4px 2% 172px;
   }
   .wp-conversation-message-container{
