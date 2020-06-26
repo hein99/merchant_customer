@@ -100,17 +100,25 @@ $(document).ready(function(){
           var message_list = '';
           if(message.from_user_id == CUSTOMER_ID)
           {
-            message_list = message.messages;
             user_name = '<b class="from_user">You</b>';
             chat_style = 'from_user_chat_style';
             time_style = 'from_user_time_style';
+            if(message.message_status == 'yes'){
+              message_list = user_name+' - '+message.messages;
+            }else{
+              message_list = '<p>'+user_name+' - '+message.messages+'</p>';
+            }
           }else{
-            message_list = message.messages;
             user_name = '<b class="to_user">'+to_user_name+'</b>';
             chat_style = 'to_user_chat_style';
             time_style = 'to_user_time_style';
+            if(message.message_status == 'yes'){
+              message_list = user_name+' - '+message.messages;
+            }else{
+              message_list = '<p>'+user_name+' - '+message.messages+'</p>';
+            }
           }
-          output += '<li><div class="chat_list"><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
+          output += '<li><div class="chat_list"><div class="'+chat_style+'">'+message_list+'</div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
         }
         $(output).appendTo("#chat_history_"+to_user_id+" ul");
       },
@@ -138,12 +146,12 @@ $(document).ready(function(){
     content += '</span><span id="admin_active"></span><span id="admin_typing"></span></h4><div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'"><ul>';
     content += '</ul></div>';
     content += '<div class="wp-conversation-message-container">';
-    content += '<label id="wp-send-photo" for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
+    content += '<label id="wp-send-photo" for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message" placeholder"Message"></textarea>';
     content += '<form id="uploadForm" action="" method="post" enctype="multipart/form-data"><img src="'+PAGE_FILE_URL+'/logos/image-preview.png" id="preview" class="img-thumbnail">';
     content += '<input type="hidden" name="to_user_id" placeholder="To User ID" value="'+to_user_id+'"><br>';
     content += '<input type="file" name="photo" id="uploadFile" accept="image/*" />';
     content += '<div id="send_photo_button_container"><input type="button" value="Send Photo" name="send_photo" id="btn_send" /><input type="button" value="Cancel" name="cancel_photo" id="cancel_send" /></div></form>';
-    content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat">Send</button></div></div>';
+    content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat"><i class="fas fa-paper-plane"></i></button></div></div>';
 
     $('#user_model_details').html(content);
   }
@@ -164,17 +172,25 @@ $(document).ready(function(){
             var message_list = '';
             if(message.from_user_id == CUSTOMER_ID)
             {
-              message_list = message.messages;
               user_name = '<b class="from_user">You</b>';
               chat_style = 'from_user_chat_style';
               time_style = 'from_user_time_style';
+              if(message.message_status == 'yes'){
+                message_list =  user_name+' - '+message.messages;
+              }else{
+                message_list = '<p>'+user_name+' - '+message.messages+'</p>';
+              }
             }else{
-              message_list = message.messages;
               user_name = '<b class="to_user">'+to_user_name+'</b>';
               chat_style = 'to_user_chat_style';
               time_style = 'to_user_time_style';
+              if(message.message_status == 'yes'){
+                message_list =  user_name+' - '+message.messages;
+              }else{
+                message_list = '<p>'+user_name+' - '+message.messages+'</p>';
+              }
             }
-            output += '<li><div class="wp-chat-message"><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
+            output += '<li><div class="wp-chat-message"><div class="'+chat_style+'">'+message_list+'</div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
           }
           $(output).appendTo("#chat_history_"+to_user_id+" ul");
           $(".chat_history").stop().animate({ scrollTop: $(".chat_history")[0].scrollHeight}, 1000);

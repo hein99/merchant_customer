@@ -1,0 +1,58 @@
+/* Mobile View */
+.order-wrap-js{
+  width: 100%;
+  padding: 1vh 4vw;
+  background: #fcfcfc;
+}
+
+.hk-order-list{
+  width: 100%;
+}
+
+.noti-js{
+  color: #000;
+}
+
+.product-link-js{
+  color: #000;
+}
+
+.order-status-js{
+  color: #000;
+}
+
+.order-complete-amount-js{
+  color: #000;
+}
+
+.order-view-btn-js{
+  color: #000;
+}
+
+.hk-order-date{
+  color: #000;
+}
+/* End Mobile View */
+
+
+/* Desktop View */
+@media (min-width: 30em){
+  body{
+    /* width: 70%; */
+    margin: 0 auto;
+  }
+  .wp-page-header{
+    /* width: auto; */
+  }
+  .wp-other-page-nav-container{
+    /* width: auto; */
+  }
+}
+/* End Desktop View */
+
+
+/* Tablet View */
+@media (min-width: 30em) and (max-width: 60em){
+
+}
+/* End Tablet View */

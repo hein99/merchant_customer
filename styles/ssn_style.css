@@ -185,6 +185,13 @@
   color: #fff;
 }
 .chat_history{
+  box-sizing: border-box;
+  height: calc(100vh - 182px);
+  background-color: #fff;
+  overflow-y: auto;
+  padding: 8px 5px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #c3c3c3;
   margin: 1em 0.5em 1em 0.5em;
 }
 .to_user_chat_style p, .from_user_chat_style p{
@@ -194,7 +201,7 @@
   background-color: #2EC5FF;
   color: white;
   font-size: 15px;
-  padding: 8px 12px;
+  padding: 10px 12px;
   border-radius: 16px 16px 0 16px;
 }
 .to_user_chat_style p{
@@ -208,12 +215,107 @@
 .from_user{
   color: #333;
 }
+.to_user_time_style, .from_user_time_style{
+  width: 100%;
+  font-size: 0.7em;
+  color: #777;
+  margin-top: 4px;
+}
+.wp-conversation-message-container{
+  position: relative;
+  width: 85%;
+  box-sizing: border-box;
+  margin-left: 0.7em;
+}
+.emojionearea{
+  border: none !important;
+  border-radius: 6px;
+}
+.emojionearea .emojionearea-editor {
+  min-height: 2.5em !important;
+  max-height: 2.5em !important;
+  line-height: 18px !important;
+  word-break: break-all;
+  padding: 6px 4em 6px 12px !important;
+  background: #efefef;
+  border-radius: 6px;
+}
+.emojionearea-button>div.emojionearea-button-open {
+  background-position: 0 -22px !important;
+  color: #444;
+}
+#wp-send-photo{
+  position: absolute;
+  top: 22%;
+  right: 2em;
+  cursor: pointer;
+  z-index: 1;
+}
+.send_chat{
+  border: none;
+  padding: 0.4em 0.5em;
+  border-radius: 50%;
+  background: #2ec5ff;
+  position: absolute;
+  top: -7%;
+  right: -2.5em;
+}
+.send_chat i{
+  font-size: 1.2em;
+  color: #fff;
+  margin-top: 3px;
+  margin-right: 3px;
+}
+#uploadForm{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: none;
+  width: 114%;
+  height: 5em;
+  background-color: white;
+  z-index: 5;
+}
+#uploadForm img {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+#send_photo_button_container {
+  font-family: sans-serif;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 175px;
+  display: flex;
+  justify-content: space-between;
+}
+#btn_send, #cancel_send {
+  border: none;
+  padding: 6px 10px;
+  background-color: #2ec5ff;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border-radius: 3px;
+  opacity: 0.8;
+  transition: 0.1s ease;
+  -webkit-transition: 0.1s ease;
+  -moz-transition: 0.1s ease;
+  -ms-transition: 0.1s ease;
+  -o-transition: 0.1s ease;
+}
+#cancel_send {
+  background-color: #E74C3C;
+}
 /* End Chat Box */
 /* End Mobile View */
 
 
 /* Desktop View */
 @media (min-width: 30em){
+/* Acc Settings */
   body{
     background: #efefef;
   }
@@ -283,11 +385,30 @@
     font-size: 0.75em;
     padding: 9px 9px;
   }
+/* Acc Settings */
+/* Chat Box */
+  .sn_chatbox_container{
+    width: 70%;
+    margin: 0 auto;
+  }
+  .user_dialog h4{
+    background: #fff;
+    color: #8a8a8a;
+  }
+  .chat_history{
+    height: calc(100vh - 200px);
+    margin: 0 0 1em 0;
+  }
+  .send_chat{
+    right: -15%;
+  }
+/* End Chat Box */
 }
 /* End Desktop View */
 
 /* Tablet View */
 @media (min-width: 30em) and (max-width: 60em){
+/* Acc Settings */
   body{
     background: #efefef;
   }
@@ -352,6 +473,32 @@
     font-size: 0.75em;
     padding: 9px 9px;
   }
+/* End Acc Settings */
+/* Chat Box */
+  .sn_chatbox_container{
+    padding: 0% 4px 2% 172px;
+  }
+  .wp-conversation-message-container{
+    width: 91%;
+    margin-left: 0em;
+  }
+  .chat_history{
+    height: calc(100vh - 168px);
+    margin: 0 0 1em 0;
+  }
+  .emojionearea .emojionearea-editor{
+    border: 1px solid #c3c3c3;
+    background: #fff;
+  }
+  .send_chat{
+    right: -9%;
+  }
+  #uploadForm{
+    width: 110%;
+    height: 6em;
+    bottom: -9px;
+  }
+/* End Chat Box */
 }
 /* End Tablet View */
 
@@ -430,14 +577,6 @@
 .hide{
   display: none;
 }
-.chat_history{
-  box-sizing: border-box;
-  height: 52vh;
-  background-color: #fff;
-  overflow-y: auto;
-  padding: 8px 5px;
-  margin-bottom: 16px;
-}
 .from_user_chat_style, .from_user_time_style{
   text-align: right;
 }
@@ -449,9 +588,6 @@
 }
 #uploadForm{
   display: none;
-}
-#uploadForm img{
-  height: 150px;
 }
 .upload_image_logo{
   width: 18px;
@@ -505,9 +641,13 @@
   }
 }
 .ssn_loader{
-  width: 100%;
+  width: 70%;
   height: 100%;
   position: fixed;
   background: #ffffffd6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
 }
 /* end of loading icon */

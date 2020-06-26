@@ -5,10 +5,11 @@ displayOtherNavigation('statement');
 $customer_statements = CustomerStatement::getCustomerStatement($_SESSION['merchant_customer_account']->getValueEncoded('id'));
 $customer_acc = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValueEncoded('id'));
  ?>
+ <div class="ssn_loader" >
+   <div class="triple-spinner" ></div>
+ </div>
+ 
  <section class="ky-bill-history" >
-   <div class="ssn_loader" >
-     <div class="triple-spinner" ></div>
-   </div>
    <div class="ky-total-balance-container" >
      <h1 class="ky-balance-header" >Total Balance</h1>
      <span class="ky-total-balance" ><?php echo number_format($customer_acc->getValueEncoded('balance'), 2) ?>&nbsp;&nbsp;MMK</span>

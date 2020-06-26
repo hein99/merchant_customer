@@ -99,11 +99,11 @@ function requestUpdateOrdersList()
 function buildOrdersList(order)
 {
   var list = '';
-  list += '<li id="order-' + order.id + '-js">';
-  list += '<span class="noti-js" style="display: none;">*</span>';
+  list += '<li id="order-' + order.id + '-js" class="hk-order-list">';
+  list += '<span class="noti-js"><i class="fa fa-exclamation-circle"></i></span>';
   list += '<div class="product-link-js"><a href="' + order.product_link + '" target="_blank">Product link</a></div>';
   list += checkOrderStatus(order);
-  list += '<div class="">' + order.date + '</div>';
+  list += '<div class="hk-order-date">' + order.date + '</div>';
   list += '<button type="button" class="order-view-btn-js" data-id="' + order.id + '">View</button>';
   list += '</li>';
   return list;

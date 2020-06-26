@@ -142,7 +142,7 @@ displayHomeNavigation();
        <span>USD</span>
        <span>1&nbsp;<i class="fas fa-dollar-sign"></i></span>
       </div>
-      
+
       <div id="exchange-icon"><i class="fas fa-exchange-alt"></i></div>
 
       <div class="wp-mmk-exchange-rate">
@@ -163,7 +163,7 @@ displayHomeNavigation();
      </a>
    </div>
 
-   
+
   </div>
  </section>
 <?php
