@@ -387,12 +387,13 @@
   }
 }
 .ssn_loader{
-  width: 100%;
+  width: 70%;
   height: 100%;
   position: fixed;
   background: #ffffffd6;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 99;
 }
 /* end of loading icon */
