@@ -408,7 +408,7 @@
     right: -8%;
   }
   #uploadForm{
-    width: 108.5%;
+    width: 109%;
     height: 6em;
   }
 /* End Chat Box */
@@ -422,10 +422,12 @@
     background: #efefef;
   }
   .sn-container{
-    width: calc(100vw - 173px);
+    float: left;
+    width: calc(100vw - 167px);
     height: calc(100vh - 63px);
-    padding: 1% 0% 1% 173px;
     background: #efefef;
+    box-sizing: border-box;
+    padding: 1%;
   }
   .sn-user-name{
     text-align: left;
@@ -452,7 +454,7 @@
   }
   .sn_change_info_form, .sn_change_password_form{
     display: inline-block;
-    width: 49%;
+    width: 49.5%;
     height: calc(100vh - 115px);
     background: #fff;
     border-radius: 4px;
@@ -485,9 +487,12 @@
 /* End Acc Settings */
 /* Chat Box */
   .sn_chatbox_container{
-    width: calc(100vw - 176px);
-    height: calc(100vh - 57px);
-    padding: 0% 4px 2% 172px;
+    float: left;
+    width: calc(100vw - 167px);
+    height: calc(100vh - 63px);
+    background: #efefef;
+    box-sizing: border-box;
+    padding: 1%;
   }
   .wp-conversation-message-container{
     width: 91%;
