@@ -223,13 +223,13 @@
 }
 .wp-conversation-message-container{
   position: relative;
-  width: 85%;
   box-sizing: border-box;
   margin-left: 0.7em;
 }
 .emojionearea{
   border: none !important;
   border-radius: 6px;
+  width: 84%;
 }
 .emojionearea .emojionearea-editor {
   min-height: 2.5em !important;
@@ -247,7 +247,7 @@
 #wp-send-photo{
   position: absolute;
   top: 22%;
-  right: 2em;
+  right: 6em;
   cursor: pointer;
   z-index: 1;
 }
@@ -258,7 +258,7 @@
   background: #2ec5ff;
   position: absolute;
   top: -7%;
-  right: -2.5em;
+  right: 0.5em;
 }
 .send_chat i{
   font-size: 1.2em;
@@ -271,7 +271,7 @@
   bottom: 0;
   left: 0;
   display: none;
-  width: 114%;
+  width: 100%;
   height: 5em;
   background-color: white;
   z-index: 5;
@@ -319,8 +319,8 @@
     background: #efefef;
   }
   .sn-container{
-    width: 70%;
-    height: calc(100vh - 106px);
+    width: 100%;
+    height: calc(100vh - 130px);
     padding: 0.7% 0% 2% 0%;
     margin: 0 auto;
     background: #efefef;
@@ -386,26 +386,39 @@
   }
 /* Acc Settings */
 /* Chat Box */
+  .sn_chatbox_container{
+    background: #fff;
+  }
   .user_dialog h4{
     background: #fff;
     color: #8a8a8a;
   }
+  #chatting-name{
+    color: #8a8a8a;
+  }
   .chat_history{
-    height: calc(100vh - 200px);
+    height: calc(100vh - 222px);
     margin: 0 0 1em 0;
   }
   .send_chat{
-    right: -15%;
+    right: 1%;
+  }
+  .emojionearea{
+    width: 92%;
+    padding-bottom: 1em;
+    margin-left: 0.6em;
   }
   .emojionearea .emojionearea-editor {
-    background: #fff;
+    background: #efefef;
   }
   .wp-conversation-message-container{
-    width: 92%;
     margin-left: 0em;
   }
-  .send_chat{
-    right: -8%;
+  #wp-send-photo{
+    right: 7em;
+  }
+  #uploadForm{
+    height: 6em;
   }
 /* End Chat Box */
 }
@@ -418,10 +431,12 @@
     background: #efefef;
   }
   .sn-container{
-    width: calc(100vw - 173px);
+    float: left;
+    width: calc(100vw - 167px);
     height: calc(100vh - 63px);
-    padding: 1% 0% 1% 173px;
     background: #efefef;
+    box-sizing: border-box;
+    padding: 1%;
   }
   .sn-user-name{
     text-align: left;
@@ -448,8 +463,8 @@
   }
   .sn_change_info_form, .sn_change_password_form{
     display: inline-block;
-    width: 49%;
-    height: calc(100vh - 115px);
+    width: 49.5%;
+    height: calc(100vh - 120px);
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 0 5px #ccc;
@@ -481,27 +496,35 @@
 /* End Acc Settings */
 /* Chat Box */
   .sn_chatbox_container{
-    width: calc(100vw - 176px);
-    height: calc(100vh - 57px);
-    padding: 0% 4px 2% 172px;
+    float: left;
+    width: calc(100vw - 167px);
+    height: calc(100vh - 63px);
+    background: #efefef;
+    box-sizing: border-box;
+    padding: 1%;
   }
   .wp-conversation-message-container{
-    width: 91%;
     margin-left: 0em;
   }
   .chat_history{
-    height: calc(100vh - 168px);
-    margin: 0 0 1em 0;
+    height: calc(100vh - 165px);
+    margin: 0 0 0.7em 0;
+  }
+  .emojionearea{
+    width: 92%;
   }
   .emojionearea .emojionearea-editor{
     border: 1px solid #c3c3c3;
     background: #fff;
   }
   .send_chat{
-    right: -9%;
+    right: -0.2em;
+  }
+  #wp-send-photo{
+    right: 5em;
   }
   #uploadForm{
-    width: 110%;
+    width: 100%;
     height: 6em;
     bottom: -9px;
   }
@@ -509,14 +532,14 @@
 }
 /* End Tablet View */
 
-/* @media (min-width: 30em) and (max-width: 60em) and (min-height: 45em){
+@media (min-width: 30em) and (max-width: 60em) and (min-height: 45em){
   body{
     background: #efefef;
   }
   .sn-container{
-    width: 70%;
+    width: calc(100vw - 167px);
     height: calc(100vh - 106px);
-    padding: 0.7% 0% 2% 0%;
+    padding: 0.7% 1% 2% 1%;
     margin: 0 auto;
     background: #efefef;
   }
@@ -546,11 +569,13 @@
   .sn_change_info_form, .sn_change_password_form{
     display: inline-block;
     width: 100%;
-    height: auto;
+    height: calc(100vh - 579px);
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 0 5px #ccc;
     padding-top: 0em;
+    padding-bottom: 1em;
+    margin-bottom: 1%;
   }
   .sn_change_info_form::before, .sn_change_password_form::before{
     display: none;
@@ -580,7 +605,7 @@
     font-size: 0.75em;
     padding: 9px 9px;
   }
-} */
+}
 .hide{
   display: none;
 }

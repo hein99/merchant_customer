@@ -1,5 +1,5 @@
 $(window).on('load', function() {
-  $(".ssn_loader").fadeOut("slow");
+  $(".ssn_loader").fadeOut("slow");;
 });
 
 $(document).ready(function(){
@@ -50,13 +50,17 @@ $(document).ready(function(){
   $(document).on('focus', '.new-order-input input, .new-order-textarea textarea', function(){
     $(this).addClass('focus');
     $(this).parent().find('i').addClass('focus');
-  });
+  });   
 
-  $(document).on('blur', '.new-order-input input, .new-order-textarea textarea', function(){
-    if($(this).val() == "")
-    $(this).removeClass('focus');
-
-    $(this).parent().find('i').removeClass('focus');
-  });
-
+  if ($(window).width() < 480) {
+    $(document).on('blur', '.new-order-input input, .new-order-textarea textarea', function(){
+      if($(this).val() == "")
+        $(this).removeClass('focus'); 
+    });
+  }else{
+    $(document).on('blur', '.new-order-input input, .new-order-textarea textarea', function(){
+      $(this).removeClass('focus');
+      $(this).parent().find('i').removeClass('focus');
+    });
+  }
 });
