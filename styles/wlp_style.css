@@ -691,6 +691,18 @@
 		display: none;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
+.ssn_loader{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #ffffffd6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
 /* End Mobile View */
 
 
@@ -1345,6 +1357,18 @@
 		height: 36%;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
+.ssn_loader{
+  width: calc(100% - 167px);
+  height: 100%;
+  position: fixed;
+  left: 167px;
+  top: 0;
+  background: #ffffffd6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
 	}
 /* End Tablet View */
 
@@ -1997,5 +2021,17 @@
 		height: 38%;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
+	.ssn_loader{
+	  width: 70%;
+	  height: 100%;
+	  position: fixed;
+	  left: 167px;
+	  top: 0;
+	  background: #ffffffd6;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  z-index: 99;
+	}
 	}
 /* End Desktop View */
