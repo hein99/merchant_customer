@@ -131,6 +131,10 @@
   border: 1px solid #2ec5ff;
 }
 
+.hk-empty-order-detail{
+  display: none;
+}
+
 .order-detail-js{
   display: none;
   position:fixed;
@@ -332,12 +336,82 @@
   .wp-page-header, .wp-page-nav, .wp-other-page-nav-container{
     width: auto;
   }
+  .order-wrap-js{
+    overflow: hidden;
+    height: calc(100% - 106px);
+    padding: 1em;
+    display: flex;
+  }
+  .orders-list-js{
+    width: 50%;
+    height: 100%;
+    overflow-y: scroll;
+    margin-top: 0;
+  }
+  .hk-empty-order-detail{
+    position: absolute;
+    top: 2em;
+    right: 1em;
+    display: block;
+    box-sizing: border-box;
+    width: 45%;
+    height: calc(100vh - 10em);
+    line-height: calc(100vh - 10em);
+    text-align: center;
+    border: 2px dashed #333;
+    margin-left: 1em;
+  }
+
+  .order-detail-js{
+    position: unset;
+    overflow-y: scroll;
+    width: 50%;
+    background: inherit;
+    padding: 0;
+    margin-left: 1em;
+  }
 }
 /* End Desktop View */
 
 
 /* Tablet View */
 @media (min-width: 30em) and (max-width: 60em){
+  .order-wrap-js{
+    overflow: hidden;
+    height: calc(100vh - 52px);
+    width: calc(100vw - 167px);
+    padding: 1em;
+    display: flex;
+  }
 
+  .orders-list-js{
+    width: 50%;
+    height: 100%;
+    overflow-y: scroll;
+    margin-top: 0;
+  }
+
+  .hk-empty-order-detail{
+    position: absolute;
+    top: 2em;
+    right: 1em;
+    display: block;
+    box-sizing: border-box;
+    width: 45%;
+    height: calc(100vh - 8em);
+    line-height: calc(100vh - 8em);
+    text-align: center;
+    border: 2px dashed #333;
+    margin-left: 1em;
+  }
+
+  .order-detail-js{
+    position: unset;
+    overflow-y: scroll;
+    width: 50%;
+    background: inherit;
+    padding: 0;
+    margin-left: 1em;
+  }
 }
 /* End Tablet View */
