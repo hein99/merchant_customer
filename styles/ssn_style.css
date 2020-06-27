@@ -247,7 +247,7 @@
 #wp-send-photo{
   position: absolute;
   top: 22%;
-  right: 6em;
+  right: 5.5em;
   cursor: pointer;
   z-index: 1;
 }
@@ -405,33 +405,37 @@
   .user_dialog h4{
     background: #fff;
     color: #8a8a8a;
+    border-bottom: 1px solid #c3c3c3;
   }
   #chatting-name{
     color: #8a8a8a;
   }
   .chat_history{
-    height: calc(100vh - 222px);
+    height: calc(100vh - 271px);
     margin: 0 0 1em 0;
   }
   .send_chat{
-    right: 1%;
+    right: 2%;
+    top: 0%;
   }
   .emojionearea{
     width: 92%;
-    padding-bottom: 1em;
     margin-left: 0.6em;
   }
   .emojionearea .emojionearea-editor {
-    background: #efefef;
+    background: #dadada;
+    min-height: 6em !important;
   }
   .wp-conversation-message-container{
     margin-left: 0em;
+    padding-bottom: 0.9em;
   }
   #wp-send-photo{
-    right: 7em;
+    right: 6em;
+    top: 10%;
   }
   #uploadForm{
-    height: 6em;
+    height: 7em;
   }
 
   .ssn_loader{
@@ -537,14 +541,14 @@
     margin: 0 0 0.7em 0;
   }
   .emojionearea{
-    width: 92%;
+    width: 90%;
   }
   .emojionearea .emojionearea-editor{
     border: 1px solid #c3c3c3;
     background: #fff;
   }
   .send_chat{
-    right: -0.2em;
+    right: 0em;
   }
   #wp-send-photo{
     right: 5em;
@@ -630,6 +634,9 @@
   .change input[type=submit]{
     font-size: 0.75em;
     padding: 9px 9px;
+  }
+  #wp-send-photo{
+    right: 6em;
   }
 
   .ssn_loader{
