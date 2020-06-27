@@ -1509,6 +1509,7 @@
 	.wp-user-name{
 		display: block;
 		color: #777;
+		font-size: 1.2em;
 		font-weight: bold;
 		display: flex;
 		align-items: center;
@@ -1517,8 +1518,8 @@
 
 	.wp-user-name i{
 		color: #a1a1a1;
-		font-size: 2.2em;
-		margin-right: 20px;
+		font-size: 1.9em;
+		margin-right: 18px;
 	}
 
 	.wp-contact-admin-container{
@@ -1609,7 +1610,7 @@
 	}
 
 	.wp-customer-details h2{
-		font-size: 0.8em;
+		font-size: 0.9em;
 		margin-bottom: 0.8em;
 	}
 
@@ -1662,7 +1663,7 @@
 	#user-balance, #user-point{
 		display: flex;
 		align-items: center;
-		font-size: 0.7em;
+		font-size: 0.8em;
 		color: #555;
 	}
 
