@@ -569,7 +569,7 @@
   .sn_change_info_form, .sn_change_password_form{
     display: inline-block;
     width: 100%;
-    height: auto;
+    height: calc(100vh - 579px);
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 0 5px #ccc;
