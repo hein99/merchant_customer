@@ -1508,7 +1508,7 @@
 /*HOME PAGE*/
 	.wp-user-name{
 		display: block;
-		color: #999;
+		color: #777;
 		font-weight: bold;
 		display: flex;
 		align-items: center;
@@ -1516,7 +1516,7 @@
 	}
 
 	.wp-user-name i{
-		color: #c1c1c1;
+		color: #a1a1a1;
 		font-size: 2.2em;
 		margin-right: 20px;
 	}
