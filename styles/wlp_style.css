@@ -1298,7 +1298,7 @@
 	.wp-exchange-rate-container h2{
 		font-size: 0.8em;
 		padding: 6% 8% 0;
-		margin-bottom: 2%;
+		margin-bottom: 6%;
 	}
 
 	.wp-exchange-rate{
@@ -1342,7 +1342,7 @@
 	.wp-exchange-rate-container img{
 		display: block;
 		width: 100%;
-		height: 40%;
+		height: 36%;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
 	}
@@ -1379,11 +1379,17 @@
 	.wp-header-logout a{
 		font-size: 1em;
 		color: #555;
+		transition: 0.1s ease;
 	}
 
 	.wp-header-logout a i{
 		color: #777;
 		font-size: 1em;
+		transition: 0.1s ease;
+	}
+
+	.wp-header-logout a:hover, .wp-header-logout a:hover i{
+		color: #EA2027;
 	}
 
 	.wp-page-nav{
@@ -1404,7 +1410,7 @@
 		color: white;
 		width: auto;
 		height: 100%;
-		padding: 16px 12px;
+		padding: 16px 14px;
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: row;
@@ -1473,7 +1479,7 @@
 
 	.wp-other-page-sidebar a{
 		font-size: 1em;
-		padding: 12px;
+		padding: 12px 14px;
 		font-weight: bold;
 		color: white;
 		margin: 0;
@@ -1501,7 +1507,18 @@
 /*--------------------------------------- END OF HEADER AND SIDEBAR --------------------------------*/
 /*HOME PAGE*/
 	.wp-user-name{
-		display: none;
+		display: block;
+		color: #999;
+		font-weight: bold;
+		display: flex;
+		align-items: center;
+		letter-spacing: 0.5px;
+	}
+
+	.wp-user-name i{
+		color: #c1c1c1;
+		font-size: 2.2em;
+		margin-right: 20px;
 	}
 
 	.wp-contact-admin-container{
@@ -1511,16 +1528,11 @@
 		right: 0;
 		margin: 1% 0 0 0;
 		width: 49.5%;
-		height: 28%;
+		height: 20%;
 		background-color: white;
 		box-shadow: 0 0 4px #ccc;
 		box-sizing: border-box;
 		z-index: 1;
-	}
-
-	.wp-contact-admin-container.blur{
-		filter: blur(8px);
-		transition: 0.8s ease;
 	}
 
 	.wp-contact-admin-container a{
@@ -1533,20 +1545,25 @@
 	}
 
 	.wp-contact-admin-container a img{
-		width: 42px;
-		height: 42px;
+		width: 52px;
+		height: 52px;
 		margin-right: 4%;
 	}
 
 	.wp-contact-admin-container a h2{
-		font-size: 1em;
+		font-size: 1.2em;
 		color: #777;
 		margin-right: 4%;
+		transition: 0.1s ease;
+	}
+
+	.wp-contact-admin-container a:hover h2{
+		color: #2EC5FF;
 	}
 
 	.wp-msg-count{
-		width: 24px;
-		height: 24px;
+		width: 28px;
+		height: 28px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -1576,27 +1593,23 @@
 		height: 100%;
 		display: flex;
 		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	.wp-customer-details{
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		justify-content: space-between;
+		align-items: flex-start;
 		width: 49.5%;
-		height: 50%;
-		padding: 0 3%;
+		height: 44%;
+		padding: 2% 3%;
 		box-shadow: 0 0 4px #ccc;
 		box-sizing: border-box;
 	}
 
-	.wp-customer-details.blur{
-		filter: blur(8px);
-		transition: 0.8s ease;
-	}
-
 	.wp-customer-details h2{
-		font-size: 0.7em;
+		font-size: 0.8em;
 		margin-bottom: 0.8em;
 	}
 
@@ -1610,27 +1623,27 @@
 
 	.wp-user-balance{
 		width: 100%;
-		height: 32%;
+		height: 28%;
 		padding-right: 0;
-		padding-bottom: 4%;
+		padding-bottom: 6%;
 		border-right: 0;
 		border-bottom: 1px solid #ddd;
 	}
 
 	.wp-user-point{
 		width: 100%;
-		height: 32%;
+		height: 28%;
 		padding-left: 0;
-		padding-top: 4%;
+		padding-top: 0;
 	}
 
 	.wp-wallet-icon, .wp-membership-icon{
 		display: inline-block;
-		width: 32px;
-		height: 32px;
+		width: 36px;
+		height: 36px;
 		border-radius: 50%;
 		margin-bottom: 0;
-		margin-right: 0.6em;
+		margin-right: 1.2em;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -1649,8 +1662,8 @@
 	#user-balance, #user-point{
 		display: flex;
 		align-items: center;
-		font-size: 0.6em;
-		color: #777;
+		font-size: 0.7em;
+		color: #555;
 	}
 
 	#user-balance > span, #user-point > span{
@@ -1677,6 +1690,7 @@
 		pointer-events: all;
 		overflow: hidden;
 		opacity: 1;
+		box-shadow: 0 0 4px #ccc;
 	}
 
 	.wp-new-order-container h3{
@@ -1684,8 +1698,8 @@
 		position: absolute;
 		top: 3%;
 		left: 3%;
-		font-size: 0.9em;
-		color: #777;
+		font-size: 1em;
+		color: #555;
 	}
 
 	#new-order-close{
@@ -1698,7 +1712,7 @@
 
 	.wp-new-order{
 		position: absolute;
-		width: 46%;
+		width: 183px;
 		height: 82%;
 		padding: 0 2%;
 		background-color: transparent;
@@ -1715,7 +1729,7 @@
 		width: 100%;
 		font-weight: bold;
 		font-size: 0.8em;
-		padding: 1px 0;
+		padding: 2px 0;
 		margin-top: 6px;
 		border-radius: 3px;
 		background-color: #fff;
@@ -1757,7 +1771,7 @@
 		width: 100%;
 		font-size: 0.8em;
 		margin: 4% 0;
-		padding: 2px 6px 2px 32px;
+		padding: 3px 6px 3px 32px;
 		border-radius: 3px;
 		color: #555;
 		border: 2px solid #ddd;
@@ -1806,13 +1820,13 @@
 
 	.new-order-input textarea{
 		resize: none;
-		height: 30px;
-		max-height: 30px;
+		height: 29px;
+		max-height: 29px;
 	}
 
 	.new-order-input input.focus, .new-order-input textarea.focus{
 		border-color: #2EC5FF;
-		padding: 2px 6px 2px 8px;
+		padding: 3px 6px 3px 8px;
 	}
 
 	.new-order-input i.focus{
@@ -1854,7 +1868,7 @@
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		height: 37%;
+		height: 36.5%;
 		padding: 3% 1% 1% 4%;
 		margin: 0;
 		background-color: white;
@@ -1862,13 +1876,8 @@
 		box-sizing: border-box;
 	}
 
-	.wp-information-detail-container.blur{
-		filter: blur(8px);
-		transition: 0.8s ease;
-	}
-
 	.wp-information-detail-container h2{
-		font-size: 0.8em;
+		font-size: 1em;
 	}
 
 	.wp-information-detail{
@@ -1886,7 +1895,7 @@
 	.wp-customer-phone-container, .wp-customer-id-container, .wp-customer-address-container{
 		display: flex;
 		align-items: center;
-		margin: 2.5% 0;
+		margin: 2.6% 0;
 	}
 
 	#customer-phone-icon, #customer-id-icon, #customer-address-icon{
@@ -1929,7 +1938,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		width: 49.5%;
-		height: 49%;
+		height: 34%;
 		margin: 1% 0 0 0;
 		padding: 0;
 		background-color: white;
@@ -1937,20 +1946,15 @@
 		box-sizing: border-box;
 	}
 
-	.wp-exchange-rate-container.blur{
-		filter: blur(8px);
-		transition: 0.8s ease;
-	}
-
 	.wp-exchange-rate-container h2{
-		font-size: 0.8em;
-		padding: 6% 8% 0;
-		margin-bottom: 2%;
+		font-size: 1em;
+		padding: 4% 6% 0;
+		margin-bottom: 6%;
 	}
 
 	.wp-exchange-rate{
 		width: 100%;
-		padding: 0 12%;
+		padding: 0 20%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -1989,7 +1993,7 @@
 	.wp-exchange-rate-container img{
 		display: block;
 		width: 100%;
-		height: 40%;
+		height: 38%;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
 	}
