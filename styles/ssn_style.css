@@ -310,6 +310,19 @@
   background-color: #E74C3C;
 }
 /* End Chat Box */
+
+.ssn_loader{
+  width: 100%;
+  height: calc(100% - 48px);
+  position: fixed;
+  left: 0;
+  top: 48px;
+  background: #ffffffd6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
 /* End Mobile View */
 
 
@@ -419,6 +432,19 @@
   }
   #uploadForm{
     height: 6em;
+  }
+
+  .ssn_loader{
+    width: 70%;
+    height: calc(100% - 64px);
+    position: fixed;
+    left: 15%;
+    top: 64px;
+    background: #ffffffd6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
   }
 /* End Chat Box */
 }
@@ -605,6 +631,19 @@
     font-size: 0.75em;
     padding: 9px 9px;
   }
+
+  .ssn_loader{
+    width: 100%;
+    height: calc(100% - 52px);
+    position: fixed;
+    left: 0;
+    top: 52px;
+    background: #ffffffd6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+  }
 }
 .hide{
   display: none;
@@ -641,7 +680,7 @@
 /* for Loading icon */
 
 .triple-spinner {
-  display: block;
+  display: inline-block;
   position: absolute;
   z-index: 9999;
   width: 50px;
@@ -671,15 +710,5 @@
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-}
-.ssn_loader{
-  width: 70%;
-  height: 100%;
-  position: fixed;
-  background: #ffffffd6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 99;
 }
 /* end of loading icon */

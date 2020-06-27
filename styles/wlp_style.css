@@ -691,6 +691,18 @@
 		display: none;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
+.ssn_loader{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #ffffffd6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
 /* End Mobile View */
 
 
@@ -1221,7 +1233,7 @@
 	}
 
 	.wp-information-detail-container h2{
-		font-size: 0.8em;
+		font-size: 0.9em;
 	}
 
 	.wp-information-detail{
@@ -1296,7 +1308,7 @@
 	}
 
 	.wp-exchange-rate-container h2{
-		font-size: 0.8em;
+		font-size: 0.9em;
 		padding: 6% 8% 0;
 		margin-bottom: 6%;
 	}
@@ -1345,6 +1357,18 @@
 		height: 36%;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
+.ssn_loader{
+  width: calc(100% - 167px);
+  height: 100%;
+  position: fixed;
+  left: 167px;
+  top: 0;
+  background: #ffffffd6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
 	}
 /* End Tablet View */
 
@@ -1508,7 +1532,8 @@
 /*HOME PAGE*/
 	.wp-user-name{
 		display: block;
-		color: #999;
+		color: #777;
+		font-size: 1.2em;
 		font-weight: bold;
 		display: flex;
 		align-items: center;
@@ -1516,8 +1541,8 @@
 	}
 
 	.wp-user-name i{
-		color: #c1c1c1;
-		font-size: 2.2em;
+		color: #a1a1a1;
+		font-size: 2em;
 		margin-right: 20px;
 	}
 
@@ -1602,15 +1627,15 @@
 		justify-content: space-between;
 		align-items: flex-start;
 		width: 49.5%;
-		height: 44%;
+		height: 46%;
 		padding: 2% 3%;
 		box-shadow: 0 0 4px #ccc;
 		box-sizing: border-box;
 	}
 
 	.wp-customer-details h2{
-		font-size: 0.8em;
-		margin-bottom: 0.8em;
+		font-size: 0.9em;
+		margin-bottom: 0.6em;
 	}
 
 	.wp-user-balance, .wp-user-point{
@@ -1639,8 +1664,8 @@
 
 	.wp-wallet-icon, .wp-membership-icon{
 		display: inline-block;
-		width: 36px;
-		height: 36px;
+		width: 38px;
+		height: 38px;
 		border-radius: 50%;
 		margin-bottom: 0;
 		margin-right: 1.2em;
@@ -1662,7 +1687,7 @@
 	#user-balance, #user-point{
 		display: flex;
 		align-items: center;
-		font-size: 0.7em;
+		font-size: 0.8em;
 		color: #555;
 	}
 
@@ -1938,7 +1963,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		width: 49.5%;
-		height: 34%;
+		height: 32%;
 		margin: 1% 0 0 0;
 		padding: 0;
 		background-color: white;
@@ -1996,5 +2021,17 @@
 		height: 38%;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
+	.ssn_loader{
+	  width: 70%;
+	  height: 100%;
+	  position: fixed;
+	  left: 167px;
+	  top: 0;
+	  background: #ffffffd6;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  z-index: 99;
+	}
 	}
 /* End Desktop View */

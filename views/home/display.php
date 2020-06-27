@@ -2,7 +2,7 @@
 displayPageHeader('Home | ' . WEB_NAME);
 displayHomeNavigation();
  ?>
- <div class="ssn_loader">
+  <div class="ssn_loader">
     <div class="triple-spinner"></div>
   </div>
  <section class="wp-home-page-container">
