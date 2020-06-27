@@ -10,15 +10,13 @@ $(document).on('click', '.order-view-btn-js', function(){
   if($('.noti-js', parent).is(':visible'))
     $('.noti-js', parent).hide();
 })
+$(document).on('click', '.order-detail-cancel-btn-js', function(){
+  $('.order-detail-js').hide();
+})
 
 $(document).on('click', '.edit-order-js', function(){
   if(!($('.order-form-wrap-js').length))
     $(buildOrderForm(true)).appendTo('.order-wrap-js');
-})
-
-$(document).on('click', '.order-from-btn-js', function(){
-  if(!($('.order-form-wrap-js').length))
-    $(buildOrderForm(false)).appendTo('.order-wrap-js');
 })
 
 $(document).on('click', '.order-form-cancel-js', function(){
@@ -64,7 +62,7 @@ function requestOrderVoucher(id)
     success: function(order){
       if(typeof(order) === 'object')
       {
-        $('.order-detail-js').html(buildOrderVoucher(order));
+        $('.order-detail-js').html(buildOrderVoucher(order)).show();
         tempOrder = order;
       }
     },
@@ -89,7 +87,7 @@ function requestUpdateOrdersList()
           $('.order-status-js', list).remove();
           if(($('.order-complete-amount-js').length))
             $('.order-complete-amount-js', list).remove();
-          $('.product-link-js', list).append(checkOrderStatus(order));
+          $('.order-status-wrap', list).append(checkOrderStatus(order));
         }
     },
     dataType: 'json'
@@ -102,7 +100,7 @@ function buildOrdersList(order)
   list += '<li id="order-' + order.id + '-js" class="hk-order-list">';
   list += '<span class="noti-js"><i class="fa fa-exclamation-circle"></i></span>';
   list += '<div class="product-link-js"><a href="' + order.product_link + '" target="_blank">Product link</a></div>';
-  list += checkOrderStatus(order);
+  list += '<div class="order-status-wrap">'+ checkOrderStatus(order) +'</div>';
   list += '<div class="hk-order-date">' + order.date + '</div>';
   list += '<button type="button" class="order-view-btn-js" data-id="' + order.id + '">View</button>';
   list += '</li>';
@@ -113,41 +111,74 @@ function buildOrderVoucher(order)
 {
   var voucher = '';
   voucher += '<div class="order-info">';
-  voucher += (Number(order.status) < 2) ? '<button class="edit-order-js">Edit</button>' : '';
+  voucher += '<button class="order-detail-cancel-btn-js"><i class="fas fa-times"></i></button>';
+  voucher += (Number(order.status) < 2) ? '<button class="edit-order-js" title="Edit order"><i class="fas fa-pen"></i></button>' : '';
   voucher += checkOrderStatus(order);
-  voucher += '<div class=""><span>Order no:</span> <span>' + order.order_number + '</span></div>';
-  voucher += '<div class=""><span>Remark:</span> <span>' + order.remark + '</span></div>';
-  voucher += '<div class=""><span>Product Cupon Code:</span> <span>' + order.cupon_code + '</span></div>';
-  voucher += '<div class="">' + order.date + '</div>';
+  voucher += '<div class=""><span class="hk-label">Order no:</span> <span>' + order.order_number + '</span></div>';
+  voucher += '<div class=""><span class="hk-label">Product Cupon Code:</span> <span>' + order.cupon_code + '</span></div>';
+  voucher += '<div class="hk-remark"><span class="hk-label">Remark:</span> <span>' + order.remark + '</span></div>';
+  voucher += '<div class="hk-order-date">' + order.date + '</div>';
   voucher += '</div>';
-  voucher += '<div class="order-voucher">';
-  voucher += '<div class=""><span><a href="' + order.product_link + '" target="_blank">Product Link</a></span> <span>[' + order.qty + ']</span> <span>$' + order.product_total_price + '</span></div>';
-  voucher += '<div class=""><span>US Tax</span> <span>$' + order.us_tax + '</span></div>';
-  voucher += '<div class=""><span>Shipping Cost</span> <span>$' + order.shippig_cost + '</span></div>';
-  voucher += '<div class=""><span>First Payment</span> <span>$' + order.first_payment_dollar + '</span></div>';
-  voucher += '<div class="">';
-  voucher += (Number(order.status) > 1) ? '<span>Paid</span>' : '';
-  voucher += ' <span>MMK' + order.first_payment_mmk + '</span>';
-  voucher += '</div>';
-  voucher += '<div class=""><span>Commission</span> <span>[' + order.commission_rate + '%]</span> <span>$' + order.commission_amount + '</span></div>';
-  voucher += '<div class=""><span>Weight</span> <span>[' + order.weight + 'lb]</span> <span>$' + order.total_weight_cost + '</span></div>';
-  voucher += '<div class=""><span>MM Tax</span><span>';
-  voucher += ((Number(order.mm_tax)) == 0) ? 'Free' : '$' + order.mm_tax;
-  voucher += '</span> <span>$' + order.mm_tax_amount + '</span></div>';
-  voucher += '<div class=""><span>Second Payment</span> <span>$' + order.second_payment_dollar + '</span></div>';
-  voucher += '<div class="">';
-  voucher += (Number(order.status) > 3) ? '<span>Paid</span>' : '';
-  voucher += ' <span>MMK' + order.second_payment_mmk + '</span>';
-  voucher += '</div>';
-  voucher += '<div class="">';
-  voucher += ' <span>Delivery Fee</span>';
-  voucher += (Number(order.status) == 7) ? '<span>Paid</span>' : '';
-  voucher += ' <span>MMK' + order.delivery_fee + '</span></div>';
-  voucher += '<div class="">';
+
+  voucher += '<div class="hk-order-voucher">';
+  voucher += '<table class="hk-first-payment-tb">';
+  voucher += '<thead><tr>';
+  voucher += '<th>Description</th> <th>Quantity</th> <th>Total&nbsp;Price</th>';
+  voucher += '</tr></thead>';
+  voucher += '<tbody><tr>';
+  voucher += '<td><span class="product-link-js"><a href="' + order.product_link + '" target="_blank">Product Link</a></span></td> <td>[' + order.qty + ']</td> <td>$&nbsp;' + order.product_total_price + '</td>';
+  voucher += '</tr>';
+  voucher += '<tr>';
+  voucher += '<td>US Tax</td> <td>&nbsp;</td> <td>$&nbsp;' + order.us_tax + '</td>';
+  voucher += '</tr>';
+  voucher += '<tr>';
+  voucher += '<td>Shipping Cost</td> <td>&nbsp;</td> <td>$&nbsp;' + order.shippig_cost + '</td>';
+  voucher += '</tr></tbody>';
+  voucher += '<tfoot><tr>';
+  voucher += '<td>First Payment</td> <td>&nbsp;</td> <td>$&nbsp;' + order.first_payment_dollar + '</td>';
+  voucher += '</tr>';
+  voucher += '<tr>';
+  voucher += '<td>&nbsp;</td> <td>';
+  voucher += (Number(order.status) > 1) ? 'Paid' : '&nbsp;';
+  voucher += '</td> <td>MMK&nbsp;' + order.first_payment_mmk + '</td>';
+  voucher += '</tr></tfoot>';
+  voucher += '</table>';
+
+  voucher += '<table class="hk-second-payment-tb">';
+  voucher += '<tbody><tr>';
+  voucher += '<td>Commission</td> <td>[' + order.commission_rate + '&nbsp%]</td> <td>$&nbsp;' + order.commission_amount + '</td>';
+  voucher += '</tr>';
+  voucher += '<tr>';
+  voucher += '<td>Weight</td> <td>[' + order.weight + '&nbsp;lb]</td> <td>$&nbsp;' + order.total_weight_cost + '</td>';
+  voucher += '</tr>';
+  voucher += '<tr>';
+  voucher += '<td>MM Tax</td> <td>';
+  voucher += ((Number(order.mm_tax)) == 0) ? 'Free' : '$&nbsp;' + order.mm_tax;
+  voucher += '</td> <td>$&nbsp;' + order.mm_tax_amount + '</td>';
+  voucher += '</tr></tbody>';
+  voucher += '<tfoot><tr>';
+  voucher += '<td>Second Payment</td> <td>&nbsp;</td> <td>$&nbsp;' + order.second_payment_dollar + '</td>';
+  voucher += '</tr>';
+  voucher += '<tr>';
+  voucher += '<td>&nbsp;</td> <td>';
+  voucher += (Number(order.status) > 3) ? 'Paid' : '&nbsp;';
+  voucher += '</td> <td>MMK' + order.second_payment_mmk + '</td>';
+  voucher += '</tr></tfoot>';
+  voucher += '</table>';
+
+  voucher += '<table class="hk-third-payment-tb">';
+  voucher += '<tbody><tr>';
+  voucher += '<td>Delivery Fee</td> <td>';
+  voucher += (Number(order.status) == 7) ? 'Paid' : '&nbsp;';
+  voucher += '</td> <td>MMK&nbsp;' + order.delivery_fee + '</td>';
+  voucher += '</tr></tbody>';
+  voucher += '</table>';
+
+  voucher += '<div class="voucher-btn-gp">';
   voucher += (Number(order.status) == 1) ? '<button type="button" class="order-confirm-btn-js" data-id="'+ order.id + '">Confirm</button>' : '';
   voucher += (Number(order.status) < 2) ? '<button type="button" class="order-cancel-btn-js" data-id="'+ order.id + '">Cancel</button>' : '';
   voucher += '</div>';
-
+  voucher += '</div>'
   return voucher;
 }
 
@@ -157,30 +188,27 @@ function buildOrderForm(is_edit)
   if(is_edit){
     form += '<div class="order-form-wrap-js">';
     form += '<button class="order-form-cancel-js">X</button>';
-    form += '<h2>Update Order</h2>';
-    form += '<form class="" action="' + PAGE_URL + '/order/update_order/" method="post">';
+    form += '<div class="hk-order-inner-form-wrap">'
+    form += '<div class="wp-new-order-header"><h2>Update Order</h2><i class="fas fa-shapes"></i></div>';
+    form += '<form action="' + PAGE_URL + '/order/update_order/" method="post">';
     form += '<input type="hidden" name="id" value="' + tempOrder.id + '">';
-    form += '<input type="text" name="product_link" placeholder="Product Link" value="' + tempOrder.product_link + '">';
+    form += '<div class="new-order-input new-order-textarea"><i class="fas fa-link"></i>';
+    form += '<textarea name="product_link" placeholder="Product Link">' + tempOrder.product_link + '</textarea>';
+    form += '<span>Product Link</span></div>';
+    form += '<div class="new-order-input"><i class="fas fa-shapes"></i>';
     form += '<input type="number" name="quantity" placeholder="Quantity" value="' + tempOrder.qty + '">';
+    form += '<span>Quantity</span></div>';
+    form += '<div class="new-order-input"><i class="fas fa-money-bill-alt"></i>';
     form += '<input type="text" name="cupon_code" placeholder="Cupon_code" value="' + tempOrder.cupon_code + '">';
+    form += '<span>Coupon code</span></div>';
+    form += '<div class="new-order-input new-order-textarea"><i class="fas fa-pencil-alt"></i>';
     form += '<textarea name="remark" placeholder="Remark">' + tempOrder.remark + '</textarea>';
+    form += '<span>Remark</span></div>';
+    form += '<div class="new-order-input"><i class="fas fa-hand-holding-usd"></i>';
     form += '<input type="number" name="price" placeholder="Unit Price ($)" value="' + tempOrder.product_price + '">';
+    form += '<span>Unit Price ($)</span></div>';
     form += '<input type="submit" value="UPDATE">';
-    form += '</form>';
-    form += '</div>';
-  }
-  else {
-    form += '<div class="order-form-wrap-js">';
-    form += '<button class="order-form-cancel-js">X</button>';
-    form += '<h2>Add New Order</h2>';
-    form += '<form class="" action="' + PAGE_URL + '/order/add_new_order/" method="post">';
-    form += '<input type="text" name="product_link" placeholder="Product Link">';
-    form += '<input type="number" name="quantity" placeholder="Quantity">';
-    form += '<input type="text" name="cupon_code" placeholder="Cupon_code">';
-    form += '<textarea name="remark" placeholder="Remark"></textarea>';
-    form += '<input type="number" name="price" placeholder="Unit Price ($)">';
-    form += '<input type="submit" value="Add">';
-    form += '</form>';
+    form += '</form></div>';
     form += '</div>';
   }
   return form;
@@ -214,7 +242,7 @@ function checkOrderStatus(order)
       break;
     case '7':
       list += '<div class="order-status-js complete-order">Complete</div>';
-      list += '<div class="order-complete-amount-js">' + order.amount + 'MMK</div>';
+      list += '<div class="order-complete-amount-js">' + order.amount + '<span>&nbsp;MMK<span></div>';
       break;
     case '8':
       list += '<div class="order-status-js cancel-order">Cancel</div>';

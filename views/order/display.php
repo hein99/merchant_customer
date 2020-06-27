@@ -6,7 +6,6 @@ displayOtherNavigation('order');
    <div class="triple-spinner"></div>
  </div>
  <section class="order-wrap-js">
-   <button type="button" class="order-from-btn-js">New Order</button>
    <ul class="orders-list-js">
 
    </ul>
