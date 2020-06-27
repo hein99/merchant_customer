@@ -32,11 +32,18 @@ function displayHomeNavigation()
         <img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/><span>The Best Shop</span>
       </a>
     </div>
-    <div class="wp-header-logout">
-      <a href="<?php echo URL ?>/settings/logout">
-        <span id="wp-logout">Log out</span>
-        <i class="fas fa-sign-out-alt"></i>
-      </a>
+    <div class="wp-contact-logout-container">
+      <div class="wp-contact-admin">
+        <a href="<?php echo URL ?>/conversation/">
+         <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="">
+        </a>
+      </div>
+      <div class="wp-header-logout">
+        <a href="<?php echo URL ?>/settings/logout">
+          <span id="wp-logout">Log out</span>
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </div>
     </div>
   </header>
 
