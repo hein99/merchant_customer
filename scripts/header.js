@@ -25,7 +25,7 @@ $(document).ready(function(){
       url: PAGE_URL+'/conversation/get_new_messages_count',
       method:"POST",
       success:function(data){
-        var msg_count = $('#messages_count').text();
+        var msg_count = $('.messages_count').text();
         if(msg_count != data){
           $('.messages_count').html(data);
           $('.sound').html('<audio controls autoplay id="chatAudio"><source src="'+PAGE_FILE_URL+'/logos/you-wouldnt-believe.ogg" type="audio/ogg"></audio>');
