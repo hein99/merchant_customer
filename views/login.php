@@ -68,7 +68,7 @@ function displayLoginForm($error_messages, $customer_account)
     }
     ?>
     </span>
-    <form class="" action="<?php echo URL ?>/views/login.php" method="post">
+    <form class="" action="<?php echo FILE_URL ?>/views/login.php" method="post">
       <input type="hidden" name="action" value="login">
       <div class="input">
         <span><i class="fas fa-phone"></i></span>
@@ -106,7 +106,7 @@ function displayForgotPasswordForm($msg)
     }
     ?>
     </span>
-    <form class="" action="<?php echo URL ?>/views/login.php" method="post">
+    <form class="" action="<?php echo FILE_URL ?>/views/login.php" method="post">
       <input type="hidden" name="action" value="forgot_password">
       <div class="error_message"></div>
       <div class="<?php echo ($msg == 'sent') ? 'hide' : 'input' ?>">
@@ -117,7 +117,7 @@ function displayForgotPasswordForm($msg)
         <input type="submit" name="" value="Send" id="send_number_request">
       </div>
       <div class="input back-login">
-        <a href="<?php echo URL ?>/views/login.php"><i class="fas fa-angle-left"></i> Back to Login</a>
+        <a href="<?php echo FILE_URL ?>/views/login.php"><i class="fas fa-angle-left"></i> Back to Login</a>
       </div>
     </form>
   </div>

@@ -100,6 +100,6 @@ function changeCustomerPassword(){
 function logout()
 {
   $_SESSION['merchant_customer_account'] = '';
-  header('location: '. URL . '/views/login.php');
+  header('location: '. FILE_URL . '/views/login.php');
 }
  ?>

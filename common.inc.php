@@ -14,7 +14,7 @@ function checkAuthentication()
   if(!isset($_SESSION['merchant_customer_account']) or !$_SESSION['merchant_customer_account'] or !$_SESSION['merchant_customer_account']->getValueEncoded('id') or !$_SESSION['merchant_customer_account'] = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValue('id')))
   {
     $_SESSION['merchant_customer_account'] = '';
-    header('location: '.URL. '/views/login.php');
+    header('location: '.FILE_URL. '/views/login.php');
     exit();
   }
 }
