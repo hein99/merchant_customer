@@ -36,7 +36,7 @@ function displayHomeNavigation()
       <div class="wp-contact-admin">
         <a href="<?php echo URL ?>/conversation/">
          <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="">
-         <span class="messages_count"></span>
+         <span id="messages_count"></span>
         </a>
       </div>
       <div class="wp-header-logout">
