@@ -165,10 +165,12 @@ displayHomeNavigation();
      <a href="<?php echo URL ?>/conversation/">
        <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="">
        <h2>Contact Admin</h2>
-       <span class="wp-msg-count"><span id="messages_count"></span></span>
+       <span class="wp-msg-count"><span class="msg_count"></span></span>
      </a>
    </div>
+   <div class="sound">
 
+   </div>
 
   </div>
  </section>
