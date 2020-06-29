@@ -437,9 +437,11 @@ function updateOrderStatus()
         $customer_id = $_SESSION['merchant_customer_account']->getValue('id');
         $customer = UsersAccount::getCustomerAccountById($customer_id);
         $balance = $customer->getValue('balance');
+        $point = $customer->getValue('point');
         $sub_amount = calculateMMK(calculateFirstPaymentDollar($checkOrder), $checkOrder->getValue('first_exchange_rate'));
-        $result = $balance - $sub_amount;
-        if( $result > 0.0)
+        $result_balance = $balance - $sub_amount;
+        $result_point = $point + $sub_amount;
+        if( $result_balance > 0.0)
         {
           $customer_statement = new CustomerStatement(array(
             'customer_id' => $customer_id,
@@ -447,14 +449,13 @@ function updateOrderStatus()
             'about' => 'First Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
           ));
           $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 0);
-          UsersAccount::updateCustomerBalance($customer_id, $result);
+          UsersAccount::updateCustomerBalanceAndPoint($customer_id, $result_balance, $result_point);
           $order->updateOrderStatus();
         }
       }
       else {
         $order->updateOrderStatus();
       }
-
       echo 'success';
     }
 

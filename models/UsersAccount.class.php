@@ -149,6 +149,24 @@ class UsersAccount extends DataObject
       die("Query failed: ". $e->getMessage());
     }
   }
+
+  public static function updateCustomerBalanceAndPoint($id, $balance, $point)
+  {
+    $conn = parent::connect();
+    $sql = 'UPDATE ' . TBL_USERS_ACCOUNT .' SET balance = :balance, point = :point WHERE id = :id';
+
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $id, PDO::PARAM_INT);
+      $st->bindValue(':balance', $balance);
+      $st->bindValue(':point', $point, PDO::PARAM_INT);
+      $st->execute();
+      parent::disconnect($conn);
+    } catch (PDOException $e) {
+      parent::disconnect($conn);
+      die("Query failed: ". $e->getMessage());
+    }
+  }
 }
 
 ?>
