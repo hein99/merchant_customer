@@ -652,6 +652,9 @@
     z-index: 99;
   }
 }
+.sound{
+  display: none;
+}
 .hide{
   display: none;
 }

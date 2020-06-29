@@ -1,7 +1,6 @@
 $(window).on('load', function() {
   $(".ssn_loader").fadeOut("slow");;
 });
-
 $(document).ready(function(){
 
   getNewMessagesCount();
@@ -26,7 +25,11 @@ $(document).ready(function(){
       url: PAGE_URL+'/conversation/get_new_messages_count',
       method:"POST",
       success:function(data){
-        $('#messages_count').html(data);
+        var msg_count = $('#messages_count').text();
+        if(msg_count != data){
+          $('#messages_count').html(data);
+          $('.sound').html('<audio controls autoplay id="chatAudio"><source src="'+PAGE_FILE_URL+'/logos/you-wouldnt-believe.ogg" type="audio/ogg"></audio>');
+        }
       }
     })
   }
@@ -50,12 +53,12 @@ $(document).ready(function(){
   $(document).on('focus', '.new-order-input input, .new-order-textarea textarea', function(){
     $(this).addClass('focus');
     $(this).parent().find('i').addClass('focus');
-  });   
+  });
 
   if ($(window).width() < 480) {
     $(document).on('blur', '.new-order-input input, .new-order-textarea textarea', function(){
       if($(this).val() == "")
-        $(this).removeClass('focus'); 
+        $(this).removeClass('focus');
     });
   }else{
     $(document).on('blur', '.new-order-input input, .new-order-textarea textarea', function(){

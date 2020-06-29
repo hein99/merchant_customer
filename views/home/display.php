@@ -168,7 +168,9 @@ displayHomeNavigation();
        <span class="wp-msg-count"><span id="messages_count"></span></span>
      </a>
    </div>
+   <div class="sound">
 
+   </div>
 
   </div>
  </section>
