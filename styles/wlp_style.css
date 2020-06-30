@@ -154,7 +154,7 @@
 	}
 
 	.wp-other-page-nav{
-		width: 84%;
+		width: 82%;
 		height: 100%;
 		pointer-events: none;
 		transform: translateX(-100%);
@@ -437,7 +437,6 @@
 		font-weight: bold;
 		font-size: 0.9em;
 		padding: 4px 0;
-		margin-top: 12px;
 		border-radius: 5px;
 		background-color: #2EC5FF;
 		border: 2px solid #2EC5FF;
@@ -459,9 +458,16 @@
 	}
 
 	.new-order-input{
+		position: relative;
 		width: 100%;
+		height: 38px;
+		margin: 8% 0;
 		display: flex;
 		align-items: center;
+	}
+
+	.new-order-textarea{
+		height: 52px;
 	}
 
 	.new-order-input i{
@@ -470,8 +476,8 @@
 
 	.new-order-input input, .new-order-input textarea{
 		width: 100%;
+		height: 100%;
 		font-size: 0.9em;
-		margin: 4% 0;
 		padding: 6px 12px;
 		border-radius: 5px;
 		color: #555;
@@ -531,26 +537,28 @@
 	.new-order-input span{
 		display: block;
 		position: absolute;
-		transform: translate(8px, 0);
-		padding: 4px 6px;
+		top: 2px;
+		left: 2px;
+		width: calc(100% - 4px);
+		height: calc(100% - 4px);
+		transform: translate(0, 0);
+		padding: 6px 12px;
+		display: flex;
+		align-items: center;
 		font-size: 0.9em;
 		color: #999;
 		background-color: white;
 		pointer-events: none;
+		box-sizing: border-box;
 		transition: 0.3s ease;
 	}
-	.new-order-input input.focus + span{
-		transform: translate(8px, -20px);
-		font-size: 0.8em;
-		color: #2EC5FF;
-	}
 
-	.new-order-textarea span{
-		transform: translate(8px, 0);
-	}
-
+	.new-order-input input.focus + span,
 	.new-order-textarea textarea.focus + span{
-		transform: translate(8px, -26px);
+		width: auto;
+		height: auto;
+		padding: 2px 6px;
+		transform: translate(8px, -12px);
 		font-size: 0.8em;
 		color: #2EC5FF;
 	}
@@ -707,6 +715,23 @@
 		display: none;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
+/*ORDER PAGE*/
+	.wp-order-date-and-detail{
+		position: absolute;
+		bottom: 1em;
+		left: 1em;
+		width: calc(100% - 2em);
+		min-height: 24%;
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+	}
+
+	.wp-order-detail-container{
+		width: 100%;
+		height: 100%;
+	}
+/*------------------------------------------- END OF ORDER PAGE ------------------------------------*/
 /* End Mobile View */
 
 
@@ -1097,7 +1122,6 @@
 		font-weight: bold;
 		font-size: 0.9em;
 		padding: 3px 0;
-		margin-top: 6px;
 		border-radius: 3px;
 		background-color: #2EC5FF;
 		border: 2px solid #2EC5FF;
@@ -1122,6 +1146,8 @@
 	.new-order-input{
 		position: relative;
 		width: 100%;
+		height: 34px;
+		margin: 4% 0;
 		display: flex;
 		align-items: center;
 	}
@@ -1365,6 +1391,8 @@
 		height: 36%;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
+/*ORDER PAGE*/
+/*------------------------------------------- END OF ORDER PAGE ------------------------------------*/
 	}
 /* End Tablet View */
 
@@ -1755,7 +1783,6 @@
 		font-weight: bold;
 		font-size: 0.8em;
 		padding: 2px 0;
-		margin-top: 6px;
 		border-radius: 3px;
 		background-color: #fff;
 		border: 2px solid #2EC5FF;
@@ -1779,6 +1806,8 @@
 	.new-order-input{
 		position: relative;
 		width: 100%;
+		height: 32px;
+		margin: 6% 0;
 		display: flex;
 		align-items: center;
 	}
@@ -1845,8 +1874,8 @@
 
 	.new-order-input textarea{
 		resize: none;
-		height: 29px;
-		max-height: 29px;
+		height: 32px;
+		max-height: 32px;
 	}
 
 	.new-order-input input.focus, .new-order-input textarea.focus{
@@ -2021,5 +2050,7 @@
 		height: 38%;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
+/*ORDER PAGE*/
+/*------------------------------------------- END OF ORDER PAGE ------------------------------------*/
 	}
 /* End Desktop View */
