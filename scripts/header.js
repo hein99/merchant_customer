@@ -33,7 +33,7 @@ $(document).ready(function(){
         else if(msg_count != data){
           $('#messages_count').html(data);
           $('.msg_count').html(data);
-          $('.sound').html('<audio controls autoplay id="chatAudio"><source src="'+PAGE_FILE_URL+'/logos/you-wouldnt-believe.ogg" type="audio/ogg"></audio>');
+          $('.sound').html('<audio controls autoplay id="chatAudio"><source src="'+PAGE_FILE_URL+'/logos/you-wouldnt-believe.ogg" type="audio/ogg"><source src="'+PAGE_FILE_URL+'/logos/you-wouldnt-believe.mp3" type="audio/mpeg"><source src="'+PAGE_FILE_URL+'/logos/you-wouldnt-believe.m4r" type="audio/mpeg"></audio>');
         }
       }
     })
