@@ -47,7 +47,7 @@ displayHomeNavigation();
       <div>
        <h2>Balance Left On My Account</h2>
        <span id="user-balance">
-        <span><?php echo $customer_account->getValueEncoded('balance') ?></span> &nbsp;MMK
+        <span><?php echo number_format($customer_account->getValueEncoded('balance')) ?></span> &nbsp;MMK
        </span>
       </div>
      </div>
@@ -59,7 +59,7 @@ displayHomeNavigation();
       <div>
        <h2>Points I Have</h2>
        <span id="user-point">
-        <span><?php echo $customer_account->getValueEncoded('point') ?></span> &nbsp;Points
+        <span><?php echo number_format($customer_account->getValueEncoded('point')) ?></span> &nbsp;Points
        </span>
       </div>
      </div>
