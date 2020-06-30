@@ -35,7 +35,7 @@ function displayHomeNavigation()
     <div class="wp-contact-logout-container">
       <div class="wp-contact-admin">
         <a href="<?php echo URL ?>/conversation/">
-         <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="">
+          <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="">
         </a>
       </div>
       <div class="wp-header-logout">
