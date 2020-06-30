@@ -101,8 +101,8 @@ function buildOrdersList(order)
   list += '<span class="noti-js"><i class="fa fa-exclamation-circle"></i></span>';
   list += '<div class="product-link-js"><a href="' + order.product_link + '" target="_blank">Product link</a></div>';
   list += '<div class="order-status-wrap">'+ checkOrderStatus(order) +'</div>';
-  list += '<div class="hk-order-date">' + order.date + '</div>';
-  list += '<button type="button" class="order-view-btn-js" data-id="' + order.id + '">View</button>';
+  list += '<div class="wp-order-date-and-detail"><div class="hk-order-date">' + order.date + '</div>';
+  list += '<button type="button" class="order-view-btn-js" data-id="' + order.id + '">View</button></div>';
   list += '</li>';
   return list;
 }
@@ -110,7 +110,7 @@ function buildOrdersList(order)
 function buildOrderVoucher(order)
 {
   var voucher = '';
-  voucher += '<div class="order-info">';
+  voucher += '<div class="wp-order-detail-container"><div class="order-info">';
   voucher += '<button class="order-detail-cancel-btn-js"><i class="fas fa-times"></i></button>';
   voucher += (Number(order.status) < 2) ? '<button class="edit-order-js" title="Edit order"><i class="fas fa-pen"></i></button>' : '';
   voucher += checkOrderStatus(order);
@@ -178,7 +178,7 @@ function buildOrderVoucher(order)
   voucher += (Number(order.status) == 1) ? '<button type="button" class="order-confirm-btn-js" data-id="'+ order.id + '">Confirm</button>' : '';
   voucher += (Number(order.status) < 2) ? '<button type="button" class="order-cancel-btn-js" data-id="'+ order.id + '">Cancel</button>' : '';
   voucher += '</div>';
-  voucher += '</div>'
+  voucher += '</div></div>'
   return voucher;
 }
 
@@ -229,19 +229,19 @@ function checkOrderStatus(order)
       list += '<div class="order-status-js confirm-order">Confirm</div>';
       break;
     case '3':
-      list += '<div class="order-status-js stusw-order">Shipping To US warehouse</div>';
+      list += '<div class="order-status-js stusw-order"><i class="fas fa-plane-departure"></i>Shipping To US warehouse</div>';
       break;
     case '4':
-      list += '<div class="order-status-js atusw-order">Arrived at US warehouse</div>';
+      list += '<div class="order-status-js atusw-order"><i class="fas fa-plane-arrival"></i>Arrived at US warehouse</div>';
       break;
     case '5':
-      list += '<div class="order-status-js stmm-order">Shipping To Myanmar</div>';
+      list += '<div class="order-status-js stmm-order"><i class="fas fa-shipping-fast"></i>Shipping To Myanmar</div>';
       break;
     case '6':
-      list += '<div class="order-status-js atmm-order">Arrived at Myanmar</div>';
+      list += '<div class="order-status-js atmm-order"><i class="fas fa-shipping-fast"></i>Arrived at Myanmar</div>';
       break;
     case '7':
-      list += '<div class="order-status-js complete-order">Complete</div>';
+      list += '<div class="order-status-js complete-order"><i class="fas fa-check-circle"></i>Complete</div>';
       list += '<div class="order-complete-amount-js">' + order.amount + '<span>&nbsp;MMK<span></div>';
       break;
     case '8':

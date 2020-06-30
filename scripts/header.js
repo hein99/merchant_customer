@@ -26,8 +26,11 @@ $(document).ready(function(){
       method:"POST",
       success:function(data){
         var msg_count = $('#messages_count').text();
-        if(msg_count != data){
-          console.log(msg_count);
+        if(data == 0){
+          $('#messages_count').html(data);
+          $('.msg_count').html(data);
+        }
+        else if(msg_count != data){
           $('#messages_count').html(data);
           $('.msg_count').html(data);
           $('.sound').html('<audio controls autoplay id="chatAudio"><source src="'+PAGE_FILE_URL+'/logos/you-wouldnt-believe.ogg" type="audio/ogg"></audio>');
@@ -59,8 +62,9 @@ $(document).ready(function(){
 
   if ($(window).width() < 480) {
     $(document).on('blur', '.new-order-input input, .new-order-textarea textarea', function(){
-      if($(this).val() == "")
+      if($(this).val() == ""){
         $(this).removeClass('focus');
+      }
     });
   }else{
     $(document).on('blur', '.new-order-input input, .new-order-textarea textarea', function(){
@@ -68,4 +72,6 @@ $(document).ready(function(){
       $(this).parent().find('i').removeClass('focus');
     });
   }
+
+
 });
