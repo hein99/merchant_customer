@@ -2,26 +2,31 @@
 .order-wrap-js{
   position: relative;
   width: 100%;
-  height: calc(100vh - 40px);
-  overflow-y: scroll;
+  height: calc(100vh - 48px);
+  padding: 0 6%;
+  background: #f5f5f5;
   box-sizing: border-box;
-  padding: 1vh 4vw;
-  background: #fcfcfc;
   font-family: "Open Sans", sans-serif;
+  overflow: hidden;
 }
 
 .orders-list-js{
-  margin-top: 1em;
+  width: 100%;
+  height: 100%;
+  padding: 1em 0;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .hk-order-list{
   position: relative;
-  height: 120px;
+  height: 95px;
   padding: 1em;
   margin-bottom: 1em;
   background-color: #fff;
   border-radius: 4px;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .noti-js{
@@ -37,6 +42,7 @@
 }
 
 .product-link-js>a{
+  position: relative;
   font-weight: 650;
   color: #575757;
   text-decoration: none;
@@ -45,8 +51,11 @@
 
 .order-status-js{
   display: inline-block;
-  padding: 6px 5px;
+  width: 62px;
+  text-align: center;
+  padding: 6px;
   color: #fff;
+  font-size: 0.9em;
   border-radius: 4px;
 }
 
@@ -62,34 +71,31 @@
   background-image: linear-gradient(135deg, #27AE60, #56EB94, #27AE60);
 }
 
-.stusw-order{
-  color: #27AE60;
-  border: 2px solid #27ae73;
-  font-weight: 700;
-}
-
-.atusw-order{
-  color: #27AE60;
-  border: 2px solid #27ae73;
-  font-weight: 700;
-}
-
-.stmm-order{
-  color: #27AE60;
-  border: 2px solid #27ae73;
-  font-weight: 700;
-}
-
-.atmm-order{
-  color: #27AE60;
-  border: 2px solid #27ae73;
-  font-weight: 700;
+.stusw-order, .atusw-order, .stmm-order, .atmm-order{
+  width: auto;
+  color: #777;
+  padding: 0;
+  font-size: 0.875em;
+  letter-spacing: 0.5px;
+  font-weight: bold;
 }
 
 .complete-order{
-  color: #27AE60;
-  border: 2px solid #27ae73;
+  width: auto;
+  color: #2ecc71;
+  padding: 0;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.order-status-js i{
+  font-size: 1.2em;
+  margin-right: 4px;
+}
+
+.atusw-order i, .atmm-order i{
+  transform: rotateY(180deg);
 }
 
 .cancel-order{
@@ -97,34 +103,33 @@
 }
 
 .order-complete-amount-js{
-  color: #2832C2;
+  color: #333;
   font-weight: 600;
-  font-size: 1.25em;
+  font-size: 1.125em;
+  letter-spacing: 0.5px;
   position: absolute;
-  top: 1em;
+  top: 0.7em;
   right: 1em;
 }
+
 .order-complete-amount-js>span{
-  color: #2222228a;
+  color: #555;
   font-size: 0.75em;
 }
 
-
 .hk-order-date{
-  position: absolute;
-  bottom: 1em;
-  left: 1em;
+  display: inline-block;
   color: #22222299;
+  font-size: 0.9em;
 }
 
 
 .order-view-btn-js{
-  position: absolute;
-  bottom: 1em;
-  right: 1em;
-  padding: 6px 30px;
+  width: 83px;
+  padding: 6px;
   color: #2ec5ff;
   font-size: 0.85em;
+  letter-spacing: 1px;
   background-color: #fff;
   box-sizing: border-box;
   border-radius: 3px;
@@ -132,7 +137,7 @@
 }
 
 .hk-empty-order-detail{
-  display: none;
+  /*display: none;*/
 }
 
 .order-detail-js{
