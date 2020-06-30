@@ -26,8 +26,11 @@ $(document).ready(function(){
       method:"POST",
       success:function(data){
         var msg_count = $('#messages_count').text();
-        if(msg_count != data){
-          console.log(msg_count);
+        if(data == 0){
+          $('#messages_count').html(data);
+          $('.msg_count').html(data);
+        }
+        else if(msg_count != data){
           $('#messages_count').html(data);
           $('.msg_count').html(data);
           $('.sound').html('<audio controls autoplay id="chatAudio"><source src="'+PAGE_FILE_URL+'/logos/you-wouldnt-believe.ogg" type="audio/ogg"></audio>');
