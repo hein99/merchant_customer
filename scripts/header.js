@@ -54,8 +54,9 @@ $(document).ready(function(){
 
   if ($(window).width() < 480) {
     $(document).on('blur', '.new-order-input input, .new-order-textarea textarea', function(){
-      if($(this).val() == "")
-        $(this).removeClass('focus'); 
+      if($(this).val() == ""){
+        $(this).removeClass('focus');
+      }
     });
   }else{
     $(document).on('blur', '.new-order-input input, .new-order-textarea textarea', function(){
@@ -63,4 +64,6 @@ $(document).ready(function(){
       $(this).parent().find('i').removeClass('focus');
     });
   }
+
+
 });
