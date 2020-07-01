@@ -19,7 +19,7 @@ h3  {font-size: 8;} */
   width: 100vw;
   height: calc(100vh - 48px);
   max-height: calc(100vh - 48px);
-  background-color: #fcfcfc;
+  background-color: #f9f9f9;
 }
 
 .ky-total-balance-container{
