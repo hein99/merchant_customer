@@ -503,7 +503,8 @@
   }
 
   .hk-order-inner-form-wrap{
-    height: 365px;
+    width: 64%;
+    height: 375px;
   }
 
   .hk-order-inner-form-wrap .wp-new-order-header{
