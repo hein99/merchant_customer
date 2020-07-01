@@ -39,6 +39,7 @@ $customer_acc = UsersAccount::getCustomerAccountById($_SESSION['merchant_custome
        </table>
      </div>
    </div>
+   <div class="ky-empty-bill-history"><div><i class="fas fa-history"></i><span>Empty Transaction History</span></div></div>
  </section>
 <?php
 displayPageFooter();
