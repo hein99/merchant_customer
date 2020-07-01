@@ -717,23 +717,6 @@
 		display: none;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
-/*ORDER PAGE*/
-	.wp-order-date-and-detail{
-		position: absolute;
-		bottom: 1em;
-		left: 1em;
-		width: calc(100% - 2em);
-		min-height: 24%;
-		display: flex;
-		align-items: flex-end;
-		justify-content: space-between;
-	}
-
-	.wp-order-detail-container{
-		width: 100%;
-		height: 100%;
-	}
-/*------------------------------------------- END OF ORDER PAGE ------------------------------------*/
 /* End Mobile View */
 
 
@@ -1177,42 +1160,42 @@
 		transition: 0.3s ease;
 	}
 
-	.wp-new-order::-webkit-input-placeholder {
+	.wp-new-order::-webkit-input-placeholder, .hk-order-inner-form-wrap::-webkit-input-placeholder{
         color: #999;
     }
 
-    .wp-new-order:-moz-placeholder {
+    .wp-new-order:-moz-placeholder, .hk-order-inner-form-wrap:-moz-placeholder{
         color: #999;
     }
-    .wp-new-order::-moz-placeholder {
-        color: #999;
-    }
-
-    .wp-new-order:-ms-input-placeholder {
+    .wp-new-order::-moz-placeholder, .hk-order-inner-form-wrap::-moz-placeholder{
         color: #999;
     }
 
-    .wp-new-order input::placeholder {
+    .wp-new-order:-ms-input-placeholder, .hk-order-inner-form-wrap:-ms-input-placeholder{
         color: #999;
     }
 
-    .wp-new-order textarea::-webkit-input-placeholder {
+    .wp-new-order input::placeholder, .hk-order-inner-form-wrap input::placeholder{
         color: #999;
     }
 
-    .wp-new-order textarea:-moz-placeholder {
+    .wp-new-order textarea::-webkit-input-placeholder, .hk-order-inner-form-wrap textarea::-webkit-input-placeholder{
         color: #999;
     }
 
-    .wp-new-order textarea::-moz-placeholder {
+    .wp-new-order textarea:-moz-placeholder, .hk-order-inner-form-wrap textarea:-moz-placeholder{
         color: #999;
     }
 
-    .wp-new-order textarea:-ms-input-placeholder {
+    .wp-new-order textarea::-moz-placeholder, .hk-order-inner-form-wrap textarea::-moz-placeholder{
         color: #999;
     }
 
-    .wp-new-order textarea::placeholder {
+    .wp-new-order textarea:-ms-input-placeholder, .hk-order-inner-form-wrap textarea:-ms-input-placeholder{
+        color: #999;
+    }
+
+    .wp-new-order textarea::placeholder, .hk-order-inner-form-wrap textarea::placeholder{
         color: #999;
     }
 
@@ -1395,8 +1378,6 @@
 		height: 36%;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
-/*ORDER PAGE*/
-/*------------------------------------------- END OF ORDER PAGE ------------------------------------*/
 	}
 /* End Tablet View */
 
@@ -1837,42 +1818,42 @@
 		transition: 0.3s ease;
 	}
 
-	.wp-new-order::-webkit-input-placeholder {
+	.wp-new-order::-webkit-input-placeholder, .hk-order-inner-form-wrap::-webkit-input-placeholder{
         color: #999;
     }
 
-    .wp-new-order:-moz-placeholder {
+    .wp-new-order:-moz-placeholder, .hk-order-inner-form-wrap:-moz-placeholder{
         color: #999;
     }
-    .wp-new-order::-moz-placeholder {
-        color: #999;
-    }
-
-    .wp-new-order:-ms-input-placeholder {
+    .wp-new-order::-moz-placeholder, .hk-order-inner-form-wrap::-moz-placeholder{
         color: #999;
     }
 
-    .wp-new-order input::placeholder {
+    .wp-new-order:-ms-input-placeholder, .hk-order-inner-form-wrap:-ms-input-placeholder{
         color: #999;
     }
 
-    .wp-new-order textarea::-webkit-input-placeholder {
+    .wp-new-order input::placeholder, .hk-order-inner-form-wrap input::placeholder{
         color: #999;
     }
 
-    .wp-new-order textarea:-moz-placeholder {
+    .wp-new-order textarea::-webkit-input-placeholder, .hk-order-inner-form-wrap textarea::-webkit-input-placeholder{
         color: #999;
     }
 
-    .wp-new-order textarea::-moz-placeholder {
+    .wp-new-order textarea:-moz-placeholder, .hk-order-inner-form-wrap textarea:-moz-placeholder{
         color: #999;
     }
 
-    .wp-new-order textarea:-ms-input-placeholder {
+    .wp-new-order textarea::-moz-placeholder, .hk-order-inner-form-wrap textarea::-moz-placeholder{
         color: #999;
     }
 
-    .wp-new-order textarea::placeholder {
+    .wp-new-order textarea:-ms-input-placeholder, .hk-order-inner-form-wrap textarea:-ms-input-placeholder{
+        color: #999;
+    }
+
+    .wp-new-order textarea::placeholder, .hk-order-inner-form-wrap textarea::placeholder{
         color: #999;
     }
 
@@ -2054,7 +2035,5 @@
 		height: 38%;
 	}
 /*------------------------------------------- END OF HOME PAGE -------------------------------------*/
-/*ORDER PAGE*/
-/*------------------------------------------- END OF ORDER PAGE ------------------------------------*/
 	}
 /* End Desktop View */
