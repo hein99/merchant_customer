@@ -5,6 +5,7 @@ define('WEB_NAME', 'The Best Shop');
 #page Url
 define('URL', 'http://localhost/merchant_customer');
 define('FILE_URL', 'http://localhost/merchant_customer');
+define('OTHER_FILE_URL', 'http://localhost/merchant');
 
 
 #DB Information
