@@ -47,7 +47,7 @@ displayHomeNavigation();
       <div>
        <h2>Balance Left On My Account</h2>
        <span id="user-balance">
-        <span><?php echo number_format($customer_account->getValueEncoded('balance')) ?></span> &nbsp;MMK
+        <span><?php echo number_format($customer_account->getValueEncoded('balance'), 2) ?></span> &nbsp;MMK
        </span>
       </div>
      </div>
@@ -72,7 +72,7 @@ displayHomeNavigation();
         <div class="wp-new-order-back"></div>
         <div class="wp-new-order">
          <div class="wp-new-order-header"><h2>Add New Order</h2><i class="fas fa-shapes"></i></div>
-         <form class="" action="<?php echo URL ?>/order/add_new_order/" method="post">
+         <form class="order-form-js" action="<?php echo URL ?>/order/add_new_order/" method="post">
            <input type="hidden" name="customer_id" value="<?php echo $customer_account->getValueEncoded('id') ?>">
            <input type="hidden" name="exchange_rate" value="<?php echo $latest_exchange_rate->getValueEncoded('mmk') ?>">
           <div class="new-order-input new-order-textarea">
@@ -97,7 +97,7 @@ displayHomeNavigation();
           </div>
           <div class="new-order-input">
             <i class="fas fa-hand-holding-usd"></i>
-            <input type="number" name="price" placeholder="Unit Price">
+            <input type="text" name="price" placeholder="Unit Price">
             <span>Unit Price ($)</span>
           </div>
            <input type="submit" value="Add">
@@ -174,6 +174,8 @@ displayHomeNavigation();
 
   </div>
  </section>
+ <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
+ <script src="<?php echo FILE_URL ?>/scripts/home.js" charset="utf-8"></script>
 <?php
 displayPageFooter();
 ?>

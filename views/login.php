@@ -68,7 +68,7 @@ function displayLoginForm($error_messages, $customer_account)
     }
     ?>
     </span>
-    <form class="" action="<?php echo FILE_URL ?>/views/login.php" method="post">
+    <form class="login-form-js" action="<?php echo FILE_URL ?>/views/login.php" method="post">
       <input type="hidden" name="action" value="login">
       <div class="input">
         <span><i class="fas fa-phone"></i></span>

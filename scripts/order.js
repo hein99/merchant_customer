@@ -17,6 +17,20 @@ $(document).on('click', '.order-detail-cancel-btn-js', function(){
 $(document).on('click', '.edit-order-js', function(){
   if(!($('.order-form-wrap-js').length))
     $(buildOrderForm(true)).appendTo('.order-wrap-js');
+    $(".order-form-js").validate({
+      rules: {
+        product_link: {
+          required: true,
+          url: true
+        },
+        quantity: {
+          required: true,
+          number: true
+        },
+        cupon_code: "required",
+        price: "required"
+      }
+    });
 })
 
 $(document).on('click', '.order-form-cancel-js', function(){
@@ -190,7 +204,7 @@ function buildOrderForm(is_edit)
     form += '<button class="order-form-cancel-js">X</button>';
     form += '<div class="hk-order-inner-form-wrap">'
     form += '<div class="wp-new-order-header"><h2>Update Order</h2><i class="fas fa-shapes"></i></div>';
-    form += '<form action="' + PAGE_URL + '/order/update_order/" method="post">';
+    form += '<form class="order-form-js" action="' + PAGE_URL + '/order/update_order/" method="post">';
     form += '<input type="hidden" name="id" value="' + tempOrder.id + '">';
     form += '<div class="new-order-input new-order-textarea"><i class="fas fa-link"></i>';
     form += '<textarea name="product_link" placeholder="Product Link">' + tempOrder.product_link + '</textarea>';

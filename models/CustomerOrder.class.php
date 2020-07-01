@@ -31,7 +31,7 @@ class CustomerOrder extends DataObject
     $sql = 'INSERT INTO ' .TBL_CUSTOMER_ORDER . ' (customer_id, product_link, remark, cupon_code, quantity, price,
     us_tax, shipping_cost, first_exchange_rate, commission, product_weight, weight_cost, mm_tax, second_exchange_rate, is_deliver,
     delivery_fee, order_status, has_viewed_admin, has_viewed_customer, created_date)
-    VALUES (:customer_id, :product_link, :remark, :cupon_code, :quantity, :price, 0.0, 0.0, :first_exchange_rate, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0, 0, 1, NOW())';
+    VALUES (:customer_id, :product_link, :remark, :cupon_code, :quantity, :price, 0.0, 0.0, :first_exchange_rate, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0, 0, 0, NOW())';
 
     try{
       $st = $conn->prepare($sql);

@@ -11,6 +11,7 @@ displayOtherNavigation('order');
   <div class="order-detail-js"></div>
   <div class="hk-empty-order-detail">Empty</div>
 </section>
+<script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
 <script src="<?php echo FILE_URL ?>/scripts/order.js" charset="utf-8"></script>
 <?php
 displayPageFooter();

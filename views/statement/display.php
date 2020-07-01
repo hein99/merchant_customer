@@ -8,7 +8,7 @@ $customer_acc = UsersAccount::getCustomerAccountById($_SESSION['merchant_custome
  <div class="ssn_loader" >
    <div class="triple-spinner" ></div>
  </div>
- 
+
  <section class="ky-bill-history" >
    <div class="ky-total-balance-container" >
      <div class="">
@@ -32,7 +32,7 @@ $customer_acc = UsersAccount::getCustomerAccountById($_SESSION['merchant_custome
              <tr>
                <td><?php echo $customer_statement->getValueEncoded('created_date'); ?></td>
                <td><?php echo $customer_statement->getValueEncoded('about'); ?></td>
-               <td class="<?php echo $customer_statement->getValue('amount_status') ? 'plus' : 'minus'?>"><span><?php echo $customer_statement->getValue('amount_status') ? '+' : '-'?></span><?php echo $customer_statement->getValueEncoded('amount'); ?>&nbsp;Ks</td>
+               <td class="<?php echo $customer_statement->getValue('amount_status') ? 'plus' : 'minus'?>"><span><?php echo $customer_statement->getValue('amount_status') ? '+' : '-'?></span><?php echo number_format($customer_statement->getValueEncoded('amount'), 2); ?>&nbsp;Ks</td>
              </tr>
            <?php endforeach; ?>
          </tbody>
