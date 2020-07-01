@@ -117,6 +117,22 @@
   font-size: 0.75em;
 }
 
+.wp-order-date-and-detail{
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  width: calc(100% - 2em);
+  min-height: 24%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.wp-order-detail-container{
+  width: 100%;
+  height: 100%;
+}
+
 .hk-order-date{
   display: inline-block;
   color: #22222299;
@@ -149,6 +165,7 @@
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+  margin-left: 0;
   background: #f9f9f9;
   overflow: hidden;
   opacity: 1;
@@ -402,6 +419,15 @@
   background: #fff;
 }
 
+.hk-order-inner-form-wrap .wp-new-order-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4%;
+  font-size: 1.1em;
+  color: #2EC5FF;
+}
+
 .hk-order-inner-form-wrap input[type="submit"]{
   width: 100%;
   font-weight: bold;
@@ -451,7 +477,6 @@
     border: 2px dashed #333;
     margin-left: 1em;
   }
-
   .order-detail-js{
     position: unset;
     overflow-y: scroll;
@@ -459,6 +484,7 @@
     transform: translateY(0);
     background-color: #f9f9f9;
     padding: 0;
+    margin-left: 0.5em;
     opacity: 0;
     z-index: 3;
   }
@@ -474,6 +500,24 @@
 
   .order-detail-cancel-btn-js{
     display: none;
+  }
+
+  .hk-order-inner-form-wrap{
+    height: 365px;
+  }
+
+  .hk-order-inner-form-wrap .wp-new-order-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4%;
+    font-size: 1.125em;
+    color: #2EC5FF;
+  }
+
+  .hk-order-inner-form-wrap .wp-new-order-header i{
+    display: block;
+    font-size: 1.375em;
   }
 }
 /* End Desktop View */
@@ -518,6 +562,7 @@
     transform: translateY(0);
     background-color: #f9f9f9;
     padding: 0;
+    margin-left: 0.5em;
     opacity: 0;
     z-index: 3;
   }
@@ -533,6 +578,40 @@
 
   .order-detail-cancel-btn-js{
     display: none;
+  }
+
+  .hk-order-inner-form-wrap{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 78%;
+    height: 324px;
+    padding: 0 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    background: #fff;
+  }
+
+  .hk-order-inner-form-wrap .wp-new-order-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4%;
+    font-size: 1.125em;
+    font-weight: normal;
+    color: #2EC5FF;
+  }
+
+  .hk-order-inner-form-wrap .wp-new-order-header i{
+    display: block;
+    font-size: 1.25em;
+  }
+
+  .hk-order-inner-form-wrap .new-order-input input, .hk-order-inner-form-wrap .new-order-input textarea{
+    margin: 6% 0;
   }
 }
 /* End Tablet View */
