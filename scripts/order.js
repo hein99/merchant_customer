@@ -3,7 +3,7 @@ $(document).ready(function(){
   requestOrdersList();
 });
 $(document).on('click', '.order-view-btn-js', function(){
-  parent = $(this).parent();
+  parent = $(this).parent().parent();
   var id = $(this).data('id');
   requestOrderVoucher(id);
 
@@ -93,7 +93,6 @@ function requestUpdateOrdersList()
       if(Array.isArray(orders))
         for(order of orders)
         {
-          console.log(order);
           var list = '#order-' + order.id + '-js';
           $(list).prependTo('.orders-list-js');
           if(!$('.noti-js', list).is(':visible'))
@@ -278,7 +277,5 @@ function updateOrderStatus(id, status)
         requestOrderVoucher(id);
       }
     }
-  }).done(function(e){
-    console.log(e)
   });
 }
