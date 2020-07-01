@@ -118,7 +118,7 @@ function buildOrderVoucher(order)
   var voucher = '';
   voucher += '<button class="order-detail-cancel-btn-js"><i class="fas fa-arrow-left"></i>Back to orders</button><div class="wp-order-detail-container"><div class="order-info"><div class="wp-order-info-header">';
   voucher += checkOrderStatus(order);
-  voucher += (Number(order.status) < 2) ? '<button class="edit-order-js" title="Edit order"><i class="fas fa-pen"></i>Edit order</button>' : '';
+  voucher += (Number(order.status) < 2) ? '<button class="edit-order-js" title="Edit order"><i class="fas fa-pencil-alt"></i>Edit order</button>' : '';
   voucher += '</div><div class="wp-order-details">'
   voucher += '<div class=""><span class="hk-label">Order no:</span> <span>' + order.order_number + '</span></div>';
   voucher += '<div class=""><span class="hk-label">Product Cupon Code:</span> <span>' + order.cupon_code + '</span></div>';
