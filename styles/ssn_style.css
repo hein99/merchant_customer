@@ -177,12 +177,38 @@
   color: #fff;
   background: #2ec5ff;
   font-size: 1.2em;
-  padding: 0.8em 0 0.8em 0.7em;
+  padding: 1em 0 1em 0.7em;
 }
 #chatting-name{
   font-size: 18px;
   font-weight: bold;
   color: #fff;
+}
+#admin_active{
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #39ff14;
+  margin-left: 10px;
+  animation: 1.5s ease infinite pulse;
+  box-shadow: 0 0 0;
+  vertical-align: middle;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #39ff14ba;
+  }
+  100% {
+    box-shadow: 0 0 0 6px #39ff1461;
+  }
+}
+#admin_typing{
+  display: block;
+  color: #fff;
+  font-size: 0.68em;
+  line-height: 1.5em;
+  font-weight: 800;
 }
 .chat_history{
   box-sizing: border-box;
@@ -192,7 +218,7 @@
   padding: 8px 5px;
   margin-bottom: 16px;
   border-bottom: 1px solid #c3c3c3;
-  margin: 1em 0.5em 1em 0.5em;
+  margin: 0em 0.5em 0.8em 0.5em;
 }
 .to_user_chat_style p, .from_user_chat_style p{
   display: inline-block;
@@ -247,7 +273,7 @@
 #wp-send-photo{
   position: absolute;
   top: 22%;
-  right: 5.5em;
+  right: 25%;
   cursor: pointer;
   z-index: 1;
 }
@@ -414,6 +440,13 @@
   #chatting-name{
     color: #8a8a8a;
   }
+  #admin_typing{
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+    color: #999;
+    font-weight: 800;
+  }
   .chat_history{
     height: calc(100vh - 271px);
     margin: 0 0 1em 0;
@@ -435,7 +468,7 @@
     padding-bottom: 0.9em;
   }
   #wp-send-photo{
-    right: 6em;
+    right: 10%;
     top: 9%;
   }
   #uploadForm{
@@ -544,8 +577,13 @@
   .wp-conversation-message-container{
     margin-left: 0em;
   }
+  #admin_typing{
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+  }
   .chat_history{
-    height: calc(100vh - 165px);
+    height: calc(100vh - 185px);
     margin: 0 0 0.7em 0;
   }
   .emojionearea{
@@ -559,7 +597,7 @@
     right: 0em;
   }
   #wp-send-photo{
-    right: 90px;
+    right: 16%;
   }
   #uploadForm{
     width: 100%;
@@ -643,9 +681,9 @@
     font-size: 0.75em;
     padding: 9px 9px;
   }
-  #wp-send-photo{
+  /* #wp-send-photo{
     right: 6em;
-  }
+  } */
 
   .ssn_loader{
     width: 100%;

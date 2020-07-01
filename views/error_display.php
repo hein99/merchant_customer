@@ -20,17 +20,19 @@ switch($ERR_STATUS)
 }
   displayPageHeader('Error | ' . WEB_NAME);
 ?>
-<header>
-  <div class="ky-logo-name-container">
+<header class="wp-page-header">
+  <div class="wp-header-logo">
     <a href="<?php echo URL ?>/">
-      <img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/>
-      <span>The Best Shop</span>
+      <img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/><span>The Best Shop</span>
     </a>
   </div>
-
-  <div class="ky-user-content" style="cursor: auto;">
-    <i class="fas fa-user-circle"></i>
-      <span>Swe Swe Nyein</span>
+  <div class="wp-contact-logout-container">
+    <div class="wp-header-logout">
+      <a href="<?php echo URL ?>/settings/logout">
+        <span id="wp-logout">Log out</span>
+        <i class="fas fa-sign-out-alt"></i>
+      </a>
+    </div>
   </div>
 </header>
 
@@ -46,7 +48,7 @@ switch($ERR_STATUS)
       </div>
       <div class="error-page-buttons">
         <a href="javascript:history.go(-1)"><span id="error-back-button"><i class="fas fa-arrow-left"></i>Back</span></a>
-        <a href="<?php echo URL ?>/home/"><span id="error-home-button"><i class="fas fa-th-large"></i>Home</span></a>
+        <a href="<?php echo URL ?>/home/"><span id="error-home-button"><i class="fas fa-home"></i></i>Home</span></a>
       </div>
     </div>
   </div>

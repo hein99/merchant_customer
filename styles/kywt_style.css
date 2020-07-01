@@ -12,7 +12,7 @@ form input, form textarea{
 p   {font-size: 0.75em;}
 h1  {font-size: 1.5em;}
 h2  {font-size: 1.3em;}
-h3  {font-size: 0.875em;} */
+h3  {font-size: 8;} */
 
 .ky-bill-history{
   position: relative;
@@ -41,6 +41,7 @@ h3  {font-size: 0.875em;} */
   box-shadow: 0 0 4px 0 #b9b9b9;
   border-radius: 4px;
   padding: 1.6em 2em;
+  background: #fff;
   box-sizing: border-box;
 }
 
@@ -65,11 +66,36 @@ h3  {font-size: 0.875em;} */
   font-size: 0.875em;
 }
 
-.ky-transaction-history-container{
+.ky-transaction-history-container,
+.ky-empty-bill-history{
   position: relative;
   width: 90vw;
   height: 68%;
   margin: 0 auto;
+}
+
+.ky-empty-bill-history{
+  border: 2px dashed #999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ky-empty-bill-history div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ky-empty-bill-history i{
+  font-size: 1.8em;
+  margin: 15px;
+}
+
+.ky-empty-bill-history span{
+  font-size: 0.875em;
 }
 
 .ky-transaction-history-container div{
@@ -185,6 +211,7 @@ h3  {font-size: 0.875em;} */
   box-shadow: 0 0 0 0 transparent;
   border-radius: 0px;
   padding: 0;
+  background: none;
   box-sizing: border-box;
 }
 
@@ -212,11 +239,26 @@ h3  {font-size: 0.875em;} */
   border-radius: 4px 4px 0 0;
 }
 
-.ky-transaction-history-container{
+.ky-transaction-history-container,
+.ky-empty-bill-history{
   width: 98%;
-  height: 84.5%;
+  height: 85%;
   background: #fff;
   border-radius: 0 0 4px 4px;
+  border: none;
+}
+
+.ky-empty-bill-history div{
+  width: 88%;
+  height: 90%;
+  background: #fff;
+  border-radius: 0 0 4px 4px;
+  box-sizing: border-box;
+  border: 2px dashed #999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .ky-transaction-history-container div{
@@ -258,8 +300,8 @@ h3  {font-size: 0.875em;} */
 
 .ky-bill-history{
   width: 100%;
-  height: calc(100vh - 114px);
-  max-height: calc(100vh - 114px);
+  height: calc(100vh - 106px);
+  max-height: calc(100vh - 106px);
   background: #fff;
 }
 
@@ -276,6 +318,7 @@ h3  {font-size: 0.875em;} */
   box-shadow: 0 0 0 0 transparent;
   border-radius: 0px;
   padding: 0;
+  background: none;
   box-sizing: border-box;
 }
 
@@ -307,6 +350,12 @@ h3  {font-size: 0.875em;} */
   height: 85%;
 }
 
+.ky-empty-bill-history{
+  width: 90%;
+  height: 80%;
+  box-sizing: border-box;
+}
+
 .ky-transaction-history-container div{
   width: 80%;
   margin: 0 auto;
@@ -332,3 +381,160 @@ h3  {font-size: 0.875em;} */
 }
 /* End Desktop View */
 /**********end of bill history**********/
+
+
+/**********beginning of error page**********/
+.error-page-content{
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 48px);
+  max-height: calc(100vh - 48px);
+  background-color: #fcfcfc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-page-container{
+  width: 100%;
+  height: 60%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.error-page-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #222;
+}
+
+.error-page-header i{
+  font-size: 3.2em;
+  margin: 16px;
+}
+
+#main-error-message{
+  font-size: 1.3em;
+  margin: 0 20px 20px 20px;
+}
+
+.error-page-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error-page-message{
+  margin: 20px;
+  font-size: 1em;
+}
+
+.error-page-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.error-page-buttons a{
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 1em;
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.error-page-buttons a:nth-child(1){
+  background: #2EC5FF;
+}
+
+.error-page-buttons a:nth-child(1) i,
+.error-page-buttons a:nth-child(2) i{
+  margin-right: 6px;
+}
+
+.error-page-buttons a:nth-child(2){
+  background: #999;
+}
+/* Tablet View */
+@media (min-width: 30em) and (max-width: 60em){
+
+.error-page-content{
+  height: calc(100vh - 52px);
+  max-height: calc(100vh - 52px);
+  background-color: #eeeeee6b;
+}
+
+.error-page-header i{
+  font-size: 4em;
+  margin: 26px;
+}
+
+#main-error-message{
+  font-size: 1.5em;
+  margin: 0 30px 30px 30px;
+}
+
+.error-page-message{
+  margin: 30px;
+  font-size: 1.2em;
+}
+
+.error-page-buttons a{
+  font-size: 1.1em;
+  margin: 15px;
+  padding: 13px;
+}
+
+.error-page-buttons a:nth-child(1) i,
+.error-page-buttons a:nth-child(2) i{
+  margin-right: 10px;
+}
+}
+/* End Tablet View */
+
+/* Desktop View */
+@media (min-width: 60em){
+.error-page-content{
+  width: 100%;
+  height: calc(100vh - 64px);
+  max-height: calc(100vh - 64px);
+  background: #fff;
+}
+
+.error-page-header i{
+  font-size: 4.5em;
+  margin: 26px;
+}
+
+#main-error-message{
+  font-size: 1.5em;
+  margin: 0 30px 30px 30px;
+}
+
+.error-page-message{
+  margin: 30px;
+  font-size: 1.2em;
+}
+
+.error-page-buttons a{
+  font-size: 1.1em;
+  margin: 15px;
+  padding: 13px;
+}
+
+.error-page-buttons a:nth-child(1) i,
+.error-page-buttons a:nth-child(2) i{
+  margin-right: 10px;
+}
+}
+/* End Dasktop View */
+/********** end of erroer page **********/
