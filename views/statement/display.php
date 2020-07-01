@@ -17,7 +17,8 @@ $customer_acc = UsersAccount::getCustomerAccountById($_SESSION['merchant_custome
      </div>
    </div>
    <h1 class="ky-transaction-history-header" >Transaction History</h1>
-   <div class="ky-transaction-history-container" >
+   <?php if($customer_statements): ?>
+     <div class="ky-transaction-history-container" >
      <div class="">
        <table>
          <thead>
@@ -39,7 +40,9 @@ $customer_acc = UsersAccount::getCustomerAccountById($_SESSION['merchant_custome
        </table>
      </div>
    </div>
-   <div class="ky-empty-bill-history"><div><i class="fas fa-history"></i><span>Empty Transaction History</span></div></div>
+    <?php else: ?>
+     <div class="ky-empty-bill-history"><div><i class="fas fa-history"></i><span>Empty Transaction History</span></div></div>
+   <?php endif; ?>
  </section>
 <?php
 displayPageFooter();
