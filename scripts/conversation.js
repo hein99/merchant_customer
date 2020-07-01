@@ -141,6 +141,7 @@ $(document).ready(function(){
 
   function makeChatBox(to_user_id, to_user_name)
   {
+
     var content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
     content += '<h4>You have chat with <span id="chatting-name">'+to_user_name;
     content += '</span><span id="admin_active"></span><span id="admin_typing"></span></h4><div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'"><ul>';
