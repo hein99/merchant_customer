@@ -9,14 +9,17 @@ $(document).on('click', '.order-view-btn-js', function(){
 
   if($('.noti-js', parent).is(':visible'))
     $('.noti-js', parent).hide();
+
+  $('.order-detail-js').addClass('detail-ani');
 })
+
 $(document).on('click', '.order-detail-cancel-btn-js', function(){
-  $('.order-detail-js').hide();
+  $('.order-detail-js').removeClass('detail-ani');
 })
 
 $(document).on('click', '.edit-order-js', function(){
   if(!($('.order-form-wrap-js').length))
-    $(buildOrderForm(true)).appendTo('.order-wrap-js');
+    $(buildOrderForm(true)).appendTo('.wp-order-detail-container');
     $(".order-form-js").validate({
       rules: {
         product_link: {
@@ -33,10 +36,12 @@ $(document).on('click', '.edit-order-js', function(){
         }
       }
     });
+  $('.order-info, .hk-order-voucher, .order-detail-cancel-btn-js').addClass('blur');
 })
 
-$(document).on('click', '.order-form-cancel-js', function(){
+$(document).on('click', '.order-form-back', function(){
   $('.order-form-wrap-js').remove();
+  $('.order-info, .hk-order-voucher, .order-detail-cancel-btn-js').removeClass('blur');
 })
 
 $(document).on('click', '.order-confirm-btn-js', function(){
@@ -78,7 +83,7 @@ function requestOrderVoucher(id)
     success: function(order){
       if(typeof(order) === 'object')
       {
-        $('.order-detail-js').html(buildOrderVoucher(order)).show();
+        $('.order-detail-js').html(buildOrderVoucher(order)).addClass('detail-ani');
         tempOrder = order;
       }
     },
@@ -125,13 +130,13 @@ function buildOrdersList(order)
 function buildOrderVoucher(order)
 {
   var voucher = '';
-  voucher += '<div class="wp-order-detail-container"><div class="order-info">';
-  voucher += '<button class="order-detail-cancel-btn-js"><i class="fas fa-times"></i></button>';
-  voucher += (Number(order.status) < 2) ? '<button class="edit-order-js" title="Edit order"><i class="fas fa-pen"></i></button>' : '';
+  voucher += '<button class="order-detail-cancel-btn-js"><i class="fas fa-arrow-left"></i>Back to orders</button><div class="wp-order-detail-container"><div class="order-info"><div class="wp-order-info-header">';
   voucher += checkOrderStatus(order);
+  voucher += (Number(order.status) < 2) ? '<button class="edit-order-js" title="Edit order"><i class="fas fa-pencil-alt"></i>Edit order</button>' : '';
+  voucher += '</div><div class="wp-order-details">'
   voucher += '<div class=""><span class="hk-label">Order no:</span> <span>' + order.order_number + '</span></div>';
   voucher += '<div class=""><span class="hk-label">Product Cupon Code:</span> <span>' + order.cupon_code + '</span></div>';
-  voucher += '<div class="hk-remark"><span class="hk-label">Remark:</span> <span>' + order.remark + '</span></div>';
+  voucher += '<div class="hk-remark"><span class="hk-label">Remark:</span> <span>' + order.remark + '</span></div></div>';
   voucher += '<div class="hk-order-date">' + order.date + '</div>';
   voucher += '</div>';
 
@@ -155,7 +160,7 @@ function buildOrderVoucher(order)
   voucher += '<tr>';
   voucher += '<td>&nbsp;</td> <td>';
   voucher += (Number(order.status) > 1) ? 'Paid' : '&nbsp;';
-  voucher += '</td> <td>MMK&nbsp;' + order.first_payment_mmk + '</td>';
+  voucher += '</td> <td class="payment-total">MMK&nbsp;' + order.first_payment_mmk + '</td>';
   voucher += '</tr></tfoot>';
   voucher += '</table>';
 
@@ -177,7 +182,7 @@ function buildOrderVoucher(order)
   voucher += '<tr>';
   voucher += '<td>&nbsp;</td> <td>';
   voucher += (Number(order.status) > 3) ? 'Paid' : '&nbsp;';
-  voucher += '</td> <td>MMK' + order.second_payment_mmk + '</td>';
+  voucher += '</td> <td class="payment-total">MMK&nbsp;' + order.second_payment_mmk + '</td>';
   voucher += '</tr></tfoot>';
   voucher += '</table>';
 
@@ -185,13 +190,13 @@ function buildOrderVoucher(order)
   voucher += '<tbody><tr>';
   voucher += '<td>Delivery Fee</td> <td>';
   voucher += (Number(order.status) == 7) ? 'Paid' : '&nbsp;';
-  voucher += '</td> <td>MMK&nbsp;' + order.delivery_fee + '</td>';
+  voucher += '</td> <td class="payment-total">MMK&nbsp;' + order.delivery_fee + '</td>';
   voucher += '</tr></tbody>';
   voucher += '</table>';
 
   voucher += '<div class="voucher-btn-gp">';
-  voucher += (Number(order.status) == 1) ? '<button type="button" class="order-confirm-btn-js" data-id="'+ order.id + '">Confirm</button>' : '';
-  voucher += (Number(order.status) < 2) ? '<button type="button" class="order-cancel-btn-js" data-id="'+ order.id + '">Cancel</button>' : '';
+  voucher += (Number(order.status) < 2) ? '<button type="button" class="order-cancel-btn-js" data-id="'+ order.id + '">Cancel Order</button>' : '';
+  voucher += (Number(order.status) == 1) ? '<button type="button" class="order-confirm-btn-js" data-id="'+ order.id + '">Confirm Order</button>' : '';
   voucher += '</div>';
   voucher += '</div></div>'
   return voucher;
@@ -201,11 +206,15 @@ function buildOrderForm(is_edit)
 {
   var form = '';
   if(is_edit){
-    form += '<div class="order-form-wrap-js">';
-    form += '<button class="order-form-cancel-js">X</button>';
+    form += '<div class="order-form-wrap-js"><div class="order-form-back"></div>';
     form += '<div class="hk-order-inner-form-wrap">'
+<<<<<<< HEAD
     form += '<div class="wp-new-order-header"><h2>Update Order</h2><i class="fas fa-shapes"></i></div>';
     form += '<form class="order-form-js" action="' + PAGE_URL + '/order/update_order/" method="post">';
+=======
+    form += '<div class="wp-new-order-header"><h2>Update Order</h2><i class="fas fa-pencil-alt"></i></div>';
+    form += '<form action="' + PAGE_URL + '/order/update_order/" method="post">';
+>>>>>>> 8d6e95e7ef0a3022375a2cee0827fde92623ed48
     form += '<input type="hidden" name="id" value="' + tempOrder.id + '">';
     form += '<div class="new-order-input new-order-textarea"><i class="fas fa-link"></i>';
     form += '<textarea name="product_link" placeholder="Product Link">' + tempOrder.product_link + '</textarea>';
@@ -244,16 +253,16 @@ function checkOrderStatus(order)
       list += '<div class="order-status-js confirm-order">Confirm</div>';
       break;
     case '3':
-      list += '<div class="order-status-js stusw-order"><i class="fas fa-plane-departure"></i>Shipping To US warehouse</div>';
+      list += '<div class="order-status-js stusw-order"><i class="fas fa-shipping-fast"></i>Shipping To US warehouse</div>';
       break;
     case '4':
-      list += '<div class="order-status-js atusw-order"><i class="fas fa-plane-arrival"></i>Arrived at US warehouse</div>';
+      list += '<div class="order-status-js atusw-order"><i class="fas fa-shipping-fast"></i>Arrived at US warehouse</div>';
       break;
     case '5':
-      list += '<div class="order-status-js stmm-order"><i class="fas fa-shipping-fast"></i>Shipping To Myanmar</div>';
+      list += '<div class="order-status-js stmm-order"><i class="fas fa-plane-departure"></i>Shipping To Myanmar</div>';
       break;
     case '6':
-      list += '<div class="order-status-js atmm-order"><i class="fas fa-shipping-fast"></i>Arrived at Myanmar</div>';
+      list += '<div class="order-status-js atmm-order"><i class="fas fa-plane-arrival"></i>Arrived at Myanmar</div>';
       break;
     case '7':
       list += '<div class="order-status-js complete-order"><i class="fas fa-check-circle"></i>Complete</div>';

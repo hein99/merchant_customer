@@ -106,7 +106,7 @@
 }
 
 .input.focus{
-  border: 3px solid #2EC5FF;
+  border: 2px solid #2EC5FF;
 }
 
 .input input{
@@ -121,11 +121,15 @@
   padding: 10px 8px 10px 50px;
   border-radius: 8px;
   transition: 0.2s ease;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
   color: #777;
 }
 
 .input input:focus{
-  padding: 10px 16px 10px 16px;
+  padding: 10px 8px 10px 16px;
   outline: none;
 }
 
@@ -419,6 +423,10 @@
     font-size: 0.75em;
     padding: 8px 8px 8px 50px;
   }
+  .input input:focus{
+    padding: 8px 8px 8px 16px;
+    outline: none;
+  }
   .change input[type=submit]{
     font-size: 0.75em;
     padding: 9px 9px;
@@ -551,6 +559,10 @@
   .input input{
     font-size: 0.75em;
     padding: 8px 8px 8px 50px;
+  }
+  .input input:focus{
+    padding: 8px 8px 8px 16px;
+    outline: none;
   }
   .change input[type=submit]{
     font-size: 0.75em;

@@ -121,6 +121,10 @@ form input{
   padding: 10px 8px 10px 50px;
   border-radius: 8px;
   transition: 0.2s ease;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
 }
 
 .input input:focus{
