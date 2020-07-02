@@ -27,8 +27,10 @@ $(document).on('click', '.edit-order-js', function(){
           required: true,
           number: true
         },
-        cupon_code: "required",
-        price: "required"
+        price: {
+          required: true,
+          number: true
+        }
       }
     });
 })

@@ -39,7 +39,7 @@ switch($action)
 function addNewOrder()
 {
   $latest_exchange_rate = ExchangeRate::getLatestExchangeRate();
-  $required_fields = array('customer_id', 'product_link', 'remark', 'quantity', 'price', 'first_exchange_rate');
+  $required_fields = array('customer_id', 'product_link', 'quantity', 'price', 'first_exchange_rate');
   $missing_fields = array();
   $error_messages = array();
 
@@ -74,7 +74,7 @@ function addNewOrder()
 
 function updateOrder()
 {
-  $required_fields = array('id', 'product_link', 'remark', 'quantity', 'price');
+  $required_fields = array('id', 'product_link', 'quantity', 'price');
   $missing_fields = array();
   $error_messages = array();
 

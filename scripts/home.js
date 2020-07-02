@@ -9,7 +9,6 @@ $(document).ready(function(){
         required: true,
         number: true
       },
-      cupon_code: "required",
       price: {
         required: true,
         number: true
