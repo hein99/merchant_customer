@@ -207,14 +207,9 @@ function buildOrderForm(is_edit)
   var form = '';
   if(is_edit){
     form += '<div class="order-form-wrap-js"><div class="order-form-back"></div>';
-    form += '<div class="hk-order-inner-form-wrap">'
-<<<<<<< HEAD
+    form += '<div class="hk-order-inner-form-wrap">';
     form += '<div class="wp-new-order-header"><h2>Update Order</h2><i class="fas fa-shapes"></i></div>';
     form += '<form class="order-form-js" action="' + PAGE_URL + '/order/update_order/" method="post">';
-=======
-    form += '<div class="wp-new-order-header"><h2>Update Order</h2><i class="fas fa-pencil-alt"></i></div>';
-    form += '<form action="' + PAGE_URL + '/order/update_order/" method="post">';
->>>>>>> 8d6e95e7ef0a3022375a2cee0827fde92623ed48
     form += '<input type="hidden" name="id" value="' + tempOrder.id + '">';
     form += '<div class="new-order-input new-order-textarea"><i class="fas fa-link"></i>';
     form += '<textarea name="product_link" placeholder="Product Link">' + tempOrder.product_link + '</textarea>';
