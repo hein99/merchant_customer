@@ -66,7 +66,7 @@ function changeCustomerPassword(){
     $error_messages = array();
 
     $change_password = new UsersAccount(array(
-      'password' => ( isset($_POST['new_password1']) and isset($_POST['new_password2']) and $_POST['new_password1'] == $_POST['new_password2']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['new_password1']) : ''
+      'password' => ( isset($_POST['new_password1']) and isset($_POST['new_password2']) and $_POST['new_password1'] == $_POST['new_password2']) ? $_POST['new_password1'] : ''
     ));
     foreach($required_fields as $required_field)
     {
