@@ -463,12 +463,15 @@ function updateOrderStatus()
           $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 0);
           UsersAccount::updateCustomerBalanceAndPoint($customer_id, $result_balance, $result_point);
           $order->updateOrderStatus();
+          echo 'success';
         }
+        else
+          echo 'insufficient amount';
       }
       else {
         $order->updateOrderStatus();
+        echo 'success';
       }
-      echo 'success';
     }
 
   }

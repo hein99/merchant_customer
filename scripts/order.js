@@ -1,4 +1,5 @@
 var tempOrder = null;
+var isIdleOrderRequest = true; //decision for changing order status request
 $(document).ready(function(){
   requestOrdersList();
   is_request = false;
@@ -46,25 +47,36 @@ $(document).on('click', '.order-form-back', function(){
 })
 
 $(document).on('click', '.order-confirm-btn-js', function(){
-  if(is_confirm){
-    var id = $(this).data('id');
-    updateOrderStatus(id, 2);
+  if(isIdleOrderRequest){
+    if(is_confirm){
+      var id = $(this).data('id');
+      updateOrderStatus(id, 2);
+      is_confirm = false;
+    }
+    else{
+      tbsConfirmBox($(this), 'This action will <em>confirm</em> this order. Do you really want to do?');
+    }
   }
   else{
-    tbsConfirmBox($(this), 'This action will <em>confirm</em> this order. Do you really want to do?');
+    tbsAlertBox('A Process is running in background. Wait a moment...');
   }
-})
+});
 
 $(document).on('click', '.order-cancel-btn-js', function(){
-  if(is_confirm){
-    var id = $(this).data('id');
-    updateOrderStatus(id, 8);
-    is_confirm = false;
+  if(isIdleOrderRequest){
+    if(is_confirm){
+      var id = $(this).data('id');
+      updateOrderStatus(id, 8);
+      is_confirm = false;
+    }
+    else{
+      tbsConfirmBox($(this), 'This action will <em>cancel</em> this order. Do you really want to do?');
+    }
   }
   else{
-    tbsConfirmBox($(this), 'This action will <em>cancel</em> this order. Do you really want to do?');
+    tbsAlertBox('A Process is running in background. Wait a moment...');
   }
-})
+});
 
 function requestOrdersList()
 {
@@ -290,16 +302,23 @@ function checkOrderStatus(order)
 
 function updateOrderStatus(id, status)
 {
+  isIdleOrderRequest = false;
   $.ajax({
     url: PAGE_URL+'/order/update_order_status/',
     method: "POST",
     data: {id: id, order_status: status},
     success: function(msg){
-      if(msg = 'success')
+      if(msg == 'success')
       {
         requestUpdateOrdersList();
         requestOrderVoucher(id);
       }
+      else if(msg == 'insufficient amount')
+      {
+        tbsAlertBox('Oops! <em>Insufficient</em> Amount')
+      }
     }
+  }).done(function(){
+    isIdleOrderRequest = true;
   });
 }

@@ -411,7 +411,7 @@
   vertical-align: middle;
   font-size: 0.875em;
   font-weight: 800;
-  padding: 0 6px;
+  padding: 1em;
 }
 
 .hk-order-voucher table thead th:first-child{
@@ -550,6 +550,9 @@
     height: 100vh;
     margin: 0 auto;
   }
+  .hk-dialog-box-content{
+    min-width: 440px;
+  }
   .wp-page-header, .wp-page-nav, .wp-other-page-nav-container{
     width: auto;
   }
@@ -631,6 +634,9 @@
 
 /* Tablet View */
 @media (min-width: 30em) and (max-width: 60em){
+  .hk-dialog-box-content{
+    min-width: 330px;
+  }
   .order-wrap-js{
     overflow: hidden;
     height: calc(100vh - 52px);
