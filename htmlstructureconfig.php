@@ -118,6 +118,10 @@ function displayOtherNavigation($active_page='')
             <i class="fas fa-user-cog"></i>
             <span>Account Setting</span>
           </a>
+          <a <?php echo ($active_page == 'membership') ? '' : 'href="' . URL . '/membership/"' ?> class="<?php echo ($active_page == 'membership') ? "active" : "" ?>">
+            <i class="fas fa-award"></i>
+            <span>Membership Definition</span>
+          </a>
       </div>
     </div>
   </nav>
