@@ -36,7 +36,9 @@ switch ($controller)
     require('./models/ExchangeRate.class.php');
     require('./models/CustomerOrder.class.php');
     break;
-
+  case 'membership':
+    require('./models/Membership.class.php');
+    break;
   case 'statement':
     require('./models/CustomerStatement.class.php');
     break;

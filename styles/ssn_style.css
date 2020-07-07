@@ -340,7 +340,69 @@
   background-color: #E74C3C;
 }
 /* End Chat Box */
+/* Membership */
+.sn-membership-container{
 
+  padding: 1%;
+}
+.sn-membership{
+  border-radius: 4px;
+  box-shadow: 0px 0px 7px -1px #9a9a9a;
+  margin: 2em 1em 2.5em 1em;
+  padding: 1em 2em;
+  position: relative;
+  background: #fff;
+}
+.sn-icon-container{
+  text-align: center;
+  margin-bottom: 1em;
+}
+.sn-icon-container i{
+  font-size: 2.5em;
+  margin-bottom: 7px;
+}
+.sn-icon-container span{
+  font-size: 1.1em;
+  color: #616161;
+  font-weight: 600;
+}
+.sn-silver-icon i{
+  color: #C0BFDF;
+}
+.sn-gold-icon i{
+  color: #FDD600;
+}
+.sn-platinum-icon i{
+  color: #B9BBBC;
+}
+.sn-diamond-icon i{
+  color: #2EC5FF;
+}
+.sn-percentage-container{
+  background: #2EC5FF;
+  color: #fff;
+  position: absolute;
+  top: -5px;
+  right: 1em;
+  padding: 0.4em;
+  text-align: center;
+  height: 2.8em;
+  clip-path: polygon(0% 0%, 0% 100%, 50% 75%, 100% 100%, 100% 0%);
+}
+.sn-definition-container{
+  text-align: center;
+  font-size: 0.9em;
+  line-height: normal;
+  color: #777;
+}
+.sn-percentage{
+ font-weight: bold;
+ margin-top: 3px;
+}
+.sn-off{
+  font-size: 0.8em;
+}
+/* End of Membership */
 .ssn_loader{
   width: 100%;
   height: calc(100% - 48px);
@@ -492,6 +554,28 @@
     z-index: 99;
   }
 /* End Chat Box */
+/* Membership */
+  .sn-membership-container{
+    display: flex;
+    padding: 1% 0;
+  }
+  .sn-membership{
+    padding: 1em 0.5em;
+    margin: 2em 0.5em 1em 0em;
+    height: calc(100vh - 205px);
+    width: 25%;
+  }
+  .sn-definition-container{
+    height: calc(100vh - 350px);
+    overflow-y: auto;
+  }
+  .sn-membership:last-child{
+    margin-right: 0;
+  }
+  .sn-icon-container i{
+    margin-top: 1.5em;
+  }
+/* End of Membership */
 }
 /* End Desktop View */
 
@@ -609,6 +693,20 @@
     bottom: -9px;
   }
 /* End Chat Box */
+/* Membership */
+.sn-membership-container{
+  float: left;
+  width: calc(100vw - 167px);
+  height: calc(100vh - 63px);
+  background: #efefef;
+  box-sizing: border-box;
+  padding: 1%;
+  overflow-y: scroll;
+}
+.sn-membership{
+  margin: 1em;
+}
+/* End of Membership */
 }
 /* End Tablet View */
 
@@ -701,6 +799,11 @@
     align-items: center;
     z-index: 99;
   }
+  /* Membership */
+  .sn-membership{
+    margin: 2em 1em 2.5em 1em;
+  }
+  /* End of Membership */
 }
 .sound{
   display: none;
