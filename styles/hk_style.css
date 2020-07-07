@@ -1,4 +1,81 @@
 /* Mobile View */
+.hk-dialog-box-wrap{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: #555a;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hk-dialog-box-content{
+  background: #fff;
+  max-width: 555px;
+  padding: 1em;
+  margin: 0 1.5em;
+  box-sizing: border-box;
+}
+
+.hk-dialog-box-content header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.hk-dialog-box-content header img{
+  width: 32px;
+  padding-right: 5px;
+}
+
+.hk-dialog-box-content header h1{
+  flex-grow: 2;
+  font-size: 1.25em;
+  font-weight: 700;
+}
+
+.hk-dialog-box-content header button{
+  font-size: 2em;
+  background: #ffff;
+  border: 0 none;
+  color: #3337;
+}
+
+.hk-dialog-box-content p{
+  font-size: 0.875em;
+  margin-bottom: 3em;
+}
+
+.hk-dialog-box-content p em{
+  color: #f00;
+}
+
+.hk-dialog-box-btn-gp{
+  text-align: right;
+}
+
+.hk-dialog-box-btn-gp button{
+  padding: 5px 20px;
+  border: 2px solid #2ec5ff;
+}
+
+.hk-dialog-box-btn-gp button:first-child{
+  border-radius: 2px;
+  font-size: 1em;
+  color: #2ec5ff;
+  background: #fff;
+  margin-right: 5px;
+}
+
+.hk-dialog-box-btn-gp button:last-child{
+  background: #2ec5ff;
+  color: #fff;
+}
+
 .wp-page-nav a:nth-child(2), .wp-other-page-sidebar a:nth-child(2){
   position: relative;
 }

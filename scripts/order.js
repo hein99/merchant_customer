@@ -46,13 +46,24 @@ $(document).on('click', '.order-form-back', function(){
 })
 
 $(document).on('click', '.order-confirm-btn-js', function(){
-  var id = $(this).data('id');
-  updateOrderStatus(id, 2);
+  if(is_confirm){
+    var id = $(this).data('id');
+    updateOrderStatus(id, 2);
+  }
+  else{
+    tbsConfirmBox($(this), 'This action will <em>confirm</em> this order. Do you really want to do?');
+  }
 })
 
 $(document).on('click', '.order-cancel-btn-js', function(){
-  var id = $(this).data('id');
-  updateOrderStatus(id, 8);
+  if(is_confirm){
+    var id = $(this).data('id');
+    updateOrderStatus(id, 8);
+    is_confirm = false;
+  }
+  else{
+    tbsConfirmBox($(this), 'This action will <em>cancel</em> this order. Do you really want to do?');
+  }
 })
 
 function requestOrdersList()

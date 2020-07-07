@@ -1,4 +1,5 @@
-var is_request = true;
+var is_request = true; //for update order noti
+var is_confirm = false; //for confirmation dialog box
 $(window).on('load', function() {
   $(".ssn_loader").fadeOut("slow");
 });
@@ -30,7 +31,8 @@ $(document).ready(function(){
     })
   }
 
-  function update_last_activity(){
+  function update_last_activity()
+  {
     $.ajax({
       url: PAGE_URL+'/conversation/update_activity_time',
       success: function(){
@@ -92,6 +94,37 @@ $(document).ready(function(){
       $(this).parent().find('i').removeClass('focus');
     });
   }
-
-
 });
+
+function buildDialogConfirmBox(msg)
+{
+  var markup = '';
+  markup += '<article class="hk-dialog-box-wrap">';
+  markup += '<session class="hk-dialog-box-content">';
+  markup += '<header>';
+  markup += '<img src="' + PAGE_FILE_URL + '/logos/globe-solid.png">';
+  markup += '<h1>The Best Shop</h1>';
+  markup += '</header>';
+  markup += '<p>';
+  markup += msg;
+  markup += '</p>';
+  markup += '<div class="hk-dialog-box-btn-gp"></div>';
+  markup += '</session>';
+  markup += '</article>';
+  return markup;
+}
+function tbsConfirmBox(triggerBtn, msg)
+{
+  $('body').prepend(buildDialogConfirmBox(msg));
+  var cancelBtn = $('<button>').html('No').click(function(){
+    $('.hk-dialog-box-wrap').remove();
+    is_confirm = false;
+  });
+  var confrimBtn= $('<button>').html('Yes').click(function(){
+    $('.hk-dialog-box-wrap').remove();
+    is_confirm = true;
+    triggerBtn.trigger("click");
+  });
+  cancelBtn.appendTo('.hk-dialog-box-btn-gp');
+  confrimBtn.appendTo('.hk-dialog-box-btn-gp');
+}
