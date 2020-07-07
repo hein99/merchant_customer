@@ -530,6 +530,7 @@
 	.new-order-input input, .new-order-input textarea{
 		width: 100%;
 		height: 100%;
+		margin: 0;
 		font-size: 0.9em;
 		padding: 6px 12px;
 		border-radius: 5px;
@@ -590,10 +591,10 @@
 	.new-order-input span{
 		display: block;
 		position: absolute;
-		top: 2px;
-		left: 2px;
-		width: calc(100% - 4px);
-		height: calc(100% - 4px);
+		top: 3px;
+		left: 3px;
+		width: calc(100% - 6px);
+		height: calc(100% - 6px);
 		transform: translate(0, 0);
 		padding: 6px 12px;
 		display: flex;
@@ -610,14 +611,32 @@
 		-o-transition: 0.3s ease;
 	}
 
-	.new-order-input input.focus + span,
-	.new-order-textarea textarea.focus + span{
+	.new-order-input input.focus ~ span,
+	.new-order-textarea textarea.focus ~ span{
 		width: auto;
 		height: auto;
 		padding: 2px 6px;
 		transform: translate(8px, -12px);
 		font-size: 0.8em;
 		color: #2EC5FF;
+	}
+
+	.new-order-input label{
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translate(8px, -10px);
+		width: auto;
+		height: auto;
+		display: flex;
+		align-items: center;
+		background-color: white;
+		padding: 2px 6px;
+		color: #EA2027;
+		font-size: 0.8em;
+		pointer-events: none;
+		z-index: 1;
+		box-sizing: border-box;
 	}
 
 	.wp-information-detail-container{
@@ -1150,7 +1169,7 @@
 	.wp-new-order{
 		position: absolute;
 		width: 46%;
-		height: 90%;
+		height: 100%;
 		padding: 0 2%;
 		background-color: transparent;
 		pointer-events: none;
@@ -1206,7 +1225,7 @@
 		position: relative;
 		width: 100%;
 		height: 34px;
-		margin: 4% 0;
+		margin: 8% 0;
 		display: flex;
 		align-items: center;
 	}
@@ -1227,7 +1246,7 @@
 	.new-order-input input, .new-order-input textarea{
 		width: 100%;
 		font-size: 0.9em;
-		margin: 2.5% 0;
+		margin: 0;
 		padding: 4px 6px 4px 32px;
 		border-radius: 3px;
 		color: #555;
@@ -1297,7 +1316,27 @@
 	.new-order-input span{
 		display: none;
 	}
-	.new-order-input input.focus + span{
+
+	.new-order-input label{
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -16px);
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: transparent;
+		padding: 2px 6px;
+		color: #fff;
+		font-size: 0.75em;
+		pointer-events: none;
+		z-index: 1;
+		box-sizing: border-box;
+	}
+
+	.new-order-input input.focus ~ span{
 		transform: translate(8px, -20px);
 		font-size: 0.8em;
 		color: #2EC5FF;
@@ -1850,8 +1889,8 @@
 
 	.wp-new-order{
 		position: absolute;
-		width: 183px;
-		height: 82%;
+		width: 195px;
+		height: 84%;
 		padding: 0 2%;
 		background-color: transparent;
 		pointer-events: all;
@@ -1896,7 +1935,7 @@
 		position: relative;
 		width: 100%;
 		height: 32px;
-		margin: 6% 0;
+		margin: 8% 0;
 		display: flex;
 		align-items: center;
 	}
@@ -1987,6 +2026,26 @@
 	.new-order-input span{
 		display: none;
 	}
+
+	.new-order-input label{
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -16px);
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: transparent;
+		padding: 2px 6px;
+		color: #EA2027;
+		font-size: 0.75em;
+		pointer-events: none;
+		z-index: 1;
+		box-sizing: border-box;
+	}
+
 	.new-order-input input.focus + span{
 		transform: translate(8px, -20px);
 		font-size: 0.8em;

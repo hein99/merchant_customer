@@ -84,8 +84,11 @@ $(document).ready(function(){
 
   if ($(window).width() < 480) {
     $(document).on('blur', '.new-order-input input, .new-order-textarea textarea', function(){
+      $(this).removeClass('focus');
       if($(this).val() == ""){
         $(this).removeClass('focus');
+      }else{
+        $(this).addClass('focus');
       }
     });
   }else{
