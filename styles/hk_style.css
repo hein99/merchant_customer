@@ -15,6 +15,7 @@
 .hk-dialog-box-content{
   background: #fff;
   max-width: 555px;
+  min-width: 260px;
   padding: 1em;
   margin: 0 1.5em;
   box-sizing: border-box;

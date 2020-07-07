@@ -128,3 +128,12 @@ function tbsConfirmBox(triggerBtn, msg)
   cancelBtn.appendTo('.hk-dialog-box-btn-gp');
   confrimBtn.appendTo('.hk-dialog-box-btn-gp');
 }
+
+function tbsAlertBox(msg)
+{
+  $('body').prepend(buildDialogConfirmBox(msg));
+  var okBtn = $('<button>').html('Ok').click(function(){
+    $('.hk-dialog-box-wrap').remove();
+  });
+  okBtn.appendTo('.hk-dialog-box-btn-gp');
+}
