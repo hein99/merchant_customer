@@ -262,7 +262,7 @@
 		color: #2EC5FF;
 	}*/
 
-	.wp-other-page-sidebar a i{
+	.wp-other-page-sidebar a>i{
 		width: 32px;
 		font-size: 1.2em;
 		color: #555;
@@ -1627,7 +1627,7 @@
 		color: #2EC5FF;
 	}
 
-	.wp-other-page-sidebar a i{
+	.wp-other-page-sidebar a>i{
 		font-size: 1em;
 		width: auto;
 		color: white;

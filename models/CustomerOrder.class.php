@@ -50,6 +50,27 @@ class CustomerOrder extends DataObject
     }
   }
 
+  public static function getUnseenOrder($customer_id)
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM ' . TBL_CUSTOMER_ORDER . ' WHERE customer_id = :customer_id AND has_viewed_customer = 0';
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':customer_id', $customer_id, PDO::PARAM_INT);
+      $st->execute();
+      $orders = array();
+      $result = $st->setFetchMode(PDO::FETCH_NAMED);
+      foreach ( $st->fetchAll() as $row ) {
+        $orders[] = new CustomerOrder($row);
+      }
+      parent::disconnect($conn);
+      return $orders;
+    } catch(PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
+
   public static function getCustomerOrderByCustomerId($customer_id)
   {
     $conn = parent::connect();

@@ -1,14 +1,34 @@
+var is_request = true;
 $(window).on('load', function() {
-  $(".ssn_loader").fadeOut("slow");;
+  $(".ssn_loader").fadeOut("slow");
 });
 $(document).ready(function(){
 
   getNewMessagesCount();
+  if(is_request)
+    getUpdateOrderNoti();
 
   setInterval(function(){
     update_last_activity();
     getNewMessagesCount();
+    if(is_request)
+      getUpdateOrderNoti();
   }, 3000);
+
+  function getUpdateOrderNoti()
+  {
+    $.ajax({
+      url: PAGE_URL+'/order/get_order_noti',
+      method:"GET",
+      success: function(data){
+        if(data == 'true'){
+          is_request = false;
+          $('.hk-nav-noti').show();
+        }
+      },
+      dataType: 'json'
+    })
+  }
 
   function update_last_activity(){
     $.ajax({

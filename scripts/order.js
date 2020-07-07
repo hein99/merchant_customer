@@ -1,6 +1,7 @@
 var tempOrder = null;
 $(document).ready(function(){
   requestOrdersList();
+  is_request = false;
 });
 $(document).on('click', '.order-view-btn-js', function(){
   parent = $(this).parent().parent();
@@ -60,7 +61,7 @@ function requestOrdersList()
     url: PAGE_URL+'/order/get_orders_list/',
     method: "GET",
     success: function(orders){
-      if(Array.isArray(orders))
+      if(Array.isArray(orders) && orders.length)
       {
         for(order of orders)
           $(buildOrdersList(order)).appendTo('.orders-list-js');
@@ -69,6 +70,12 @@ function requestOrdersList()
         setInterval(function(){
           requestUpdateOrdersList();
         }, 60000)
+      }
+      else{
+        $('<div class="hk-empty-list">Empty Order List</div>').prependTo('.order-wrap-js');
+        $('.orders-list-js').remove();
+        $('.order-detail-js').remove();
+        $('.hk-empty-order-detail').remove();
       }
     },
     dataType: 'json'

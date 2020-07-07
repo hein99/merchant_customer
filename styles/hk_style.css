@@ -1,4 +1,15 @@
 /* Mobile View */
+.wp-page-nav a:nth-child(2), .wp-other-page-sidebar a:nth-child(2){
+  position: relative;
+}
+.hk-nav-noti{
+  display: none;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  color: #f43b3b;
+}
+
 .order-wrap-js{
   position: relative;
   width: 100%;
@@ -16,6 +27,14 @@
   padding: 1em;
   box-sizing: border-box;
   overflow-y: auto;
+}
+.hk-empty-list{
+  width: 100vw;
+  height: calc(100vh - 48px);
+  line-height: calc(100vh - 48px);
+  text-align: center;
+  font-weight: 600;
+  color: #333c;
 }
 
 .hk-order-list{
@@ -455,6 +474,10 @@
   }
   .wp-page-header, .wp-page-nav, .wp-other-page-nav-container{
     width: auto;
+  }
+  .hk-nav-noti{
+    right: 0.1em;
+    top: 0.5em;
   }
   .order-wrap-js{
     overflow: hidden;

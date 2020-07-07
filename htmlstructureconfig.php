@@ -55,7 +55,7 @@ function displayHomeNavigation()
     </a>
     <a href="<?php echo URL ?>/order/">
       <i class="fas fa-shapes"></i>
-      <h3><span>My&nbsp;</span><span>Order</span></h3>
+      <h3><span>My&nbsp;</span><span>Order</span><span class="hk-nav-noti"><i class="fa fa-exclamation-circle"></i></span></h3>
     </a>
     <a href="<?php echo URL ?>/statement/">
       <i class="fas fa-money-check-alt"></i>
@@ -104,7 +104,7 @@ function displayOtherNavigation($active_page='')
           </a>
           <a <?php echo ($active_page == 'order') ? '' : 'href="' . URL . '/order/"' ?> class="<?php echo ($active_page == 'order') ? "active" : "" ?>">
             <i class="fas fa-shapes"></i>
-            <span>My Order</span>
+            <span>My Order<span class="hk-nav-noti"><i class="fa fa-exclamation-circle"></i></span></span>
           </a>
           <a <?php echo ($active_page == 'statement') ? '' : 'href="' . URL . '/statement/"' ?> class="<?php echo ($active_page == 'statement') ? "active" : "" ?>">
             <i class="fas fa-money-check-alt"></i>

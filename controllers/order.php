@@ -10,6 +10,10 @@ switch($action)
     addNewOrder();
     break;
 
+  case 'get_order_noti':
+    getOrderNoti();
+    break;
+
   case 'get_orders_list':
     getOrdersList();
     break;
@@ -70,6 +74,14 @@ function addNewOrder()
     $add_new_order->createNewOrder();
     header('location: ' . URL . '/home/');
   }
+}
+
+function getOrderNoti()
+{
+  if(CustomerOrder::getUnseenOrder($_SESSION['merchant_customer_account']->getValue('id')))
+    echo json_encode('true');
+  else
+    echo json_encode('false');
 }
 
 function updateOrder()

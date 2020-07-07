@@ -6,10 +6,9 @@ displayOtherNavigation('order');
    <div class="triple-spinner"></div>
  </div>
  <section class="order-wrap-js">
-   <ul class="orders-list-js"></ul>
-
+  <ul class="orders-list-js"></ul>
   <div class="order-detail-js"></div>
-  <div class="hk-empty-order-detail">Empty</div>
+  <div class="hk-empty-order-detail">Empty Order Voucher</div>
 </section>
 <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
 <script src="<?php echo FILE_URL ?>/scripts/order.js" charset="utf-8"></script>
