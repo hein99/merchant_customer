@@ -59,7 +59,7 @@ displayHomeNavigation();
       <div>
        <h2>Points I Have</h2>
        <span id="user-point">
-        <span><?php echo number_format($customer_account->getValueEncoded('point')) ?></span> &nbsp;Points
+        <span><?php echo number_format($customer_account->getValueEncoded('point')/1000) ?></span> &nbsp;Points
        </span>
       </div>
      </div>

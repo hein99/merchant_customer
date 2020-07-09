@@ -1,4 +1,102 @@
 /* Mobile View */
+.hk-est-calc-wrap, .hk-est-calc-wrap *{
+  box-sizing: border-box;
+}
+.hk-est-calc-wrap{
+  position: absolute;
+  top: 48px;
+  left: 0;
+  z-index: 99;
+  background: #999;
+  width: 100vw;
+  height: calc(100vh - 48px);
+  padding: 1em;
+  font-family: "Open Sans", sans-serif;
+}
+.hk-est-result-wrap{
+  margin-top: 2em;
+  background: #fff;
+  padding: 1em;
+}
+.hk-est-result-wrap table{
+  width: 100%;
+  margin-bottom: 1em;
+}
+.hk-est-result-wrap table tr th:nth-child(1), .hk-est-result-wrap table tr td:nth-child(1){
+  text-align: left;
+  padding-left: 0.5em;
+  width: 2em;
+}
+.hk-est-result-wrap table tr th:nth-child(2), .hk-est-result-wrap table tr td:nth-child(2){
+  text-align: center;
+}
+.hk-est-result-wrap table tr th:nth-child(3), .hk-est-result-wrap table tr td:last-child{
+  text-align: right;
+  padding-right: 0.5em;
+  font-weight: 600;
+}
+.hk-est-result-wrap table thead{
+  color: #fff;
+  background: #fa6a01;
+}
+.hk-est-result-wrap table thead th{
+  font-size: 0.875em;
+  font-weight: 600;
+  padding: 1em 0;
+}
+.hk-est-result-wrap table tbody td{
+  padding: 12px 0;
+  font-size: 0.8125em;
+  color: #575757;
+}
+.hk-est-result-wrap table tfoot{
+  border-top: 1px solid #999;
+}
+.hk-est-result-wrap table tfoot td{
+  color: #fa6a01;
+  padding: 12px 0;
+  font-size: 0.8125em;
+}
+.hk-est-result-wrap table tfoot td em{
+  color: #878787;
+  font-size: 0.75em;
+  font-weight: bold;
+}
+.hk-est-result-wrap>div{
+  border: 2px dashed #000;
+  border-radius: 8px;
+  padding: 1em;
+  text-align: center;
+}
+.hk-est-result-wrap>div>p:first-child{
+  font-size: 1em;
+  font-weight: 600;
+  color: #575757;
+  margin-bottom: 1em;
+}
+.hk-est-result-wrap>div>p:first-child em{
+  font-size: 0.85em;
+  color: #676767;
+}
+.hk-est-result-wrap>div>p:last-child{
+  color: #2ec5ff;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+.hk-est-result-wrap>div>p:last-child em{
+  font-size: 0.75em;
+}
+.hk-est-result-wrap button{
+  margin-top: 1em;
+  width: 100%;
+  border-radius: 3px;
+  border: none;
+  padding: 8px 0;
+  font-size: 1em;
+  color: #fff;
+  background: linear-gradient(270deg, #9e9e9e 0%, hsl(0, 0%, 41%) 100%);
+  letter-spacing: 0.5px;
+}
 .hk-dialog-box-wrap{
   position: fixed;
   top: 0;

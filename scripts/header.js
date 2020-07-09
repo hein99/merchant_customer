@@ -103,7 +103,7 @@ function buildDialogConfirmBox(msg)
 {
   var markup = '';
   markup += '<article class="hk-dialog-box-wrap">';
-  markup += '<session class="hk-dialog-box-content">';
+  markup += '<section class="hk-dialog-box-content">';
   markup += '<header>';
   markup += '<img src="' + PAGE_FILE_URL + '/logos/globe-solid.png">';
   markup += '<h1>The Best Shop</h1>';
@@ -112,7 +112,7 @@ function buildDialogConfirmBox(msg)
   markup += msg;
   markup += '</p>';
   markup += '<div class="hk-dialog-box-btn-gp"></div>';
-  markup += '</session>';
+  markup += '</section>';
   markup += '</article>';
   return markup;
 }
@@ -139,4 +139,95 @@ function tbsAlertBox(msg)
     $('.hk-dialog-box-wrap').remove();
   });
   okBtn.appendTo('.hk-dialog-box-btn-gp');
+}
+
+function buildEstimateCalculator()
+{
+  $('<article>', {
+    class: 'hk-est-calc-wrap'
+  }).append(buildFormEstimateCaculation()).prependTo('body');
+
+}
+
+function buildFormEstimateCaculation()
+{
+  var p_price = $('<input>', {type: 'number', id: 'p-price', step: '0.01'});
+  var p_qty = $('<input>', {type: 'number', id: 'p-qty'});
+  var weight_cost = $('<input>', {type: 'number', id: 'weight-cost', step: '0.01'});
+  var p_weight = $('<input>', {type: 'number', id: 'p-weight', step: '0.01'});
+  var us_tax = $('<input>', {type: 'number', id: 'us-tax', step: '0.01'});
+  var shipping_cost = $('<input>', {type: 'number', id: 'shipping-cost', step: '0.01'});
+  var commission = $('<input>', {type: 'number', id: 'commission', step: '0.01'});
+  var mm_tax = $('<input>', {type: 'number', id: 'mm-tax', step: '0.01'});
+  var exchange_rate = $('<input>', {type: 'number', id: 'exchange-rate', step: '0.01'});
+  var calc_btn = $('<button>', {type: 'button'}).html('Calculate').click(function(){
+    $('.hk-est-calc-wrap').append(buildResultEstimateCalculation());
+    $('.hk-est-form-wrap').hide();
+  });
+
+  var form = $('<form>', {action: '#', method: 'get'}).append(p_price).append(p_qty).append(weight_cost).append(p_weight).append(us_tax).append(shipping_cost).append(commission).append(mm_tax).append(exchange_rate).append(calc_btn);
+  return $('<section>', {class: 'hk-est-form-wrap'}).append(form);
+}
+
+function buildResultEstimateCalculation()
+{
+  var p_price = Number($('#p-price').val());
+  var p_qty = Number($('#p-qty').val());
+  var weight_cost = Number($('#weight-cost').val());
+  var p_weight = Number($('#p-weight').val());
+  var us_tax = Number($('#us-tax').val());
+  var shipping_cost = Number($('#shipping-cost').val());
+  var commission = Number($('#commission').val());
+  var mm_tax = Number($('#mm-tax').val());
+  var exchange_rate = Number($('#exchange-rate').val());
+
+  var t_price = p_price * p_qty;
+  var f_payment_dollar = t_price + us_tax + shipping_cost;
+  var f_payment_mmk = f_payment_dollar*exchange_rate;
+
+  var t_commission = (f_payment_dollar/100)*commission;
+  var t_weight = weight_cost*p_weight;
+  var t_mm_tax = (f_payment_dollar/100)*mm_tax;
+  var s_payment_dollar = t_commission + t_weight + t_mm_tax;
+  var s_payment_mmk = s_payment_dollar*exchange_rate;
+
+  var t_amount = f_payment_mmk + s_payment_mmk;
+
+  var t1_h_r1 = $('<tr>').append($('<th>').html('Description')).append($('<th>').html('Quantity')).append($('<th>').html('Total&nbsp;Price'));
+  var t1_head = $('<thead>').append(t1_h_r1 );
+
+  var t1_b_r1 = $('<tr>').append($('<td>').html('Product')).append($('<td>').html('[' + p_qty + ']')).append($('<td>').html('$&nbsp;' + currencyFormat(t_price)));
+  var t1_b_r2 = $('<tr>').append($('<td>').html('US&nbsp;Tax')).append($('<td>').html('&nbsp;')).append($('<td>').html('$&nbsp;' + currencyFormat(us_tax)));
+  var t1_b_r3 = $('<tr>').append($('<td>').html('Shipping&nbsp;Cost')).append($('<td>').html('&nbsp;')).append($('<td>').html('$&nbsp;' + currencyFormat(shipping_cost)));
+  var t1_body = $('<tbody>').append(t1_b_r1).append(t1_b_r2).append(t1_b_r3);
+
+  var t1_f_r1 = $('<tr>').append($('<td>').html('First&nbsp;Payment<em>[Est.]</em>')).append($('<td>', {colspan: '2'}).html('$&nbsp;' + currencyFormat(f_payment_dollar)));
+  var t1_f_r2 = $('<tr>').append($('<td>').html('&nbsp;')).append($('<td>', {colspan: '2'}).html('MMK&nbsp;' + currencyFormat(f_payment_mmk)));
+  var t1_footer = $('<tfoot>').append(t1_f_r1).append(t1_f_r2);
+
+  var table1 = $('<table>').append(t1_head).append(t1_body).append(t1_footer);
+
+  var t2_b_r1 = $('<tr>').append($('<td>').html('Commission')).append($('<td>').html('[' + commission + '%]')).append($('<td>').html('$&nbsp;' + currencyFormat(t_commission)));
+  var t2_b_r2 = $('<tr>').append($('<td>').html('Weight')).append($('<td>').html('[' + p_weight + 'lb]')).append($('<td>').html('$&nbsp;' + currencyFormat(t_weight)));
+  var t2_b_r3 = $('<tr>').append($('<td>').html('MM&nbsp;Tax')).append($('<td>').html('[' + mm_tax + '%]')).append($('<td>').html('$&nbsp;' + currencyFormat(t_mm_tax)));
+  var t2_body = $('<tbody>').append(t2_b_r1).append(t2_b_r2).append(t2_b_r3);
+
+  var t2_f_r1 = $('<tr>').append($('<td>').html('Second&nbsp;Payment<em>[Est.]</em>')).append($('<td>', {colspan: '2'}).html('$&nbsp;' + currencyFormat(s_payment_dollar)));
+  var t2_f_r2 = $('<tr>').append($('<td>').html('&nbsp;')).append($('<td>', {colspan: '2'}).html('MMK&nbsp;' + currencyFormat(s_payment_mmk)));
+  var t2_footer = $('<tfoot>').append(t2_f_r1).append(t2_f_r2);
+
+  var table2 = $('<table>').append(t2_body).append(t2_footer);
+
+  var t_amount_field = $('<div>').append($('<p>').html('Total&nbsp;Amount<em>[Est.]</em>')).append($('<p>').html(currencyFormat(t_amount) + '&nbsp;<em>MMK</em>'));
+
+  var edit_btn = $('<button>', {type: 'button'}).html('Calculate&nbsp;Again').click(function(){
+    $('.hk-est-result-wrap').remove();
+    $('.hk-est-form-wrap').show();
+  });
+  return $('<section>', {class: 'hk-est-result-wrap'}).append(table1).append(table2).append(t_amount_field).append(edit_btn);
+}
+
+function currencyFormat(num)
+{
+  return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }

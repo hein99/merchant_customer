@@ -203,7 +203,7 @@ function buildOrderVoucher(order)
   voucher += '</tr>';
   voucher += '<tr>';
   voucher += '<td>MM Tax</td> <td>';
-  voucher += ((Number(order.mm_tax)) == 0) ? 'Free' : '$&nbsp;' + order.mm_tax;
+  voucher += ((Number(order.mm_tax)) == 0) ? 'Free' : '[' + order.mm_tax + '&nbsp;%]';
   voucher += '</td> <td>$&nbsp;' + order.mm_tax_amount + '</td>';
   voucher += '</tr></tbody>';
   voucher += '<tfoot><tr>';
