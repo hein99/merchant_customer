@@ -25,10 +25,11 @@
 .hk-est-result-wrap table tr th:nth-child(1), .hk-est-result-wrap table tr td:nth-child(1){
   text-align: left;
   padding-left: 0.5em;
-  width: 2em;
+  width: 40%;
 }
 .hk-est-result-wrap table tr th:nth-child(2), .hk-est-result-wrap table tr td:nth-child(2){
   text-align: center;
+  width: 20%;
 }
 .hk-est-result-wrap table tr th:nth-child(3), .hk-est-result-wrap table tr td:last-child{
   text-align: right;

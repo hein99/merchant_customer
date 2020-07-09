@@ -131,7 +131,6 @@ function tbsConfirmBox(triggerBtn, msg)
   cancelBtn.appendTo('.hk-dialog-box-btn-gp');
   confrimBtn.appendTo('.hk-dialog-box-btn-gp');
 }
-
 function tbsAlertBox(msg)
 {
   $('body').prepend(buildDialogConfirmBox(msg));
@@ -140,26 +139,48 @@ function tbsAlertBox(msg)
   });
   okBtn.appendTo('.hk-dialog-box-btn-gp');
 }
-
 function buildEstimateCalculator()
 {
-  $('<article>', {
-    class: 'hk-est-calc-wrap'
-  }).append(buildFormEstimateCaculation()).prependTo('body');
+  $.ajax({
+    url: PAGE_URL+'/order/get_required_est_data',
+    method: 'get',
+    dataType: 'json'
+  }).done(function(msg){
+    $('<article>', {
+      class: 'hk-est-calc-wrap'
+    }).append(buildFormEstimateCaculation(msg)).prependTo('body');
+  });
 
 }
 
-function buildFormEstimateCaculation()
+function buildFormEstimateCaculation(defalultData)
 {
-  var p_price = $('<input>', {type: 'number', id: 'p-price', step: '0.01'});
-  var p_qty = $('<input>', {type: 'number', id: 'p-qty'});
-  var weight_cost = $('<input>', {type: 'number', id: 'weight-cost', step: '0.01'});
-  var p_weight = $('<input>', {type: 'number', id: 'p-weight', step: '0.01'});
-  var us_tax = $('<input>', {type: 'number', id: 'us-tax', step: '0.01'});
-  var shipping_cost = $('<input>', {type: 'number', id: 'shipping-cost', step: '0.01'});
-  var commission = $('<input>', {type: 'number', id: 'commission', step: '0.01'});
-  var mm_tax = $('<input>', {type: 'number', id: 'mm-tax', step: '0.01'});
-  var exchange_rate = $('<input>', {type: 'number', id: 'exchange-rate', step: '0.01'});
+  var d_commission_rate = 15;
+  var d_exchange_rate = 1500;
+  if(typeof(defalultData) == 'object'){
+    d_commission_rate = defalultData.commission_rate;
+    d_exchange_rate = defalultData.exchange_rate;
+  }
+
+  var p_price = $('<input>', {type: 'number', id: 'p-price', step: '0.01', placeholder: '0.00'}).blur(function(){
+    changeRespectiveFormValue();
+  });
+  var p_qty = $('<input>', {type: 'number', id: 'p-qty', placeholder: '0', value: '1'}).blur(function(){
+    changeRespectiveFormValue();
+  });
+  var weight_cost = $('<input>', {type: 'number', id: 'weight-cost', step: '0.01', value: '7', placeholder: '0.00'}).blur(function(){
+    changeRespectiveFormValue();
+  });
+  var p_weight = $('<input>', {type: 'number', id: 'p-weight', step: '0.01', placeholder: '0.00'}).blur(function(){
+    changeRespectiveFormValue();
+  });
+  var us_tax = $('<input>', {type: 'number', id: 'us-tax', step: '0.01', placeholder: '0.00'});
+  var shipping_cost = $('<input>', {type: 'number', id: 'shipping-cost', step: '0.01', placeholder: '0.00'}).blur(function(){
+    changeRespectiveFormValue();
+  });
+  var commission = $('<input>', {type: 'number', id: 'commission', step: '0.01', 'data-rate': d_commission_rate, placeholder: '0.00'});
+  var mm_tax = $('<input>', {type: 'number', id: 'mm-tax', step: '0.01', placeholder: '0.00'});
+  var exchange_rate = $('<input>', {type: 'number', id: 'exchange-rate', step: '0.01', value: d_exchange_rate, placeholder: '0.00'});
   var calc_btn = $('<button>', {type: 'button'}).html('Calculate').click(function(){
     $('.hk-est-calc-wrap').append(buildResultEstimateCalculation());
     $('.hk-est-form-wrap').hide();
@@ -177,8 +198,8 @@ function buildResultEstimateCalculation()
   var p_weight = Number($('#p-weight').val());
   var us_tax = Number($('#us-tax').val());
   var shipping_cost = Number($('#shipping-cost').val());
-  var commission = Number($('#commission').val());
-  var mm_tax = Number($('#mm-tax').val());
+  var commission = Number($('#commission').data('rate'));
+  var mm_tax = 5;
   var exchange_rate = Number($('#exchange-rate').val());
 
   var t_price = p_price * p_qty;
@@ -190,6 +211,7 @@ function buildResultEstimateCalculation()
   var t_mm_tax = (f_payment_dollar/100)*mm_tax;
   var s_payment_dollar = t_commission + t_weight + t_mm_tax;
   var s_payment_mmk = s_payment_dollar*exchange_rate;
+  console.log(s_payment_mmk + ':_:' + s_payment_dollar + ':_:' + exchange_rate)
 
   var t_amount = f_payment_mmk + s_payment_mmk;
 
@@ -225,6 +247,19 @@ function buildResultEstimateCalculation()
     $('.hk-est-form-wrap').show();
   });
   return $('<section>', {class: 'hk-est-result-wrap'}).append(table1).append(table2).append(t_amount_field).append(edit_btn);
+}
+function changeRespectiveFormValue()
+{
+  var p_price_val = Number($('#p-price').val()) * Number($('#p-qty').val());
+  var shipping_cost_val = Number($('#shipping-cost').val());
+  var commission_val = Number($('#commission').data('rate'))/100;
+  var us_tax_val = p_price_val*0.05;
+
+  var f_payment_val = p_price_val + us_tax_val + shipping_cost_val;
+
+  $('#us-tax').val(currencyFormat(us_tax_val));
+  $('#mm-tax').val(currencyFormat(f_payment_val*0.05));
+  $('#commission').val(currencyFormat(f_payment_val*commission_val));
 }
 
 function currencyFormat(num)

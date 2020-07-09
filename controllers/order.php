@@ -26,6 +26,10 @@ switch($action)
     getOrderVoucher($id);
     break;
 
+  case 'get_required_est_data':
+    getRequiredEstData();
+    break;
+
   case 'update_order_status':
     updateOrderStatus();
     break;
@@ -413,6 +417,19 @@ function getOrderVoucher($id)
       );
       break;
   }
+  echo json_encode($responseData);
+}
+
+function getRequiredEstData()
+{
+  $rateObj = ExchangeRate::getLatestExchangeRate();
+  $customerObj = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValue('id'));
+  $membershipObj = Membership::getMembershipById($customerObj->getValueEncoded('membership_id'));
+
+  $responseData = array(
+    'commission_rate' => $membershipObj->getValueEncoded('percentage'),
+    'exchange_rate'=> $rateObj->getValueEncoded('mmk')
+  );
   echo json_encode($responseData);
 }
 
