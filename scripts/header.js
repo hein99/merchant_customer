@@ -211,7 +211,6 @@ function buildResultEstimateCalculation()
   var t_mm_tax = (f_payment_dollar/100)*mm_tax;
   var s_payment_dollar = t_commission + t_weight + t_mm_tax;
   var s_payment_mmk = s_payment_dollar*exchange_rate;
-  console.log(s_payment_mmk + ':_:' + s_payment_dollar + ':_:' + exchange_rate)
 
   var t_amount = f_payment_mmk + s_payment_mmk;
 

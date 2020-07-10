@@ -3,6 +3,7 @@
   box-sizing: border-box;
 }
 .hk-est-calc-wrap{
+  overflow-y: scroll;
   position: absolute;
   top: 48px;
   left: 0;
