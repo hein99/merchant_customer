@@ -146,9 +146,12 @@ function buildEstimateCalculator()
     method: 'get',
     dataType: 'json'
   }).done(function(msg){
+    var close_btn = $('<button>').html('&times;').click(function(){
+      $('.hk-est-calc-wrap').remove();
+    })
     $('<article>', {
       class: 'hk-est-calc-wrap'
-    }).append(buildFormEstimateCaculation(msg)).prependTo('body');
+    }).append(close_btn).append(buildFormEstimateCaculation(msg)).prependTo('body');
   });
 
 }
@@ -186,8 +189,19 @@ function buildFormEstimateCaculation(defalultData)
     $('.hk-est-form-wrap').hide();
   });
 
-  var form = $('<form>', {action: '#', method: 'get'}).append(p_price).append(p_qty).append(weight_cost).append(p_weight).append(us_tax).append(shipping_cost).append(commission).append(mm_tax).append(exchange_rate).append(calc_btn);
-  return $('<section>', {class: 'hk-est-form-wrap'}).append(form);
+  var t_r1 = $('<tr>').append($('<td>').append($('<label>', {for: 'p-price'}).html('Product&nbsp;Unit&nbsp;Price'))).append($('<td>').html('$')).append($('<td>').append(p_price));
+  var t_r2 = $('<tr>').append($('<td>').append($('<label>', {for: 'p-qty'}).html('Quantity'))).append($('<td>').html('unit')).append($('<td>').append(p_qty));
+  var t_r3 = $('<tr>').append($('<td>').append($('<label>', {for: 'p-weight'}).html('Product&nbsp;Weight'))).append($('<td>').html('lb')).append($('<td>').append(p_weight));
+  var t_r4 = $('<tr>').append($('<td>').append($('<label>', {for: 'shipping-cost'}).html('Shipping&nbsp;Cost'))).append($('<td>').html('$')).append($('<td>').append(shipping_cost));
+  var t_r5 = $('<tr>').append($('<td>').append($('<label>', {for: 'weight-cost'}).html('Weight&nbsp;Cost<br><em>Est:[ 1lb = 7$ ]</em>'))).append($('<td>').html('$')).append($('<td>').append(weight_cost));
+  var t_r6 = $('<tr>').append($('<td>').append($('<label>', {for: 'us-tax'}).html('US&nbsp;Tax<br><em>Est:[ 5% ]</em>'))).append($('<td>').html('$')).append($('<td>').append(us_tax));
+  var t_r7 = $('<tr>').append($('<td>').append($('<label>', {for: 'mm-tax'}).html('MM&nbsp;Tax<br><em>Est:[ 5% ]</em>'))).append($('<td>').html('$')).append($('<td>').append(mm_tax));
+  var t_r8 = $('<tr>').append($('<td>').append($('<label>', {for: 'commission'}).html('Commission<br><em>Est:[ ' + d_commission_rate + '% ]</em>'))).append($('<td>').html('$')).append($('<td>').append(commission));
+  var t_r9 = $('<tr>').append($('<td>').append($('<label>', {for: 'exchange-rate'}).html('Exchange&nbsp;Rate<br><em>Est:[ 1$ = ' + d_exchange_rate + ' Ks ]</em>'))).append($('<td>').html('MMK')).append($('<td>').append(exchange_rate));
+  var form_table = $('<table>').append(t_r1).append(t_r2).append(t_r3).append(t_r4).append(t_r5).append(t_r6).append(t_r7).append(t_r8).append(t_r9);
+
+  var form = $('<form>', {action: '#', method: 'get'}).append(form_table).append(calc_btn);
+  return $('<section>', {class: 'hk-est-form-wrap'}).append($('<h1>').html('Please fill all the fields below to calculate')).append(form);
 }
 
 function buildResultEstimateCalculation()
