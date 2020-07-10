@@ -561,8 +561,8 @@
   }
   .sn-membership{
     padding: 1em 0.5em;
-    margin: 2em 0.5em 1em 0em;
-    height: calc(100vh - 205px);
+    margin: 0em 0.5em 0em 0em;
+    height: calc(100vh - 160px);
     width: 25%;
   }
   .sn-definition-container{
