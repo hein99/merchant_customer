@@ -161,6 +161,11 @@ displayHomeNavigation();
       <img src="<?php echo FILE_URL ?>/logos/exchangerateline.png" alt="">
    </div>
 
+   <div class="wp-calculate-order-container hk-est-calc-trigger-js">
+    <i class="fas fa-file-invoice-dollar"></i>
+    <span>Calculate My Order</span>
+   </div>
+
    <div class="wp-contact-admin-container">
      <a href="<?php echo URL ?>/conversation/">
        <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="">
