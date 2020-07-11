@@ -127,32 +127,34 @@ function displayOtherNavigation($active_page='')
   </nav>
   <?php
 }
-function displayPageFooter()
-{?>
-  <footer>
-    <div class="footer-accounts">
-      <h6>KBZ Accounts</h6>
-      <div class="">
-        <ul>
-          <li><a href="#">9086 5432 6754 2769</a></li>
-          <li><a href="#">9086 5432 6754 2769</a></li>
-        </ul>
+function displayPageFooter($display_footer=true)
+{
+  if($display_footer){?>
+    <footer>
+      <div class="footer-accounts">
+        <h6>KBZ Accounts</h6>
+        <div class="">
+          <ul>
+            <li><a href="#">9086 5432 6754 2769</a></li>
+            <li><a href="#">9086 5432 6754 2769</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="footer-phone">
-      <h6>Call Us</h6>
-      <div class="">
-        <ul>
-          <li><a href="tel:09765920059">09 765920059</a></li>
-        </ul>
+      <div class="footer-phone">
+        <h6>Call Us</h6>
+        <div class="">
+          <ul>
+            <li><a href="tel:09765920059">09 765920059</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="footer-address">
-      <h6>Our Location</h6>
-      <p>No.55, Marlarmying 6th Street, No(9) Ward, Hlaing Township, Yangon.</p>
-    </div>
-  </footer>
-  <script src="<?php echo FILE_URL ?>/scripts/header.js"></script>
+      <div class="footer-address">
+        <h6>Our Location</h6>
+        <p>No.55, Marlarmying 6th Street, No(9) Ward, Hlaing Township, Yangon.</p>
+      </div>
+    </footer>
+    <script src="<?php echo FILE_URL ?>/scripts/header.js"></script>
+  <?php } ?>
     </body>
   </html>
   <?php

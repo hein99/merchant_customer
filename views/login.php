@@ -47,7 +47,7 @@ function displayLogin($errorMessages, $customerAccount, $message, $flag)
 <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
 <script src="<?php echo FILE_URL ?>/scripts/login.js" charset="utf-8"></script>
 <?php
-  displayPageFooter();
+  displayPageFooter(false);
 }
 
 function displayLoginForm($error_messages, $customer_account)
