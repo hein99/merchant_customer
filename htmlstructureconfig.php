@@ -132,25 +132,29 @@ function displayPageFooter($display_footer=true)
   if($display_footer){?>
     <footer>
       <div class="footer-accounts">
-        <h6>KBZ Accounts</h6>
-        <div class="">
-          <ul>
-            <li><a href="#">9086 5432 6754 2769</a></li>
-            <li><a href="#">9086 5432 6754 2769</a></li>
-          </ul>
+        <h6>Our KBZ Accounts</h6>
+        <div class="bank-accounts-container">
+          <i class="fas fa-credit-card"></i>
+          <div>
+            <a href="#">9086 5432 6754 2769</a>
+            <a href="#">9086 5432 6754 2769</a>
+          </div>
         </div>
       </div>
-      <div class="footer-phone">
-        <h6>Call Us</h6>
-        <div class="">
-          <ul>
-            <li><a href="tel:09765920059">09 765920059</a></li>
-          </ul>
+      <div class="footer-contact-us">
+        <h6>Contact Us</h6>
+        <div class="phone-number-container">
+          <i class="fas fa-phone-alt"></i>
+          <a href="tel:09765920059">09 765920059</a>
+        </div>
+        <div class="address-container">
+          <i class="fas fa-map-marker-alt"></i>
+          <p>No.55, Marlarmying 6th Street, No(9) Ward, Hlaing Township, Yangon.</p>
         </div>
       </div>
-      <div class="footer-address">
-        <h6>Our Location</h6>
-        <p>No.55, Marlarmying 6th Street, No(9) Ward, Hlaing Township, Yangon.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fas fa-shopping-bag"></i></a>
       </div>
     </footer>
     <script src="<?php echo FILE_URL ?>/scripts/header.js"></script>
