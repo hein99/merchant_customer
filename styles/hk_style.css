@@ -720,6 +720,34 @@
     height: 100vh;
     margin: 0 auto;
   }
+  .hk-est-calc-wrap{
+    width: inherit;
+    top: 106px;
+    left: inherit;
+  }
+  .hk-est-form-wrap, .hk-est-result-wrap{
+    width: 30em;
+    margin: 0 auto;
+  }
+  .hk-est-result-wrap table{
+    margin-bottom: 2em;
+  }
+  .hk-est-result-wrap table thead th{
+    font-size: 1.25em;
+  }
+  .hk-est-result-wrap table tbody td{
+    font-size: 1em;
+  }
+  .hk-est-result-wrap table tfoot td{
+    font-size: 1em;
+  }
+  .hk-est-result-wrap>div>p:first-child{
+    font-size: 1.25em;
+    font-weight: 600;
+  }
+  .hk-est-result-wrap>div>p:last-child{
+    font-size: 1.6em;
+  }
   .hk-dialog-box-content{
     min-width: 440px;
   }
@@ -804,6 +832,16 @@
 
 /* Tablet View */
 @media (min-width: 30em) and (max-width: 60em){
+  .hk-est-calc-wrap{
+    width: inherit;
+    top: 52px;
+    left: inherit;
+  }
+  .hk-est-form-wrap, .hk-est-result-wrap{
+    width: 25em;
+    margin: 0 auto;
+  }
+
   .hk-dialog-box-content{
     min-width: 330px;
   }
