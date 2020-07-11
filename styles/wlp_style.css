@@ -684,7 +684,7 @@
 		max-height: 64px;
 		padding: 3% 6%;
 		margin: 6% 0 0;
-		cursor: auto;
+		cursor: pointer;
 		box-sizing: border-box;
 		box-shadow: 0 0 4px #ccc;
 	}
