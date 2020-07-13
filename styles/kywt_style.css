@@ -539,13 +539,14 @@ h3  {font-size: 8;} */
 /* End Dasktop View */
 /********** end of error page **********/
 
-/********** beginning of footer **********/
+/********** beginning of footer**********/
 /* Mobile View */
 footer{
   position: relative;
-  background: #12171BDB;
+  clear: both;
   width: 100%;
-  padding: 6% 6%;
+  padding: 6%;
+  background: #12171BDB;
   box-sizing: border-box;
 }
 
@@ -566,10 +567,8 @@ footer h6{
   margin-bottom: 14px;
 }
 
-.footer-accounts i,
-.footer-contact-us i{
-  font-size: 0.8em;
-  margin-right: 20px;
+.footer-social h6{
+  display: none;
 }
 
 .bank-accounts-container,
@@ -580,29 +579,39 @@ footer h6{
   color: #B3B6BB;
 }
 
+.footer-accounts i,
+.footer-contact-us i{
+  font-size: 0.8em;
+  margin-right: 20px;
+  padding-top: 2px;
+  box-sizing: border-box;
+}
+
 .bank-accounts-container div{
   display: flex;
   flex-direction: column;
 }
 
-.bank-accounts-container div a:first-child{
-  margin-bottom: 8px;
-}
-
-.bank-accounts-container a,
-.phone-number-container a{
+.footer-accounts a,
+.footer-contact-us a{
   color: #B3B6BB;
   text-decoration: none;
   font-size: 0.875em;
   letter-spacing: 0.5px;
 }
 
-.address-container p{
-  font-size: 0.875em;
+.bank-accounts-container div a:first-child{
+  margin-bottom: 8px;
 }
 
 .phone-number-container{
   margin-bottom: 12px;
+}
+
+.address-container p{
+  font-size: 0.9em;
+  line-height: 1.3em;
+  letter-spacing: 0.2px;
 }
 
 .footer-social{
@@ -617,7 +626,8 @@ footer h6{
   height: 30px;
   border-radius: 50%;
   color: #fff;
-  border: 2px solid #2EA6D6;
+  border: 2px solid #808080;
+  background: #515253;
   justify-content: center;
   align-items: center;
 }
@@ -626,20 +636,98 @@ footer h6{
   margin-right: 6px;
 }
 
-.address-container p{
-  line-height: 1.3em;
-  letter-spacing: 0.2px;
-}
-
 /* End Mobile View */
 
 /* Tablet View */
 @media (min-width: 30em) and (max-width: 60em){
+
+footer{
+  padding: 4%;
 }
+
+.footer-accounts i,
+.footer-contact-us i{
+  font-size: 0.875em;
+}
+
+.footer-accounts a,
+.footer-contact-us a{
+  font-size: 0.9em;
+  letter-spacing: 0.8px;
+}
+
+.address-container p{
+  font-size: 1em;
+  line-height: 1.5em;
+  letter-spacing: 0.8px;
+}
+
+.footer-social{
+  top: 10%;
+  right: 6%;
+}
+
+}
+
 /* End Tablet View */
 
-/* Desktop View */
+/* Destop View */
 @media (min-width: 60em){
+
+footer{
+  padding: 4%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.footer-accounts, .footer-social, .footer-contact-us{
+  width: calc(100% / 3);
+}
+
+.footer-social{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer h6{
+  font-size: 0.85em;
+  margin-bottom: 22px;
+  letter-spacing: 0.8px;
+}
+
+.footer-social h6{
+  display: block;
+}
+
+.footer-social{
+  position: relative;
+  left: 0;
+  right: 0;
+}
+
+.footer-accounts i,
+.footer-contact-us i{
+  font-size: 0.8em;
+}
+
+.footer-accounts a,
+.footer-contact-us a{
+  font-size: 0.9em;
+  letter-spacing: 0.75px;
+}
+
+.address-container p{
+  font-size: 0.975em;
+  letter-spacing: 1px;
+  line-height: 1.2em;
+}
+
+.bank-accounts-container div a:first-child{
+  margin-bottom: 12px;
+}
+
 }
 /* End Desktop View */
 /********** end of footer **********/
