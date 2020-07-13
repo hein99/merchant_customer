@@ -276,7 +276,8 @@
 	.wp-home-page-container{
 		position: relative;
 		width: 100vw;
-		height: calc(100vh - 128px);
+		/* height: calc(100vh - 128px); */
+		height: auto;
 		padding: 2% 6%;
 		box-sizing: border-box;
 	}

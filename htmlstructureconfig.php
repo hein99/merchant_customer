@@ -149,12 +149,15 @@ function displayPageFooter($display_footer=true)
         </div>
         <div class="address-container">
           <i class="fas fa-map-marker-alt"></i>
-          <p>No.55, Marlarmying 6th Street, No(9) Ward, Hlaing Township, Yangon.</p>
+          <a href="" target="_blank"><p>No.55, Marlarmying 6th Street, No(9) Ward, Hlaing Township, Yangon.</p></a>
         </div>
       </div>
       <div class="footer-social">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fas fa-shopping-bag"></i></a>
+        <h6>Follow Us</h6>
+        <div class="">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fas fa-shopping-bag"></i></a>
+        </div>
       </div>
     </footer>
     <script src="<?php echo FILE_URL ?>/scripts/header.js"></script>
