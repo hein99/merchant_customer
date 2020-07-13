@@ -17,5 +17,5 @@ displayOtherNavigation('conversation');
 </script>
  <script src="<?php echo FILE_URL ?>/scripts/conversation.js" charset="utf-8"></script>
 <?php
-displayPageFooter();
+displayPageFooter(false);
 ?>

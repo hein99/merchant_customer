@@ -13,5 +13,5 @@ displayOtherNavigation('order');
 <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
 <script src="<?php echo FILE_URL ?>/scripts/order.js" charset="utf-8"></script>
 <?php
-displayPageFooter();
+displayPageFooter(false);
 ?>
