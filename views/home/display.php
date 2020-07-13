@@ -5,6 +5,7 @@ displayHomeNavigation();
   <div class="ssn_loader">
     <div class="triple-spinner"></div>
   </div>
+<section class="wp-home">
  <section class="wp-home-page-container">
    <?php
   $customer_account = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValueEncoded('id'));
@@ -184,3 +185,4 @@ displayHomeNavigation();
 <?php
 displayPageFooter();
 ?>
+</section>
