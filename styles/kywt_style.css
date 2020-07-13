@@ -709,17 +709,17 @@ footer h6{
 
 .footer-accounts i,
 .footer-contact-us i{
-  font-size: 0.875em;
+  font-size: 0.8em;
 }
 
 .footer-accounts a,
 .footer-contact-us a{
   font-size: 0.9em;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.75px;
 }
 
 .address-container p{
-  font-size: 1em;
+  font-size: 0.975em;
   letter-spacing: 1px;
   line-height: 1.2em;
 }
