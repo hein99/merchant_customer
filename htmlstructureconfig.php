@@ -154,7 +154,7 @@ function displayPageFooter($display_footer=true)
         </div>
         <div class="address-container">
           <i class="fas fa-map-marker-alt"></i>
-          <a href="https://goo.gl/maps/L9nzKBog7yF7def77" target="_blank"><p>No.55, Marlarmying 6th Street, No(9) Ward, Hlaing Township, Yangon.</p></a>
+          <a href="https://goo.gl/maps/L9nzKBog7yF7def77" target="_blank"><p>No.55, Marlarmying 6th Street, No(16) Ward, Hlaing Township, Yangon.</p></a>
         </div>
       </div>
       <div class="footer-social">

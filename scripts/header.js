@@ -212,7 +212,7 @@ function buildFormEstimateCaculation(defalultData)
   var t_r3 = $('<tr>').append($('<td>').append($('<label>', {for: 'p-weight'}).html('Product&nbsp;Weight'))).append($('<td>').html('lb')).append($('<td>').append(p_weight));
   var t_r4 = $('<tr>').append($('<td>').append($('<label>', {for: 'shipping-cost'}).html('Shipping&nbsp;Cost'))).append($('<td>').html('$')).append($('<td>').append(shipping_cost));
   var t_r5 = $('<tr>').append($('<td>').append($('<label>', {for: 'weight-cost'}).html('Weight&nbsp;Cost<br><em>Est:[ 1lb = 7$ ]</em>'))).append($('<td>').html('$')).append($('<td>').append(weight_cost));
-  var t_r6 = $('<tr>').append($('<td>').append($('<label>', {for: 'us-tax'}).html('US&nbsp;Tax<br><em>Est:[ 5% ]</em>'))).append($('<td>').html('$')).append($('<td>').append(us_tax));
+  var t_r6 = $('<tr>').append($('<td>').append($('<label>', {for: 'us-tax'}).html('US&nbsp;Tax<br><em>Est:[ 10% ]</em>'))).append($('<td>').html('$')).append($('<td>').append(us_tax));
   var t_r7 = $('<tr>').append($('<td>').append($('<label>', {for: 'mm-tax'}).html('MM&nbsp;Tax<br><em>Est:[ 5% ]</em>'))).append($('<td>').html('$')).append($('<td>').append(mm_tax));
   var t_r8 = $('<tr>').append($('<td>').append($('<label>', {for: 'commission'}).html('Commission<br><em>Est:[ ' + d_commission_rate + '% ]</em>'))).append($('<td>').html('$')).append($('<td>').append(commission));
   var t_r9 = $('<tr>').append($('<td>').append($('<label>', {for: 'exchange-rate'}).html('Exchange&nbsp;Rate<br><em>Est:[ 1$ = ' + d_exchange_rate + ' Ks ]</em>'))).append($('<td>').html('MMK')).append($('<td>').append(exchange_rate));
@@ -284,7 +284,7 @@ function changeRespectiveFormValue()
   var p_price_val = Number($('#p-price').val()) * Number($('#p-qty').val());
   var shipping_cost_val = Number($('#shipping-cost').val());
   var commission_val = Number($('#commission').data('rate'))/100;
-  var us_tax_val = p_price_val*0.05;
+  var us_tax_val = p_price_val*0.1;
 
   var f_payment_val = p_price_val + us_tax_val + shipping_cost_val;
 
