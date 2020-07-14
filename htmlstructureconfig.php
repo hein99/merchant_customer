@@ -136,8 +136,9 @@ function displayPageFooter($display_footer=true)
         <div class="bank-accounts-container">
           <i class="fas fa-credit-card"></i>
           <div>
-            <a href="#">9086 5432 6754 2769</a>
-            <a href="#">9086 5432 6754 2769</a>
+            <a href="#">09130103301085101</a>
+            <a href="#">0084600500049085</a>
+            <a href="#">0192201010061371</a>
           </div>
         </div>
       </div>
@@ -145,7 +146,7 @@ function displayPageFooter($display_footer=true)
         <h6>Contact Us</h6>
         <div class="phone-number-container">
           <i class="fas fa-phone-alt"></i>
-          <a href="tel:09765920059">09 765920059</a>
+          <a href="tel:09974330882">09 974330882</a>
         </div>
         <div class="address-container">
           <i class="fas fa-map-marker-alt"></i>

@@ -1164,11 +1164,6 @@
 		color: #04D736;
 	}
 
-	.wp-membership-icon{
-		background-color: #FFFF0F;
-		color: #CDCD04;
-	}
-
 	#user-balance, #user-point{
 		display: flex;
 		align-items: center;
@@ -1915,11 +1910,6 @@
 	.wp-wallet-icon{
 		background-color: #CBFF94;
 		color: #04D736;
-	}
-
-	.wp-membership-icon{
-		background-color: #FFFF0F;
-		color: #CDCD04;
 	}
 
 	#user-balance, #user-point{
