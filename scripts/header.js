@@ -103,6 +103,17 @@ $(document).ready(function(){
   });
 });
 
+
+$(document).on('click', '.hk-copy-text-js', function()
+{
+  var parent = $(this).parent();
+  var selectField = $('input', parent);
+  selectField.prop('disabled', false);
+  selectField.select();
+  document.execCommand("copy");
+  selectField.blur();
+  selectField.prop('disabled', true);
+});
 function buildDialogConfirmBox(msg)
 {
   var markup = '';

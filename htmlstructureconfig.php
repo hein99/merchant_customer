@@ -135,11 +135,13 @@ function displayPageFooter($display_footer=true)
         <h6>Our KBZ Accounts</h6>
         <div class="bank-accounts-container">
           <i class="fas fa-credit-card"></i>
-          <div>
-            <a href="#">09130103301085101</a>
-            <a href="#">0084600500049085</a>
-            <a href="#">0192201010061371</a>
-          </div>
+          <ul>
+            <li>KBZ: <input type="text" class="hk-copy-text-js" size="11" value="09130103301085101"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button></li>
+            <li>CB: <input type="text" class="hk-copy-text-js" size="10" value="0084600500049085"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button></li>
+            <li>AYA: <input type="text" class="hk-copy-text-js" size="10" value="0192201010061371"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button></li>
+            <li>KBZ Pay: <input type="text" class="hk-copy-text-js" size="5" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button></li>
+            <li>Wave Money: <input type="text" class="hk-copy-text-js" size="5" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button></li>
+          </ul>
         </div>
       </div>
       <div class="footer-contact-us">
@@ -161,7 +163,6 @@ function displayPageFooter($display_footer=true)
         </div>
       </div>
     </footer>
-    <script src="<?php echo FILE_URL ?>/scripts/header.js"></script>
   <?php } ?>
     <script src="<?php echo FILE_URL ?>/scripts/header.js"></script>
     </body>
