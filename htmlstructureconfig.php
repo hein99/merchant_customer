@@ -8,6 +8,8 @@ function displayPageHeader($page_title, $dir_level=false)
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title><?php echo $page_title ?></title>
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/reset.css">
+      <link
+    rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.13.0/css/all.css'>
       <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
       <link href="https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+KR&family=Open+Sans&display=swap" rel="stylesheet">
@@ -136,11 +138,11 @@ function displayPageFooter($display_footer=true)
         <div class="bank-accounts-container">
           <i class="fas fa-credit-card"></i>
           <ul>
-            <li>KBZ: <input type="text" class="hk-copy-text-js" size="11" value="09130103301085101"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button></li>
-            <li>CB: <input type="text" class="hk-copy-text-js" size="10" value="0084600500049085"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button></li>
-            <li>AYA: <input type="text" class="hk-copy-text-js" size="10" value="0192201010061371"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button></li>
-            <li>KBZ Pay: <input type="text" class="hk-copy-text-js" size="5" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button></li>
-            <li>Wave Money: <input type="text" class="hk-copy-text-js" size="5" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button></li>
+            <li>KBZ: <input type="text" class="hk-copy-text-js" size="11" value="09130103301085101"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
+            <li>CB: <input type="text" class="hk-copy-text-js" size="10" value="0084600500049085"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
+            <li>AYA: <input type="text" class="hk-copy-text-js" size="10" value="0192201010061371"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
+            <li>KBZ Pay: <input type="text" class="hk-copy-text-js" size="5" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
+            <li>Wave Money: <input type="text" class="hk-copy-text-js" size="5" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
           </ul>
         </div>
       </div>
