@@ -677,6 +677,7 @@ footer h6{
   background: #515253;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 }
 
 .footer-social a:first-child{
@@ -778,3 +779,4 @@ footer h6{
 }
 /* End Desktop View */
 /********** end of footer **********/
+
