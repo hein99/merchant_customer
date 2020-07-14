@@ -54,8 +54,21 @@ displayHomeNavigation();
      </div>
 
      <div class="wp-user-point">
-      <div class="wp-membership-icon">
-        <span class="<?php echo $membership_icon ?>"><?php echo ($membership_icon == 'diamond') ? '<i class="fas fa-gem"></i>': '<i class="fas fa-medal"></i>' ?></span>
+      <div class="wp-membership-icon <?php echo $membership_icon ?>" title="<?php echo $membership_icon ?>">
+        <a href="<?php echo URL ?>/membership/"><?php
+          switch ($membership_icon) {
+            case 'silver':
+            case 'gold':
+              echo '<i class="fas fa-award"></i>';
+              break;
+            case 'platinum':
+              echo '<i class="fas fa-medal"></i>';
+              break;
+            case 'diamond':
+              echo '<i class="fas fa-gem"></i>';
+            break;
+          }
+          ?></a>
       </div>
       <div>
        <h2>Points I Have</h2>
@@ -164,7 +177,7 @@ displayHomeNavigation();
 
    <div class="wp-calculate-order-container hk-est-calc-trigger-js">
     <i class="fas fa-file-invoice-dollar"></i>
-    <span>Calculate My Order</span>
+    <span>Order Estimate Calculator</span>
    </div>
 
    <div class="wp-contact-admin-container">

@@ -43,7 +43,7 @@ function chooseMembership($membership_id)
 
     case 3:
       $membership_name = '<div class="sn-platinum-icon">
-         <i class="fas fa-award"></i></div>';
+         <i class="fas fa-medal"></i></div>';
       break;
 
     case 4:

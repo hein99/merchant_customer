@@ -149,19 +149,20 @@ function displayPageFooter($display_footer=true)
         </div>
         <div class="address-container">
           <i class="fas fa-map-marker-alt"></i>
-          <a href="" target="_blank"><p>No.55, Marlarmying 6th Street, No(9) Ward, Hlaing Township, Yangon.</p></a>
+          <a href="https://goo.gl/maps/L9nzKBog7yF7def77" target="_blank"><p>No.55, Marlarmying 6th Street, No(9) Ward, Hlaing Township, Yangon.</p></a>
         </div>
       </div>
       <div class="footer-social">
         <h6>Follow Us</h6>
         <div class="">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fas fa-shopping-bag"></i></a>
+          <a href="https://www.facebook.com/Ms-Beautys-Brand-Collection-101681588058918/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.thebestshopmm.com" target="_blank"><i class="fas fa-shopping-bag"></i></a>
         </div>
       </div>
     </footer>
     <script src="<?php echo FILE_URL ?>/scripts/header.js"></script>
   <?php } ?>
+    <script src="<?php echo FILE_URL ?>/scripts/header.js"></script>
     </body>
   </html>
   <?php

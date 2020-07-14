@@ -382,10 +382,29 @@
 		background-color: #CBFF94;
 		color: #04D736;
 	}
-
-	.wp-membership-icon{
-		background-color: #FFFF0F;
-		color: #CDCD04;
+  .wp-user-point .silver{
+    background: #F5F5F7;
+	}
+	.wp-user-point .silver a{
+		color: #C0BFDF;
+	}
+  .wp-user-point .gold{
+    background: #FFFF0F;
+	}
+	.wp-user-point .gold a{
+    color: #CDCD04;
+	}
+  .wp-user-point .platinum{
+    background: #D5D5D538;
+	}
+	.wp-user-point .platinum a{
+    color: #B9BBBC;
+	}
+	.wp-user-point .diamond{
+		background: #D5D5D538;
+  }
+	.wp-user-point .diamond a{
+    color: #2EC5FF;
 	}
 
 	#user-balance, #user-point{
