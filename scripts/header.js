@@ -180,25 +180,25 @@ function buildFormEstimateCaculation(defalultData)
     d_exchange_rate = defalultData.exchange_rate;
   }
 
-  var p_price = $('<input>', {type: 'number', id: 'p-price', step: '0.01', placeholder: '0.00'}).blur(function(){
+  var p_price = $('<input>', {type: 'number', id: 'p-price', step: '0.01', placeholder: '0.00', min: '0.00'}).blur(function(){
     changeRespectiveFormValue();
   });
-  var p_qty = $('<input>', {type: 'number', id: 'p-qty', placeholder: '0', value: '1'}).blur(function(){
+  var p_qty = $('<input>', {type: 'number', id: 'p-qty', placeholder: '1', value: '0', min: '1'}).blur(function(){
     changeRespectiveFormValue();
   });
-  var weight_cost = $('<input>', {type: 'number', id: 'weight-cost', step: '0.01', value: '7', placeholder: '0.00'}).blur(function(){
+  var weight_cost = $('<input>', {type: 'number', id: 'weight-cost', step: '0.01', value: '7', placeholder: '0.00', min: '0.00'}).blur(function(){
     changeRespectiveFormValue();
   });
-  var p_weight = $('<input>', {type: 'number', id: 'p-weight', step: '0.01', placeholder: '0.00'}).blur(function(){
+  var p_weight = $('<input>', {type: 'number', id: 'p-weight', step: '0.01', placeholder: '0.00', min: '0.00'}).blur(function(){
     changeRespectiveFormValue();
   });
-  var us_tax = $('<input>', {type: 'number', id: 'us-tax', step: '0.01', placeholder: '0.00'});
-  var shipping_cost = $('<input>', {type: 'number', id: 'shipping-cost', step: '0.01', placeholder: '0.00'}).blur(function(){
+  var us_tax = $('<input>', {type: 'number', id: 'us-tax', step: '0.01', placeholder: '0.00', min: '0.00'});
+  var shipping_cost = $('<input>', {type: 'number', id: 'shipping-cost', step: '0.01', placeholder: '0.00', min: '0.00'}).blur(function(){
     changeRespectiveFormValue();
   });
-  var commission = $('<input>', {type: 'number', id: 'commission', step: '0.01', 'data-rate': d_commission_rate, placeholder: '0.00'});
-  var mm_tax = $('<input>', {type: 'number', id: 'mm-tax', step: '0.01', placeholder: '0.00'});
-  var exchange_rate = $('<input>', {type: 'number', id: 'exchange-rate', step: '0.01', value: d_exchange_rate, placeholder: '0.00'});
+  var commission = $('<input>', {type: 'number', id: 'commission', step: '0.01', 'data-rate': d_commission_rate, placeholder: '0.00', min: '0.00'});
+  var mm_tax = $('<input>', {type: 'number', id: 'mm-tax', step: '0.01', placeholder: '0.00', min: '0.00'});
+  var exchange_rate = $('<input>', {type: 'number', id: 'exchange-rate', step: '0.01', value: d_exchange_rate, placeholder: '0.00', min: '0.00'});
   var calc_btn = $('<button>', {type: 'button'}).html('Calculate').click(function(){
     $('.hk-est-calc-wrap').append(buildResultEstimateCalculation());
     $('.hk-est-form-wrap').hide();

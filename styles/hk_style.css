@@ -722,7 +722,6 @@
   }
   .hk-est-calc-wrap{
     width: inherit;
-    top: 106px;
     left: inherit;
   }
   .hk-est-form-wrap, .hk-est-result-wrap{
@@ -834,7 +833,6 @@
 @media (min-width: 30em) and (max-width: 60em){
   .hk-est-calc-wrap{
     width: inherit;
-    top: 52px;
     left: inherit;
   }
   .hk-est-form-wrap, .hk-est-result-wrap{

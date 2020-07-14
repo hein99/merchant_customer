@@ -96,7 +96,7 @@ displayHomeNavigation();
           </div>
           <div class="new-order-input">
             <i class="fas fa-shapes"></i>
-            <input type="number" name="quantity" placeholder="Quantity">
+            <input type="number" name="quantity" placeholder="Quantity" min="1">
             <span>Quantity</span>
           </div>
           <div class="new-order-input">
