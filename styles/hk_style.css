@@ -5,12 +5,12 @@
 .hk-est-calc-wrap{
   overflow-y: scroll;
   position: fixed;
-  top: 48px;
+  top: 0;
   left: 0;
   z-index: 99;
   background: #777777e0;
   width: 100vw;
-  height: calc(100vh - 48px);
+  height: 100vh;
   padding: 3em 1em;
   font-family: "Open Sans", sans-serif;
 }
