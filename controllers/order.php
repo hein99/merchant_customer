@@ -54,7 +54,7 @@ function addNewOrder()
   $add_new_order = new CustomerOrder(array(
     'customer_id' => $_SESSION['merchant_customer_account']->getValue('id'),
     'product_link' => isset($_POST['product_link']) ? $_POST['product_link'] : '',
-    'remark' => isset($_POST['remark']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['remark']) : '',
+    'remark' => isset($_POST['remark']) ? $_POST['remark'] : '',
     'cupon_code' => isset($_POST['cupon_code']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['cupon_code']) : '',
     'quantity' => isset($_POST['quantity']) ? preg_replace('/[^0-9]/', '', $_POST['quantity']) : '',
     'price' => isset($_POST['price']) ? preg_replace('/[^\.0-9]/', '', $_POST['price']) : '',
@@ -97,7 +97,7 @@ function updateOrder()
   $add_new_order = new CustomerOrder(array(
     'id' => isset($_POST['id']) ? preg_replace('/[^0-9]/', '', $_POST['id']) : '',
     'product_link' => isset($_POST['product_link']) ? $_POST['product_link'] : '',
-    'remark' => isset($_POST['remark']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['remark']) : '',
+    'remark' => isset($_POST['remark']) ? $_POST['remark'] : '',
     'cupon_code' => isset($_POST['cupon_code']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['cupon_code']) : '',
     'quantity' => isset($_POST['quantity']) ? preg_replace('/[^0-9]/', '', $_POST['quantity']) : '',
     'price' => isset($_POST['price']) ? preg_replace('/[^\.0-9]/', '', $_POST['price']) : ''
