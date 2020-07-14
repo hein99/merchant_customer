@@ -114,7 +114,7 @@ $(document).on('click', '.hk-copy-text-js', function()
   document.execCommand("copy");
   selectField.blur();
   selectField.prop('disabled', true);
-  copiedTooltip.show();
+  copiedTooltip.show().delay(1000).fadeOut();
 
 });
 function buildDialogConfirmBox(msg)
