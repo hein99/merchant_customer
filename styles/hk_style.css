@@ -784,7 +784,6 @@
   }
   .order-detail-js{
     position: unset;
-    overflow-y: scroll;
     width: 50%;
     transform: translateY(0);
     background-color: #f9f9f9;
@@ -874,7 +873,6 @@
 
   .order-detail-js{
     position: relative;
-    overflow-y: scroll;
     width: 50%;
     height: 100%;
     transform: translateY(0);
@@ -933,3 +931,4 @@
   }
 }
 /* End Tablet View */
+

@@ -182,7 +182,7 @@ function buildOrderVoucher(order)
   voucher += '<td>US Tax</td> <td>&nbsp;</td> <td>$&nbsp;' + order.us_tax + '</td>';
   voucher += '</tr>';
   voucher += '<tr>';
-  voucher += '<td>Shipping Cost</td> <td>&nbsp;</td> <td>$&nbsp;' + order.shippig_cost + '</td>';
+  voucher += '<td>Shipping Cost</td> <td>&nbsp;</td> <td>$&nbsp;' + order.shipping_cost + '</td>';
   voucher += '</tr></tbody>';
   voucher += '<tfoot><tr>';
   voucher += '<td>First Payment</td> <td>&nbsp;</td> <td>$&nbsp;' + order.first_payment_dollar + '</td>';
@@ -254,7 +254,7 @@ function buildOrderForm(is_edit)
     form += '<textarea name="remark" placeholder="Remark">' + tempOrder.remark + '</textarea>';
     form += '<span>Remark</span></div>';
     form += '<div class="new-order-input"><i class="fas fa-hand-holding-usd"></i>';
-    form += '<input type="number" name="price" placeholder="Unit Price ($)" value="' + tempOrder.product_price + '">';
+    form += '<input type="text" name="price" placeholder="Unit Price ($)" value="' + tempOrder.product_price + '">';
     form += '<span>Unit Price ($)</span></div>';
     form += '<input type="submit" value="UPDATE">';
     form += '</form></div>';
