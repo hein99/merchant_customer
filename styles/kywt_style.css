@@ -627,12 +627,22 @@ footer h6{
   font-size: 0.875em;
   color: #B3B6BB;
 }
+.bank-accounts-container ul li:nth-child(1) input{
+  width: 10.5em;
+}
+.bank-accounts-container ul li:nth-child(2) input, .bank-accounts-container ul li:nth-child(3) input{
+  width: 9.5em;
+}
+.bank-accounts-container ul li:nth-child(4) input, .bank-accounts-container ul li:nth-child(5) input{
+  width: 6.5em;
+}
 .bank-accounts-container ul li button{
   background: none;
   border: 0 none;
   color: #767676;
   font-size: 1em;
   line-height: 1em;
+  padding-left: 0;
 }
 .footer-contact-us a{
   color: #B3B6BB;
