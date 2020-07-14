@@ -108,11 +108,14 @@ $(document).on('click', '.hk-copy-text-js', function()
 {
   var parent = $(this).parent();
   var selectField = $('input', parent);
+  var copiedTooltip = $('span', parent);
   selectField.prop('disabled', false);
   selectField.select();
   document.execCommand("copy");
   selectField.blur();
   selectField.prop('disabled', true);
+  copiedTooltip.show();
+
 });
 function buildDialogConfirmBox(msg)
 {
