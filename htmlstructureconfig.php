@@ -132,7 +132,7 @@ function displayPageFooter($display_footer=true)
   if($display_footer){?>
     <footer>
       <div class="footer-accounts">
-        <h6>Our KBZ Accounts</h6>
+        <h6>Our Accounts</h6>
         <div class="bank-accounts-container">
           <i class="fas fa-credit-card"></i>
           <ul>
