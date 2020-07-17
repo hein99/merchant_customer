@@ -24,9 +24,6 @@ displayHomeNavigation();
     case '4':
       $membership_icon = 'diamond';
       break;
-    default:
-      // code...
-      break;
   }
    ?>
    <div class="wp-header-user-name">
@@ -112,7 +109,7 @@ displayHomeNavigation();
           <div class="new-order-input">
             <i class="fas fa-hand-holding-usd"></i>
             <input type="text" name="price" placeholder="Unit Price">
-            <span>Unit Price ($)</span>
+            <span>Unit Price (<?php echo CURRENCY_SYMBOL .'&nbsp;'. CURRENCY_ABBR ?>)</span>
           </div>
            <input type="submit" value="Add">
          </form>
@@ -159,8 +156,8 @@ displayHomeNavigation();
      <h2>Today Exchange Rate</h2>
      <div class="wp-exchange-rate">
       <div class="wp-us-exchange-rate">
-       <span>USD</span>
-       <span>1&nbsp;<i class="fas fa-dollar-sign"></i></span>
+       <span><?php echo CURRENCY_ABBR ?></span>
+       <span>1&nbsp;<?php echo CURRENCY_SYMBOL ?></span>
       </div>
 
       <div id="exchange-icon"><i class="fas fa-exchange-alt"></i></div>

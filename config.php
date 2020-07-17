@@ -31,4 +31,7 @@ define('ERR_ACTION', 2);
 define('ERR_FORM', 3);
 define('ERR_URL', 4); // for URL query (i.e. http://localhost/merchat/order/get_orders?order_status=5) order_status does not contain 5.
 
+#Currency
+define('CURRENCY_SYMBOL', '&#36;');
+define('CURRENCY_ABBR', 'USD');
  ?>

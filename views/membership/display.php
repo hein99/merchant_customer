@@ -14,7 +14,6 @@ echo "</pre>";
        </div>
        <div class="sn-percentage-container">
          <div class="sn-percentage"><?php echo $membership->getValueEncoded('percentage') ?>%</div>
-         <div class="sn-off">OFF</div>
        </div>
        <div class="sn-definition-container">
          <?php echo $membership->getValueEncoded('definition') ?>
