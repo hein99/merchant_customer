@@ -212,7 +212,7 @@ function buildFormEstimateCaculation(defalultData)
   var t_r3 = $('<tr>').append($('<td>').append($('<label>', {for: 'p-weight'}).html('Product&nbsp;Weight'))).append($('<td>').html('lb')).append($('<td>').append(p_weight));
   var t_r4 = $('<tr>').append($('<td>').append($('<label>', {for: 'shipping-cost'}).html('Shipping&nbsp;Cost'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(shipping_cost));
   var t_r5 = $('<tr>').append($('<td>').append($('<label>', {for: 'weight-cost'}).html('Weight&nbsp;Cost<br><em>Est:[ 1lb = 7$ ]</em>'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(weight_cost));
-  var t_r6 = $('<tr>').append($('<td>').append($('<label>', {for: 'us-tax'}).html('US&nbsp;Tax<br><em>Est:[ 10% ]</em>'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(us_tax));
+  var t_r6 = $('<tr>').append($('<td>').append($('<label>', {for: 'us-tax'}).html( CURRENCY_LABEL + '&nbsp;Tax<br><em>Est:[ 10% ]</em>'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(us_tax));
   var t_r7 = $('<tr>').append($('<td>').append($('<label>', {for: 'mm-tax'}).html('MM&nbsp;Tax<br><em>Est:[ 5% ]</em>'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(mm_tax));
   var t_r8 = $('<tr>').append($('<td>').append($('<label>', {for: 'commission'}).html('Commission<br><em>Est:[ ' + d_commission_rate + '% ]</em>'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(commission));
   var t_r9 = $('<tr>').append($('<td>').append($('<label>', {for: 'exchange-rate'}).html('Exchange&nbsp;Rate<br><em>Est:[ 1$ = ' + d_exchange_rate + ' Ks ]</em>'))).append($('<td>').html('MMK')).append($('<td>').append(exchange_rate));
@@ -250,7 +250,7 @@ function buildResultEstimateCalculation()
   var t1_head = $('<thead>').append(t1_h_r1 );
 
   var t1_b_r1 = $('<tr>').append($('<td>').html('Product')).append($('<td>').html('[' + p_qty + ']')).append($('<td>').html( CURRENCY_SYMBOL + '&nbsp;' + currencyFormat(t_price)));
-  var t1_b_r2 = $('<tr>').append($('<td>').html('US&nbsp;Tax')).append($('<td>').html('&nbsp;')).append($('<td>').html(CURRENCY_SYMBOL + '&nbsp;' + currencyFormat(us_tax)));
+  var t1_b_r2 = $('<tr>').append($('<td>').html( CURRENCY_LABEL + '&nbsp;Tax')).append($('<td>').html('&nbsp;')).append($('<td>').html(CURRENCY_SYMBOL + '&nbsp;' + currencyFormat(us_tax)));
   var t1_b_r3 = $('<tr>').append($('<td>').html('Shipping&nbsp;Cost')).append($('<td>').html('&nbsp;')).append($('<td>').html(CURRENCY_SYMBOL + '&nbsp;' + currencyFormat(shipping_cost)));
   var t1_body = $('<tbody>').append(t1_b_r1).append(t1_b_r2).append(t1_b_r3);
 

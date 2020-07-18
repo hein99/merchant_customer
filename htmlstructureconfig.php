@@ -22,6 +22,7 @@ function displayPageHeader($page_title, $dir_level=false)
         var PAGE_FILE_URL = '<?php echo FILE_URL ?>';
         var CURRENCY_SYMBOL = '<?php echo CURRENCY_SYMBOL ?>';
         var CURRENCY_ABBR = '<?php echo CURRENCY_ABBR ?>';
+        var CURRENCY_LABEL = '<?php echo CURRENCY_LABEL ?>';
       </script>
     </head>
     <body>

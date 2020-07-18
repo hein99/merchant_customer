@@ -179,7 +179,7 @@ function buildOrderVoucher(order)
   voucher += '<td><span class="product-link-js"><a href="' + order.product_link + '" target="_blank">Product Link</a></span></td> <td>[' + order.qty + ']</td> <td>'+ CURRENCY_SYMBOL +'&nbsp;' + order.product_total_price + '</td>';
   voucher += '</tr>';
   voucher += '<tr>';
-  voucher += '<td>US Tax</td> <td>&nbsp;</td> <td>'+ CURRENCY_SYMBOL +'&nbsp;' + order.us_tax + '</td>';
+  voucher += '<td>' + CURRENCY_LABEL + ' Tax</td> <td>&nbsp;</td> <td>'+ CURRENCY_SYMBOL +'&nbsp;' + order.us_tax + '</td>';
   voucher += '</tr>';
   voucher += '<tr>';
   voucher += '<td>Shipping Cost</td> <td>&nbsp;</td> <td>'+ CURRENCY_SYMBOL +'&nbsp;' + order.shipping_cost + '</td>';
