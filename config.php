@@ -35,4 +35,5 @@ define('ERR_URL', 4); // for URL query (i.e. http://localhost/merchat/order/get_
 define('CURRENCY_SYMBOL', '&#36;');
 define('CURRENCY_ABBR', 'USD');
 define('CURRENCY_LABEL', 'US');
+define('PRODUCT_WEIGHT_UNIT', 'lb');
  ?>

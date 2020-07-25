@@ -23,6 +23,7 @@ function displayPageHeader($page_title, $dir_level=false)
         var CURRENCY_SYMBOL = '<?php echo CURRENCY_SYMBOL ?>';
         var CURRENCY_ABBR = '<?php echo CURRENCY_ABBR ?>';
         var CURRENCY_LABEL = '<?php echo CURRENCY_LABEL ?>';
+        var PRODUCT_WEIGHT_UNIT = '<?php echo PRODUCT_WEIGHT_UNIT ?>';
       </script>
     </head>
     <body>
