@@ -199,7 +199,7 @@ function buildOrderVoucher(order)
   voucher += '<td>Commission</td> <td>[' + order.commission_rate + '&nbsp%]</td> <td>'+ CURRENCY_SYMBOL +'&nbsp;' + order.commission_amount + '</td>';
   voucher += '</tr>';
   voucher += '<tr>';
-  voucher += '<td>Weight</td> <td>[' + order.weight + '&nbsp;lb]</td> <td>'+ CURRENCY_SYMBOL +'&nbsp;' + order.total_weight_cost + '</td>';
+  voucher += '<td>Weight</td> <td>[' + order.weight + '&nbsp;' + PRODUCT_WEIGHT_UNIT + ']</td> <td>'+ CURRENCY_SYMBOL +'&nbsp;' + order.total_weight_cost + '</td>';
   voucher += '</tr>';
   voucher += '<tr>';
   voucher += '<td>MM Tax</td> <td>';
