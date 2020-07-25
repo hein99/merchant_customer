@@ -178,7 +178,7 @@ function buildFormEstimateCaculation(defalultData)
 {
   var d_commission_rate = 15;
   var d_exchange_rate = 1500;
-  var d_weight_cost = 30;
+  var d_weight_cost = 7;
   var d_mm_tax = 0;
   if(typeof(defalultData) == 'object'){
     d_commission_rate = defalultData.commission_rate;
