@@ -6,6 +6,7 @@ function displayPageHeader($page_title, $dir_level=false)
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" href="<?php echo FILE_URL ?>/logos/tha_bag(89x107).png" type = "image/x-icon">
       <title><?php echo $page_title ?></title>
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/reset.css">
       <link
@@ -35,7 +36,7 @@ function displayHomeNavigation()
   <header class="wp-page-header">
     <div class="wp-header-logo">
       <a href="<?php echo URL ?>/">
-        <img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/><span>The Best Shop</span>
+        <img src="<?php echo FILE_URL ?>/logos/bird_carry_the_bag(374x161)Color.png"/><span>The Best Shop</span>
       </a>
     </div>
     <div class="wp-contact-logout-container">
@@ -84,7 +85,7 @@ function displayOtherNavigation($active_page='')
     </div>
     <div class="wp-header-logo">
       <a href="<?php echo URL ?>/">
-        <img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/><span>The Best Shop</span>
+        <img src="<?php echo FILE_URL ?>/logos/bird_carry_the_bag(374x161)Color.png"/><span>The Best Shop</span>
       </a>
     </div>
     <div class="wp-header-logout">
@@ -99,7 +100,7 @@ function displayOtherNavigation($active_page='')
     <div id="wp-other-page-sidebar-back"></div>
     <div class="wp-other-page-nav">
       <div class="wp-other-page-header">
-        <img src="<?php echo FILE_URL ?>/logos/globe-solid-white.png"/>
+        <img src="<?php echo FILE_URL ?>/logos/bird_carry_the_bag(374x161)Color.png"/>
         <span id="wp-other-page-header-logo">The Best Shop</span>
         <span id="wp-close-nav"><i class="fas fa-window-close"></i></span>
       </div>
