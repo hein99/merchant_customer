@@ -8,9 +8,11 @@ function displayPageHeader($page_title, $dir_level=false)
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title><?php echo $page_title ?></title>
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/reset.css">
+      <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/swiper.min.css">
       <link
     rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.13.0/css/all.css'>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
       <link href="https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+KR&family=Open+Sans&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/<?php echo $dir_level ? 'login.css' : 'config.css'?>">
