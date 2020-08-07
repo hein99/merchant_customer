@@ -34,7 +34,7 @@ function displayHomeNavigation()
   <header class="wp-page-header">
     <div class="wp-header-logo">
       <a href="<?php echo URL ?>/">
-        <img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/><span>The Best Shop</span>
+        <img src="<?php echo FILE_URL ?>/logos/bird.png"/><span>The Best Shop</span>
       </a>
     </div>
     <div class="wp-contact-logout-container">
@@ -83,7 +83,7 @@ function displayOtherNavigation($active_page='')
     </div>
     <div class="wp-header-logo">
       <a href="<?php echo URL ?>/">
-        <img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/><span>The Best Shop</span>
+        <img src="<?php echo FILE_URL ?>/logos/bird.png"/><span>The Best Shop</span>
       </a>
     </div>
     <div class="wp-header-logout">
@@ -98,7 +98,7 @@ function displayOtherNavigation($active_page='')
     <div id="wp-other-page-sidebar-back"></div>
     <div class="wp-other-page-nav">
       <div class="wp-other-page-header">
-        <img src="<?php echo FILE_URL ?>/logos/globe-solid-white.png"/>
+        <img src="<?php echo FILE_URL ?>/logos/bird.png"/>
         <span id="wp-other-page-header-logo">The Best Shop</span>
         <span id="wp-close-nav"><i class="fas fa-window-close"></i></span>
       </div>
