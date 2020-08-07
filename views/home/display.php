@@ -1,104 +1,177 @@
 <?php
 displayPageHeader('Home | ' . WEB_NAME);
 displayHomeNavigation();
+
+$customer_account = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValueEncoded('id'));
+$latest_exchange_rate = ExchangeRate::getLatestExchangeRate();
+$banner_photos = BannerPhotos::getAllPhotos();
+$float_text = FloatText::getText();
+$membership_id = $customer_account->getValueEncoded('membership_id');
+$membership_definition = Membership::getAllMembership();
+switch ($membership_id) {
+  case '1':
+    $membership_icon = 'silver';
+    break;
+  case '2':
+    $membership_icon = 'gold';
+    break;
+  case '3':
+    $membership_icon = 'platinum';
+    break;
+  case '4':
+    $membership_icon = 'diamond';
+    break;
+}
  ?>
  <div class="ssn_loader">
    <div class="triple-spinner"></div>
  </div>
 
- <section class="ky-home">
-   <div class="ky-home-customerInfo-container">
-     <i class="fas fa-award"></i>
+ <main class="ky-home">
+   <!-- ****** Greeting article-->
+   <article class="ky-home-customerInfo-container">
+     <a href="<?php echo URL ?>/membership/"><?php
+       switch ($membership_icon) {
+         case 'silver':
+         case 'gold':
+           echo '<i class="fas fa-award"></i>';
+           break;
+         case 'platinum':
+           echo '<i class="fas fa-medal"></i>';
+           break;
+         case 'diamond':
+           echo '<i class="fas fa-gem"></i>';
+         break;
+       }
+       ?></a>
      <div class="ky-customerInfo">
-       <span id="ky-home-greeting">Hello, David!</span>
-       <span id="ky-home-balance">50000 Ks</span>
+       <span id="ky-home-greeting">Hello,&nbsp;<?php echo $customer_account->getValueEncoded('username') ?>!</span>
+       <span id="ky-home-balance"><?php echo number_format($customer_account->getValueEncoded('balance'), 2) ?>&nbsp;Ks</span>
+       <span id="ky-home-balance"><?php echo number_format($customer_account->getValueEncoded('point')/1000) ?>&nbsp;Points</span>
      </div>
-     <button type="button" name="button"><span class="material-icons">calculate</span><span>Calculate Order</span></button>
-   </div>
-   <div class="ky-swiper-container">
+     <button type="button"><span class="material-icons">calculate</span><span>Estimate Calculator</span></button>
+   </article>
+   <!-- End of greeting article-->
+
+   <!-- ****** Banner article-->
+   <article class="ky-swiper-container">
      <div class="swiper-container">
-       <div class="swiper-wrapper">
-         <div class="swiper-slide">
-           <a href="#">
-             <img src="<?php echo FILE_URL ?>/photos/banner_photos/sneaker.jpg" alt="sneaker photo">
-           </a>
-         </div>
-         <div class="swiper-slide">
-           <a href="#">
-             <img src="<?php echo FILE_URL ?>/photos/banner_photos/coffee.jpg" alt="sneaker photo">
-           </a>
-         </div>
-         <div class="swiper-slide">
-           <a href="#">
-             <img src="<?php echo FILE_URL ?>/photos/banner_photos/image.jpg" alt="sneaker photo">
-           </a>
-         </div>
-       </div>
+       <ul class="swiper-wrapper">
+         <?php foreach ($banner_photos as $banner_photo): ?>
+           <li class="swiper-slide">
+             <a href="<?php echo $banner_photo->getValueEncoded('link') ?>" target="_blank">
+               <img src="<?php echo OTHER_FILE_URL ?>/photos/banner/id_<?php echo $banner_photo->getValue('id') . '_' . $banner_photo->getValueEncoded('photo_name')?>" alt="<?php echo $banner_photo->getValueEncoded('photo_name') ?>">
+             </a>
+           </li>
+         <?php endforeach; ?>
+       </ul>
        <div class="swiper-pagination"></div>
        <span class="swiper-button-next"><i class="fas fa-angle-right"></i></span>
        <span class="swiper-button-prev"><i class="fas fa-angle-left"></i></span>
      </div>
-   </div>
-   <div class="ky-exchange-rate-contact-admin-container">
-     <div class="ky-exchange-rate-container">
-       <h3>Today Exchange Rate</h3>
+   </article>
+   <!-- End of banner article-->
+
+   <!-- ****** Float text article-->
+   <article class="">
+     <p><?php echo $float_text->getValueEncoded('text') ?></p>
+   </article>
+   <!-- End of float text article-->
+
+   <!-- ****** Exchange rate and contact admin article-->
+   <article class="ky-exchange-rate-contact-admin-container">
+     <section class="ky-exchange-rate-container">
+       <h1>Today Exchange Rate</h1>
        <div class="ky-rate-container">
          <div class="ky-us-rate">
-           <span>USD</span>
-           <span>1&nbsp;$</span>
+           <span><?php echo CURRENCY_ABBR ?></span>
+           <span>1&nbsp;<?php echo CURRENCY_SYMBOL ?></span>
          </div>
          <div class="ky-exchange-icon">
            <i class="fas fa-exchange-alt"></i>
          </div>
          <div class="ky-mm-rate">
            <span>MMK</span>
-           <span>1500&nbsp;<span id="ky-mm-unit">kyats</span></span>
+           <span><?php echo $latest_exchange_rate->getValueEncoded('mmk') ?>&nbsp;<span id="ky-mm-unit">kyats</span></span>
          </div>
        </div>
-     </div>
-     <div class="ky-contact-admin-container">
-       <a href="#">
+     </section>
+     <section class="ky-contact-admin-container">
+       <a href="<?php echo URL ?>/conversation/">
          <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="">
          <h3>Contact Admin</h3>
          <span class="wp-msg-count"><span class="msg_count"></span></span>
        </a>
-     </div>
-   </div>
-   <div class="ky-accounts-accordion">
-     <div class="ky-accordion-header">
+     </section>
+   </article>
+   <!-- End of exchange rate and contact admin article-->
+
+   <!-- ****** Bank accounts article-->
+   <article class="ky-accounts-accordion">
+     <header class="ky-accordion-header">
        <i class="fas fa-plus"></i>
-       <h4>Bank Accounts</h4>
-     </div>
+       <h1>Bank Accounts</h1>
+     </header>
      <div class="ky-accordion-body">
        <table>
          <thead>
            <tr>
-             <th>Admin</th>
-             <th>Payment</th>
-             <th>Card Number</th>
+             <th>Account Name</th>
+             <th>Payment Method</th>
+             <th>Account Number</th>
            </tr>
          </thead>
          <tbody>
            <tr>
-             <td>David</td>
-             <td>KBZ Bank</td>
-             <td>12898974<button><i class="fas fa-copy"></i></button></td>
+             <td>U Min Thaw Han</td>
+             <td>KBZ</td>
+             <td><input type="text" class="hk-copy-text-js" value="09130103301085101"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
            </tr>
            <tr>
-             <td>David</td>
-             <td>KBZ Bank</td>
-             <td>1289897456783210<button><i class="fas fa-copy"></i></button></td>
+             <td>U Min Thaw Han</td>
+             <td>CB</td>
+             <td><input type="text" class="hk-copy-text-js" value="0084600500049085"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
            </tr>
            <tr>
-             <td>David</td>
-             <td>KBZ Bank</td>
-             <td>1289897456783210<button><i class="fas fa-copy"></i></button></td>
+             <td>U Min Thaw Han</td>
+             <td>AYA</td>
+             <td><input type="text" class="hk-copy-text-js" value="0192201010061371"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
+           </tr>
+           <tr>
+             <td>&nbsp;</td>
+             <td>KBZ Pay</td>
+             <td><input type="text" class="hk-copy-text-js" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
+           </tr>
+           <tr>
+             <td>&nbsp;</td>
+             <td>Wave Money</td>
+             <td><input type="text" class="hk-copy-text-js" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
            </tr>
          </tbody>
        </table>
      </div>
-   </div>
- </section>
+   </article>
+   <!-- End of bank accounts article-->
+
+   <!-- ****** Membership chart article-->
+   <article class="">
+     <header class="">
+       <i class="fas fa-plus"></i>
+       <h1>Membership Chart</h1>
+     </header>
+     <?php foreach ($membership_definition as $row): ?>
+       <section>
+         <h1><?php echo $row->getValueEncoded('name') ?></h1>
+         <p>
+           <span><?php echo $row->getValueEncoded('percentage') ?>%</span>
+           <span>OFF</span>
+         </p>
+         <p><?php echo $row->getValueEncoded('definition') ?></p>
+       </section>
+     <?php endforeach; ?>
+   </article>
+   <!-- End of membership chart article-->
+ </main>
 
  <script src="<?php echo FILE_URL ?>/scripts/swiper.min.js" charset="utf-8"></script>
  <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
