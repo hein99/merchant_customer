@@ -138,19 +138,6 @@ function displayPageFooter($display_footer=true)
 {
   if($display_footer){?>
     <footer>
-      <div class="footer-accounts">
-        <h6>Our Accounts</h6>
-        <div class="bank-accounts-container">
-          <i class="fas fa-credit-card"></i>
-          <ul>
-            <li>KBZ: <input type="text" class="hk-copy-text-js" value="09130103301085101"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
-            <li>CB: <input type="text" class="hk-copy-text-js" value="0084600500049085"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
-            <li>AYA: <input type="text" class="hk-copy-text-js" value="0192201010061371"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
-            <li>KBZ Pay: <input type="text" class="hk-copy-text-js" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
-            <li>Wave Money: <input type="text" class="hk-copy-text-js" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
-          </ul>
-        </div>
-      </div>
       <div class="footer-contact-us">
         <h6>Contact Us</h6>
         <div class="phone-number-container">
