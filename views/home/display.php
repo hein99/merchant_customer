@@ -1,38 +1,57 @@
 <?php
 displayPageHeader('Home | ' . WEB_NAME);
 displayHomeNavigation();
-
-$customer_account = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValueEncoded('id'));
-$latest_exchange_rate = ExchangeRate::getLatestExchangeRate();
-$banner_photos = BannerPhotos::getAllPhotos();
-$float_text = FloatText::getText();
-$membership_id = $customer_account->getValueEncoded('membership_id');
-$membership_definition = Membership::getAllMembership();
-switch ($membership_id) {
-  case '1':
-    $membership_icon = 'silver';
-    break;
-  case '2':
-    $membership_icon = 'gold';
-    break;
-  case '3':
-    $membership_icon = 'platinum';
-    break;
-  case '4':
-    $membership_icon = 'diamond';
-    break;
-}
-
  ?>
   <div class="ssn_loader">
     <div class="triple-spinner"></div>
   </div>
+<section class="wp-home">
+ <section class="wp-home-page-container">
+   <?php
+  $customer_account = UsersAccount::getCustomerAccountById($_SESSION['merchant_customer_account']->getValueEncoded('id'));
+  $latest_exchange_rate = ExchangeRate::getLatestExchangeRate();
+  $membership_id = $customer_account->getValueEncoded('membership_id');
+  switch ($membership_id) {
+    case '1':
+      $membership_icon = 'silver';
+      break;
+    case '2':
+      $membership_icon = 'gold';
+      break;
+    case '3':
+      $membership_icon = 'platinum';
+      break;
+    case '4':
+      $membership_icon = 'diamond';
+      break;
+  }
+   ?>
+   <div class="wp-header-user-name">
+     <i class="fas fa-user-circle"></i>
+     <?php echo $customer_account->getValueEncoded('username') ?>
+   </div>
 
-  <!-- ****** Greeting article-->
-  <article class="">
-    <div class="">
-      <!-- ****** Membership logo -->
-      <div class="">
+   <div class="wp-home-page">
+    <div class="wp-customer-details">
+     <div class="wp-user-name">
+       <i class="fas fa-user-circle"></i>
+       <?php echo $customer_account->getValueEncoded('username') ?>
+     </div>
+
+     <div class="wp-user-balance">
+      <div class="wp-wallet-icon">
+        <i class="fas fa-wallet"></i>
+      </div>
+      <div>
+       <h2>Balance Left On My Account</h2>
+       <span id="user-balance">
+        <span><?php echo number_format($customer_account->getValueEncoded('balance'), 2) ?></span> &nbsp;MMK
+       </span>
+      </div>
+     </div>
+
+     <div class="wp-user-point">
+      <div class="wp-membership-icon <?php echo $membership_icon ?>" title="<?php echo $membership_icon ?>">
         <a href="<?php echo URL ?>/membership/"><?php
           switch ($membership_icon) {
             case 'silver':
@@ -48,108 +67,129 @@ switch ($membership_id) {
           }
           ?></a>
       </div>
-      <!-- End of membership logo -->
-      <p>Hello,&nbsp;<?php echo $customer_account->getValueEncoded('username') ?>!</p>
-      <p><?php echo number_format($customer_account->getValueEncoded('balance'), 2) ?>&nbsp;Ks</p>
-      <p><?php echo number_format($customer_account->getValueEncoded('point')/1000) ?>&nbsp;Points</p>
-    </div>
+      <div>
+       <h2>Points I Have</h2>
+       <span id="user-point">
+        <span><?php echo number_format($customer_account->getValueEncoded('point')/1000) ?></span> &nbsp;Points
+       </span>
+      </div>
+     </div>
+   </div>
 
-    <button type="button">Estimate Calculator</button>
-  </article>
-  <!-- End of greeting article-->
+   <div class="wp-new-order-and-detail-container">
+      <div class="wp-new-order-container">
+        <h3>Add New Order</h3>
+        <span id="new-order-close"><i class="fas fa-times"></i></span>
+        <div class="wp-new-order-back"></div>
+        <div class="wp-new-order">
+         <div class="wp-new-order-header"><h2>Add New Order</h2><i class="fas fa-shapes"></i></div>
+         <form class="order-form-js" action="<?php echo URL ?>/order/add_new_order/" method="post">
+           <input type="hidden" name="customer_id" value="<?php echo $customer_account->getValueEncoded('id') ?>">
+           <input type="hidden" name="exchange_rate" value="<?php echo $latest_exchange_rate->getValueEncoded('mmk') ?>">
+          <div class="new-order-input new-order-textarea">
+            <i class="fas fa-link"></i>
+            <textarea name="product_link" placeholder="Product Link"></textarea>
+            <span>Product Link</span>
+          </div>
+          <div class="new-order-input">
+            <i class="fas fa-shapes"></i>
+            <input type="number" name="quantity" placeholder="Quantity" min="1">
+            <span>Quantity</span>
+          </div>
+          <div class="new-order-input">
+            <i class="fas fa-money-bill-alt"></i>
+            <input type="text" name="cupon_code" placeholder="Coupon code">
+            <span>Coupon code</span>
+          </div>
+          <div class="new-order-input new-order-textarea">
+            <i class="fas fa-pencil-alt"></i>
+            <textarea name="remark" placeholder="Remark"></textarea>
+            <span>Remark</span>
+          </div>
+          <div class="new-order-input">
+            <i class="fas fa-hand-holding-usd"></i>
+            <input type="text" name="price" placeholder="Unit Price">
+            <span>Unit Price (<?php echo CURRENCY_SYMBOL .'&nbsp;'. CURRENCY_ABBR ?>)</span>
+          </div>
+           <input type="submit" value="Add">
+         </form>
+        </div>
+      </div>
 
-  <!-- ****** Banner article-->
-  <article class="">
-    <ul>
-      <?php foreach ($banner_photos as $banner_photo): ?>
-        <li>
-          <a href="<?php echo $banner_photo->getValueEncoded('link') ?>" target="_blank">
-            <img src="<?php echo OTHER_FILE_URL ?>/photos/banner/id_<?php echo $banner_photo->getValue('id') . '_' . $banner_photo->getValueEncoded('photo_name')?>" alt="<?php echo $banner_photo->getValueEncoded('photo_name') ?>">
-          </a>
-        </li>
-      <?php endforeach; ?>
-    </ul>
-  </article>
-  <!-- End of banner article-->
+      <div class="wp-information-detail-container">
+       <h2>Information Details</h2>
+        <div class="wp-information-detail">
+         <div class="wp-customer-phone-container">
+          <div id="customer-phone-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="wp-customer-phone">
+           <span>Phone</span>
+           <span><?php echo $customer_account->getValueEncoded('phone') ?></span>
+          </div>
+         </div>
 
-  <!-- ****** Float text article-->
-  <article class="">
-    <p><?php echo $float_text->getValueEncoded('text') ?></p>
-  </article>
-  <!-- End of float text article-->
+         <div class="wp-customer-id-container">
+           <div id="customer-id-icon">
+            <i class="fas fa-id-badge"></i>
+           </div>
+           <div class="wp-customer-id">
+            <span>Id</span>
+            <span><?php echo $customer_account->getValueEncoded('id') ?></span>
+           </div>
+         </div>
 
-  <!-- ****** Exchange rate article-->
-  <article class="">
-    <h1>Today Exchange Rate</h1>
+         <div class="wp-customer-address-container">
+           <div id="customer-address-icon">
+            <i class="fas fa-map-marker-alt"></i>
+           </div>
+           <div class="wp-customer-address">
+            <span>Address</span>
+            <span><?php echo $customer_account->getValueEncoded('address') ?></span>
+           </div>
+         </div>
+        </div>
+      </div>
+   </div>
 
-    <span><?php echo CURRENCY_ABBR ?></span>
-    <span>1&nbsp;<?php echo CURRENCY_SYMBOL ?></span>
+   <div class="wp-exchange-rate-container">
+     <h2>Today Exchange Rate</h2>
+     <div class="wp-exchange-rate">
+      <div class="wp-us-exchange-rate">
+       <span><?php echo CURRENCY_ABBR ?></span>
+       <span>1&nbsp;<?php echo CURRENCY_SYMBOL ?></span>
+      </div>
 
-    <i class="fas fa-exchange-alt"></i>
+      <div id="exchange-icon"><i class="fas fa-exchange-alt"></i></div>
 
-    <span>MMK</span>
-    <span><?php echo $latest_exchange_rate->getValueEncoded('mmk') ?>&nbsp;Ks</span>
-  </article>
-  <!-- End of exchange rate article-->
+      <div class="wp-mmk-exchange-rate">
+       <span>MMK</span>
+       <span>
+        <span id="wp-mmk-amout"><?php echo $latest_exchange_rate->getValueEncoded('mmk') ?></span>&nbsp;kyats
+       </span>
+      </div>
+     </div>
+      <img src="<?php echo FILE_URL ?>/logos/exchangerateline.png" alt="">
+   </div>
 
-  <!-- ****** Bank accounts article-->
-  <article class="">
-    <h1>Bank Accounts</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Payment Method</th>
-          <th>Account Name</th>
-          <th>Account Number</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>KBZ</td>
-          <td>U Min Thaw Han</td>
-          <td><input type="text" class="hk-copy-text-js" value="09130103301085101"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
-        </tr>
-        <tr>
-          <td>CB</td>
-          <td>U Min Thaw Han</td>
-          <td><input type="text" class="hk-copy-text-js" value="0084600500049085"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
-        </tr>
-        <tr>
-          <td>AYA</td>
-          <td>U Min Thaw Han</td>
-          <td><input type="text" class="hk-copy-text-js" value="0192201010061371"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
-        </tr>
-        <tr>
-          <td>KBZ Pay</td>
-          <td>&nbsp;</td>
-          <td><input type="text" class="hk-copy-text-js" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
-        </tr>
-        <tr>
-          <td>Wave Money</td>
-          <td>&nbsp;</td>
-          <td><input type="text" class="hk-copy-text-js" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </article>
-  <!-- End of bank accounts article-->
+   <div class="wp-calculate-order-container hk-est-calc-trigger-js">
+    <i class="fas fa-file-invoice-dollar"></i>
+    <span>Order Estimate Calculator</span>
+   </div>
 
-  <!-- ****** Membership chart article-->
-  <article class="">
-    <h1>Membership Chart</h1>
-    <?php foreach ($membership_definition as $row): ?>
-      <section>
-        <h1><?php echo $row->getValueEncoded('name') ?></h1>
-        <p>
-          <span><?php echo $row->getValueEncoded('percentage') ?>%</span>
-          <span>OFF</span>
-        </p>
-        <p><?php echo $row->getValueEncoded('definition') ?></p>
-      </section>
-    <?php endforeach; ?>
-  </article>
-  <!-- End of membership chart article-->
+   <div class="wp-contact-admin-container">
+     <a href="<?php echo URL ?>/conversation/">
+       <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="">
+       <h2>Contact Admin</h2>
+       <span class="wp-msg-count"><span class="msg_count"></span></span>
+     </a>
+   </div>
+   <div class="sound">
 
+   </div>
+
+  </div>
+ </section>
  <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
  <script src="<?php echo FILE_URL ?>/scripts/home.js" charset="utf-8"></script>
 <?php
