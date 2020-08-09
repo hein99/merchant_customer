@@ -1,9 +1,6 @@
 <?php
 displayPageHeader('Membership | ' . WEB_NAME);
 displayOtherNavigation('membership');
-echo "<pre>";
-// print_r($memberships);
-echo "</pre>";
  ?>
  <section class="sn-membership-container">
    <?php foreach($memberships as $membership) : ?>

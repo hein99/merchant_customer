@@ -21,6 +21,8 @@ define('TBL_LOGIN_RECORD', 'login_record');
 define('TBL_MESSAGE_RECORD', 'message_record');
 define('TBL_PASSWORD_REQUEST', 'password_request');
 define('TBL_EXCHANGE_RATE', 'exchange_rate');
+define('TBL_FLOAT_TEXT', 'float_text');
+define('TBL_BANNER_PHOTOS', 'banner_photos');
 
 #Error status
 $ERR_STATUS = 0;
@@ -35,4 +37,5 @@ define('ERR_URL', 4); // for URL query (i.e. http://localhost/merchat/order/get_
 define('CURRENCY_SYMBOL', '&#36;');
 define('CURRENCY_ABBR', 'USD');
 define('CURRENCY_LABEL', 'US');
+define('PRODUCT_WEIGHT_UNIT', 'lb');
  ?>

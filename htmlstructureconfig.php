@@ -6,11 +6,14 @@ function displayPageHeader($page_title, $dir_level=false)
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" href="<?php echo FILE_URL ?>/logos/tha_bag(89x107).png" type = "image/x-icon">
       <title><?php echo $page_title ?></title>
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/reset.css">
+      <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/swiper.min.css">
       <link
     rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.13.0/css/all.css'>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
       <link href="https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+KR&family=Open+Sans&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/<?php echo $dir_level ? 'login.css' : 'config.css'?>">
@@ -23,6 +26,7 @@ function displayPageHeader($page_title, $dir_level=false)
         var CURRENCY_SYMBOL = '<?php echo CURRENCY_SYMBOL ?>';
         var CURRENCY_ABBR = '<?php echo CURRENCY_ABBR ?>';
         var CURRENCY_LABEL = '<?php echo CURRENCY_LABEL ?>';
+        var PRODUCT_WEIGHT_UNIT = '<?php echo PRODUCT_WEIGHT_UNIT ?>';
       </script>
     </head>
     <body>
@@ -34,7 +38,7 @@ function displayHomeNavigation()
   <header class="wp-page-header">
     <div class="wp-header-logo">
       <a href="<?php echo URL ?>/">
-        <img src="<?php echo FILE_URL ?>/logos/bird.png"/><span>The Best Shop</span>
+        <img src="<?php echo FILE_URL ?>/logos/bird_carry_the_bag(374x161)Color.png"/><span>The Best Shop</span>
       </a>
     </div>
     <div class="wp-contact-logout-container">
@@ -83,7 +87,7 @@ function displayOtherNavigation($active_page='')
     </div>
     <div class="wp-header-logo">
       <a href="<?php echo URL ?>/">
-        <img src="<?php echo FILE_URL ?>/logos/bird.png"/><span>The Best Shop</span>
+        <img src="<?php echo FILE_URL ?>/logos/bird_carry_the_bag(374x161)Color.png"/><span>The Best Shop</span>
       </a>
     </div>
     <div class="wp-header-logout">
@@ -98,7 +102,7 @@ function displayOtherNavigation($active_page='')
     <div id="wp-other-page-sidebar-back"></div>
     <div class="wp-other-page-nav">
       <div class="wp-other-page-header">
-        <img src="<?php echo FILE_URL ?>/logos/bird.png"/>
+        <img src="<?php echo FILE_URL ?>/logos/bird_carry_the_bag(374x161)Color.png"/>
         <span id="wp-other-page-header-logo">The Best Shop</span>
         <span id="wp-close-nav"><i class="fas fa-window-close"></i></span>
       </div>
@@ -136,19 +140,6 @@ function displayPageFooter($display_footer=true)
 {
   if($display_footer){?>
     <footer>
-      <div class="footer-accounts">
-        <h6>Our Accounts</h6>
-        <div class="bank-accounts-container">
-          <i class="fas fa-credit-card"></i>
-          <ul>
-            <li>KBZ: <input type="text" class="hk-copy-text-js" value="09130103301085101"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
-            <li>CB: <input type="text" class="hk-copy-text-js" value="0084600500049085"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
-            <li>AYA: <input type="text" class="hk-copy-text-js" value="0192201010061371"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
-            <li>KBZ Pay: <input type="text" class="hk-copy-text-js" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
-            <li>Wave Money: <input type="text" class="hk-copy-text-js" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="far fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></li>
-          </ul>
-        </div>
-      </div>
       <div class="footer-contact-us">
         <h6>Contact Us</h6>
         <div class="phone-number-container">

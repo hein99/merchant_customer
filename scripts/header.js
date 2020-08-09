@@ -178,6 +178,8 @@ function buildFormEstimateCaculation(defalultData)
 {
   var d_commission_rate = 15;
   var d_exchange_rate = 1500;
+  var d_weight_cost = 7;
+  var d_mm_tax = 0;
   if(typeof(defalultData) == 'object'){
     d_commission_rate = defalultData.commission_rate;
     d_exchange_rate = defalultData.exchange_rate;
@@ -186,21 +188,19 @@ function buildFormEstimateCaculation(defalultData)
   var p_price = $('<input>', {type: 'number', id: 'p-price', step: '0.01', placeholder: '0.00', min: '0.00'}).blur(function(){
     changeRespectiveFormValue();
   });
-  var p_qty = $('<input>', {type: 'number', id: 'p-qty', placeholder: '1', value: '0', min: '1'}).blur(function(){
+  var p_qty = $('<input>', {type: 'number', id: 'p-qty', placeholder: '1', value: '1', min: '1'}).blur(function(){
     changeRespectiveFormValue();
   });
-  var weight_cost = $('<input>', {type: 'number', id: 'weight-cost', step: '0.01', value: '7', placeholder: '0.00', min: '0.00'}).blur(function(){
-    changeRespectiveFormValue();
-  });
-  var p_weight = $('<input>', {type: 'number', id: 'p-weight', step: '0.01', placeholder: '0.00', min: '0.00'}).blur(function(){
-    changeRespectiveFormValue();
-  });
-  var us_tax = $('<input>', {type: 'number', id: 'us-tax', step: '0.01', placeholder: '0.00', min: '0.00'});
+  var weight_cost = $('<input>', {type: 'number', id: 'weight-cost', step: '0.01', value: d_weight_cost, placeholder: '0.00', min: '0.00'});
+  var p_weight = $('<input>', {type: 'number', id: 'p-weight', step: '0.01', placeholder: '0.00', min: '0.00'});
+  var us_tax = $('<input>', {type: 'number', id: 'us-tax', step: '0.01', placeholder: '0.00', min: '0.00'}).blur(function(){
+    changeRespectiveFormValueTwo();
+  });;
   var shipping_cost = $('<input>', {type: 'number', id: 'shipping-cost', step: '0.01', placeholder: '0.00', min: '0.00'}).blur(function(){
-    changeRespectiveFormValue();
+    changeRespectiveFormValueTwo();
   });
   var commission = $('<input>', {type: 'number', id: 'commission', step: '0.01', 'data-rate': d_commission_rate, placeholder: '0.00', min: '0.00'});
-  var mm_tax = $('<input>', {type: 'number', id: 'mm-tax', step: '0.01', placeholder: '0.00', min: '0.00'});
+  var mm_tax = $('<input>', {type: 'number', id: 'mm-tax', step: '0.01', 'data-mm-tax': d_mm_tax, placeholder: '0.00', min: '0.00'});
   var exchange_rate = $('<input>', {type: 'number', id: 'exchange-rate', step: '0.01', value: d_exchange_rate, placeholder: '0.00', min: '0.00'});
   var calc_btn = $('<button>', {type: 'button'}).html('Calculate').click(function(){
     $('.hk-est-calc-wrap').append(buildResultEstimateCalculation());
@@ -209,11 +209,11 @@ function buildFormEstimateCaculation(defalultData)
 
   var t_r1 = $('<tr>').append($('<td>').append($('<label>', {for: 'p-price'}).html('Product&nbsp;Unit&nbsp;Price'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(p_price));
   var t_r2 = $('<tr>').append($('<td>').append($('<label>', {for: 'p-qty'}).html('Quantity'))).append($('<td>').html('unit')).append($('<td>').append(p_qty));
-  var t_r3 = $('<tr>').append($('<td>').append($('<label>', {for: 'p-weight'}).html('Product&nbsp;Weight'))).append($('<td>').html('lb')).append($('<td>').append(p_weight));
+  var t_r3 = $('<tr>').append($('<td>').append($('<label>', {for: 'p-weight'}).html('Total&nbsp;Estimate&nbsp;Weight'))).append($('<td>').html(PRODUCT_WEIGHT_UNIT)).append($('<td>').append(p_weight));
   var t_r4 = $('<tr>').append($('<td>').append($('<label>', {for: 'shipping-cost'}).html('Shipping&nbsp;Cost'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(shipping_cost));
-  var t_r5 = $('<tr>').append($('<td>').append($('<label>', {for: 'weight-cost'}).html('Weight&nbsp;Cost<br><em>Est:[ 1lb = 7$ ]</em>'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(weight_cost));
+  var t_r5 = $('<tr>').append($('<td>').append($('<label>', {for: 'weight-cost'}).html('Weight&nbsp;Cost<br><em>Est:[ 1' + PRODUCT_WEIGHT_UNIT + ' = ' + d_weight_cost + CURRENCY_SYMBOL + ' ]</em>'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(weight_cost));
   var t_r6 = $('<tr>').append($('<td>').append($('<label>', {for: 'us-tax'}).html( CURRENCY_LABEL + '&nbsp;Tax<br><em>Est:[ 10% ]</em>'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(us_tax));
-  var t_r7 = $('<tr>').append($('<td>').append($('<label>', {for: 'mm-tax'}).html('MM&nbsp;Tax<br><em>Est:[ 5% ]</em>'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(mm_tax));
+  var t_r7 = $('<tr>').append($('<td>').append($('<label>', {for: 'mm-tax'}).html('MM&nbsp;Tax<br><em>Est:[ ' + d_mm_tax + '% ]</em>'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(mm_tax));
   var t_r8 = $('<tr>').append($('<td>').append($('<label>', {for: 'commission'}).html('Commission<br><em>Est:[ ' + d_commission_rate + '% ]</em>'))).append($('<td>').html(CURRENCY_SYMBOL)).append($('<td>').append(commission));
   var t_r9 = $('<tr>').append($('<td>').append($('<label>', {for: 'exchange-rate'}).html('Exchange&nbsp;Rate<br><em>Est:[ 1$ = ' + d_exchange_rate + ' Ks ]</em>'))).append($('<td>').html('MMK')).append($('<td>').append(exchange_rate));
   var form_table = $('<table>').append(t_r1).append(t_r2).append(t_r3).append(t_r4).append(t_r5).append(t_r6).append(t_r7).append(t_r8).append(t_r9);
@@ -231,16 +231,16 @@ function buildResultEstimateCalculation()
   var us_tax = Number($('#us-tax').val());
   var shipping_cost = Number($('#shipping-cost').val());
   var commission = Number($('#commission').data('rate'));
-  var mm_tax = 5;
+  var mm_tax = Number($('#mm-tax').data('mm-tax'));
   var exchange_rate = Number($('#exchange-rate').val());
 
   var t_price = p_price * p_qty;
   var f_payment_dollar = t_price + us_tax + shipping_cost;
   var f_payment_mmk = f_payment_dollar*exchange_rate;
 
-  var t_commission = (f_payment_dollar/100)*commission;
+  var t_commission = Number($('#commission').val());
   var t_weight = weight_cost*p_weight;
-  var t_mm_tax = (f_payment_dollar/100)*mm_tax;
+  var t_mm_tax = Number($('#mm-tax').val());
   var s_payment_dollar = t_commission + t_weight + t_mm_tax;
   var s_payment_mmk = s_payment_dollar*exchange_rate;
 
@@ -261,7 +261,7 @@ function buildResultEstimateCalculation()
   var table1 = $('<table>').append(t1_head).append(t1_body).append(t1_footer);
 
   var t2_b_r1 = $('<tr>').append($('<td>').html('Commission')).append($('<td>').html('[' + commission + '%]')).append($('<td>').html(CURRENCY_SYMBOL + '&nbsp;' + currencyFormat(t_commission)));
-  var t2_b_r2 = $('<tr>').append($('<td>').html('Weight')).append($('<td>').html('[' + p_weight + 'lb]')).append($('<td>').html(CURRENCY_SYMBOL + '&nbsp;' + currencyFormat(t_weight)));
+  var t2_b_r2 = $('<tr>').append($('<td>').html('Weight')).append($('<td>').html('[' + p_weight + PRODUCT_WEIGHT_UNIT + ']')).append($('<td>').html(CURRENCY_SYMBOL + '&nbsp;' + currencyFormat(t_weight)));
   var t2_b_r3 = $('<tr>').append($('<td>').html('MM&nbsp;Tax')).append($('<td>').html('[' + mm_tax + '%]')).append($('<td>').html(CURRENCY_SYMBOL + '&nbsp;' + currencyFormat(t_mm_tax)));
   var t2_body = $('<tbody>').append(t2_b_r1).append(t2_b_r2).append(t2_b_r3);
 
@@ -281,6 +281,7 @@ function buildResultEstimateCalculation()
 }
 function changeRespectiveFormValue()
 {
+  var mm_tax = Number($('#mm-tax').data('mm-tax'));
   var p_price_val = Number($('#p-price').val()) * Number($('#p-qty').val());
   var shipping_cost_val = Number($('#shipping-cost').val());
   var commission_val = Number($('#commission').data('rate'))/100;
@@ -289,7 +290,21 @@ function changeRespectiveFormValue()
   var f_payment_val = p_price_val + us_tax_val + shipping_cost_val;
 
   $('#us-tax').val(currencyFormat(us_tax_val));
-  $('#mm-tax').val(currencyFormat(f_payment_val*0.05));
+  $('#mm-tax').val(currencyFormat(f_payment_val*(mm_tax/100)));
+  $('#commission').val(currencyFormat(f_payment_val*commission_val));
+}
+
+function changeRespectiveFormValueTwo()
+{
+  var mm_tax = Number($('#mm-tax').data('mm-tax'));
+  var p_price_val = Number($('#p-price').val()) * Number($('#p-qty').val());
+  var shipping_cost_val = Number($('#shipping-cost').val());
+  var commission_val = Number($('#commission').data('rate'))/100;
+  var us_tax_val = Number($('#us-tax').val());
+
+  var f_payment_val = p_price_val + us_tax_val + shipping_cost_val;
+
+  $('#mm-tax').val(currencyFormat(f_payment_val*(mm_tax/100)));
   $('#commission').val(currencyFormat(f_payment_val*commission_val));
 }
 

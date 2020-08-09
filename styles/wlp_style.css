@@ -62,8 +62,7 @@
 	}
 
 	.wp-header-logo a img{
-		width: 28px;
-		height: 28px;
+		width: 78px;
 		margin-right: 8px;
 	}
 
@@ -189,12 +188,11 @@
 	}
 
 	.wp-other-page-header{
-		display: block;
 		position: relative;
 		width: 100%;
 		height: 32%;
 		box-sizing: border-box;
-		background-color: #2EC5FF;
+		background-color: #a2beca;
 		color: white;
 		display: flex;
 		flex-direction: column;
@@ -204,8 +202,7 @@
 	}
 
 	.wp-other-page-header img{
-		width: 64px;
-		height: 64px;
+		width: 205px;
 		margin-bottom: 6%;
 	}
 
@@ -877,8 +874,7 @@
 	}
 
 	.wp-header-logo a img{
-		width: 32px;
-		height: 32px;
+		width: 90px;
 	}
 
 	.wp-header-logo a span{
@@ -1607,8 +1603,7 @@
 	}
 
 	.wp-header-logo a img{
-		width: 42px;
-		height: 42px;
+		width: 100px;
 	}
 
 	.wp-header-logo a span{

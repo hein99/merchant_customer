@@ -25,6 +25,9 @@ switch ($controller)
 {
   case 'home':
     require('./models/ExchangeRate.class.php');
+    require('./models/Membership.class.php');
+    require('./models/FloatText.class.php');
+    require('./models/BannerPhotos.class.php');
     break;
 
   case 'customer':
