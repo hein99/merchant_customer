@@ -150,7 +150,7 @@ switch ($membership_id) {
    <!-- End of exchange rate and contact admin article-->
 
    <!-- ****** Membership chart article-->
-   <article class="">
+   <article class="ky-membership-accordion-container">
      <section class="ky-membership-accordion">
        <header class="ky-accordion-header ky-membership-accordion-header">
          <h1>Membership Chart</h1>
@@ -181,11 +181,12 @@ switch ($membership_id) {
      </section>
    </article>
    <!-- End of membership chart article-->
+
+   <?php
+   displayPageFooter();
+   ?>
  </main>
 
  <script src="<?php echo FILE_URL ?>/scripts/swiper.min.js" charset="utf-8"></script>
  <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
  <script src="<?php echo FILE_URL ?>/scripts/home.js" charset="utf-8"></script>
-<?php
-displayPageFooter(false);
-?>
