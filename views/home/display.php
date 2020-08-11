@@ -47,9 +47,9 @@ switch ($membership_id) {
      <div class="ky-customerInfo">
        <span id="ky-home-greeting">Hello,&nbsp;<?php echo $customer_account->getValueEncoded('username') ?>!</span>
        <span id="ky-home-balance"><?php echo number_format($customer_account->getValueEncoded('balance'), 2) ?>&nbsp;Ks</span>
-       <span id="ky-home-balance"><?php echo number_format($customer_account->getValueEncoded('point')/1000) ?>&nbsp;Points</span>
+       <span id="ky-home-points"><?php echo number_format($customer_account->getValueEncoded('point')/1000) ?>&nbsp;Points</span>
      </div>
-     <button type="button"><span class="material-icons">calculate</span><span>Estimate Calculator</span></button>
+     <button type="button" class="hk-est-calc-trigger-js"><span class="material-icons">calculate</span><span>Estimate Calculator</span></button>
    </article>
    <!-- End of greeting article-->
 
@@ -65,7 +65,7 @@ switch ($membership_id) {
            </li>
          <?php endforeach; ?>
        </ul>
-       <div class="swiper-pagination"></div>
+       <div class="swiper-pagination ky-swiper-pagination"></div>
        <span class="swiper-button-next"><i class="fas fa-angle-right"></i></span>
        <span class="swiper-button-prev"><i class="fas fa-angle-left"></i></span>
      </div>
@@ -73,7 +73,7 @@ switch ($membership_id) {
    <!-- End of banner article-->
 
    <!-- ****** Float text article-->
-   <article class="">
+   <article class="ky-float-text-container">
      <p><?php echo $float_text->getValueEncoded('text') ?></p>
    </article>
    <!-- End of float text article-->
@@ -99,76 +99,86 @@ switch ($membership_id) {
      <section class="ky-contact-admin-container">
        <a href="<?php echo URL ?>/conversation/">
          <img src="<?php echo FILE_URL ?>/logos/chat.png" alt="">
-         <h3>Contact Admin</h3>
+         <h1>Contact Admin</h1>
          <span class="wp-msg-count"><span class="msg_count"></span></span>
        </a>
+     </section>
+     <section class="ky-accounts-accordion">
+       <header class="ky-accordion-header">
+         <h1>Bank Accounts</h1>
+       </header>
+       <div class="ky-accordion-body">
+         <table>
+           <thead>
+             <tr>
+               <th>Account Name</th>
+               <th>Payment Method</th>
+               <th>Account Number</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+               <td>U Min Thaw Han</td>
+               <td>KBZ</td>
+               <td><input type="text" class="hk-copy-text-js" value="09130103301085101"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
+             </tr>
+             <tr>
+               <td>U Min Thaw Han</td>
+               <td>CB</td>
+               <td><input type="text" class="hk-copy-text-js" value="0084600500049085"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
+             </tr>
+             <tr>
+               <td>U Min Thaw Han</td>
+               <td>AYA</td>
+               <td><input type="text" class="hk-copy-text-js" value="0192201010061371"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
+             </tr>
+             <tr>
+               <td>&nbsp;</td>
+               <td>KBZ Pay</td>
+               <td><input type="text" class="hk-copy-text-js" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
+             </tr>
+             <tr>
+               <td>&nbsp;</td>
+               <td>Wave Money</td>
+               <td><input type="text" class="hk-copy-text-js" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
+             </tr>
+           </tbody>
+         </table>
+       </div>
      </section>
    </article>
    <!-- End of exchange rate and contact admin article-->
 
-   <!-- ****** Bank accounts article-->
-   <article class="ky-accounts-accordion">
-     <header class="ky-accordion-header">
-       <i class="fas fa-plus"></i>
-       <h1>Bank Accounts</h1>
-     </header>
-     <div class="ky-accordion-body">
-       <table>
-         <thead>
-           <tr>
-             <th>Account Name</th>
-             <th>Payment Method</th>
-             <th>Account Number</th>
-           </tr>
-         </thead>
-         <tbody>
-           <tr>
-             <td>U Min Thaw Han</td>
-             <td>KBZ</td>
-             <td><input type="text" class="hk-copy-text-js" value="09130103301085101"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
-           </tr>
-           <tr>
-             <td>U Min Thaw Han</td>
-             <td>CB</td>
-             <td><input type="text" class="hk-copy-text-js" value="0084600500049085"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
-           </tr>
-           <tr>
-             <td>U Min Thaw Han</td>
-             <td>AYA</td>
-             <td><input type="text" class="hk-copy-text-js" value="0192201010061371"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
-           </tr>
-           <tr>
-             <td>&nbsp;</td>
-             <td>KBZ Pay</td>
-             <td><input type="text" class="hk-copy-text-js" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
-           </tr>
-           <tr>
-             <td>&nbsp;</td>
-             <td>Wave Money</td>
-             <td><input type="text" class="hk-copy-text-js" value="09974330882"><button class="hk-copy-text-js" title="Copy"><i class="fas fa-copy"></i></button><span class="animate__animated animate__bounceOut">copied</span></td>
-           </tr>
-         </tbody>
-       </table>
-     </div>
-   </article>
-   <!-- End of bank accounts article-->
-
    <!-- ****** Membership chart article-->
    <article class="">
-     <header class="">
-       <i class="fas fa-plus"></i>
-       <h1>Membership Chart</h1>
-     </header>
-     <?php foreach ($membership_definition as $row): ?>
-       <section>
-         <h1><?php echo $row->getValueEncoded('name') ?></h1>
-         <p>
-           <span><?php echo $row->getValueEncoded('percentage') ?>%</span>
-           <span>OFF</span>
-         </p>
-         <p><?php echo $row->getValueEncoded('definition') ?></p>
+     <section class="ky-membership-accordion">
+       <header class="ky-accordion-header ky-membership-accordion-header">
+         <h1>Membership Chart</h1>
+       </header>
+       <section class="ky-accordion-body ky-membership-accordion-body">
+         <div class="ky-membership-tab-header">
+           <?php foreach ($membership_definition as $row): ?>
+             <div class="ky-membership-tab">
+               <i class="fas fa-gem"></i>
+               <span><?php echo $row->getValueEncoded('name') ?></span>
+             </div>
+           <?php endforeach; ?>
+         </div>
+         <div class="ky-membership-tab-indicator"></div>
+         <?php foreach ($membership_definition as $row): ?>
+           <div class="ky-membership">
+             <div class="ky-membership-head">
+               <i class="fas fa-gem"></i>
+               <h1><?php echo $row->getValueEncoded('name') ?></h1>
+             </div>
+             <div class="ky-membership-body">
+               <span class="ky-percentage-container"><span><?php echo $row->getValueEncoded('percentage') ?>%</span><span>OFF</span></span>
+               <p><?php echo $row->getValueEncoded('definition') ?></p>
+             </div>
+           </div>
+         <?php endforeach; ?>
        </section>
-     <?php endforeach; ?>
+     </section>
    </article>
    <!-- End of membership chart article-->
  </main>
