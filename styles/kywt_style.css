@@ -545,17 +545,17 @@ footer{
   position: relative;
   clear: both;
   width: 100%;
-  padding: 6%;
   background: #12171BDB;
   box-sizing: border-box;
+  padding-top: 22px;
 }
 
-.footer-accounts, .footer-contact-us{
-  width: 100%;
-}
-
-.footer-accounts{
-  margin-bottom: 24px;
+.footer-contact-us{
+  width: 88%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 22px;
+  font-weight: 600;
 }
 
 footer h6{
@@ -571,7 +571,6 @@ footer h6{
   display: none;
 }
 
-.bank-accounts-container,
 .phone-number-container,
 .address-container{
   display: flex;
@@ -579,30 +578,6 @@ footer h6{
   color: #B3B6BB;
 }
 
-.bank-accounts-container span{
-  display: none;
-  position: absolute;
-  bottom: 100%;
-  left: 30%;
-  background: #151515;
-  border-radius: 5px;
-  padding: 5px 7px 6px 7px;
-  font-size: 0.85em;
-}
-
-.bank-accounts-container span::before{
-  content: '';
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  left: 50%;
-  top: 100%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  border-radius: 2px 0 0 0;
-  background-color: #151515;
-}
-
-.footer-accounts i,
 .footer-contact-us i{
   font-size: 0.8em;
   margin-right: 20px;
@@ -610,40 +585,6 @@ footer h6{
   box-sizing: border-box;
 }
 
-.bank-accounts-container ul{
-  display: flex;
-  flex-direction: column;
-}
-.bank-accounts-container ul li{
-  color: #B3B6BB;
-  font-size: 0.875em;
-  font-weight: 600;
-  margin-bottom: 0.5em;
-  position: relative;
-}
-.bank-accounts-container ul li input{
-  background: none;
-  border: 0 none;
-  font-size: 0.875em;
-  color: #B3B6BB;
-}
-.bank-accounts-container ul li:nth-child(1) input{
-  width: 10.5em;
-}
-.bank-accounts-container ul li:nth-child(2) input, .bank-accounts-container ul li:nth-child(3) input{
-  width: 9.5em;
-}
-.bank-accounts-container ul li:nth-child(4) input, .bank-accounts-container ul li:nth-child(5) input{
-  width: 6.5em;
-}
-.bank-accounts-container ul li button{
-  background: none;
-  border: 0 none;
-  color: #767676;
-  font-size: 1em;
-  line-height: 1em;
-  padding-left: 0;
-}
 .footer-contact-us a{
   color: #B3B6BB;
   text-decoration: none;
@@ -663,7 +604,7 @@ footer h6{
 
 .footer-social{
   position: absolute;
-  top: 6%;
+  top: 22px;
   right: 6%;
 }
 
@@ -684,37 +625,46 @@ footer h6{
   margin-right: 6px;
 }
 
+.footer-copyright{
+  width: 83%;
+  border-top: 1px solid #B3B6BB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #B3B6BB;
+  margin: 0 auto;
+  font-size: 0.7em;
+  height: 24px;
+}
+
+.footer-copyright > span:nth-child(1){
+  margin-right: 2px;
+}
+
+.footer-copyright i{
+  margin-right: 7px;
+}
+
 /* End Mobile View */
 
 /* Tablet View */
 @media (min-width: 30em) and (max-width: 60em){
 
 footer{
-  padding: 4%;
+  padding-top: 24px;
 }
 
-.footer-accounts i,
-.footer-contact-us i{
-  font-size: 0.875em;
+.footer-contact-us{
+  width: 90%;
 }
 
-.footer-accounts a,
-.footer-contact-us a{
-  font-size: 0.9em;
-  letter-spacing: 0.8px;
+.footer-contact-us{
+  margin-bottom: 24px;
 }
 
-.address-container p{
-  font-size: 1em;
-  line-height: 1.5em;
-  letter-spacing: 0.8px;
+.footer-copyright{
+  height: 30px;
 }
-
-.footer-social{
-  top: 10%;
-  right: 6%;
-}
-
 }
 
 /* End Tablet View */
@@ -723,20 +673,19 @@ footer{
 @media (min-width: 60em){
 
 footer{
-  padding: 4%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  padding-top: 26px;
 }
 
-.footer-accounts, .footer-social, .footer-contact-us{
-  width: calc(100% / 3);
+.footer-contact-us{
+  width: 74%;
 }
 
-.footer-social{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.footer-copyright{
+  width: 70%;
+}
+
+.footer-contact-us{
+  margin-bottom: 26px;
 }
 
 footer h6{
@@ -745,35 +694,32 @@ footer h6{
   letter-spacing: 0.8px;
 }
 
-.footer-social h6{
-  display: block;
-}
-
-.footer-social{
-  position: relative;
-  left: 0;
-  right: 0;
-}
-
-.footer-accounts i,
 .footer-contact-us i{
   font-size: 0.8em;
 }
 
-.footer-accounts a,
 .footer-contact-us a{
-  font-size: 0.9em;
+  font-size: 0.875em;
   letter-spacing: 0.75px;
 }
 
 .address-container p{
   font-size: 0.975em;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   line-height: 1.2em;
 }
 
-.bank-accounts-container div a:first-child{
-  margin-bottom: 12px;
+.footer-copyright{
+  height: 32px;
+  font-size: 0.75em;
+}
+
+.footer-social{
+  right: 13%;
+}
+
+.footer-social h6{
+  display: block;
 }
 
 }

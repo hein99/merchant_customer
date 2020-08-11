@@ -158,6 +158,11 @@ function displayPageFooter($display_footer=true)
           <a href="https://www.thebestshopmm.com" target="_blank"><i class="fas fa-shopping-bag"></i></a>
         </div>
       </div>
+      <div class="footer-copyright">
+        <span>Copyright</span>
+        <i class="fas fa-copyright"></i>
+        <span>2020</span>
+      </div>
     </footer>
   <?php } ?>
     <script src="<?php echo FILE_URL ?>/scripts/header.js"></script>
